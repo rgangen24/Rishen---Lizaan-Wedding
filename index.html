@@ -202,7 +202,6 @@
       transform: scale(1.08) translateZ(30px);
     }
 
-    /* Ambient Gentle 3D Fluttering */
     .butterfly-wing-left, .butterfly-wing-right {
       position: absolute;
       top: 0;
@@ -233,7 +232,6 @@
       100% { transform: rotateY(10deg) rotateZ(-2deg); }
     }
 
-    /* Active Flying Away in Cinematic Slow Motion */
     .butterfly-3d-entity.flying {
       animation: slowMotionFlight 3.4s cubic-bezier(0.22, 0.08, 0.2, 1) forwards;
     }
@@ -277,7 +275,6 @@
       }
     }
 
-    /* Central Body Core with Illuminated R & L Monogram Badge */
     .butterfly-body-core {
       position: absolute;
       z-index: 6;
@@ -621,7 +618,7 @@
     }
 
     /* ============================================================
-       5. OUR STORY: FLOWING LITERARY EDITORIAL
+       5. OUR STORY: 100% EXACT VERBATIM LOVE STORY SPREAD
     ============================================================ */
     #story {
       padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 5vw, 5rem);
@@ -664,7 +661,7 @@
       font-size: clamp(1.25rem, 2.6vw, 1.65rem);
       color: var(--burgundy-soft);
       text-align: center;
-      max-width: 720px;
+      max-width: 760px;
       margin: 0.8rem auto 0;
       line-height: 1.5;
     }
@@ -730,31 +727,12 @@
       flex-direction: column;
       align-items: flex-start;
     }
-    .story-moment-heading {
-      font-family: var(--font-serif);
-      font-size: clamp(1.8rem, 3.4vw, 2.7rem);
-      font-weight: 300;
-      color: var(--burgundy);
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-      letter-spacing: -0.01em;
-    }
-    .story-moment-pullquote {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(1.08rem, 2vw, 1.25rem);
-      color: var(--burgundy-soft);
-      line-height: 1.65;
-      margin-bottom: 1.4rem;
-      padding-left: 1.2rem;
-      border-left: 2.5px solid var(--gold);
-    }
     .story-moment-body {
       font-family: var(--font-sans);
-      font-size: clamp(0.94rem, 1.5vw, 1.04rem);
+      font-size: clamp(0.96rem, 1.5vw, 1.06rem);
       color: var(--ink-soft);
       line-height: 1.95;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1.2rem;
     }
     .story-moment-body:last-child { margin-bottom: 0; }
 
@@ -1384,7 +1362,7 @@
       
       <div class="butterfly-3d-entity" id="butterfly3dEntity">
         
-        <!-- Left Wing: Layered 3D Gold Foil, Champagne Stained-Glass & Sage Veins -->
+        <!-- Left Wing -->
         <div class="butterfly-wing-left">
           <svg viewBox="0 0 150 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; overflow:visible;">
             <defs>
@@ -1408,39 +1386,35 @@
               </radialGradient>
             </defs>
 
-            <!-- Forewing (Top Wing) -->
             <path d="M150 100 C140 45, 95 10, 35 12 C-5 14, -8 55, 18 90 C45 125, 105 110, 150 100 Z" 
                   fill="url(#goldWingL)" stroke="#FFF6DB" stroke-width="1.8"/>
             <path d="M145 98 C135 48, 92 18, 38 20 C5 22, 2 54, 25 84 C50 115, 102 105, 145 98 Z" 
                   fill="url(#sageGlowL)"/>
 
-            <!-- Hindwing (Bottom Wing) -->
             <path d="M150 105 C120 130, 65 180, 32 192 C6 202, 10 168, 35 142 C68 110, 120 102, 150 105 Z" 
                   fill="url(#goldWingL)" stroke="#E7D9BE" stroke-width="1.5"/>
             <path d="M145 108 C118 132, 68 175, 38 185 C18 190, 20 165, 42 142 C70 114, 118 106, 145 108 Z" 
                   fill="url(#sageGlowL)"/>
 
-            <!-- Realistic Anatomical Vein Filigree Structure -->
             <path d="M150 100 Q80 50 35 22" stroke="#FFF8E7" stroke-width="2.2" stroke-linecap="round" opacity="0.95"/>
             <path d="M150 100 Q65 78 20 90" stroke="#F7E7C4" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
             <path d="M150 105 Q85 145 35 190" stroke="#FFF8E7" stroke-width="2" stroke-linecap="round" opacity="0.95"/>
             <path d="M105 72 Q70 40 45 42 M85 86 Q50 68 28 65 M115 125 Q75 145 45 160" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
 
-            <!-- Embedded Pearlescent Champagne Jewels -->
             <circle cx="48" cy="42" r="5.5" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="1"/>
             <circle cx="28" cy="78" r="4.2" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="0.8"/>
             <circle cx="46" cy="165" r="4.8" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="0.8"/>
           </svg>
         </div>
 
-        <!-- Central Body Core with Illuminated R & L Monogram Badge -->
+        <!-- Central Body Core -->
         <div class="butterfly-body-core">
           <div class="butterfly-monogram-label">
             R<span>&amp;</span>L
           </div>
         </div>
 
-        <!-- Right Wing: Layered 3D Gold Foil, Champagne Stained-Glass & Sage Veins -->
+        <!-- Right Wing -->
         <div class="butterfly-wing-right">
           <svg viewBox="0 0 150 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; overflow:visible;">
             <defs>
@@ -1459,25 +1433,21 @@
               </linearGradient>
             </defs>
 
-            <!-- Forewing (Top Wing) -->
             <path d="M0 100 C10 45, 55 10, 115 12 C155 14, 158 55, 132 90 C105 125, 45 110, 0 100 Z" 
                   fill="url(#goldWingR)" stroke="#FFF6DB" stroke-width="1.8"/>
             <path d="M5 98 C15 48, 58 18, 112 20 C145 22, 148 54, 125 84 C100 115, 48 105, 5 98 Z" 
                   fill="url(#sageGlowR)"/>
 
-            <!-- Hindwing (Bottom Wing) -->
             <path d="M0 105 C30 130, 85 180, 118 192 C144 202, 140 168, 115 142 C82 110, 30 102, 0 105 Z" 
                   fill="url(#goldWingR)" stroke="#E7D9BE" stroke-width="1.5"/>
             <path d="M5 108 C32 132, 82 175, 112 185 C132 190, 130 165, 108 142 C80 114, 32 106, 5 108 Z" 
                   fill="url(#sageGlowR)"/>
 
-            <!-- Realistic Anatomical Vein Filigree Structure -->
             <path d="M0 100 Q70 50 115 22" stroke="#FFF8E7" stroke-width="2.2" stroke-linecap="round" opacity="0.95"/>
             <path d="M0 100 Q85 78 130 90" stroke="#F7E7C4" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
             <path d="M0 105 Q65 145 115 190" stroke="#FFF8E7" stroke-width="2" stroke-linecap="round" opacity="0.95"/>
             <path d="M45 72 Q80 40 105 42 M65 86 Q100 68 122 65 M35 125 Q75 145 105 160" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
 
-            <!-- Embedded Pearlescent Champagne Jewels -->
             <circle cx="102" cy="42" r="5.5" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="1"/>
             <circle cx="122" cy="78" r="4.2" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="0.8"/>
             <circle cx="104" cy="165" r="4.8" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="0.8"/>
@@ -1574,7 +1544,7 @@
       </div>
     </section>
 
-    <!-- 2. OUR STORY: FLOWING LITERARY EDITORIAL -->
+    <!-- 2. OUR STORY: 100% EXACT VERBATIM LOVE STORY SPREAD -->
     <section id="story" aria-labelledby="storyHeadingTitle">
       <div class="story-max-container">
         
@@ -1598,15 +1568,8 @@
               </div>
             </div>
             <div class="story-text-side">
-              <h3 class="story-moment-heading">Love at first sight — although neither was brave enough to speak.</h3>
-              <div class="story-moment-pullquote">
-                “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
-              </div>
               <p class="story-moment-body">
-                <span class="story-editorial-dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan’s family members.
-              </p>
-              <p class="story-moment-body">
-                There was an instant connection, a quiet, undeniable feeling that something about this person was different. It was love at first sight — although neither of them was brave enough to actually say a word to the other 😂!
+                <span class="story-editorial-dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan’s family members. There was an instant connection, a quiet, undeniable feeling that something about this person was different. It was love at first sight - although neither of them was brave enough to actually say a word to the other 😂!
               </p>
             </div>
           </div>
@@ -1620,10 +1583,6 @@
               </div>
             </div>
             <div class="story-text-side">
-              <h3 class="story-moment-heading">The conversation that never happened in person began over text.</h3>
-              <div class="story-moment-pullquote">
-                “Somewhere between the good morning messages, late night conversations, inside jokes and countless memories, two people became each other’s favourite good morning and favourite good night.”
-              </div>
               <p class="story-moment-body">
                 <span class="story-editorial-dropcap">A</span> few days later, Rishen still couldn’t get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that never happened in person began over text.
               </p>
@@ -1642,15 +1601,11 @@
               </div>
             </div>
             <div class="story-text-side">
-              <h3 class="story-moment-heading">Like iron sharpens iron — to encourage, strengthen, and love.</h3>
-              <div class="story-moment-pullquote">
-                “We believe we are meant to encourage, strengthen and bring out the best in one another.”
-              </div>
               <p class="story-moment-body">
-                <span class="story-editorial-dropcap">S</span>ince then, we’ve shared so many beautiful moments together, from ordinary days that became special simply because we were together, to adventures, laughter, memories and milestones that we’ll treasure forever.
+                <span class="story-editorial-dropcap">S</span>ince then, we’ve shared so many beautiful moments together, from ordinary days that became special simply because we were together, to adventures, laughter, memories and milestones that we’ll treasure forever. Through it all, our love has continued to grow, and we’ve come to realise that the best part of life is having someone beside you to share it all with.
               </p>
               <p class="story-moment-body">
-                Through it all, our love has continued to grow, and we’ve come to realise that the best part of life is having someone beside you to share it all with. Like iron sharpens iron — we believe we are meant to encourage, strengthen and bring out the best in one another.
+                Like iron sharpens iron. We believe we are meant to encourage, strengthen and bring out the best in one another.
               </p>
             </div>
           </div>
@@ -1673,9 +1628,9 @@
         <!-- SCRIPTURE CLIMAX WITH BEATING HEART MOTION -->
         <div class="sacred-scripture-climax">
           <p class="sacred-scripture-main-verse">
-            “Therefore what God has joined together,<br>let no one separate.”
+            “Therefore what God has joined together, let no one separate.”
           </p>
-          <span class="sacred-scripture-citation-tag">Matthew 19 : 6</span>
+          <span class="sacred-scripture-citation-tag">Matthew 19:6</span>
           
           <div class="story-climax-becoming-forever">
             <p>And so, what began with a glance, grew through messages, and blossomed into a love we never expected, is becoming forever 🤍.</p>
@@ -2108,13 +2063,13 @@
     // Open velvet gatefold doors smoothly as butterfly ascends
     setTimeout(() => {
       gatefoldOverlay.classList.add('opened');
-      sessionStorage.setItem('rl_invitation_butterfly_v3', 'true');
+      sessionStorage.setItem('rl_invitation_butterfly_v4', 'true');
     }, 750);
   }
 
   if (butterflyTrigger) butterflyTrigger.addEventListener('click', launchButterflyUnboxing);
 
-  if (sessionStorage.getItem('rl_invitation_butterfly_v3') === 'true') {
+  if (sessionStorage.getItem('rl_invitation_butterfly_v4') === 'true') {
     if (gatefoldOverlay) gatefoldOverlay.classList.add('opened');
   }
 
