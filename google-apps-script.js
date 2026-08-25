@@ -3,24 +3,14 @@
  * RISHEN & LIZAAN WEDDING INVITATION — GOOGLE APPS SCRIPT WEB BACKEND
  * =========================================================================
  * 
- * INSTRUCTIONS TO DEPLOY:
- * 1. Open your Google Sheet: https://docs.google.com/spreadsheets/d/1b0m89-RZq79QvfhU3DkczC4Y262kbVvcO9WUVlQcCL4/edit
- * 2. In the top menu, click: Extensions -> Apps Script
- * 3. Delete any existing code in the editor, and paste this entire code.
- * 4. Click the "Save" (disk icon) button.
- * 5. Click: Deploy -> New deployment
- * 6. Select type: "Web app" (click the gear icon next to Select type -> Web app)
- * 7. Set:
- *    - Description: "Wedding RSVP Backend"
- *    - Execute as: "Me"
- *    - Who has access: "Anyone" (IMPORTANT: so guests can submit without logging into Google)
- * 8. Click "Deploy" and authorize access.
- * 9. Copy the generated "Web App URL" (ends in /exec).
+ * RECIPIENT EMAILS:
+ * - rgangen24@gmail.com / rgangen@gmail.com
+ * - lizaan.tait2@gmail.com
  * =========================================================================
  */
 
-// NOTIFICATION EMAIL ADDRESS
-var NOTIFICATION_EMAIL = Session.getActiveUser().getEmail() || "rgangen24@gmail.com";
+// NOTIFICATION EMAILS (Both Rishen & Lizaan will receive alerts)
+var NOTIFICATION_EMAILS = "rgangen24@gmail.com, rgangen@gmail.com, lizaan.tait2@gmail.com";
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -28,11 +18,11 @@ function doPost(e) {
 
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var rawData = e.postData ? e.postData.contents : "";
+    var raw = e.postData ? e.postData.contents : "{}";
     var data = {};
-
+    
     try {
-      data = JSON.parse(rawData);
+      data = JSON.parse(raw);
     } catch (err) {
       data = e.parameter || {};
     }
@@ -50,18 +40,16 @@ function doPost(e) {
     var message = data.message || data.guestWishesTextarea || "";
     var generalDietary = data.dietary || data.guestDietaryNotesInput || "";
 
-    // Parse guest list
+    // Parse guest list (Up to 5 guests)
     var guests = [];
     if (data.guests && Array.isArray(data.guests)) {
       guests = data.guests;
     } else {
-      // Primary guest
       guests.push({
         name: primaryName,
         dietary: generalDietary || "No special requirements",
         dietaryDetail: ""
       });
-      // Additional guests if any
       for (var i = 2; i <= guestCount; i++) {
         var gName = data["guest_" + i + "_name"] || ("Guest " + i);
         var gDiet = data["guest_" + i + "_dietary"] || "No special requirements";
@@ -99,7 +87,7 @@ function doPost(e) {
 
     sheet.appendRow(row);
 
-    // Send Instant Email Notification
+    // Send Instant Email Notification to both Rishen & Lizaan
     sendEmailNotification(primaryName, attendanceStatus, guestCount, guests, message, formattedDate);
 
     return ContentService
@@ -162,9 +150,9 @@ function sendEmailNotification(primaryName, attendanceStatus, guestCount, guests
 
   var guestListHtml = "";
   if (isAttending && guests.length > 0) {
-    guestListHtml = "<h3>Guest Details:</h3><ul>";
+    guestListHtml = "<h3 style='color:#4D161D; margin-top:16px; margin-bottom:8px;'>Guest Details:</h3><ul style='margin:0; padding-left:20px;'>";
     for (var i = 0; i < guests.length; i++) {
-      guestListHtml += "<li><strong>" + (guests[i].name || ("Guest " + (i + 1))) + "</strong> &mdash; Dietary: " + (guests[i].dietary || "None") + "</li>";
+      guestListHtml += "<li style='margin-bottom:4px;'><strong>" + (guests[i].name || ("Guest " + (i + 1))) + "</strong> &mdash; Dietary: " + (guests[i].dietary || "None") + "</li>";
     }
     guestListHtml += "</ul>";
   }
@@ -187,7 +175,7 @@ function sendEmailNotification(primaryName, attendanceStatus, guestCount, guests
 
   try {
     MailApp.sendEmail({
-      to: NOTIFICATION_EMAIL,
+      to: NOTIFICATION_EMAILS,
       subject: subject,
       htmlBody: htmlBody
     });
