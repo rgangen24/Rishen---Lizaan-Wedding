@@ -114,7 +114,7 @@
     }
 
     /* ============================================================
-       2. 3D VELVET & GOLD FOIL GATEFOLD UNBOXING EXPERIENCE
+       2. BREATHTAKING 3D BUTTERFLY & GOLD FOIL UNBOXING
     ============================================================ */
     #gatefold-unboxing-experience {
       position: fixed;
@@ -125,8 +125,8 @@
       justify-content: center;
       perspective: 1600px;
       overflow: hidden;
-      background: radial-gradient(circle at 50% 50%, #2D0B10 0%, #150305 100%);
-      transition: opacity 1.4s var(--ease-silk), visibility 1.4s;
+      background: radial-gradient(circle at 50% 50%, #380F14 0%, #200609 50%, #0E0204 100%);
+      transition: opacity 1.8s var(--ease-silk), visibility 1.8s;
     }
     #gatefold-unboxing-experience.opened {
       opacity: 0;
@@ -139,8 +139,8 @@
       top: 0; bottom: 0;
       width: 50%;
       z-index: 2;
-      transition: transform 1.6s cubic-bezier(0.7, 0, 0.2, 1), opacity 1.3s cubic-bezier(0.7, 0, 0.2, 1);
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+      transition: transform 2s cubic-bezier(0.65, 0, 0.15, 1), opacity 1.6s cubic-bezier(0.65, 0, 0.15, 1);
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.85);
     }
     .gate-panel-left {
       left: 0;
@@ -172,66 +172,151 @@
       opacity: 0;
     }
 
-    /* 3D Wax Seal Trigger */
-    .wax-seal-center-trigger {
+    /* 3D Gold Butterfly Master Trigger */
+    .butterfly-unboxing-wrapper {
       position: relative;
       z-index: 10;
       display: flex;
       flex-direction: column;
       align-items: center;
       cursor: pointer;
-      padding: 1.5rem;
-      border-radius: 50%;
-      transition: transform 0.4s var(--ease-spring);
-    }
-    .wax-seal-center-trigger:hover {
-      transform: scale(1.08);
+      padding: 2rem;
+      perspective: 1000px;
     }
 
-    .wax-stamp-disc {
-      width: clamp(120px, 28vw, 150px);
-      height: clamp(120px, 28vw, 150px);
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #F5E4B8 0%, #D4AF37 40%, #997722 80%, #5E460E 100%);
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), inset 0 3px 8px rgba(255, 255, 255, 0.6), inset 0 -4px 10px rgba(0, 0, 0, 0.4);
+    .butterfly-3d-entity {
+      position: relative;
+      width: clamp(170px, 36vw, 220px);
+      height: clamp(140px, 30vw, 180px);
+      transform-style: preserve-3d;
+      transition: transform 0.4s var(--ease-spring);
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      animation: sealPulse 3.5s ease-in-out infinite alternate;
     }
-    @keyframes sealPulse {
-      from { box-shadow: 0 15px 45px rgba(212, 175, 55, 0.3), inset 0 3px 8px rgba(255, 255, 255, 0.6); }
-      to { box-shadow: 0 20px 60px rgba(212, 175, 55, 0.6), inset 0 3px 12px rgba(255, 255, 255, 0.8); }
+    .butterfly-unboxing-wrapper:hover .butterfly-3d-entity {
+      transform: scale(1.06) translateZ(20px);
     }
 
-    .wax-seal-monogram-text {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: #3F1419;
-      letter-spacing: 0.05em;
-      filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.4));
+    /* Ambient Gentle 3D Fluttering */
+    .butterfly-wing-left, .butterfly-wing-right {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 10px 25px rgba(212, 175, 55, 0.35)) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.7));
     }
-    .wax-seal-monogram-text span {
+    .butterfly-wing-left {
+      left: 0;
+      transform-origin: right center;
+      animation: gentleFlutterLeft 3.6s ease-in-out infinite alternate;
+    }
+    .butterfly-wing-right {
+      right: 0;
+      transform-origin: left center;
+      animation: gentleFlutterRight 3.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes gentleFlutterLeft {
+      0%   { transform: rotateY(0deg) rotateZ(0deg); }
+      50%  { transform: rotateY(25deg) rotateZ(-3deg); }
+      100% { transform: rotateY(-8deg) rotateZ(2deg); }
+    }
+    @keyframes gentleFlutterRight {
+      0%   { transform: rotateY(0deg) rotateZ(0deg); }
+      50%  { transform: rotateY(-25deg) rotateZ(3deg); }
+      100% { transform: rotateY(8deg) rotateZ(-2deg); }
+    }
+
+    /* Active Flying Away in Slow Motion */
+    .butterfly-3d-entity.flying {
+      animation: slowMotionFlight 3.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    }
+    .butterfly-3d-entity.flying .butterfly-wing-left {
+      animation: activeFastFlutterLeft 0.32s ease-in-out infinite alternate !important;
+    }
+    .butterfly-3d-entity.flying .butterfly-wing-right {
+      animation: activeFastFlutterRight 0.32s ease-in-out infinite alternate !important;
+    }
+
+    @keyframes activeFastFlutterLeft {
+      0%   { transform: rotateY(55deg) rotateZ(-8deg); }
+      100% { transform: rotateY(-35deg) rotateZ(6deg); }
+    }
+    @keyframes activeFastFlutterRight {
+      0%   { transform: rotateY(-55deg) rotateZ(8deg); }
+      100% { transform: rotateY(35deg) rotateZ(-6deg); }
+    }
+
+    @keyframes slowMotionFlight {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+      25% {
+        transform: translate3d(-30px, -60px, 150px) scale(1.3) rotate(-8deg);
+        opacity: 1;
+      }
+      55% {
+        transform: translate3d(60px, -180px, 350px) scale(1.75) rotate(12deg);
+        opacity: 0.95;
+      }
+      80% {
+        transform: translate3d(-40px, -320px, 600px) scale(2.2) rotate(-5deg);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translate3d(100px, -550px, 900px) scale(2.8) rotate(15deg);
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    /* Central Body with R & L Monogram */
+    .butterfly-body-core {
+      position: absolute;
+      z-index: 5;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #FFF0D0 0%, #D4AF37 45%, #8A6A1E 85%, #42181E 100%);
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid rgba(255, 255, 255, 0.6);
+    }
+    .butterfly-monogram-label {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #380F14;
+      letter-spacing: 0.04em;
+    }
+    .butterfly-monogram-label span {
       font-family: var(--font-script);
-      font-size: 2.6rem;
+      font-size: 1.05rem;
       color: #5E1A22;
       margin: 0 0.05em;
     }
 
-    .wax-seal-prompt-text {
+    .butterfly-touch-prompt-text {
       font-family: var(--font-sans);
       font-size: 0.72rem;
       font-weight: 500;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--champagne);
-      margin-top: 1.4rem;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+      margin-top: 1.8rem;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.55rem;
+      transition: opacity 0.4s;
+    }
+    .butterfly-unboxing-wrapper:hover .butterfly-touch-prompt-text {
+      color: var(--gold-light);
     }
 
     /* ============================================================
@@ -255,7 +340,6 @@
       box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
     }
 
-    /* Elegant R & L Couture Monogram Brand */
     .header-monogram-brand {
       display: flex;
       align-items: center;
@@ -442,26 +526,17 @@
       z-index: 2;
     }
 
-    .hero-marrying-script-flourish {
-      font-family: var(--font-script);
-      font-size: clamp(2.2rem, 5.5vw, 3.2rem);
-      color: var(--champagne);
-      line-height: 1.1;
-      margin-bottom: 0.2rem;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    }
-
     .hero-we-are-getting-married-caps {
       display: inline-flex;
       align-items: center;
       gap: 0.9rem;
       font-family: var(--font-sans);
-      font-size: clamp(0.72rem, 1.8vw, 0.86rem);
+      font-size: clamp(0.75rem, 1.8vw, 0.9rem);
       font-weight: 500;
       letter-spacing: 0.42em;
       text-transform: uppercase;
       color: var(--eucalyptus);
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
     }
     .hero-we-are-getting-married-caps::before,
@@ -484,7 +559,6 @@
       margin-bottom: 2rem;
       text-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
     }
-    /* Eucalyptus / Champagne Rose matching color */
     .hero-monumental-names-headline .amp {
       font-style: italic;
       color: var(--eucalyptus);
@@ -504,7 +578,6 @@
       text-shadow: 0 3px 15px rgba(0, 0, 0, 0.6);
     }
 
-    /* Free & Borderless Date & Time */
     .hero-date-free-flowing {
       font-family: var(--font-sans);
       font-size: clamp(0.85rem, 2vw, 1rem);
@@ -586,7 +659,6 @@
       gap: clamp(4.5rem, 9vw, 7.5rem);
     }
 
-    /* Story Moment Row */
     .story-moment-row {
       display: grid;
       grid-template-columns: 0.95fr 1.1fr;
@@ -726,7 +798,7 @@
       filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.15));
     }
 
-    /* Elegant Botanical Divider Breaker */
+    /* Elegant Section Breaker */
     .editorial-section-breaker {
       display: flex;
       align-items: center;
@@ -949,7 +1021,7 @@
     }
 
     /* ============================================================
-       7. AMONG THE VINES: ATMOSPHERE & ATTIRE (ELEVATED & UNIQUE)
+       7. AMONG THE VINES: ATMOSPHERE & ATTIRE
     ============================================================ */
     #atmosphere {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -1233,19 +1305,11 @@
     }
     .keepsake-names {
       font-family: var(--font-serif);
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 300;
       color: var(--ivory);
       letter-spacing: 0.04em;
-      margin-bottom: 0.6rem;
-    }
-    .keepsake-meta {
-      font-family: var(--font-sans);
-      font-size: 0.78rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--eucalyptus);
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.2rem;
     }
     .keepsake-quote {
       font-family: var(--font-serif);
@@ -1282,25 +1346,90 @@
   </div>
 
   <!-- ============================================================
-       1. 3D VELVET & GOLD FOIL GATEFOLD UNBOXING EXPERIENCE
+       1. 3D GOLD & SAGE BUTTERFLY UNBOXING EXPERIENCE
   ============================================================ */ -->
-  <div id="gatefold-unboxing-experience" aria-label="Gatefold Digital Wedding Invitation Unboxing">
+  <div id="gatefold-unboxing-experience" aria-label="Digital Wedding Invitation Butterfly Unboxing">
     <div class="gate-panel-left"></div>
     <div class="gate-panel-right"></div>
 
-    <div class="wax-seal-center-trigger" id="waxSealUnboxingTrigger" title="Tap the wax seal to open your invitation">
-      <div class="wax-stamp-disc">
-        <div class="wax-seal-monogram-text">
-          R<span>&amp;</span>L
+    <div class="butterfly-unboxing-wrapper" id="butterflyUnboxingTrigger" title="Tap the butterfly to begin your journey">
+      
+      <div class="butterfly-3d-entity" id="butterfly3dEntity">
+        
+        <!-- Left Wing with Filigree & Sage Veins -->
+        <div class="butterfly-wing-left">
+          <svg viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+            <defs>
+              <linearGradient id="goldWingGradL" x1="120" y1="80" x2="0" y2="40" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFF2D6" />
+                <stop offset="0.3" stop-color="#E5C158" />
+                <stop offset="0.7" stop-color="#A88228" />
+                <stop offset="1" stop-color="#543C0E" />
+              </linearGradient>
+              <linearGradient id="sageVeinGradL" x1="120" y1="80" x2="0" y2="40" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#C5D6B6" />
+                <stop offset="0.5" stop-color="#7C8B6F" />
+                <stop offset="1" stop-color="#3D4A36" />
+              </linearGradient>
+            </defs>
+            <!-- Forewing -->
+            <path d="M120 80 C110 30, 70 5, 20 8 C-10 10, -5 40, 15 70 C35 100, 80 90, 120 80 Z" fill="url(#goldWingGradL)" opacity="0.92" stroke="#FFF5DC" stroke-width="1.2"/>
+            <!-- Hindwing -->
+            <path d="M120 85 C95 105, 50 145, 25 155 C5 162, 10 135, 30 115 C55 90, 95 85, 120 85 Z" fill="url(#goldWingGradL)" opacity="0.88" stroke="#E7D9BE" stroke-width="1"/>
+            <!-- Sage & Burgundy Filigree Vein Patterns -->
+            <path d="M120 80 Q60 45 20 18 M120 80 Q50 65 15 70 M120 85 Q70 120 28 152" stroke="url(#sageVeinGradL)" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+            <!-- Shimmering Diamond Jewels -->
+            <circle cx="35" cy="38" r="4" fill="#FFF8E7" opacity="0.8"/>
+            <circle cx="22" cy="62" r="3" fill="#E8C8BE" opacity="0.8"/>
+            <circle cx="38" cy="132" r="3.5" fill="#C5D6B6" opacity="0.85"/>
+          </svg>
         </div>
+
+        <!-- Central Body Core with R & L Monogram -->
+        <div class="butterfly-body-core">
+          <div class="butterfly-monogram-label">
+            R<span>&amp;</span>L
+          </div>
+        </div>
+
+        <!-- Right Wing with Filigree & Sage Veins -->
+        <div class="butterfly-wing-right">
+          <svg viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+            <defs>
+              <linearGradient id="goldWingGradR" x1="0" y1="80" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFF2D6" />
+                <stop offset="0.3" stop-color="#E5C158" />
+                <stop offset="0.7" stop-color="#A88228" />
+                <stop offset="1" stop-color="#543C0E" />
+              </linearGradient>
+              <linearGradient id="sageVeinGradR" x1="0" y1="80" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#C5D6B6" />
+                <stop offset="0.5" stop-color="#7C8B6F" />
+                <stop offset="1" stop-color="#3D4A36" />
+              </linearGradient>
+            </defs>
+            <!-- Forewing -->
+            <path d="M0 80 C10 30, 50 5, 100 8 C130 10, 125 40, 105 70 C85 100, 40 90, 0 80 Z" fill="url(#goldWingGradR)" opacity="0.92" stroke="#FFF5DC" stroke-width="1.2"/>
+            <!-- Hindwing -->
+            <path d="M0 85 C25 105, 70 145, 95 155 C115 162, 110 135, 90 115 C65 90, 25 85, 0 85 Z" fill="url(#goldWingGradR)" opacity="0.88" stroke="#E7D9BE" stroke-width="1"/>
+            <!-- Sage & Burgundy Filigree Vein Patterns -->
+            <path d="M0 80 Q60 45 100 18 M0 80 Q70 65 105 70 M0 85 Q50 120 92 152" stroke="url(#sageVeinGradR)" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+            <!-- Shimmering Diamond Jewels -->
+            <circle cx="85" cy="38" r="4" fill="#FFF8E7" opacity="0.8"/>
+            <circle cx="98" cy="62" r="3" fill="#E8C8BE" opacity="0.8"/>
+            <circle cx="82" cy="132" r="3.5" fill="#C5D6B6" opacity="0.85"/>
+          </svg>
+        </div>
+
       </div>
 
-      <span class="wax-seal-prompt-text">
-        <span>Tap wax seal to open</span>
+      <span class="butterfly-touch-prompt-text" id="butterflyPromptTag">
+        <span>Tap to open invitation</span>
         <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 8h10M9 4l4 4-4 4"/>
         </svg>
       </span>
+
     </div>
   </div>
 
@@ -1358,8 +1487,6 @@
       <div class="hero-cinematic-glow" aria-hidden="true"></div>
 
       <div class="hero-centered-content">
-        <p class="hero-marrying-script-flourish">A Celebration of Love</p>
-        
         <span class="hero-we-are-getting-married-caps">We're getting married</span>
 
         <h1 class="hero-monumental-names-headline" id="heroMainTitle">
@@ -1814,13 +1941,12 @@
   ============================================================ */ -->
   <footer id="closing-keepsake" aria-label="Closing Keepsake">
     <div class="keepsake-names">Rishen &amp; Lizaan</div>
-    <div class="keepsake-meta">24 &middot; 10 &middot; 2026 &nbsp;&middot;&nbsp; Highberry Vineyards &nbsp;&middot;&nbsp; Somerset West</div>
     <p class="keepsake-quote">“Our greatest adventure is just beginning.”</p>
     <p class="keepsake-sign">With all our love ♡</p>
   </footer>
 
   <!-- ============================================================
-       SCRIPTS: CANVAS, GATEFOLD, AUDIO, PROGRESS, COUNTDOWN & RSVP
+       SCRIPTS: CANVAS, BUTTERFLY, AUDIO, PROGRESS, COUNTDOWN & RSVP
   ============================================================ */ -->
   <script>
   'use strict';
@@ -1878,27 +2004,41 @@
     animateParticles();
   }
 
-  // 2. 3D Gatefold Wax Seal Unboxing
-  const gatefoldOverlay = document.getElementById('gatefold-unboxing-experience');
-  const waxSealBtn      = document.getElementById('waxSealUnboxingTrigger');
-  const romanticAudio   = document.getElementById('weddingRomanticSoundtrack');
-  const turntableBtn    = document.getElementById('turntableAudioToggle');
+  // 2. 3D Butterfly Realistic Slow Motion Flight Unboxing
+  const gatefoldOverlay  = document.getElementById('gatefold-unboxing-experience');
+  const butterflyTrigger = document.getElementById('butterflyUnboxingTrigger');
+  const butterflyEntity  = document.getElementById('butterfly3dEntity');
+  const butterflyPrompt  = document.getElementById('butterflyPromptTag');
+  const romanticAudio    = document.getElementById('weddingRomanticSoundtrack');
+  const turntableBtn     = document.getElementById('turntableAudioToggle');
 
-  function openGatefoldInvitation() {
-    if (!gatefoldOverlay) return;
-    gatefoldOverlay.classList.add('opened');
-    sessionStorage.setItem('rl_invitation_kissme_v1', 'true');
+  let isOpening = false;
 
+  function launchButterflyUnboxing() {
+    if (isOpening || !gatefoldOverlay) return;
+    isOpening = true;
+
+    // Start 3D slow motion flight animation
+    if (butterflyEntity) butterflyEntity.classList.add('flying');
+    if (butterflyPrompt) butterflyPrompt.style.opacity = '0';
+
+    // Play Kiss Me Audio soundtrack
     if (romanticAudio) {
       romanticAudio.play().then(() => {
         if (turntableBtn) turntableBtn.classList.add('playing');
       }).catch(() => {});
     }
+
+    // Open velvet gatefold doors smoothly as butterfly ascends
+    setTimeout(() => {
+      gatefoldOverlay.classList.add('opened');
+      sessionStorage.setItem('rl_invitation_butterfly_v1', 'true');
+    }, 700);
   }
 
-  if (waxSealBtn) waxSealBtn.addEventListener('click', openGatefoldInvitation);
+  if (butterflyTrigger) butterflyTrigger.addEventListener('click', launchButterflyUnboxing);
 
-  if (sessionStorage.getItem('rl_invitation_kissme_v1') === 'true') {
+  if (sessionStorage.getItem('rl_invitation_butterfly_v1') === 'true') {
     if (gatefoldOverlay) gatefoldOverlay.classList.add('opened');
   }
 
