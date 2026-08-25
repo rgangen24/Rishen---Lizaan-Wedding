@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta name="description" content="Official Digital Wedding Invitation for Rishen &amp; Lizaan — 24 October 2026 at Highberry Vineyards &amp; Venue, Somerset West." />
+  <meta name="description" content="Digital Wedding Invitation for Rishen &amp; Lizaan — Saturday, 24 October 2026 at Highberry Vineyards &amp; Venue, Somerset West." />
   <meta name="theme-color" content="#431A1F" />
-  <title>Rishen &amp; Lizaan — Wedding Invitation</title>
+  <title>Rishen &amp; Lizaan — The Wedding Invitation</title>
 
-  <!-- Google Fonts: Editorial Serif (Fraunces) & Clean Luxury Sans (Jost) & Romance Script (Pinyon Script) -->
+  <!-- Google Fonts: Fraunces (Editorial Display Serif) & Jost (Clean Luxury Sans) & Pinyon Script (Romantic Flourish) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..500,0..100&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" />
 
   <style>
     /* ============================================================
-       THEME TOKENS: BURGUNDY, SAGE, CHAMPAGNE & WARM IVORY
+       THEME TOKENS: SABINA DESIGNS BURGUNDY & SAGE LUXURY
     ============================================================ */
     :root {
       --burgundy:         #6E2A31;
@@ -23,14 +23,17 @@
       --sage:             #7C8B6F;
       --sage-dark:        #4E5B43;
       --eucalyptus:       #AAB89C;
-      --sage-light:       #EBF1E8;
+      --sage-wash:        #EBF1E8;
 
       --ivory:            #FBF7F0;
       --parchment:        #F4EBD9;
+      --gate-left:        #E8DFD1;
+      --gate-right:       #D9CEBE;
       --champagne:        #E7D9BE;
       --champagne-soft:   #FAF5EC;
-      --gold:             #C5A869;
-      --gold-light:       #EAD6A3;
+      --gold-seal:        #C8A870;
+      --gold-highlight:   #F3E3B8;
+      
       --ink:              #2C2620;
       --ink-soft:         #594F45;
       --ink-muted:        #7D7267;
@@ -42,12 +45,11 @@
 
       --radius-sm:        8px;
       --radius-md:        14px;
-      --radius-lg:        20px;
       --radius-pill:      40px;
-
       --shadow-card:      0 8px 24px rgba(67, 26, 31, 0.08);
       --shadow-float:     0 12px 35px rgba(0, 0, 0, 0.28);
-      --ease-smooth:      cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-gate:        cubic-bezier(0.7, 0, 0.2, 1);
+      --ease-silk:        cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     *, *::before, *::after {
@@ -61,11 +63,11 @@
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      background-color: #24080B;
+      background-color: #1A0507;
     }
 
     body {
-      background-color: #24080B;
+      background-color: #1A0507;
       color: var(--ink);
       font-family: var(--font-sans);
       font-weight: 300;
@@ -81,21 +83,21 @@
     button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
     /* ============================================================
-       MOBILE CONTAINER CANVAS (TIKTOK / EWEDLAB APP VIEWPORT)
+       MOBILE APP CONTAINER
     ============================================================ */
-    .mobile-app-wrapper {
+    .mobile-app-canvas {
       width: 100%;
-      max-width: 480px;
+      max-width: 460px;
       background-color: var(--ivory);
       position: relative;
       min-height: 100vh;
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-      padding-bottom: 80px; /* space for bottom nav bar */
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+      padding-bottom: 85px; /* space for bottom nav */
       overflow-x: hidden;
     }
 
-    /* Subtle Paper Texture */
-    .mobile-app-wrapper::before {
+    /* Paper Texture */
+    .mobile-app-canvas::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -106,133 +108,144 @@
     }
 
     /* ============================================================
-       1. INTERACTIVE WAX SEAL ENVELOPE OPENING (TIKTOK SIGNATURE)
+       1. EXACT SABINA DESIGNS GATEFOLD DOORS & WAX SEAL OPENING
     ============================================================ */
-    #envelope-screen {
+    #gatefold-cover-screen {
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background: radial-gradient(circle at 50% 40%, #521820 0%, #300d12 60%, #150306 100%);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
-      transition: opacity 1s var(--ease-smooth), transform 1s var(--ease-smooth);
+      perspective: 1200px;
+      overflow: hidden;
     }
-    #envelope-screen.opened {
-      opacity: 0;
-      transform: translateY(-100%);
+    #gatefold-cover-screen.opened {
       pointer-events: none;
     }
 
-    .envelope-pocket-card {
-      position: relative;
-      width: min(90vw, 420px);
-      background: #4A1A20;
-      border: 1px solid rgba(231, 217, 190, 0.35);
-      border-radius: var(--radius-md);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-      padding: 3rem 1.8rem 2.5rem;
-      text-align: center;
+    /* Left Gate Door */
+    .gate-door-left {
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: 50%;
+      background: linear-gradient(135deg, #E6DDD0 0%, #D8CEBE 100%);
+      transform-origin: left center;
+      transition: transform 1.3s var(--ease-gate), opacity 1.1s var(--ease-gate);
+      z-index: 2;
+      box-shadow: inset -5px 0 25px rgba(0, 0, 0, 0.12);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      color: var(--ivory);
+      align-items: flex-end;
+      justify-content: center;
+      padding-right: 1.5rem;
+      border-right: 1px solid rgba(197, 168, 105, 0.4);
     }
 
-    .envelope-inner-dash {
+    /* Right Gate Door */
+    .gate-door-right {
       position: absolute;
-      inset: 8px;
-      border: 1px dashed rgba(231, 217, 190, 0.25);
-      border-radius: var(--radius-sm);
+      top: 0; bottom: 0; right: 0;
+      width: 50%;
+      background: linear-gradient(135deg, #CFBEAD 0%, #C4B1A0 100%);
+      transform-origin: right center;
+      transition: transform 1.3s var(--ease-gate), opacity 1.1s var(--ease-gate);
+      z-index: 2;
+      box-shadow: inset 5px 0 25px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding-left: 1.5rem;
+    }
+
+    /* Subtle Floral Toile Watermark on Doors */
+    .gate-door-left::before, .gate-door-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30,50 Q40,30 50,50 Q60,70 70,50 Q80,30 90,50' stroke='%23431A1F' fill='none' stroke-width='1.5'/%3E%3Ccircle cx='35' cy='40' r='5' fill='%23431A1F'/%3E%3Ccircle cx='65' cy='60' r='6' fill='%23431A1F'/%3E%3C/svg%3E");
+      background-size: 140px 140px;
       pointer-events: none;
     }
 
-    .envelope-tag {
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--eucalyptus);
-      margin-bottom: 0.8rem;
+    #gatefold-cover-screen.opened .gate-door-left {
+      transform: translateX(-100%) rotateY(-30deg);
+      opacity: 0;
+    }
+    #gatefold-cover-screen.opened .gate-door-right {
+      transform: translateX(100%) rotateY(30deg);
+      opacity: 0;
     }
 
-    .envelope-names-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 7vw, 3.2rem);
-      font-weight: 300;
-      line-height: 1.15;
-      color: var(--ivory);
-      margin-bottom: 0.6rem;
-    }
-
-    .envelope-date-sub {
-      font-family: var(--font-sans);
-      font-size: 0.8rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--champagne);
-      margin-bottom: 2.2rem;
-    }
-
-    /* Gold Wax Seal Button */
-    .gold-wax-seal {
+    /* Center Embossed Wax Seal Button */
+    .center-wax-seal-btn {
       position: relative;
-      width: 86px;
-      height: 86px;
+      z-index: 10;
+      width: 92px;
+      height: 92px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #e8d196 0%, #a6843c 60%, #684f18 100%);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+      background: radial-gradient(circle at 35% 35%, #F5E6BE 0%, #D4AF37 55%, #8C6A1E 100%);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.6);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      border: 2px solid rgba(255, 240, 200, 0.3);
-      animation: sealPulse 2.4s infinite ease-in-out;
-      margin-bottom: 1.5rem;
-      transition: transform 0.3s;
+      border: 3px solid rgba(255, 245, 210, 0.4);
+      transition: transform 0.4s var(--ease-silk), opacity 0.6s var(--ease-silk);
+      animation: sealGlowPulse 2.4s infinite ease-in-out;
     }
-    .gold-wax-seal:hover { transform: scale(1.08); }
+    .center-wax-seal-btn:hover { transform: scale(1.08); }
 
-    .seal-monogram {
+    #gatefold-cover-screen.opened .center-wax-seal-btn {
+      transform: scale(1.4);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .seal-monogram-text {
       font-family: var(--font-serif);
       font-size: 1.65rem;
       font-weight: 400;
       color: #382405;
-      letter-spacing: 0.05em;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.04em;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+      line-height: 1;
     }
 
-    .open-prompt-text {
+    .seal-tap-subtext {
+      position: absolute;
+      bottom: -32px;
       font-family: var(--font-sans);
-      font-size: 0.72rem;
+      font-size: 0.68rem;
+      font-weight: 500;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: rgba(251, 247, 240, 0.85);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      color: #FFFFFF;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+      white-space: nowrap;
+      pointer-events: none;
     }
 
-    @keyframes sealPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.06); }
+    @keyframes sealGlowPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+      50% { transform: scale(1.05); box-shadow: 0 14px 40px rgba(212, 175, 55, 0.6); }
     }
 
     /* ============================================================
-       2. FLOATING MUSIC PLAYER (TIKTOK STYLE)
+       2. FLOATING MUSIC DISC (TIKTOK STYLE)
     ============================================================ */
-    .floating-music-control {
+    .floating-music-btn {
       position: fixed;
       top: 1.2rem;
-      right: max(1.2rem, calc(50% - 220px));
+      right: max(1.2rem, calc(50% - 210px));
       z-index: 900;
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      background: rgba(67, 26, 31, 0.88);
+      background: rgba(67, 26, 31, 0.9);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--champagne);
@@ -240,33 +253,33 @@
       align-items: center;
       justify-content: center;
       color: var(--champagne);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       cursor: pointer;
       transition: transform 0.3s;
     }
-    .floating-music-control:hover { transform: scale(1.08); }
-    .floating-music-control.playing {
-      animation: spinDisc 4s linear infinite;
-      color: var(--gold-light);
+    .floating-music-btn:hover { transform: scale(1.08); }
+    .floating-music-btn.playing {
+      animation: spinVinyl 4s linear infinite;
+      color: var(--gold-highlight);
     }
-    @keyframes spinDisc {
+    @keyframes spinVinyl {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
 
     /* ============================================================
-       3. FLOATING MOBILE BOTTOM NAVIGATION BAR
+       3. FLOATING MOBILE BOTTOM NAVIGATION
     ============================================================ */
-    .floating-bottom-nav {
+    .mobile-bottom-bar {
       position: fixed;
       bottom: 0.8rem;
       left: 50%;
       transform: translateX(-50%);
       z-index: 850;
-      width: min(92vw, 440px);
+      width: min(92vw, 420px);
       background: rgba(67, 26, 31, 0.94);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(231, 217, 190, 0.3);
       border-radius: 35px;
       padding: 0.45rem 0.6rem;
@@ -276,7 +289,7 @@
       box-shadow: var(--shadow-float);
     }
 
-    .bottom-nav-item {
+    .bottom-nav-tab {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -290,129 +303,129 @@
       border-radius: 20px;
       transition: color 0.25s, transform 0.25s;
     }
-    .bottom-nav-item svg {
+    .bottom-nav-tab svg {
       width: 18px;
       height: 18px;
       stroke: currentColor;
     }
-    .bottom-nav-item:hover, .bottom-nav-item.active {
+    .bottom-nav-tab:hover, .bottom-nav-tab.active {
       color: var(--champagne);
       transform: translateY(-2px);
     }
 
     /* ============================================================
-       4. HERO COVER (ARCHED PORTRAIT & COUNTDOWN)
+       4. HERO SECTION (ARCHED PORTRAIT & COUNTDOWN)
     ============================================================ */
     #hero {
-      padding: 5rem 1.4rem 3.5rem;
+      padding: 4.8rem 1.4rem 3.2rem;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: linear-gradient(180deg, #FBF7F0 0%, #F4ECE0 100%);
+      background: linear-gradient(180deg, #FBF7F0 0%, #F4EBD9 100%);
     }
 
-    .hero-photo-arch-frame {
+    .hero-arch-photo-container {
       position: relative;
-      width: 280px;
-      height: 370px;
-      border-radius: 140px 140px 10px 10px;
+      width: 270px;
+      height: 360px;
+      border-radius: 135px 135px 10px 10px;
       overflow: hidden;
       box-shadow: 0 16px 40px rgba(67, 26, 31, 0.15);
       border: 5px solid var(--white);
       margin-bottom: 1.8rem;
     }
-    .hero-photo-arch-frame img {
+    .hero-arch-photo-container img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 20%;
     }
 
-    .hero-eyebrow-tag {
+    .hero-eyebrow-line {
       font-family: var(--font-sans);
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--sage-dark);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
 
-    .hero-title-main {
+    .hero-names-display {
       font-family: var(--font-serif);
-      font-size: clamp(2.8rem, 8vw, 3.8rem);
+      font-size: clamp(2.7rem, 8vw, 3.6rem);
       font-weight: 300;
       color: var(--burgundy);
       line-height: 1.1;
       margin-bottom: 0.6rem;
     }
 
-    .hero-quote-italic {
+    .hero-poetic-statement {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 1.18rem;
+      font-size: 1.15rem;
       color: var(--ink-soft);
-      max-width: 380px;
+      max-width: 360px;
       margin: 0 auto 1.4rem;
       line-height: 1.5;
     }
 
-    .hero-pill-date {
+    .hero-pill-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.55rem 1.6rem;
+      padding: 0.5rem 1.5rem;
       background: var(--burgundy);
       color: var(--ivory);
       border-radius: var(--radius-pill);
       font-family: var(--font-sans);
       font-size: 0.75rem;
       font-weight: 500;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       box-shadow: 0 6px 18px rgba(110, 42, 49, 0.25);
       margin-bottom: 2rem;
     }
 
     /* Real-Time Countdown Box */
-    .hero-countdown-box {
+    .hero-countdown-wrapper {
       width: 100%;
       background: var(--white);
       border-radius: var(--radius-md);
-      padding: 1.6rem 1rem;
+      padding: 1.5rem 1rem;
       box-shadow: var(--shadow-card);
       border: 1px solid rgba(231, 217, 190, 0.45);
     }
-    .countdown-title-lbl {
+    .countdown-header-lbl {
       font-family: var(--font-sans);
       font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--burgundy);
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
       display: block;
     }
-    .countdown-units-row {
+    .countdown-cells-grid {
       display: flex;
       justify-content: center;
-      gap: clamp(0.8rem, 3vw, 1.8rem);
+      gap: clamp(0.7rem, 3vw, 1.8rem);
     }
-    .countdown-digit-col {
+    .countdown-cell-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 52px;
+      min-width: 50px;
     }
-    .countdown-number-val {
+    .countdown-value-num {
       font-family: var(--font-serif);
       font-size: 2.2rem;
       font-weight: 400;
       color: var(--burgundy);
       line-height: 1;
     }
-    .countdown-name-lbl {
+    .countdown-label-txt {
       font-family: var(--font-sans);
       font-size: 0.62rem;
       font-weight: 600;
@@ -426,27 +439,27 @@
        SECTION BASE LAYOUT (LUXURY CARDS)
     ============================================================ */
     .invitation-section {
-      padding: 3.5rem 1.4rem;
+      padding: 3.5rem 1.3rem;
       position: relative;
     }
 
-    .section-header-center {
+    .section-title-wrap {
       text-align: center;
-      margin-bottom: 2.2rem;
+      margin-bottom: 2rem;
     }
-    .section-category-tag {
+    .section-tag-caps {
       font-family: var(--font-sans);
       font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--sage-dark);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
       display: inline-block;
     }
-    .section-heading-serif {
+    .section-title-serif {
       font-family: var(--font-serif);
-      font-size: clamp(2.2rem, 6vw, 2.8rem);
+      font-size: clamp(2.1rem, 6vw, 2.7rem);
       font-weight: 300;
       color: var(--burgundy);
       line-height: 1.2;
@@ -454,49 +467,49 @@
     .section-sub-italic {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       color: var(--ink-soft);
-      margin-top: 0.4rem;
+      margin-top: 0.35rem;
     }
 
-    .editorial-content-card {
+    .luxury-card-box {
       background: var(--white);
       border-radius: var(--radius-md);
-      padding: 1.8rem 1.4rem;
+      padding: 1.6rem 1.3rem;
       box-shadow: var(--shadow-card);
       border: 1px solid rgba(231, 217, 190, 0.45);
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.6rem;
     }
 
     /* ============================================================
-       5. OUR STORY: MOBILE-PERFECT CARDS & ALL 3 PHOTOS
+       5. OUR STORY: CARDS WITH ALL 3 PHOTOS
     ============================================================ */
     #story {
       background-color: var(--ivory);
     }
 
-    .story-card-flow-item {
-      margin-bottom: 2rem;
+    .story-card-item {
+      margin-bottom: 1.8rem;
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
+      gap: 1.1rem;
     }
 
-    .story-photo-box {
+    .story-photo-holder {
       width: 100%;
       border-radius: var(--radius-sm);
       overflow: hidden;
       box-shadow: 0 6px 18px rgba(67, 26, 31, 0.1);
-      border: 4px solid var(--white);
+      border: 3px solid var(--white);
     }
-    .story-photo-box img {
+    .story-photo-holder img {
       width: 100%;
-      height: 230px;
+      height: 220px;
       object-fit: cover;
       object-position: center center;
     }
 
-    .story-chapter-badge {
+    .story-chapter-pill {
       display: inline-block;
       font-family: var(--font-sans);
       font-size: 0.65rem;
@@ -507,53 +520,53 @@
       background: rgba(110, 42, 49, 0.08);
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
-    .story-card-heading {
+    .story-chapter-heading {
       font-family: var(--font-serif);
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 400;
       color: var(--burgundy);
       line-height: 1.25;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.6rem;
     }
-    .story-pull-quote-line {
+    .story-quote-bar {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 1.02rem;
+      font-size: 1rem;
       color: var(--sage-dark);
       padding-left: 0.8rem;
-      border-left: 2.5px solid var(--gold);
-      margin-bottom: 0.8rem;
+      border-left: 2.5px solid var(--gold-seal);
+      margin-bottom: 0.75rem;
       line-height: 1.55;
     }
-    .story-body-p {
-      font-size: 0.94rem;
+    .story-paragraph-text {
+      font-size: 0.92rem;
       color: var(--ink-soft);
       line-height: 1.8;
     }
 
     /* Scripture Card */
-    .scripture-card-ewed {
+    .scripture-card-sabina {
       background: radial-gradient(circle at 50% 50%, #431A1F 0%, #24080B 100%);
       color: var(--ivory);
       text-align: center;
       border-radius: var(--radius-md);
-      padding: 2.4rem 1.4rem;
+      padding: 2.2rem 1.3rem;
       box-shadow: var(--shadow-card);
     }
-    .scripture-verse-italic {
+    .scripture-quote-display {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 300;
       color: var(--champagne);
       line-height: 1.45;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.7rem;
     }
-    .scripture-verse-ref {
+    .scripture-citation-tag {
       font-family: var(--font-sans);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
       letter-spacing: 0.26em;
       text-transform: uppercase;
@@ -561,21 +574,21 @@
     }
 
     /* ============================================================
-       6. THE CELEBRATION SCHEDULE & ACTIONS
+       6. THE CELEBRATION (SCHEDULE & ACTIONS)
     ============================================================ */
     #celebration {
       background-color: var(--champagne-soft);
     }
 
-    .timeline-row-item {
+    .schedule-item-row {
       display: flex;
       align-items: flex-start;
-      gap: 1.1rem;
-      padding: 1.2rem 0;
+      gap: 1rem;
+      padding: 1.1rem 0;
       border-bottom: 1px dashed rgba(110, 42, 49, 0.15);
     }
-    .timeline-row-item:last-child { border-bottom: none; }
-    .timeline-time-badge {
+    .schedule-item-row:last-child { border-bottom: none; }
+    .schedule-time-pill {
       background: var(--burgundy);
       color: var(--ivory);
       font-family: var(--font-sans);
@@ -586,21 +599,21 @@
       border-radius: 20px;
       white-space: nowrap;
     }
-    .timeline-text-col h4 {
+    .schedule-text-info h4 {
       font-family: var(--font-serif);
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 400;
       color: var(--burgundy);
       line-height: 1.2;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
-    .timeline-text-col p {
-      font-size: 0.9rem;
+    .schedule-text-info p {
+      font-size: 0.88rem;
       color: var(--ink-soft);
       line-height: 1.5;
     }
 
-    .btn-full-burgundy {
+    .btn-action-burgundy-full {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -617,9 +630,9 @@
       border-radius: var(--radius-pill);
       box-shadow: 0 6px 18px rgba(110, 42, 49, 0.25);
       transition: all 0.3s;
-      margin-top: 1.2rem;
+      margin-top: 1.1rem;
     }
-    .btn-full-burgundy:hover {
+    .btn-action-burgundy-full:hover {
       background: var(--oxblood);
       transform: translateY(-2px);
     }
@@ -630,25 +643,25 @@
     #atmosphere {
       background-color: var(--ivory);
     }
-    .palette-swatches-grid {
+    .palette-circle-row {
       display: flex;
       justify-content: space-around;
-      margin: 1.6rem 0 1.8rem;
+      margin: 1.5rem 0 1.6rem;
     }
-    .swatch-col {
+    .palette-item-col {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
     }
-    .swatch-round {
-      width: 50px;
-      height: 50px;
+    .palette-color-ball {
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
       border: 3px solid var(--white);
     }
-    .swatch-label {
+    .palette-color-title {
       font-family: var(--font-sans);
       font-size: 0.68rem;
       font-weight: 500;
@@ -658,36 +671,36 @@
     }
 
     /* ============================================================
-       8. VENUE & TRAVEL (GOOGLE MAPS & STAYS)
+       8. VENUE & TRAVEL (HIGHBERRY & LODGING)
     ============================================================ */
     #venue {
       background-color: var(--champagne-soft);
     }
-    .venue-title-serif {
+    .venue-title-display {
       font-family: var(--font-serif);
-      font-size: 1.8rem;
+      font-size: 1.75rem;
       font-weight: 400;
       color: var(--burgundy);
       text-align: center;
       margin-bottom: 0.3rem;
     }
-    .venue-sub-caps {
+    .venue-address-caps {
       font-family: var(--font-sans);
       font-size: 0.8rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--sage-dark);
       text-align: center;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
     }
 
-    .accommodation-pill-list {
+    .lodging-pills-wrap {
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
-      margin-top: 1.2rem;
+      margin-top: 1.1rem;
     }
-    .acc-pill-btn {
+    .lodging-item-button {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -699,7 +712,7 @@
       color: var(--ink);
       transition: all 0.25s;
     }
-    .acc-pill-btn:hover {
+    .lodging-item-button:hover {
       background: var(--burgundy);
       color: var(--white);
       transform: translateX(4px);
@@ -711,29 +724,29 @@
     #guidance {
       background-color: var(--ivory);
     }
-    .accordion-box-ewed {
+    .accordion-card-item {
       background: var(--white);
       border-radius: var(--radius-sm);
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.8rem;
       box-shadow: 0 4px 14px rgba(44, 38, 32, 0.05);
       border: 1px solid rgba(231, 217, 190, 0.45);
       overflow: hidden;
     }
-    .accordion-btn-trigger {
+    .accordion-trigger-button {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.15rem 1.3rem;
+      padding: 1.1rem 1.2rem;
       font-family: var(--font-serif);
-      font-size: 1.18rem;
+      font-size: 1.15rem;
       font-weight: 400;
       color: var(--burgundy);
       text-align: left;
       cursor: pointer;
     }
-    .accordion-body-text {
-      padding: 0 1.3rem 1.2rem;
+    .accordion-body-content {
+      padding: 0 1.2rem 1.1rem;
       font-size: 0.92rem;
       color: var(--ink-soft);
       line-height: 1.75;
@@ -746,14 +759,14 @@
       background: radial-gradient(circle at 50% 30%, #521820 0%, #300d12 60%, #150306 100%);
       color: var(--ivory);
     }
-    #rsvp .section-heading-serif { color: var(--ivory); }
-    #rsvp .section-category-tag { color: var(--eucalyptus); }
+    #rsvp .section-title-serif { color: var(--ivory); }
+    #rsvp .section-tag-caps { color: var(--eucalyptus); }
     #rsvp .section-sub-italic { color: var(--champagne); }
 
-    .form-group-row {
-      margin-bottom: 1.4rem;
+    .form-field-group {
+      margin-bottom: 1.35rem;
     }
-    .form-field-label {
+    .form-input-label {
       display: block;
       font-family: var(--font-sans);
       font-size: 0.72rem;
@@ -763,7 +776,7 @@
       color: var(--burgundy);
       margin-bottom: 0.45rem;
     }
-    .form-input-ewed, .form-select-ewed, .form-textarea-ewed {
+    .form-input-field, .form-select-field, .form-textarea-field {
       width: 100%;
       padding: 0.85rem 1rem;
       background: var(--ivory);
@@ -775,17 +788,17 @@
       outline: none;
       transition: border-color 0.3s;
     }
-    .form-input-ewed:focus, .form-select-ewed:focus, .form-textarea-ewed:focus {
+    .form-input-field:focus, .form-select-field:focus, .form-textarea-field:focus {
       border-color: var(--burgundy);
       box-shadow: 0 0 0 3px rgba(110, 42, 49, 0.12);
     }
 
-    .attendance-radios-grid {
+    .attendance-options-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
+      gap: 0.75rem;
     }
-    .attendance-radio-item {
+    .attendance-option-card {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -803,13 +816,13 @@
       color: var(--ink);
       transition: all 0.25s;
     }
-    .attendance-radio-item:hover {
+    .attendance-option-card:hover {
       border-color: var(--burgundy);
       background: var(--champagne-soft);
     }
-    .attendance-radio-item input { accent-color: var(--burgundy); }
+    .attendance-option-card input { accent-color: var(--burgundy); }
 
-    .btn-submit-rsvp-main {
+    .btn-submit-rsvp-action {
       width: 100%;
       padding: 1.05rem 1.8rem;
       background: var(--burgundy);
@@ -823,28 +836,28 @@
       cursor: pointer;
       box-shadow: 0 8px 24px rgba(110, 42, 49, 0.3);
       transition: all 0.3s;
-      margin-top: 0.6rem;
+      margin-top: 0.5rem;
     }
-    .btn-submit-rsvp-main:hover {
+    .btn-submit-rsvp-action:hover {
       background: var(--oxblood);
       transform: translateY(-2px);
     }
 
     /* Wishes Wall */
-    .wishes-wall-section {
+    .wishes-guestbook-section {
       margin-top: 2.2rem;
     }
-    .wishes-title-header {
+    .wishes-header-box {
       text-align: center;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
     }
-    .wishes-title-header h3 {
+    .wishes-header-box h3 {
       font-family: var(--font-serif);
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       font-weight: 300;
       color: var(--champagne);
     }
-    .wishes-scroll-box {
+    .wishes-feed-list {
       display: flex;
       flex-direction: column;
       gap: 0.85rem;
@@ -852,14 +865,14 @@
       overflow-y: auto;
       padding-right: 4px;
     }
-    .wish-bubble-item {
+    .wish-feed-card {
       background: rgba(251, 247, 240, 0.08);
       border: 1px solid rgba(231, 217, 190, 0.2);
       border-radius: var(--radius-sm);
       padding: 1rem 1.2rem;
       backdrop-filter: blur(8px);
     }
-    .wish-author-name {
+    .wish-guest-name {
       font-family: var(--font-sans);
       font-size: 0.75rem;
       font-weight: 600;
@@ -868,7 +881,7 @@
       color: var(--eucalyptus);
       margin-bottom: 0.25rem;
     }
-    .wish-message-quote {
+    .wish-text-quote {
       font-family: var(--font-serif);
       font-style: italic;
       font-size: 0.98rem;
@@ -885,26 +898,26 @@
       text-align: center;
       padding: 3.5rem 1.5rem 4rem;
     }
-    .footer-flourish {
+    .footer-emblem {
       font-size: 1.8rem;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-    }
-    .footer-couple-names {
-      font-family: var(--font-serif);
-      font-size: 1.7rem;
-      color: var(--ivory);
+      color: var(--gold-seal);
       margin-bottom: 0.3rem;
     }
-    .footer-date-tag {
+    .footer-names {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      color: var(--ivory);
+      margin-bottom: 0.25rem;
+    }
+    .footer-date-info {
       font-family: var(--font-sans);
       font-size: 0.75rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--eucalyptus);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
     }
-    .footer-script-signature {
+    .footer-signature-script {
       font-family: var(--font-script);
       font-size: 2rem;
       color: var(--champagne);
@@ -914,34 +927,28 @@
 <body>
 
   <!-- ============================================================
-       1. INTERACTIVE ENVELOPE OPENING (TIKTOK / EWEDLAB SIGNATURE)
+       1. SABINA DESIGNS GATEFOLD DOORS & WAX SEAL OPENING
   ============================================================ */ -->
-  <div id="envelope-screen" aria-label="Digital Wedding Invitation Envelope">
-    <div class="envelope-pocket-card">
-      <div class="envelope-inner-dash"></div>
+  <div id="gatefold-cover-screen" aria-label="Digital Wedding Invitation Gatefold">
+    
+    <!-- Left French Door -->
+    <div class="gate-door-left"></div>
 
-      <span class="envelope-tag">The Wedding Invitation</span>
-      <h1 class="envelope-names-title">Rishen &amp; Lizaan</h1>
-      <p class="envelope-date-sub">Saturday, 24 October 2026</p>
+    <!-- Right French Door -->
+    <div class="gate-door-right"></div>
 
-      <!-- Gold Wax Seal Button -->
-      <button type="button" class="gold-wax-seal" id="openEnvelopeBtn" aria-label="Tap to Open Invitation">
-        <span class="seal-monogram">R&amp;L</span>
-      </button>
+    <!-- Embossed Gold Wax Seal ("R & L") -->
+    <button type="button" class="center-wax-seal-btn" id="waxSealTriggerBtn" aria-label="Tap Wax Seal to Open Gatefold Invitation">
+      <span class="seal-monogram-text">R&amp;L</span>
+      <span class="seal-tap-subtext">Tap seal to open</span>
+    </button>
 
-      <span class="open-prompt-text">
-        <span>Tap wax seal to open</span>
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 8h10M9 4l4 4-4 4"/>
-        </svg>
-      </span>
-    </div>
   </div>
 
   <!-- ============================================================
        2. FLOATING MUSIC CONTROL (TIKTOK STYLE)
   ============================================================ */ -->
-  <button type="button" class="floating-music-control" id="musicToggleBtn" aria-label="Play/Pause Background Music">
+  <button type="button" class="floating-music-btn" id="musicToggleBtn" aria-label="Play/Pause Background Music">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M9 18V5l12-2v13"/>
       <circle cx="6" cy="18" r="3"/>
@@ -952,196 +959,196 @@
   <audio id="weddingBgmAudio" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-acoustic-112191.mp3"></audio>
 
   <!-- ============================================================
-       3. FLOATING MOBILE BOTTOM NAVIGATION BAR
+       3. FLOATING MOBILE BOTTOM NAVIGATION
   ============================================================ */ -->
-  <nav class="floating-bottom-nav" aria-label="Mobile Navigation">
-    <a href="#hero" class="bottom-nav-item active">
+  <nav class="mobile-bottom-bar" aria-label="Mobile Navigation">
+    <a href="#hero" class="bottom-nav-tab active">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       <span>Home</span>
     </a>
-    <a href="#story" class="bottom-nav-item">
+    <a href="#story" class="bottom-nav-tab">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       <span>Story</span>
     </a>
-    <a href="#celebration" class="bottom-nav-item">
+    <a href="#celebration" class="bottom-nav-tab">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       <span>The Day</span>
     </a>
-    <a href="#venue" class="bottom-nav-item">
+    <a href="#venue" class="bottom-nav-tab">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
       <span>Venue</span>
     </a>
-    <a href="#rsvp" class="bottom-nav-item">
+    <a href="#rsvp" class="bottom-nav-tab">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       <span>RSVP</span>
     </a>
   </nav>
 
   <!-- ============================================================
-       MAIN MOBILE APP CONTENT WRAPPER
+       MAIN MOBILE CANVAS
   ============================================================ */ -->
-  <div class="mobile-app-wrapper">
+  <div class="mobile-app-canvas">
 
     <!-- 4. HERO SECTION (ARCHED PORTRAIT & COUNTDOWN) -->
     <header id="hero">
-      <div class="hero-photo-arch-frame">
+      <div class="hero-arch-photo-container">
         <img src="images/couple-outdoor-clean.jpg" alt="Rishen &amp; Lizaan together outdoors" />
       </div>
 
-      <span class="hero-eyebrow-tag">The Wedding Celebration of</span>
-      <h1 class="hero-title-main">Rishen &amp; Lizaan</h1>
+      <span class="hero-eyebrow-line">The Wedding Celebration of</span>
+      <h1 class="hero-names-display">Rishen &amp; Lizaan</h1>
 
-      <p class="hero-quote-italic">
+      <p class="hero-poetic-statement">
         “What began with a glance, grew through messages, and blossomed into forever.”
       </p>
 
-      <div class="hero-pill-date">
+      <div class="hero-pill-badge">
         Saturday, 24 October 2026 &nbsp;&middot;&nbsp; 14:30
       </div>
 
       <!-- Real-Time Countdown Box -->
-      <div class="hero-countdown-box">
-        <span class="countdown-title-lbl">Counting Down To Our Big Day</span>
-        <div class="countdown-units-row" id="heroCountdown">
-          <div class="countdown-digit-col">
-            <span class="countdown-number-val" id="cdDays">--</span>
-            <span class="countdown-name-lbl">Days</span>
+      <div class="hero-countdown-wrapper">
+        <span class="countdown-header-lbl">Counting Down To Our Big Day</span>
+        <div class="countdown-cells-grid" id="heroCountdownBox">
+          <div class="countdown-cell-item">
+            <span class="countdown-value-num" id="cdDays">--</span>
+            <span class="countdown-label-txt">Days</span>
           </div>
-          <div class="countdown-digit-col">
-            <span class="countdown-number-val" id="cdHours">--</span>
-            <span class="countdown-name-lbl">Hours</span>
+          <div class="countdown-cell-item">
+            <span class="countdown-value-num" id="cdHours">--</span>
+            <span class="countdown-label-txt">Hours</span>
           </div>
-          <div class="countdown-digit-col">
-            <span class="countdown-number-val" id="cdMins">--</span>
-            <span class="countdown-name-lbl">Mins</span>
+          <div class="countdown-cell-item">
+            <span class="countdown-value-num" id="cdMins">--</span>
+            <span class="countdown-label-txt">Mins</span>
           </div>
-          <div class="countdown-digit-col">
-            <span class="countdown-number-val" id="cdSecs">--</span>
-            <span class="countdown-name-lbl">Secs</span>
+          <div class="countdown-cell-item">
+            <span class="countdown-value-num" id="cdSecs">--</span>
+            <span class="countdown-label-txt">Secs</span>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- 5. OUR STORY: FLOWING CARDS WITH ALL 3 PHOTOS -->
+    <!-- 5. OUR STORY: CARDS WITH ALL 3 PHOTOS -->
     <section id="story" class="invitation-section">
-      <div class="section-header-center">
-        <span class="section-category-tag">Love Story</span>
-        <h2 class="section-heading-serif">Our Story</h2>
+      <div class="section-title-wrap">
+        <span class="section-tag-caps">Love Story</span>
+        <h2 class="section-title-serif">Our Story</h2>
         <p class="section-sub-italic">Written long before we even realised it.</p>
       </div>
 
       <!-- Chapter 1 + Photo 1 -->
-      <div class="editorial-content-card story-card-flow-item">
-        <div class="story-photo-box">
+      <div class="luxury-card-box story-card-item">
+        <div class="story-photo-holder">
           <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan standing outdoors" loading="lazy" />
         </div>
         <div>
-          <span class="story-chapter-badge">Chapter 01 &nbsp;&middot;&nbsp; The Glance</span>
-          <h3 class="story-card-heading">Love at first sight — although neither was brave enough to speak!</h3>
-          <div class="story-pull-quote-line">
+          <span class="story-chapter-pill">Chapter 01 &nbsp;&middot;&nbsp; The Glance</span>
+          <h3 class="story-chapter-heading">Love at first sight — although neither was brave enough to speak!</h3>
+          <div class="story-quote-bar">
             “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
           </div>
-          <p class="story-body-p">
+          <p class="story-paragraph-text">
             Almost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members. There was an instant spark — that rare feeling where the rest of the room fades away. It was true love at first sight, although neither was brave enough to speak in that moment!
           </p>
         </div>
       </div>
 
       <!-- Chapter 2 + Photo 2 -->
-      <div class="editorial-content-card story-card-flow-item">
-        <div class="story-photo-box">
+      <div class="luxury-card-box story-card-item">
+        <div class="story-photo-holder">
           <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan close-up portrait" loading="lazy" />
         </div>
         <div>
-          <span class="story-chapter-badge">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
-          <h3 class="story-card-heading">The conversation that never happened in person began over text.</h3>
-          <div class="story-pull-quote-line">
+          <span class="story-chapter-pill">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
+          <h3 class="story-chapter-heading">The conversation that never happened in person began over text.</h3>
+          <div class="story-quote-bar">
             “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
           </div>
-          <p class="story-body-p">
+          <p class="story-paragraph-text">
             A few days later, Rishen still couldn't get Lizaan out of his mind. So, with a little help from the same family member, he got her number. Messages turned into late-night phone calls, inside jokes, and countless memories. Two people who were once too shy to speak became each other's favourite part of every day.
           </p>
         </div>
       </div>
 
       <!-- Chapter 3 + Photo 3 -->
-      <div class="editorial-content-card story-card-flow-item">
-        <div class="story-photo-box">
+      <div class="luxury-card-box story-card-item">
+        <div class="story-photo-holder">
           <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing joyfully in hats" loading="lazy" />
         </div>
         <div>
-          <span class="story-chapter-badge">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
-          <h3 class="story-card-heading">Like iron sharpens iron — to encourage, strengthen and love.</h3>
-          <div class="story-pull-quote-line">
+          <span class="story-chapter-pill">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
+          <h3 class="story-chapter-heading">Like iron sharpens iron — to encourage, strengthen and love.</h3>
+          <div class="story-quote-bar">
             “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
           </div>
-          <p class="story-body-p">
+          <p class="story-paragraph-text">
             Since then, their relationship has flourished through deep friendship, faith, unwavering encouragement, and bringing out the very best in one another. Now, as they prepare to exchange lifelong vows, they are filled with profound gratitude and joy for every chapter God has written ahead.
           </p>
         </div>
       </div>
 
       <!-- Scripture Keepsake Card -->
-      <div class="scripture-card-ewed">
-        <div style="color:var(--gold); font-size:1.6rem; margin-bottom:0.4rem;">❦</div>
-        <p class="scripture-verse-italic">
+      <div class="scripture-card-sabina">
+        <div style="color:var(--gold-seal); font-size:1.6rem; margin-bottom:0.4rem;">❦</div>
+        <p class="scripture-quote-display">
           “Therefore what God has joined together,<br>let no one separate.”
         </p>
-        <p class="scripture-verse-ref">Matthew 19 : 6</p>
+        <p class="scripture-citation-tag">Matthew 19 : 6</p>
       </div>
     </section>
 
-    <!-- 6. THE CELEBRATION (SCHEDULE & CALENDAR) -->
+    <!-- 6. THE CELEBRATION (SCHEDULE & ACTIONS) -->
     <section id="celebration" class="invitation-section">
-      <div class="section-header-center">
-        <span class="section-category-tag">Itinerary</span>
-        <h2 class="section-heading-serif">The Celebration</h2>
+      <div class="section-title-wrap">
+        <span class="section-tag-caps">Itinerary</span>
+        <h2 class="section-title-serif">The Celebration</h2>
         <p class="section-sub-italic">Saturday, 24 October 2026</p>
       </div>
 
-      <div class="editorial-content-card">
+      <div class="luxury-card-box">
         
         <!-- 14:15 Arrival -->
-        <div class="timeline-row-item">
-          <span class="timeline-time-badge">14:15 SAST</span>
-          <div class="timeline-text-col">
+        <div class="schedule-item-row">
+          <span class="schedule-time-pill">14:15 SAST</span>
+          <div class="schedule-text-info">
             <h4>Guest Arrival &amp; Seating</h4>
             <p>Guests seated among the vines before the ceremony begins.</p>
           </div>
         </div>
 
         <!-- 14:30 Ceremony -->
-        <div class="timeline-row-item">
-          <span class="timeline-time-badge">14:30 SAST</span>
-          <div class="timeline-text-col">
+        <div class="schedule-item-row">
+          <span class="schedule-time-pill">14:30 SAST</span>
+          <div class="schedule-text-info">
             <h4>The Ceremony</h4>
-            <p>At Highberry Vineyards &amp; Venue — exchanging our vows.</p>
+            <p>At Highberry Vineyards &amp; Venue — exchanging our sacred vows.</p>
           </div>
         </div>
 
         <!-- 16:00 Drinks -->
-        <div class="timeline-row-item">
-          <span class="timeline-time-badge">16:00 SAST</span>
-          <div class="timeline-text-col">
+        <div class="schedule-item-row">
+          <span class="schedule-time-pill">16:00 SAST</span>
+          <div class="schedule-text-info">
             <h4>Drinks &amp; Canapés</h4>
-            <p>Sunset drinks and delicious bites on the manicured lawns.</p>
+            <p>Sunset drinks and delicious bites on the vineyard lawns.</p>
           </div>
         </div>
 
         <!-- 18:00 Dinner -->
-        <div class="timeline-row-item">
-          <span class="timeline-time-badge">18:00 SAST</span>
-          <div class="timeline-text-col">
+        <div class="schedule-item-row">
+          <span class="schedule-time-pill">18:00 SAST</span>
+          <div class="schedule-text-info">
             <h4>Reception &amp; Dinner</h4>
             <p>Celebratory dinner, heartfelt toasts, and cherished moments.</p>
           </div>
         </div>
 
         <!-- After Dinner -->
-        <div class="timeline-row-item">
-          <span class="timeline-time-badge">After Dinner</span>
-          <div class="timeline-text-col">
+        <div class="schedule-item-row">
+          <span class="schedule-time-pill">After Dinner</span>
+          <div class="schedule-text-info">
             <h4>Celebration &amp; Dancing</h4>
             <p>Music and celebration under the Cape Winelands stars.</p>
           </div>
@@ -1150,7 +1157,7 @@
         <!-- Add to Calendar Action -->
         <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//Rishen%20%26%20Lizaan//Wedding//EN%0ABEGIN:VEVENT%0ADTSTART:20261024T123000Z%0ADTEND:20261024T220000Z%0ASUMMARY:Rishen%20%26%20Lizaan%27s%20Wedding%0ADESCRIPTION:Wedding%20celebration%20of%20Rishen%20%26%20Lizaan%20at%20Highberry%20Vineyards%2C%20Somerset%20West.%0ALOCATION:Highberry%20Vineyards%20%26%20Venue%2C%20Somerset%20West%2C%20Cape%20Winelands%2C%20South%20Africa%0AURL:https%3A%2F%2Fwww.highberry.co.za%2F%0AEND:VEVENT%0AEND:VCALENDAR"
            download="Rishen-and-Lizaan-Wedding.ics"
-           class="btn-full-burgundy">
+           class="btn-action-burgundy-full">
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
             <rect x="2" y="3" width="12" height="12" rx="1"/>
             <path d="M5 1v4M11 1v4M2 7h12"/>
@@ -1163,31 +1170,31 @@
 
     <!-- 7. DRESS CODE & PALETTE SWATCHES -->
     <section id="atmosphere" class="invitation-section">
-      <div class="section-header-center">
-        <span class="section-category-tag">Dress Code</span>
-        <h2 class="section-heading-serif">Among the Vines</h2>
+      <div class="section-title-wrap">
+        <span class="section-tag-caps">Dress Code</span>
+        <h2 class="section-title-serif">Among the Vines</h2>
         <p class="section-sub-italic">“Come dressed for a beautiful afternoon in the Cape Winelands—where deep burgundy meets soft sage, and every detail is warmed by the light.”</p>
       </div>
 
-      <div class="editorial-content-card" style="text-align:center;">
-        <span class="section-category-tag" style="margin-bottom:0;">Wedding Palette Inspiration</span>
+      <div class="luxury-card-box" style="text-align:center;">
+        <span class="section-tag-caps" style="margin-bottom:0;">Wedding Palette Inspiration</span>
         
-        <div class="palette-swatches-grid">
-          <div class="swatch-col">
-            <div class="swatch-round" style="background-color: #6E2A31;"></div>
-            <span class="swatch-label">Burgundy</span>
+        <div class="palette-circle-row">
+          <div class="palette-item-col">
+            <div class="palette-color-ball" style="background-color: #6E2A31;"></div>
+            <span class="palette-color-title">Burgundy</span>
           </div>
-          <div class="swatch-col">
-            <div class="swatch-round" style="background-color: #7C8B6F;"></div>
-            <span class="swatch-label">Sage</span>
+          <div class="palette-item-col">
+            <div class="palette-color-ball" style="background-color: #7C8B6F;"></div>
+            <span class="palette-color-title">Sage</span>
           </div>
-          <div class="swatch-col">
-            <div class="swatch-round" style="background-color: #E7D9BE;"></div>
-            <span class="swatch-label">Champagne</span>
+          <div class="palette-item-col">
+            <div class="palette-color-ball" style="background-color: #E7D9BE;"></div>
+            <span class="palette-color-title">Champagne</span>
           </div>
-          <div class="swatch-col">
-            <div class="swatch-round" style="background-color: #FBF7F0; border-color:#E7D9BE;"></div>
-            <span class="swatch-label">Ivory</span>
+          <div class="palette-item-col">
+            <div class="palette-color-ball" style="background-color: #FBF7F0; border-color:#E7D9BE;"></div>
+            <span class="palette-color-title">Ivory</span>
           </div>
         </div>
 
@@ -1199,52 +1206,52 @@
 
     <!-- 8. VENUE & TRAVEL (HIGHBERRY & LODGING) -->
     <section id="venue" class="invitation-section">
-      <div class="section-header-center">
-        <span class="section-category-tag">Destination</span>
-        <h2 class="section-heading-serif">Venue &amp; Lodging</h2>
+      <div class="section-title-wrap">
+        <span class="section-tag-caps">Destination</span>
+        <h2 class="section-title-serif">Venue &amp; Lodging</h2>
       </div>
 
-      <div class="editorial-content-card">
-        <h3 class="venue-title-serif">Highberry Vineyards &amp; Venue</h3>
-        <p class="venue-sub-caps">Somerset West, Cape Winelands, South Africa</p>
+      <div class="luxury-card-box">
+        <h3 class="venue-title-display">Highberry Vineyards &amp; Venue</h3>
+        <p class="venue-address-caps">Somerset West, Cape Winelands, South Africa</p>
         <p style="font-size:0.94rem; color:var(--ink-soft); line-height:1.75; text-align:center; margin-bottom:1.4rem;">
           A picturesque boutique vineyard surrounded by rolling vines, dams, and the Hottentots Holland mountains.
         </p>
 
         <div style="display:flex; flex-direction:column; gap:0.75rem;">
-          <a href="https://www.google.com/maps/search/Highberry+Vineyards+Somerset+West+South+Africa" target="_blank" rel="noopener noreferrer" class="btn-full-burgundy" style="margin-top:0;">
+          <a href="https://www.google.com/maps/search/Highberry+Vineyards+Somerset+West+South+Africa" target="_blank" rel="noopener noreferrer" class="btn-action-burgundy-full" style="margin-top:0;">
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2C5.79 2 4 3.79 4 6c0 3.5 4 8 4 8s4-4.5 4-8c0-2.21-1.79-4-4-4Z"/><circle cx="8" cy="6" r="1.5"/></svg>
             Open in Google Maps
           </a>
-          <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-full-burgundy" style="margin-top:0; background:var(--sage-dark);">
+          <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-action-burgundy-full" style="margin-top:0; background:var(--sage-dark);">
             Visit Venue Website ↗
           </a>
         </div>
       </div>
 
       <!-- Lodging List -->
-      <div class="editorial-content-card">
-        <span class="section-category-tag" style="margin-bottom:0.6rem;">Nearby Lodging Options</span>
+      <div class="luxury-card-box">
+        <span class="section-tag-caps" style="margin-bottom:0.6rem;">Nearby Lodging Options</span>
         <p style="font-size:0.9rem; color:var(--ink-muted); margin-bottom:1rem;">Recommended boutique guest houses in Somerset West:</p>
         
-        <div class="accommodation-pill-list">
-          <a href="https://www.lalapanzilodge.co.za" target="_blank" rel="noopener noreferrer" class="acc-pill-btn">
+        <div class="lodging-pills-wrap">
+          <a href="https://www.lalapanzilodge.co.za" target="_blank" rel="noopener noreferrer" class="lodging-item-button">
             <span>Lalapanzi Lodge</span>
             <span>↗</span>
           </a>
-          <a href="https://www.winelandsvilla.co.za" target="_blank" rel="noopener noreferrer" class="acc-pill-btn">
+          <a href="https://www.winelandsvilla.co.za" target="_blank" rel="noopener noreferrer" class="lodging-item-button">
             <span>Winelands Villa Guesthouse</span>
             <span>↗</span>
           </a>
-          <a href="https://www.accommodationsomersetwest.co.za" target="_blank" rel="noopener noreferrer" class="acc-pill-btn">
+          <a href="https://www.accommodationsomersetwest.co.za" target="_blank" rel="noopener noreferrer" class="lodging-item-button">
             <span>Accommodation Somerset West</span>
             <span>↗</span>
           </a>
-          <a href="https://www.booking.com/searchresults.html?ss=Somerset+West%2C+South+Africa" target="_blank" rel="noopener noreferrer" class="acc-pill-btn">
+          <a href="https://www.booking.com/searchresults.html?ss=Somerset+West%2C+South+Africa" target="_blank" rel="noopener noreferrer" class="lodging-item-button">
             <span>Booking.com Somerset West</span>
             <span>↗</span>
           </a>
-          <a href="https://www.lekkeslaap.co.za/oornag/Somerset-West" target="_blank" rel="noopener noreferrer" class="acc-pill-btn">
+          <a href="https://www.lekkeslaap.co.za/oornag/Somerset-West" target="_blank" rel="noopener noreferrer" class="lodging-item-button">
             <span>LekkeSlaap Somerset West</span>
             <span>↗</span>
           </a>
@@ -1254,37 +1261,37 @@
 
     <!-- 9. BEFORE THE DAY: FAQ ACCORDION -->
     <section id="guidance" class="invitation-section">
-      <div class="section-header-center">
-        <span class="section-category-tag">Guest Guide</span>
-        <h2 class="section-heading-serif">Before the Day</h2>
+      <div class="section-title-wrap">
+        <span class="section-tag-caps">Guest Guide</span>
+        <h2 class="section-title-serif">Before the Day</h2>
       </div>
 
-      <div class="accordion-box-ewed">
-        <button type="button" class="accordion-btn-trigger" id="btnAcc1">
+      <div class="accordion-card-item">
+        <button type="button" class="accordion-trigger-button" id="btnAcc1">
           <span>What should I wear?</span>
-          <span class="acc-arrow-icon">▾</span>
+          <span class="acc-arrow-symbol">▾</span>
         </button>
-        <div class="accordion-body-text" id="panelAcc1">
+        <div class="accordion-body-content" id="panelAcc1">
           <p>Think <strong>elegant</strong>, <strong>formal</strong>, <strong>semi-formal</strong>, or traditional wear — beautifully comfortable for vineyard celebration!</p>
         </div>
       </div>
 
-      <div class="accordion-box-ewed">
-        <button type="button" class="accordion-btn-trigger" id="btnAcc2">
+      <div class="accordion-card-item">
+        <button type="button" class="accordion-trigger-button" id="btnAcc2">
           <span>When should I arrive?</span>
-          <span class="acc-arrow-icon">▸</span>
+          <span class="acc-arrow-symbol">▸</span>
         </button>
-        <div class="accordion-body-text" id="panelAcc2" style="display:none;">
+        <div class="accordion-body-content" id="panelAcc2" style="display:none;">
           <p>The ceremony begins promptly at <strong>14:30 SAST</strong>. Please arrive and be seated by <strong>14:15</strong>.</p>
         </div>
       </div>
 
-      <div class="accordion-box-ewed">
-        <button type="button" class="accordion-btn-trigger" id="btnAcc3">
+      <div class="accordion-card-item">
+        <button type="button" class="accordion-trigger-button" id="btnAcc3">
           <span>When is the RSVP deadline?</span>
-          <span class="acc-arrow-icon">▸</span>
+          <span class="acc-arrow-symbol">▸</span>
         </button>
-        <div class="accordion-body-text" id="panelAcc3" style="display:none;">
+        <div class="accordion-body-content" id="panelAcc3" style="display:none;">
           <p>Please RSVP by <strong>24 September 2026</strong> so we can finalize seating and dining with Highberry.</p>
         </div>
       </div>
@@ -1292,16 +1299,16 @@
 
     <!-- 10. RSVP EXPERIENCE & LIVE WISHES WALL -->
     <section id="rsvp" class="invitation-section">
-      <div class="section-header-center">
-        <span class="section-category-tag">Your Response</span>
-        <h2 class="section-heading-serif">Will you join us among the vines?</h2>
+      <div class="section-title-wrap">
+        <span class="section-tag-caps">Your Response</span>
+        <h2 class="section-title-serif">Will you join us among the vines?</h2>
         <p class="section-sub-italic">We’d be so grateful to celebrate this beginning with you.</p>
         <p style="font-size:0.75rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--eucalyptus); margin-top:0.6rem;">
           Please respond by 24 September 2026
         </p>
       </div>
 
-      <div class="editorial-content-card" style="color:var(--ink);">
+      <div class="luxury-card-box" style="color:var(--ink);">
         
         <div id="rsvpSuccessBox" style="display:none; text-align:center; padding:1.2rem 0.5rem;">
           <div style="font-size:2.4rem; color:var(--burgundy); margin-bottom:0.6rem;">🤍</div>
@@ -1311,20 +1318,20 @@
 
         <form id="rsvpForm" novalidate>
           
-          <div class="form-group-row">
-            <label for="guestFullNameInput" class="form-field-label">Your Full Name *</label>
-            <input type="text" id="guestFullNameInput" class="form-input-ewed" placeholder="Enter your full name" required />
+          <div class="form-field-group">
+            <label for="guestFullNameInput" class="form-input-label">Your Full Name *</label>
+            <input type="text" id="guestFullNameInput" class="form-input-field" placeholder="Enter your full name" required />
             <span id="nameErrorMsg" style="display:none; font-size:0.75rem; color:#b01d2e; margin-top:0.3rem;">Please enter your name.</span>
           </div>
 
-          <div class="form-group-row">
-            <label class="form-field-label">Will you attend? *</label>
-            <div class="attendance-radios-grid">
-              <label class="attendance-radio-item">
+          <div class="form-field-group">
+            <label class="form-input-label">Will you attend? *</label>
+            <div class="attendance-options-grid">
+              <label class="attendance-option-card">
                 <input type="radio" name="attendanceChoice" value="joyfully" required />
                 <span>Joyfully Accepts</span>
               </label>
-              <label class="attendance-radio-item">
+              <label class="attendance-option-card">
                 <input type="radio" name="attendanceChoice" value="regretfully" required />
                 <span>Regretfully Declines</span>
               </label>
@@ -1333,9 +1340,9 @@
           </div>
 
           <div id="attendingDetailsContainer">
-            <div class="form-group-row">
-              <label for="guestCountDropdown" class="form-field-label">Number of Guests (including yourself)</label>
-              <select id="guestCountDropdown" class="form-select-ewed">
+            <div class="form-field-group">
+              <label for="guestCountDropdown" class="form-input-label">Number of Guests (including yourself)</label>
+              <select id="guestCountDropdown" class="form-select-field">
                 <option value="1">1 Guest (Just me)</option>
                 <option value="2">2 Guests</option>
                 <option value="3">3 Guests</option>
@@ -1343,20 +1350,20 @@
               </select>
             </div>
 
-            <div class="form-group-row">
-              <label for="dietaryInputBox" class="form-field-label">Dietary Requirements (Optional)</label>
-              <input type="text" id="dietaryInputBox" class="form-input-ewed" placeholder="e.g. Vegetarian, Halal, Nut allergy, None" />
+            <div class="form-field-group">
+              <label for="dietaryInputBox" class="form-input-label">Dietary Requirements (Optional)</label>
+              <input type="text" id="dietaryInputBox" class="form-input-field" placeholder="e.g. Vegetarian, Halal, Nut allergy, None" />
             </div>
 
             <div id="dynamicExtraGuestsBox" style="display:none; margin-bottom:1.4rem;"></div>
           </div>
 
-          <div class="form-group-row">
-            <label for="wishTextBox" class="form-field-label">Leave a Blessing or Message for Rishen &amp; Lizaan</label>
-            <textarea id="wishTextBox" rows="3" class="form-textarea-ewed" placeholder="Write your heartfelt wishes..."></textarea>
+          <div class="form-field-group">
+            <label for="wishTextBox" class="form-input-label">Leave a Blessing or Message for Rishen &amp; Lizaan</label>
+            <textarea id="wishTextBox" rows="3" class="form-textarea-field" placeholder="Write your heartfelt wishes..."></textarea>
           </div>
 
-          <button type="submit" class="btn-submit-rsvp-main">
+          <button type="submit" class="btn-submit-rsvp-action">
             Send RSVP &amp; Post Wishes
           </button>
         </form>
@@ -1364,21 +1371,21 @@
       </div>
 
       <!-- Live Wishes Wall -->
-      <div class="wishes-wall-section">
-        <div class="wishes-title-header">
+      <div class="wishes-guestbook-section">
+        <div class="wishes-header-box">
           <div style="font-size:1.4rem; color:var(--champagne); margin-bottom:0.2rem;">💌</div>
           <h3>Wishes &amp; Blessings</h3>
           <p style="font-size:0.8rem; color:var(--eucalyptus); letter-spacing:0.1em; text-transform:uppercase;">From Loved Ones</p>
         </div>
 
-        <div class="wishes-scroll-box" id="wishesScrollList">
-          <div class="wish-bubble-item">
-            <div class="wish-author-name">Family &amp; Friends</div>
-            <p class="wish-message-quote">“May your love story continue to grow more beautiful every single day. Wishing you a lifetime of joy, laughter, and blessings!”</p>
+        <div class="wishes-feed-list" id="wishesFeedContainer">
+          <div class="wish-feed-card">
+            <div class="wish-guest-name">Family &amp; Friends</div>
+            <p class="wish-text-quote">“May your love story continue to grow more beautiful every single day. Wishing you a lifetime of joy, laughter, and blessings!”</p>
           </div>
-          <div class="wish-bubble-item">
-            <div class="wish-author-name">Aunty &amp; Uncle</div>
-            <p class="wish-message-quote">“We cannot wait to celebrate with you both under the Cape Winelands stars! God bless your union.”</p>
+          <div class="wish-feed-card">
+            <div class="wish-guest-name">Aunty &amp; Uncle</div>
+            <p class="wish-text-quote">“We cannot wait to celebrate with you both under the Cape Winelands stars! God bless your union.”</p>
           </div>
         </div>
       </div>
@@ -1386,81 +1393,83 @@
 
     <!-- 11. CLOSING KEEPSAKE & FOOTER -->
     <footer>
-      <div class="footer-flourish">❦</div>
-      <div class="footer-couple-names">Rishen &amp; Lizaan</div>
-      <div class="footer-date-tag">24 October 2026 &nbsp;&middot;&nbsp; Highberry Vineyards</div>
-      <p class="footer-script-signature">With all our love ♡</p>
+      <div class="footer-emblem">❦</div>
+      <div class="footer-names">Rishen &amp; Lizaan</div>
+      <div class="footer-date-info">24 October 2026 &nbsp;&middot;&nbsp; Highberry Vineyards</div>
+      <p class="footer-signature-script">With all our love ♡</p>
     </footer>
 
   </div>
 
   <!-- ============================================================
-       SCRIPTS: ENVELOPE OPENING, AUDIO, COUNTDOWN, ACCORDION, RSVP
+       SCRIPTS: GATEFOLD OPENING, AUDIO, COUNTDOWN, ACCORDION, RSVP
   ============================================================ */ -->
   <script>
   'use strict';
 
-  // 1. Envelope Tap-to-Open Experience
-  const envScreen = document.getElementById('envelope-screen');
-  const openSeal  = document.getElementById('openEnvelopeBtn');
-  const audioEl   = document.getElementById('weddingBgmAudio');
-  const musicBtn  = document.getElementById('musicToggleBtn');
+  // 1. Sabina Designs Gatefold Doors & Wax Seal Opening
+  const gateScreen = document.getElementById('gatefold-cover-screen');
+  const sealTrigger = document.getElementById('waxSealTriggerBtn');
+  const audioObj   = document.getElementById('weddingBgmAudio');
+  const musicToggle = document.getElementById('musicToggleBtn');
 
-  function openEnvelope() {
-    if (envScreen) envScreen.classList.add('opened');
-    sessionStorage.setItem('rl_env_opened_v2', 'true');
-    // Start romantic background music
-    if (audioEl) {
-      audioEl.play().then(() => {
-        if (musicBtn) musicBtn.classList.add('playing');
+  function openGatefoldInvitation() {
+    if (gateScreen) gateScreen.classList.add('opened');
+    sessionStorage.setItem('rl_gatefold_opened', 'true');
+
+    // Start background romantic melody
+    if (audioObj) {
+      audioObj.play().then(() => {
+        if (musicToggle) musicToggle.classList.add('playing');
       }).catch(() => {
-        // Fallback for browser autoplay policies
+        // Handle browser autoplay policy gracefully
       });
     }
   }
 
-  if (openSeal) openSeal.addEventListener('click', openEnvelope);
-  if (sessionStorage.getItem('rl_env_opened_v2') === 'true') {
-    if (envScreen) envScreen.classList.add('opened');
+  if (sealTrigger) sealTrigger.addEventListener('click', openGatefoldInvitation);
+
+  if (sessionStorage.getItem('rl_gatefold_opened') === 'true') {
+    if (gateScreen) gateScreen.classList.add('opened');
   }
 
-  // 2. Music Player Control
-  if (musicBtn && audioEl) {
-    musicBtn.addEventListener('click', () => {
-      if (audioEl.paused) {
-        audioEl.play();
-        musicBtn.classList.add('playing');
+  // 2. Music Disc Toggle
+  if (musicToggle && audioObj) {
+    musicToggle.addEventListener('click', () => {
+      if (audioObj.paused) {
+        audioObj.play();
+        musicToggle.classList.add('playing');
       } else {
-        audioEl.pause();
-        musicBtn.classList.remove('playing');
+        audioObj.pause();
+        musicToggle.classList.remove('playing');
       }
     });
   }
 
-  // 3. Active Nav on Scroll
-  const navSections = document.querySelectorAll('section, header');
-  const navItems = document.querySelectorAll('.bottom-nav-item');
+  // 3. Active Nav Highlighting on Scroll
+  const trackSections = document.querySelectorAll('section, header');
+  const navTabs = document.querySelectorAll('.bottom-nav-tab');
 
   window.addEventListener('scroll', () => {
-    let currentId = '';
-    navSections.forEach(sec => {
+    let activeId = '';
+    trackSections.forEach(sec => {
       const top = sec.offsetTop - 160;
-      if (window.scrollY >= top) currentId = sec.getAttribute('id');
+      if (window.scrollY >= top) activeId = sec.getAttribute('id');
     });
 
-    navItems.forEach(item => {
-      item.classList.remove('active');
-      if (item.getAttribute('href') === '#' + currentId) {
-        item.classList.add('active');
+    navTabs.forEach(tab => {
+      tab.classList.remove('active');
+      if (tab.getAttribute('href') === '#' + activeId) {
+        tab.classList.add('active');
       }
     });
   }, { passive: true });
 
   // 4. Real-Time Countdown
-  const TARGET_DATE = new Date('2026-10-24T14:30:00+02:00');
-  function updateCountdown() {
-    const diff = TARGET_DATE - new Date();
-    const box = document.getElementById('heroCountdown');
+  const WEDDING_TARGET_DATE = new Date('2026-10-24T14:30:00+02:00');
+  function refreshCountdown() {
+    const diff = WEDDING_TARGET_DATE - new Date();
+    const box = document.getElementById('heroCountdownBox');
     if (!box) return;
 
     if (diff <= 0) {
@@ -1473,14 +1482,14 @@
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
 
-    const set = (id, val) => {
+    const setVal = (id, val) => {
       const el = document.getElementById(id);
       if (el) el.textContent = String(val).padStart(2, '0');
     };
-    set('cdDays', d); set('cdHours', h); set('cdMins', m); set('cdSecs', s);
+    setVal('cdDays', d); setVal('cdHours', h); setVal('cdMins', m); setVal('cdSecs', s);
   }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  refreshCountdown();
+  setInterval(refreshCountdown, 1000);
 
   // 5. Accordion Logic
   ['1', '2', '3'].forEach(n => {
@@ -1488,122 +1497,122 @@
     const pnl = document.getElementById('panelAcc' + n);
     if (btn && pnl) {
       btn.addEventListener('click', () => {
-        const isClosed = pnl.style.display === 'none';
-        const arr = btn.querySelector('.acc-arrow-icon');
-        pnl.style.display = isClosed ? 'block' : 'none';
-        if (arr) arr.textContent = isClosed ? '▾' : '▸';
+        const isHidden = pnl.style.display === 'none';
+        const symbol = btn.querySelector('.acc-arrow-symbol');
+        pnl.style.display = isHidden ? 'block' : 'none';
+        if (symbol) symbol.textContent = isHidden ? '▾' : '▸';
       });
     }
   });
 
-  // 6. Dynamic Extra Guests Fields
-  const guestDropdown = document.getElementById('guestCountDropdown');
-  const dynamicExtraBox = document.getElementById('dynamicExtraGuestsBox');
-  const detailsGroup = document.getElementById('attendingDetailsContainer');
-  const choiceRadios = document.querySelectorAll('input[name="attendanceChoice"]');
+  // 6. Dynamic Additional Guest Rows
+  const guestCountEl = document.getElementById('guestCountDropdown');
+  const extraGuestBox = document.getElementById('dynamicExtraGuestsBox');
+  const detailsGroupEl = document.getElementById('attendingDetailsContainer');
+  const radioChoices = document.querySelectorAll('input[name="attendanceChoice"]');
 
-  if (choiceRadios) {
-    choiceRadios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        if (radio.value === 'regretfully') {
-          if (detailsGroup) detailsGroup.style.display = 'none';
+  if (radioChoices) {
+    radioChoices.forEach(r => {
+      r.addEventListener('change', () => {
+        if (r.value === 'regretfully') {
+          if (detailsGroupEl) detailsGroupEl.style.display = 'none';
         } else {
-          if (detailsGroup) detailsGroup.style.display = 'block';
+          if (detailsGroupEl) detailsGroupEl.style.display = 'block';
         }
       });
     });
   }
 
-  function updateDynamicGuestFields() {
-    if (!guestDropdown || !dynamicExtraBox) return;
-    const count = parseInt(guestDropdown.value, 10) || 1;
-    dynamicExtraBox.innerHTML = '';
+  function renderDynamicGuestRows() {
+    if (!guestCountEl || !extraGuestBox) return;
+    const num = parseInt(guestCountEl.value, 10) || 1;
+    extraGuestBox.innerHTML = '';
 
-    if (count > 1) {
-      dynamicExtraBox.style.display = 'block';
-      for (let i = 2; i <= count; i++) {
-        const row = document.createElement('div');
-        row.style.cssText = 'padding:0.9rem; margin-top:0.8rem; background:var(--parchment); border-radius:8px;';
-        row.innerHTML = `
+    if (num > 1) {
+      extraGuestBox.style.display = 'block';
+      for (let i = 2; i <= num; i++) {
+        const item = document.createElement('div');
+        item.style.cssText = 'padding:0.9rem; margin-top:0.8rem; background:var(--parchment); border-radius:8px;';
+        item.innerHTML = `
           <div style="font-family:var(--font-serif); font-size:1.05rem; color:var(--burgundy); margin-bottom:0.4rem;">Guest ${i}</div>
-          <div class="form-group-row" style="margin-bottom:0.6rem;">
-            <label class="form-field-label">Full Name</label>
-            <input type="text" class="form-input-ewed" name="guest_${i}_name" placeholder="Guest ${i}'s name" style="padding:0.75rem 0.9rem;" />
+          <div class="form-field-group" style="margin-bottom:0.6rem;">
+            <label class="form-input-label">Full Name</label>
+            <input type="text" class="form-input-field" name="guest_${i}_name" placeholder="Guest ${i}'s name" style="padding:0.75rem 0.9rem;" />
           </div>
-          <div class="form-group-row" style="margin-bottom:0;">
-            <label class="form-field-label">Dietary Requirements (Optional)</label>
-            <input type="text" class="form-input-ewed" name="guest_${i}_dietary" placeholder="e.g. Vegetarian, Halal, None" style="padding:0.75rem 0.9rem;" />
+          <div class="form-field-group" style="margin-bottom:0;">
+            <label class="form-input-label">Dietary Requirements (Optional)</label>
+            <input type="text" class="form-input-field" name="guest_${i}_dietary" placeholder="e.g. Vegetarian, Halal, None" style="padding:0.75rem 0.9rem;" />
           </div>
         `;
-        dynamicExtraBox.appendChild(row);
+        extraGuestBox.appendChild(item);
       }
     } else {
-      dynamicExtraBox.style.display = 'none';
+      extraGuestBox.style.display = 'none';
     }
   }
 
-  if (guestDropdown) guestDropdown.addEventListener('change', updateDynamicGuestFields);
+  if (guestCountEl) guestCountEl.addEventListener('change', renderDynamicGuestRows);
 
   // 7. RSVP Submit & Live Wishes Wall
-  const rsvpFormEl = document.getElementById('rsvpForm');
-  const successBox = document.getElementById('rsvpSuccessBox');
-  const wishesList = document.getElementById('wishesScrollList');
+  const rsvpFormNode = document.getElementById('rsvpForm');
+  const successBoxNode = document.getElementById('rsvpSuccessBox');
+  const wishesListNode = document.getElementById('wishesFeedContainer');
 
-  if (rsvpFormEl) {
-    rsvpFormEl.addEventListener('submit', e => {
+  if (rsvpFormNode) {
+    rsvpFormNode.addEventListener('submit', e => {
       e.preventDefault();
-      let isValid = true;
+      let isFormValid = true;
 
-      const nameInput = document.getElementById('guestFullNameInput');
-      const nameErr   = document.getElementById('nameErrorMsg');
-      const attendIn  = document.querySelector('input[name="attendanceChoice"]:checked');
+      const nameIn = document.getElementById('guestFullNameInput');
+      const nameErr = document.getElementById('nameErrorMsg');
+      const attendIn = document.querySelector('input[name="attendanceChoice"]:checked');
       const attendErr = document.getElementById('attendErrorMsg');
-      const wishInput = document.getElementById('wishTextBox');
+      const wishIn = document.getElementById('wishTextBox');
 
-      if (!nameInput || !nameInput.value.trim()) {
+      if (!nameIn || !nameIn.value.trim()) {
         if (nameErr) nameErr.style.display = 'block';
-        isValid = false;
+        isFormValid = false;
       } else {
         if (nameErr) nameErr.style.display = 'none';
       }
 
       if (!attendIn) {
         if (attendErr) attendErr.style.display = 'block';
-        isValid = false;
+        isFormValid = false;
       } else {
         if (attendErr) attendErr.style.display = 'none';
       }
 
-      if (!isValid) return;
+      if (!isFormValid) return;
 
-      const fullName = nameInput.value.trim();
-      const firstName = fullName.split(' ')[0] || 'Friend';
-      const successName = document.getElementById('rsvpSuccessName');
-      const successMsg  = document.getElementById('rsvpSuccessMsg');
+      const fullNameStr = nameIn.value.trim();
+      const firstNameStr = fullNameStr.split(' ')[0] || 'Friend';
+      const successNameEl = document.getElementById('rsvpSuccessName');
+      const successMsgEl = document.getElementById('rsvpSuccessMsg');
 
       if (attendIn.value === 'joyfully') {
-        if (successName) successName.textContent = `We can't wait to celebrate with you, ${firstName}! 🤍`;
-        if (successMsg) successMsg.textContent = 'Your RSVP has been lovingly received. Having you with us among the vines means everything to us!';
+        if (successNameEl) successNameEl.textContent = `We can't wait to celebrate with you, ${firstNameStr}! 🤍`;
+        if (successMsgEl) successMsgEl.textContent = 'Your RSVP has been lovingly received. Having you with us among the vines means everything to us!';
       } else {
-        if (successName) successName.textContent = `With so much love, ${firstName} 🤍`;
-        if (successMsg) successMsg.textContent = 'Thank you for letting us know. You will be dearly missed on our special day!';
+        if (successNameEl) successNameEl.textContent = `With so much love, ${firstNameStr} 🤍`;
+        if (successMsgEl) successMsgEl.textContent = 'Thank you for letting us know. You will be dearly missed on our special day!';
       }
 
       // Add to live wishes wall
-      if (wishInput && wishInput.value.trim() && wishesList) {
-        const bubble = document.createElement('div');
-        bubble.className = 'wish-bubble-item';
-        bubble.innerHTML = `
-          <div class="wish-author-name">${fullName}</div>
-          <p class="wish-message-quote">“${wishInput.value.trim()}”</p>
+      if (wishIn && wishIn.value.trim() && wishesListNode) {
+        const bubbleEl = document.createElement('div');
+        bubbleEl.className = 'wish-feed-card';
+        bubbleEl.innerHTML = `
+          <div class="wish-guest-name">${fullNameStr}</div>
+          <p class="wish-text-quote">“${wishIn.value.trim()}”</p>
         `;
-        wishesList.insertBefore(bubble, wishesList.firstChild);
+        wishesListNode.insertBefore(bubbleEl, wishesListNode.firstChild);
       }
 
-      rsvpFormEl.style.display = 'none';
-      if (successBox) {
-        successBox.style.display = 'block';
-        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      rsvpFormNode.style.display = 'none';
+      if (successBoxNode) {
+        successBoxNode.style.display = 'block';
+        successBoxNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
   }
