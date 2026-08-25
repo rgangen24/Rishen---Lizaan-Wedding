@@ -134,7 +134,6 @@
       pointer-events: none;
     }
 
-    /* Luxury Damask & Gold Filigree Watermark on Background Doors */
     .gate-panel-left, .gate-panel-right {
       position: absolute;
       top: 0; bottom: 0;
@@ -159,7 +158,6 @@
       border-left: 1px solid rgba(231, 217, 190, 0.4);
     }
 
-    /* Fine Gold Inset Border & Corner Filigree */
     .gate-panel-left::before, .gate-panel-right::before {
       content: '';
       position: absolute;
@@ -637,7 +635,7 @@
 
     .story-title-with-heart {
       text-align: center;
-      margin-bottom: clamp(3.5rem, 7vw, 5.5rem);
+      margin-bottom: clamp(3rem, 6vw, 4.5rem);
     }
     .story-main-heading-serif {
       font-family: var(--font-serif);
@@ -660,10 +658,22 @@
       to { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 2px 8px rgba(110, 42, 49, 0.3)); }
     }
 
+    .story-intro-subheading {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.25rem, 2.6vw, 1.65rem);
+      color: var(--burgundy-soft);
+      text-align: center;
+      max-width: 720px;
+      margin: 0.8rem auto 0;
+      line-height: 1.5;
+    }
+
     .love-story-flowing-sequence {
       display: flex;
       flex-direction: column;
       gap: clamp(4.5rem, 9vw, 7.5rem);
+      margin-top: clamp(3.5rem, 7vw, 5.5rem);
     }
 
     .story-moment-row {
@@ -760,9 +770,23 @@
       font-weight: 400;
     }
 
+    /* Literary Faith Reflection Spread */
+    .story-faith-spread {
+      max-width: 860px;
+      margin: clamp(4rem, 8vw, 6rem) auto 0;
+      text-align: center;
+    }
+    .story-faith-spread p {
+      font-family: var(--font-sans);
+      font-size: clamp(0.96rem, 1.5vw, 1.06rem);
+      color: var(--ink-soft);
+      line-height: 1.95;
+      margin-bottom: 1.6rem;
+    }
+
     /* SCRIPTURE CLIMAX WITH ORGANIC BEATING HEART MOTION */
     .sacred-scripture-climax {
-      margin-top: clamp(4.5rem, 9vw, 6.5rem);
+      margin-top: clamp(4rem, 8vw, 6rem);
       text-align: center;
       position: relative;
     }
@@ -791,7 +815,7 @@
       font-style: italic;
       font-size: clamp(1.2rem, 2.5vw, 1.65rem);
       color: var(--ink-soft);
-      max-width: 700px;
+      max-width: 740px;
       margin: 0 auto;
       line-height: 1.7;
       display: flex;
@@ -815,6 +839,14 @@
       42%  { transform: scale(1.22); filter: drop-shadow(0 10px 28px rgba(212, 175, 55, 0.7)); }
       70%  { transform: scale(1); filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.2)); }
       100% { transform: scale(1); filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.2)); }
+    }
+
+    .story-adventure-whisper {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+      color: var(--burgundy);
+      margin-top: 1.8rem;
     }
 
     /* ============================================================
@@ -1376,7 +1408,6 @@
               </radialGradient>
             </defs>
 
-            <!-- Outer Wing Outline & Shimmering Gold Border -->
             <!-- Forewing (Top Wing) -->
             <path d="M150 100 C140 45, 95 10, 35 12 C-5 14, -8 55, 18 90 C45 125, 105 110, 150 100 Z" 
                   fill="url(#goldWingL)" stroke="#FFF6DB" stroke-width="1.8"/>
@@ -1390,14 +1421,12 @@
                   fill="url(#sageGlowL)"/>
 
             <!-- Realistic Anatomical Vein Filigree Structure -->
-            <!-- Main Arcs -->
             <path d="M150 100 Q80 50 35 22" stroke="#FFF8E7" stroke-width="2.2" stroke-linecap="round" opacity="0.95"/>
             <path d="M150 100 Q65 78 20 90" stroke="#F7E7C4" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
             <path d="M150 105 Q85 145 35 190" stroke="#FFF8E7" stroke-width="2" stroke-linecap="round" opacity="0.95"/>
-            <!-- Secondary Radiating Micro-Veins -->
             <path d="M105 72 Q70 40 45 42 M85 86 Q50 68 28 65 M115 125 Q75 145 45 160" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
 
-            <!-- Embedded Pearlescent Champagne Jewels on Wing Tips -->
+            <!-- Embedded Pearlescent Champagne Jewels -->
             <circle cx="48" cy="42" r="5.5" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="1"/>
             <circle cx="28" cy="78" r="4.2" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="0.8"/>
             <circle cx="46" cy="165" r="4.8" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="0.8"/>
@@ -1443,14 +1472,12 @@
                   fill="url(#sageGlowR)"/>
 
             <!-- Realistic Anatomical Vein Filigree Structure -->
-            <!-- Main Arcs -->
             <path d="M0 100 Q70 50 115 22" stroke="#FFF8E7" stroke-width="2.2" stroke-linecap="round" opacity="0.95"/>
             <path d="M0 100 Q85 78 130 90" stroke="#F7E7C4" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
             <path d="M0 105 Q65 145 115 190" stroke="#FFF8E7" stroke-width="2" stroke-linecap="round" opacity="0.95"/>
-            <!-- Secondary Radiating Micro-Veins -->
             <path d="M45 72 Q80 40 105 42 M65 86 Q100 68 122 65 M35 125 Q75 145 105 160" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
 
-            <!-- Embedded Pearlescent Champagne Jewels on Wing Tips -->
+            <!-- Embedded Pearlescent Champagne Jewels -->
             <circle cx="102" cy="42" r="5.5" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="1"/>
             <circle cx="122" cy="78" r="4.2" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="0.8"/>
             <circle cx="104" cy="165" r="4.8" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="0.8"/>
@@ -1555,6 +1582,9 @@
           <h2 class="story-main-heading-serif" id="storyHeadingTitle">
             Our Story <span class="story-heart-symbol" aria-hidden="true">🤍</span>
           </h2>
+          <p class="story-intro-subheading">
+            Some love stories begin with a first conversation. Ours began with a glance.
+          </p>
         </div>
 
         <div class="love-story-flowing-sequence">
@@ -1564,7 +1594,7 @@
             <div class="story-media-side">
               <div class="story-polaroid-frame" style="transform: rotate(-2.2deg);">
                 <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan outdoor photograph" loading="lazy" />
-                <p class="story-polaroid-script-caption">“An instant spark across the room.”</p>
+                <p class="story-polaroid-script-caption">“An instant connection across the room.”</p>
               </div>
             </div>
             <div class="story-text-side">
@@ -1573,10 +1603,10 @@
                 “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
               </div>
               <p class="story-moment-body">
-                <span class="story-editorial-dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members.
+                <span class="story-editorial-dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan’s family members.
               </p>
               <p class="story-moment-body">
-                There was an immediate spark — that rare moment where everything else in the room gently fades into the background. It was true love at first sight, although neither of them was quite brave enough to actually speak in that moment!
+                There was an instant connection, a quiet, undeniable feeling that something about this person was different. It was love at first sight — although neither of them was brave enough to actually say a word to the other 😂!
               </p>
             </div>
           </div>
@@ -1586,45 +1616,58 @@
             <div class="story-media-side">
               <div class="story-polaroid-frame" style="transform: rotate(2.4deg);">
                 <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait close-up" loading="lazy" />
-                <p class="story-polaroid-script-caption">“Two people who became each other's favourite hello.”</p>
+                <p class="story-polaroid-script-caption">“Favourite good morning &amp; favourite good night.”</p>
               </div>
             </div>
             <div class="story-text-side">
               <h3 class="story-moment-heading">The conversation that never happened in person began over text.</h3>
               <div class="story-moment-pullquote">
-                “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
+                “Somewhere between the good morning messages, late night conversations, inside jokes and countless memories, two people became each other’s favourite good morning and favourite good night.”
               </div>
               <p class="story-moment-body">
-                <span class="story-editorial-dropcap">A</span> few days later, Rishen still couldn't get Lizaan out of his mind. With a little help from the same family member, he got her number. And just like that, the conversation that was always meant to happen began.
+                <span class="story-editorial-dropcap">A</span> few days later, Rishen still couldn’t get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that never happened in person began over text.
               </p>
               <p class="story-moment-body">
-                Simple texts quickly grew into hours of talking, good-morning messages, late-night phone calls, inside jokes, and countless memories. Two people who were once too shy to speak became each other's favourite part of every day.
+                What started as simple messages quickly became hours of talking, learning about one another, laughing, sharing dreams, and slowly falling completely in love. Somewhere between the good morning messages, late night conversations, inside jokes and countless memories, two people who were once too shy to speak became each other’s favourite good morning and favourite good night.
               </p>
             </div>
           </div>
 
-          <!-- MOMENT 3: FAITH & FOREVER -->
+          <!-- MOMENT 3: LIKE IRON SHARPENS IRON -->
           <div class="story-moment-row">
             <div class="story-media-side">
               <div class="story-polaroid-frame" style="transform: rotate(-1.6deg);">
                 <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing joyfully in hats" loading="lazy" />
-                <p class="story-polaroid-script-caption">“Inside jokes, laughter &amp; shared milestones.”</p>
+                <p class="story-polaroid-script-caption">“Shared laughter, adventures &amp; milestones.”</p>
               </div>
             </div>
             <div class="story-text-side">
               <h3 class="story-moment-heading">Like iron sharpens iron — to encourage, strengthen, and love.</h3>
               <div class="story-moment-pullquote">
-                “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
+                “We believe we are meant to encourage, strengthen and bring out the best in one another.”
               </div>
               <p class="story-moment-body">
-                <span class="story-editorial-dropcap">S</span>ince then, their relationship has flourished through deep friendship, faith, unwavering encouragement, and bringing out the very best in one another.
+                <span class="story-editorial-dropcap">S</span>ince then, we’ve shared so many beautiful moments together, from ordinary days that became special simply because we were together, to adventures, laughter, memories and milestones that we’ll treasure forever.
               </p>
               <p class="story-moment-body">
-                Now, as they prepare to exchange lifelong vows and become husband and wife, they are filled with profound gratitude for every step that led here, and anticipation for every chapter God has written ahead.
+                Through it all, our love has continued to grow, and we’ve come to realise that the best part of life is having someone beside you to share it all with. Like iron sharpens iron — we believe we are meant to encourage, strengthen and bring out the best in one another.
               </p>
             </div>
           </div>
 
+        </div>
+
+        <!-- LITERARY FAITH REFLECTION SPREAD -->
+        <div class="story-faith-spread">
+          <p>
+            We believe our story was never simply a coincidence. We believe God brought our paths together at exactly the right time and has been writing our story long before we even realised it. He has blessed us with a love that has grown through friendship, faith, laughter and the promise of a lifetime together.
+          </p>
+          <p>
+            Now, as we prepare to become husband and wife, we’re filled with gratitude for everything that brought us here, and excitement for everything that is still to come.
+          </p>
+          <p>
+            We can’t wait to spend the rest of our lives choosing each other, building our home, creating beautiful memories, growing in faith, and walking hand in hand through every chapter God has planned for us.
+          </p>
         </div>
 
         <!-- SCRIPTURE CLIMAX WITH BEATING HEART MOTION -->
@@ -1635,7 +1678,7 @@
           <span class="sacred-scripture-citation-tag">Matthew 19 : 6</span>
           
           <div class="story-climax-becoming-forever">
-            <p>And so, what began with a glance and grew through messages is becoming forever.</p>
+            <p>And so, what began with a glance, grew through messages, and blossomed into a love we never expected, is becoming forever 🤍.</p>
             
             <!-- Intertwined Burgundy & Sage Heart Emblem with Organic Heartbeat Motion -->
             <svg class="burgundy-sage-heart-emblem" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Burgundy and Sage Heart Monogram">
@@ -1654,6 +1697,8 @@
                 </linearGradient>
               </defs>
             </svg>
+
+            <p class="story-adventure-whisper">Our greatest adventure is just beginning.</p>
           </div>
         </div>
 
@@ -2063,13 +2108,13 @@
     // Open velvet gatefold doors smoothly as butterfly ascends
     setTimeout(() => {
       gatefoldOverlay.classList.add('opened');
-      sessionStorage.setItem('rl_invitation_butterfly_v2', 'true');
+      sessionStorage.setItem('rl_invitation_butterfly_v3', 'true');
     }, 750);
   }
 
   if (butterflyTrigger) butterflyTrigger.addEventListener('click', launchButterflyUnboxing);
 
-  if (sessionStorage.getItem('rl_invitation_butterfly_v2') === 'true') {
+  if (sessionStorage.getItem('rl_invitation_butterfly_v3') === 'true') {
     if (gatefoldOverlay) gatefoldOverlay.classList.add('opened');
   }
 
