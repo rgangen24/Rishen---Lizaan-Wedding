@@ -3,54 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta name="description" content="A private digital wedding invitation for Rishen &amp; Lizaan — Saturday, 24 October 2026 at Highberry Vineyards &amp; Venue, Somerset West, Cape Winelands." />
+  <meta name="description" content="Official Digital Wedding Invitation for Rishen &amp; Lizaan — 24 October 2026 at Highberry Vineyards &amp; Venue, Somerset West." />
   <meta name="theme-color" content="#431A1F" />
-  <title>Rishen &amp; Lizaan — The Wedding Invitation</title>
+  <title>Rishen &amp; Lizaan — Wedding Invitation</title>
 
-  <!-- Editorial Typography Pairing: Fraunces (Optical Serif) & Jost (Refined Humanist Sans) -->
+  <!-- Google Fonts: Editorial Serif (Fraunces) & Clean Luxury Sans (Jost) & Romance Script (Pinyon Script) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..500,0..100&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" />
 
   <style>
     /* ============================================================
-       1. VINEYARD COUTURE DESIGN SYSTEM & PALETTE
+       THEME TOKENS: BURGUNDY, SAGE, CHAMPAGNE & WARM IVORY
     ============================================================ */
     :root {
-      /* Signature Palette */
       --burgundy:         #6E2A31;
       --oxblood:          #431A1F;
-      --burgundy-deep:    #24090D;
-      --burgundy-soft:    #823840;
-      
+      --burgundy-deep:    #24080B;
       --sage:             #7C8B6F;
       --sage-dark:        #4E5B43;
       --eucalyptus:       #AAB89C;
-      --sage-wash:        #EAF0E6;
-      --sage-mist:        #F4F7F2;
+      --sage-light:       #EBF1E8;
 
       --ivory:            #FBF7F0;
-      --parchment:        #F3EAD8;
+      --parchment:        #F4EBD9;
       --champagne:        #E7D9BE;
-      --champagne-light:  #F7F2E8;
-      --gold-foil:        #C5A869;
-      --gold-deep:        #9E8043;
-      
+      --champagne-soft:   #FAF5EC;
+      --gold:             #C5A869;
+      --gold-light:       #EAD6A3;
       --ink:              #2C2620;
       --ink-soft:         #594F45;
       --ink-muted:        #7D7267;
       --white:            #FFFFFF;
 
-      /* Typography Tokens */
       --font-serif:       'Fraunces', Georgia, serif;
       --font-sans:        'Jost', -apple-system, system-ui, sans-serif;
       --font-script:      'Pinyon Script', cursive;
 
-      /* Motion & Shadows */
-      --ease-silk:        cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-paper:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --shadow-paper:     0 14px 40px rgba(44, 38, 32, 0.08);
-      --shadow-deep:      0 25px 60px rgba(36, 9, 13, 0.35);
+      --radius-sm:        8px;
+      --radius-md:        14px;
+      --radius-lg:        20px;
+      --radius-pill:      40px;
+
+      --shadow-card:      0 8px 24px rgba(67, 26, 31, 0.08);
+      --shadow-float:     0 12px 35px rgba(0, 0, 0, 0.28);
+      --ease-smooth:      cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     *, *::before, *::after {
@@ -64,1890 +61,1410 @@
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      background-color: var(--oxblood);
+      background-color: #24080B;
     }
 
     body {
-      background-color: var(--ivory);
+      background-color: #24080B;
       color: var(--ink);
       font-family: var(--font-sans);
       font-weight: 300;
-      line-height: 1.85;
+      line-height: 1.75;
       overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Fine-Art Stationery Tactile Paper Texture */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.028;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
     }
 
     img { display: block; max-width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
     button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
-    /* Focus accessibility */
-    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-      outline: 2px solid var(--gold-foil);
-      outline-offset: 3px;
+    /* ============================================================
+       MOBILE CONTAINER CANVAS (TIKTOK / EWEDLAB APP VIEWPORT)
+    ============================================================ */
+    .mobile-app-wrapper {
+      width: 100%;
+      max-width: 480px;
+      background-color: var(--ivory);
+      position: relative;
+      min-height: 100vh;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+      padding-bottom: 80px; /* space for bottom nav bar */
+      overflow-x: hidden;
     }
 
-    .skip-to-main {
+    /* Subtle Paper Texture */
+    .mobile-app-wrapper::before {
+      content: '';
       position: absolute;
-      top: -100px;
-      left: 1.5rem;
-      background: var(--burgundy);
-      color: var(--ivory);
-      padding: 0.7rem 1.4rem;
-      z-index: 10000;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: top 0.3s;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
-    .skip-to-main:focus { top: 1.5rem; }
 
     /* ============================================================
-       2. CINEMATIC INVITATION COVER EXPERIENCE
+       1. INTERACTIVE WAX SEAL ENVELOPE OPENING (TIKTOK SIGNATURE)
     ============================================================ */
-    #invitation-cover {
+    #envelope-screen {
       position: fixed;
       inset: 0;
-      z-index: 9000;
-      background: radial-gradient(circle at 50% 42%, #581c23 0%, #3a1217 55%, #1d070a 100%);
-      color: var(--ivory);
+      z-index: 9999;
+      background: radial-gradient(circle at 50% 40%, #521820 0%, #300d12 60%, #150306 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      transition: transform 1.3s var(--ease-silk), opacity 1.3s var(--ease-silk);
+      padding: 1.5rem;
+      transition: opacity 1s var(--ease-smooth), transform 1s var(--ease-smooth);
     }
-    #invitation-cover.opened {
-      transform: translateY(-100%);
+    #envelope-screen.opened {
       opacity: 0;
+      transform: translateY(-100%);
       pointer-events: none;
     }
 
-    .cover-frame-outer {
-      position: absolute;
-      inset: clamp(14px, 3.5vw, 36px);
-      border: 1px solid rgba(231, 217, 190, 0.25);
-      pointer-events: none;
-    }
-    .cover-frame-inner {
-      position: absolute;
-      inset: clamp(22px, 4.5vw, 46px);
-      border: 1px solid rgba(231, 217, 190, 0.12);
-      pointer-events: none;
-    }
-
-    .cover-inner {
-      max-width: 580px;
-      margin: 0 auto;
+    .envelope-pocket-card {
       position: relative;
-      z-index: 2;
+      width: min(90vw, 420px);
+      background: #4A1A20;
+      border: 1px solid rgba(231, 217, 190, 0.35);
+      border-radius: var(--radius-md);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      padding: 3rem 1.8rem 2.5rem;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
+      color: var(--ivory);
     }
 
-    /* Custom Continuous-Stroke Monogram */
-    .monogram-mark {
-      width: clamp(85px, 18vw, 115px);
-      height: auto;
-      margin-bottom: 1.8rem;
-      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.4));
-      color: var(--champagne);
-      transition: transform 0.4s;
+    .envelope-inner-dash {
+      position: absolute;
+      inset: 8px;
+      border: 1px dashed rgba(231, 217, 190, 0.25);
+      border-radius: var(--radius-sm);
+      pointer-events: none;
     }
-    .monogram-mark:hover { transform: scale(1.04); }
 
-    .cover-eyebrow {
+    .envelope-tag {
       font-family: var(--font-sans);
       font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.35em;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--eucalyptus);
-      margin-bottom: 1rem;
-    }
-
-    .cover-names {
-      font-family: var(--font-serif);
-      font-size: clamp(2.5rem, 6.8vw, 4.4rem);
-      font-weight: 300;
-      color: var(--ivory);
-      line-height: 1.12;
-      letter-spacing: -0.01em;
       margin-bottom: 0.8rem;
     }
-    .cover-names .amp {
-      font-style: italic;
-      color: var(--champagne);
+
+    .envelope-names-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 7vw, 3.2rem);
       font-weight: 300;
-      margin: 0 0.15em;
+      line-height: 1.15;
+      color: var(--ivory);
+      margin-bottom: 0.6rem;
     }
 
-    .cover-date-line {
+    .envelope-date-sub {
       font-family: var(--font-sans);
-      font-size: 0.82rem;
-      letter-spacing: 0.25em;
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--champagne);
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.2rem;
     }
 
-    .btn-open-invitation {
+    /* Gold Wax Seal Button */
+    .gold-wax-seal {
+      position: relative;
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #e8d196 0%, #a6843c 60%, #684f18 100%);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid rgba(255, 240, 200, 0.3);
+      animation: sealPulse 2.4s infinite ease-in-out;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s;
+    }
+    .gold-wax-seal:hover { transform: scale(1.08); }
+
+    .seal-monogram {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      font-weight: 400;
+      color: #382405;
+      letter-spacing: 0.05em;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.35);
+    }
+
+    .open-prompt-text {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(251, 247, 240, 0.85);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    @keyframes sealPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    /* ============================================================
+       2. FLOATING MUSIC PLAYER (TIKTOK STYLE)
+    ============================================================ */
+    .floating-music-control {
+      position: fixed;
+      top: 1.2rem;
+      right: max(1.2rem, calc(50% - 220px));
+      z-index: 900;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(67, 26, 31, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--champagne);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--champagne);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .floating-music-control:hover { transform: scale(1.08); }
+    .floating-music-control.playing {
+      animation: spinDisc 4s linear infinite;
+      color: var(--gold-light);
+    }
+    @keyframes spinDisc {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ============================================================
+       3. FLOATING MOBILE BOTTOM NAVIGATION BAR
+    ============================================================ */
+    .floating-bottom-nav {
+      position: fixed;
+      bottom: 0.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 850;
+      width: min(92vw, 440px);
+      background: rgba(67, 26, 31, 0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(231, 217, 190, 0.3);
+      border-radius: 35px;
+      padding: 0.45rem 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      box-shadow: var(--shadow-float);
+    }
+
+    .bottom-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      color: rgba(251, 247, 240, 0.7);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.5rem;
+      border-radius: 20px;
+      transition: color 0.25s, transform 0.25s;
+    }
+    .bottom-nav-item svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+    }
+    .bottom-nav-item:hover, .bottom-nav-item.active {
+      color: var(--champagne);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       4. HERO COVER (ARCHED PORTRAIT & COUNTDOWN)
+    ============================================================ */
+    #hero {
+      padding: 5rem 1.4rem 3.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(180deg, #FBF7F0 0%, #F4ECE0 100%);
+    }
+
+    .hero-photo-arch-frame {
+      position: relative;
+      width: 280px;
+      height: 370px;
+      border-radius: 140px 140px 10px 10px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(67, 26, 31, 0.15);
+      border: 5px solid var(--white);
+      margin-bottom: 1.8rem;
+    }
+    .hero-photo-arch-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+
+    .hero-eyebrow-tag {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-title-main {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 8vw, 3.8rem);
+      font-weight: 300;
+      color: var(--burgundy);
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-quote-italic {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.18rem;
+      color: var(--ink-soft);
+      max-width: 380px;
+      margin: 0 auto 1.4rem;
+      line-height: 1.5;
+    }
+
+    .hero-pill-date {
       display: inline-flex;
       align-items: center;
-      gap: 0.85rem;
-      padding: 0.95rem 2.5rem;
-      background: rgba(231, 217, 190, 0.12);
-      border: 1px solid var(--champagne);
+      gap: 0.5rem;
+      padding: 0.55rem 1.6rem;
+      background: var(--burgundy);
       color: var(--ivory);
+      border-radius: var(--radius-pill);
       font-family: var(--font-sans);
       font-size: 0.75rem;
       font-weight: 500;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      border-radius: 2px;
-      transition: all 0.4s var(--ease-silk);
-    }
-    .btn-open-invitation:hover {
-      background: var(--ivory);
-      color: var(--oxblood);
-      border-color: var(--ivory);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+      box-shadow: 0 6px 18px rgba(110, 42, 49, 0.25);
+      margin-bottom: 2rem;
     }
 
-    .btn-skip-intro {
-      margin-top: 1.5rem;
-      background: none;
-      border: none;
-      color: rgba(247, 242, 232, 0.55);
+    /* Real-Time Countdown Box */
+    .hero-countdown-box {
+      width: 100%;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.6rem 1rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(231, 217, 190, 0.45);
+    }
+    .countdown-title-lbl {
       font-family: var(--font-sans);
-      font-size: 0.68rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      padding: 0.4rem 0.8rem;
-      transition: color 0.3s;
-    }
-    .btn-skip-intro:hover { color: var(--ivory); }
-
-    /* ============================================================
-       3. NAVIGATION BAR & FULL-SCREEN OVERLAY
-    ============================================================ */
-    #site-nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 800;
-      padding: 1.4rem clamp(1.5rem, 4.5vw, 4rem);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s, box-shadow 0.4s;
-    }
-    #site-nav.scrolled {
-      background: rgba(251, 247, 240, 0.95);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      padding: 0.9rem clamp(1.5rem, 4.5vw, 4rem);
-      box-shadow: 0 4px 25px rgba(44, 38, 32, 0.06);
-    }
-
-    .nav-monogram-link {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .nav-monogram-link svg {
-      width: 32px;
-      height: 32px;
-      color: var(--burgundy);
-      transition: transform 0.3s;
-    }
-    .nav-monogram-link:hover svg { transform: scale(1.06); }
-
-    .nav-links-desktop {
-      display: flex;
-      gap: 2.8rem;
-      list-style: none;
-    }
-    .nav-links-desktop a {
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      font-weight: 500;
+      font-size: 0.65rem;
+      font-weight: 600;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--ink-soft);
-      position: relative;
-      padding: 0.3rem 0;
-      transition: color 0.3s;
-    }
-    .nav-links-desktop a::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 50%;
-      width: 0; height: 1px;
-      background: var(--burgundy);
-      transform: translateX(-50%);
-      transition: width 0.3s var(--ease-silk);
-    }
-    .nav-links-desktop a:hover { color: var(--burgundy); }
-    .nav-links-desktop a:hover::after { width: 100%; }
-
-    .nav-toggle-btn {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      padding: 6px;
-      cursor: pointer;
-    }
-    .nav-toggle-btn span {
+      color: var(--burgundy);
+      margin-bottom: 1rem;
       display: block;
-      width: 26px;
-      height: 1.5px;
-      background: var(--burgundy);
-      transition: transform 0.3s, opacity 0.3s;
     }
-    .nav-toggle-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-    .nav-toggle-btn.active span:nth-child(2) { opacity: 0; }
-    .nav-toggle-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-
-    /* Fullscreen Ivory Overlay for Mobile */
-    .nav-overlay-sheet {
-      position: fixed;
-      inset: 0;
-      background: var(--ivory);
-      z-index: 790;
+    .countdown-units-row {
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      gap: 2.2rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s var(--ease-silk);
+      gap: clamp(0.8rem, 3vw, 1.8rem);
     }
-    .nav-overlay-sheet.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .nav-overlay-sheet a {
-      font-family: var(--font-serif);
-      font-size: clamp(1.9rem, 6.5vw, 2.7rem);
-      font-weight: 300;
-      color: var(--burgundy);
-      transition: color 0.3s, transform 0.3s;
-    }
-    .nav-overlay-sheet a:hover {
-      color: var(--sage-dark);
-      transform: scale(1.04);
-    }
-
-    @media (max-width: 880px) {
-      .nav-links-desktop { display: none; }
-      .nav-toggle-btn { display: flex; }
-    }
-
-    /* ============================================================
-       4. ASYMMETRICAL HERO COMPOSITION
-    ============================================================ */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      padding: clamp(7.5rem, 15vw, 9.5rem) clamp(1.5rem, 5vw, 5rem) clamp(4.5rem, 9vw, 6.5rem);
-      background: linear-gradient(145deg, var(--ivory) 0%, #F5ECE0 100%);
-      overflow: hidden;
-    }
-
-    .hero-grid {
-      max-width: 1280px;
-      margin: 0 auto;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: clamp(2.5rem, 6vw, 6rem);
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    @media (max-width: 960px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
-      }
-    }
-
-    .hero-text-col {
+    .countdown-digit-col {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
       align-items: center;
-      gap: 0.8rem;
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--sage-dark);
-      margin-bottom: 1.4rem;
+      min-width: 52px;
     }
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 32px;
-      height: 1px;
-      background: var(--sage);
-    }
-
-    .hero-title-names {
+    .countdown-number-val {
       font-family: var(--font-serif);
-      font-size: clamp(3.2rem, 7.5vw, 6.4rem);
-      font-weight: 300;
-      color: var(--burgundy);
-      line-height: 1.08;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.6rem;
-    }
-    .hero-title-names .amp {
-      font-style: italic;
-      color: var(--gold-foil);
-      font-weight: 300;
-      margin: 0 0.12em;
-    }
-
-    .hero-poetic-quote {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(1.2rem, 2.4vw, 1.55rem);
-      color: var(--ink-soft);
-      line-height: 1.55;
-      margin-bottom: 2.2rem;
-      max-width: 520px;
-    }
-
-    .hero-ceremony-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
+      font-size: 2.2rem;
       font-weight: 400;
+      color: var(--burgundy);
+      line-height: 1;
+    }
+    .countdown-name-lbl {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--burgundy);
-      padding-left: 1.2rem;
-      border-left: 2px solid var(--sage);
-      margin-bottom: 2.8rem;
-    }
-    .hero-ceremony-meta span:nth-child(2) {
       color: var(--ink-muted);
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
+      margin-top: 0.35rem;
     }
 
-    .hero-begin-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
+    /* ============================================================
+       SECTION BASE LAYOUT (LUXURY CARDS)
+    ============================================================ */
+    .invitation-section {
+      padding: 3.5rem 1.4rem;
+      position: relative;
+    }
+
+    .section-header-center {
+      text-align: center;
+      margin-bottom: 2.2rem;
+    }
+    .section-category-tag {
       font-family: var(--font-sans);
-      font-size: 0.72rem;
-      font-weight: 500;
+      font-size: 0.68rem;
+      font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--burgundy);
-      transition: transform 0.3s;
-    }
-    .hero-begin-btn svg {
-      width: 14px;
-      height: 14px;
-      transition: transform 0.3s;
-    }
-    .hero-begin-btn:hover { transform: translateX(4px); }
-    .hero-begin-btn:hover svg { transform: translateY(3px); }
-
-    /* Asymmetrical Editorial Photo Feature */
-    .hero-photo-moment {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-    .hero-photo-frame {
-      position: relative;
-      background: var(--white);
-      padding: clamp(10px, 2vw, 16px);
-      box-shadow: var(--shadow-deep);
-      border-radius: 2px;
-      max-width: 440px;
-      width: 100%;
-      transform: rotate(1.8deg);
-      transition: transform 0.6s var(--ease-silk), box-shadow 0.6s var(--ease-silk);
-    }
-    .hero-photo-frame:hover {
-      transform: rotate(0deg) translateY(-4px);
-      box-shadow: 0 30px 65px rgba(44, 38, 32, 0.18);
-    }
-    .hero-photo-frame img {
-      width: 100%;
-      height: auto;
-      border-radius: 1px;
-    }
-    .hero-photo-caption {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 0.94rem;
-      color: var(--burgundy);
-      text-align: center;
-      margin-top: 0.85rem;
-    }
-
-    /* Ambient Botanical Vector Accent */
-    .hero-vine-silhouette {
-      position: absolute;
-      top: 0; right: 0;
-      width: clamp(200px, 32vw, 440px);
-      pointer-events: none;
-      opacity: 0.12;
       color: var(--sage-dark);
-    }
-
-    /* ============================================================
-       SECTION BASE STYLING
-    ============================================================ */
-    .invitation-chapter {
-      padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
-      position: relative;
-    }
-    .chapter-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-    .chapter-header {
-      text-align: center;
-      max-width: 780px;
-      margin: 0 auto clamp(3.5rem, 7vw, 5.5rem);
-    }
-    .chapter-tag {
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--sage-dark);
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
       display: inline-block;
     }
-    .chapter-title-serif {
+    .section-heading-serif {
       font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 5.4vw, 3.8rem);
+      font-size: clamp(2.2rem, 6vw, 2.8rem);
       font-weight: 300;
       color: var(--burgundy);
-      line-height: 1.18;
-      letter-spacing: -0.01em;
+      line-height: 1.2;
     }
-    .chapter-subtitle-italic {
+    .section-sub-italic {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      font-size: 1.1rem;
       color: var(--ink-soft);
-      margin-top: 0.8rem;
-      line-height: 1.6;
+      margin-top: 0.4rem;
     }
 
-    /* Scroll Reveal Animation Classes */
-    .reveal-elem {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.9s var(--ease-silk), transform 0.9s var(--ease-silk);
+    .editorial-content-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.8rem 1.4rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(231, 217, 190, 0.45);
+      margin-bottom: 1.8rem;
     }
-    .reveal-elem.revealed {
-      opacity: 1;
-      transform: none;
-    }
-    .reveal-delay-1 { transition-delay: 0.15s; }
-    .reveal-delay-2 { transition-delay: 0.3s; }
 
     /* ============================================================
-       5. OUR STORY: RICH EDITORIAL LOVE LETTER
+       5. OUR STORY: MOBILE-PERFECT CARDS & ALL 3 PHOTOS
     ============================================================ */
     #story {
       background-color: var(--ivory);
     }
 
-    .story-chapters-flow {
+    .story-card-flow-item {
+      margin-bottom: 2rem;
       display: flex;
       flex-direction: column;
-      gap: clamp(4rem, 8vw, 7rem);
+      gap: 1.2rem;
     }
 
-    .story-act-row {
-      display: grid;
-      grid-template-columns: 0.9fr 1.15fr;
-      gap: clamp(2.5rem, 6vw, 6rem);
-      align-items: center;
-    }
-    .story-act-row.alternate {
-      grid-template-columns: 1.15fr 0.9fr;
-    }
-    .story-act-row.alternate .story-act-media { order: 2; }
-    .story-act-row.alternate .story-act-text { order: 1; }
-
-    @media (max-width: 860px) {
-      .story-act-row, .story-act-row.alternate {
-        grid-template-columns: 1fr;
-        gap: 2.2rem;
-      }
-      .story-act-row.alternate .story-act-media { order: 1; }
-      .story-act-row.alternate .story-act-text { order: 2; }
-    }
-
-    .story-act-media {
-      display: flex;
-      justify-content: center;
-    }
-    .story-polaroid-frame {
-      background: var(--white);
-      padding: clamp(10px, 1.8vw, 15px);
-      border-radius: 2px;
-      box-shadow: var(--shadow-paper);
-      max-width: 380px;
+    .story-photo-box {
       width: 100%;
-      transition: transform 0.5s var(--ease-silk);
-    }
-    .story-polaroid-frame img {
-      width: 100%;
-      height: auto;
-      border-radius: 1px;
-    }
-    .story-polaroid-caption {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 0.94rem;
-      color: var(--burgundy);
-      text-align: center;
-      margin-top: 0.8rem;
-      line-height: 1.4;
-    }
-
-    .story-act-text {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .story-act-num-tag {
-      font-family: var(--font-sans);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--sage-dark);
-      margin-bottom: 0.8rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid var(--champagne);
-    }
-    .story-act-heading {
-      font-family: var(--font-serif);
-      font-size: clamp(1.6rem, 2.8vw, 2.3rem);
-      font-weight: 300;
-      color: var(--burgundy);
-      line-height: 1.25;
-      margin-bottom: 1rem;
-    }
-    .story-act-pull-quote {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(1.05rem, 1.8vw, 1.22rem);
-      color: var(--burgundy-soft);
-      line-height: 1.6;
-      margin-bottom: 1.2rem;
-      padding-left: 1.1rem;
-      border-left: 2px solid var(--gold-foil);
-    }
-    .story-act-paragraph {
-      font-family: var(--font-sans);
-      font-size: clamp(0.92rem, 1.4vw, 1.02rem);
-      color: var(--ink-soft);
-      line-height: 1.9;
-      margin-bottom: 1rem;
-    }
-    .story-act-paragraph:last-child { margin-bottom: 0; }
-
-    /* Dropcap */
-    .dropcap-letter {
-      float: left;
-      font-family: var(--font-serif);
-      font-size: clamp(2.8rem, 4.5vw, 3.8rem);
-      line-height: 0.8;
-      padding-top: 4px;
-      padding-right: 12px;
-      padding-bottom: 2px;
-      color: var(--burgundy);
-      font-weight: 400;
-    }
-
-    /* Sacred Scripture Moment */
-    .scripture-sacred-card {
-      margin-top: clamp(3.5rem, 7vw, 5.5rem);
-      padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
-      background: var(--parchment);
-      border-radius: 2px;
-      text-align: center;
-      position: relative;
+      border-radius: var(--radius-sm);
       overflow: hidden;
+      box-shadow: 0 6px 18px rgba(67, 26, 31, 0.1);
+      border: 4px solid var(--white);
     }
-    .scripture-sacred-card::before {
-      content: '';
-      position: absolute;
-      inset: 12px;
-      border: 1px solid rgba(197, 168, 105, 0.35);
-      pointer-events: none;
-    }
-    .scripture-verse-text {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(1.45rem, 3.2vw, 2.3rem);
-      font-weight: 300;
-      color: var(--burgundy);
-      line-height: 1.45;
-      max-width: 780px;
-      margin: 0 auto 1.2rem;
-    }
-    .scripture-ref-title {
-      font-family: var(--font-sans);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--sage-dark);
-      margin-bottom: 1.2rem;
-    }
-    .scripture-closing-note {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--ink-soft);
-      max-width: 620px;
-      margin: 0 auto;
+    .story-photo-box img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      object-position: center center;
     }
 
-    /* ============================================================
-       6. THE DAY: CEREMONIAL ITINERARY & COUNTDOWN
-    ============================================================ */
-    #celebration {
-      background-color: var(--champagne-light);
-    }
-
-    .itinerary-grid-container {
-      max-width: 820px;
-      margin: 0 auto 3.5rem;
-      position: relative;
-    }
-    .itinerary-thread-line {
-      position: absolute;
-      top: 24px; bottom: 24px; left: 35px;
-      width: 1px;
-      background: rgba(110, 42, 49, 0.2);
-    }
-    .itinerary-step-card {
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      gap: 1.8rem;
-      margin-bottom: 2.2rem;
-    }
-    .itinerary-step-card:last-child { margin-bottom: 0; }
-    .itinerary-node-circle {
-      flex-shrink: 0;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--burgundy);
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 4px 15px rgba(44, 38, 32, 0.08);
-      border: 1px solid rgba(197, 168, 105, 0.4);
-    }
-    .itinerary-content-box {
-      background: var(--white);
-      padding: 1.5rem 1.8rem;
-      border-radius: 2px;
-      box-shadow: var(--shadow-paper);
-      flex: 1;
-    }
-    .itinerary-time-tag {
+    .story-chapter-badge {
+      display: inline-block;
       font-family: var(--font-sans);
-      font-size: 0.72rem;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--burgundy);
-      display: inline-block;
-      margin-bottom: 0.3rem;
+      background: rgba(110, 42, 49, 0.08);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 0.6rem;
     }
-    .itinerary-event-name {
+    .story-card-heading {
       font-family: var(--font-serif);
-      font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+      font-size: 1.45rem;
       font-weight: 400;
-      color: var(--ink);
+      color: var(--burgundy);
       line-height: 1.25;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.7rem;
     }
-    .itinerary-desc-text {
-      font-family: var(--font-sans);
+    .story-pull-quote-line {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.02rem;
+      color: var(--sage-dark);
+      padding-left: 0.8rem;
+      border-left: 2.5px solid var(--gold);
+      margin-bottom: 0.8rem;
+      line-height: 1.55;
+    }
+    .story-body-p {
       font-size: 0.94rem;
       color: var(--ink-soft);
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
-    /* Fine Numerals Countdown */
-    .countdown-card-spread {
-      background: var(--white);
-      padding: clamp(2rem, 4.5vw, 3.2rem);
-      border-radius: 2px;
+    /* Scripture Card */
+    .scripture-card-ewed {
+      background: radial-gradient(circle at 50% 50%, #431A1F 0%, #24080B 100%);
+      color: var(--ivory);
       text-align: center;
-      box-shadow: var(--shadow-paper);
-      margin-bottom: 3.5rem;
+      border-radius: var(--radius-md);
+      padding: 2.4rem 1.4rem;
+      box-shadow: var(--shadow-card);
     }
-    .countdown-header-tag {
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--sage-dark);
-      margin-bottom: 1.6rem;
-      display: block;
-    }
-    .countdown-flex-row {
-      display: flex;
-      justify-content: center;
-      gap: clamp(1.2rem, 4vw, 3.5rem);
-      flex-wrap: wrap;
-    }
-    .countdown-digit-unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 65px;
-    }
-    .countdown-digit-value {
+    .scripture-verse-italic {
       font-family: var(--font-serif);
-      font-size: clamp(2.5rem, 5.5vw, 3.8rem);
+      font-style: italic;
+      font-size: 1.45rem;
       font-weight: 300;
-      color: var(--burgundy);
-      line-height: 1;
+      color: var(--champagne);
+      line-height: 1.45;
+      margin-bottom: 0.8rem;
     }
-    .countdown-digit-label {
+    .scripture-verse-ref {
       font-family: var(--font-sans);
-      font-size: 0.65rem;
-      font-weight: 500;
+      font-size: 0.78rem;
+      font-weight: 600;
       letter-spacing: 0.26em;
       text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-top: 0.5rem;
+      color: var(--eucalyptus);
     }
 
-    .celebration-action-buttons {
+    /* ============================================================
+       6. THE CELEBRATION SCHEDULE & ACTIONS
+    ============================================================ */
+    #celebration {
+      background-color: var(--champagne-soft);
+    }
+
+    .timeline-row-item {
       display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 1.1rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px dashed rgba(110, 42, 49, 0.15);
     }
-
-    .btn-action-burgundy {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.95rem 2.2rem;
+    .timeline-row-item:last-child { border-bottom: none; }
+    .timeline-time-badge {
       background: var(--burgundy);
       color: var(--ivory);
       font-family: var(--font-sans);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      border-radius: 1px;
-      transition: all 0.35s var(--ease-silk);
-      box-shadow: 0 8px 20px rgba(110, 42, 49, 0.2);
-    }
-    .btn-action-burgundy:hover {
-      background: var(--oxblood);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(110, 42, 49, 0.3);
-    }
-
-    .btn-action-sage {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.95rem 2.2rem;
-      background: var(--sage-dark);
-      color: var(--ivory);
-      font-family: var(--font-sans);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      border-radius: 1px;
-      transition: all 0.35s var(--ease-silk);
-      box-shadow: 0 8px 20px rgba(78, 91, 67, 0.2);
-    }
-    .btn-action-sage:hover {
-      background: var(--sage);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(78, 91, 67, 0.3);
-    }
-
-    /* ============================================================
-       7. AMONG THE VINES: GUEST ATMOSPHERE
-    ============================================================ */
-    #atmosphere {
-      background: radial-gradient(circle at 50% 50%, #431a1f 0%, #24090d 100%);
-      color: var(--ivory);
-      text-align: center;
-    }
-    #atmosphere .chapter-title-serif { color: var(--ivory); }
-    #atmosphere .chapter-tag { color: var(--eucalyptus); }
-
-    .atmosphere-editorial-box {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: clamp(2.8rem, 6vw, 4.8rem) clamp(1.5rem, 4vw, 3.5rem);
-      border: 1px solid rgba(231, 217, 190, 0.22);
-      border-radius: 2px;
-      position: relative;
-    }
-    .atmosphere-lead-poetry {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(1.35rem, 2.8vw, 2.05rem);
-      font-weight: 300;
-      color: var(--champagne);
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
-    .atmosphere-body-desc {
-      font-family: var(--font-sans);
-      font-size: 0.96rem;
-      color: rgba(251, 247, 240, 0.85);
-      max-width: 620px;
-      margin: 0 auto;
-      line-height: 1.9;
-    }
-
-    /* ============================================================
-       8. VENUE & LODGING: TRAVEL EDITORIAL
-    ============================================================ */
-    #venue {
-      background-color: var(--ivory);
-    }
-
-    .venue-layout-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      gap: clamp(2.5rem, 5vw, 5rem);
-      align-items: start;
-    }
-    @media (max-width: 900px) {
-      .venue-layout-grid { grid-template-columns: 1fr; }
-    }
-
-    .venue-editorial-info {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .venue-estate-name {
-      font-family: var(--font-serif);
-      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-      font-weight: 300;
-      color: var(--burgundy);
-      line-height: 1.2;
-      margin-bottom: 0.6rem;
-    }
-    .venue-location-sub {
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--sage-dark);
-      margin-bottom: 1.4rem;
-    }
-    .venue-story-p {
-      font-family: var(--font-sans);
-      font-size: 0.96rem;
-      color: var(--ink-soft);
-      line-height: 1.85;
-      margin-bottom: 1.8rem;
-    }
-
-    .accommodation-editorial-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-      width: 100%;
-    }
-    .accommodation-item-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.1rem 1.4rem;
-      background: var(--parchment);
-      border-radius: 2px;
-      color: var(--ink);
-      font-family: var(--font-sans);
-      font-size: 0.92rem;
-      font-weight: 500;
-      transition: all 0.3s var(--ease-silk);
-    }
-    .accommodation-item-row:hover {
-      background: var(--champagne);
-      color: var(--burgundy);
-      transform: translateX(4px);
-    }
-    .accommodation-item-row span:nth-child(2) {
-      font-size: 1.1rem;
-      color: var(--burgundy);
-    }
-
-    /* ============================================================
-       9. BEFORE THE DAY: ACCORDION GUIDANCE
-    ============================================================ */
-    #guidance {
-      background-color: var(--parchment);
-    }
-
-    .guidance-accordion-wrap {
-      max-width: 820px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .guidance-faq-card {
-      background: var(--white);
-      border-radius: 2px;
-      box-shadow: 0 4px 18px rgba(44, 38, 32, 0.04);
-      overflow: hidden;
-    }
-    .guidance-faq-trigger {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.6rem 2rem;
-      background: var(--white);
-      border: none;
-      cursor: pointer;
-      text-align: left;
-    }
-    .guidance-q-title {
-      font-family: var(--font-serif);
-      font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-      font-weight: 400;
-      color: var(--burgundy);
-    }
-    .guidance-arrow {
-      font-size: 0.85rem;
-      color: var(--burgundy);
-      transition: transform 0.3s;
-    }
-    .guidance-panel-body {
-      padding: 0 2rem 1.8rem;
-      font-family: var(--font-sans);
-      font-size: 0.96rem;
-      color: var(--ink-soft);
-      line-height: 1.85;
-    }
-
-    /* ============================================================
-       10. RSVP: STATIONERY EXPERIENCE ON RICH BURGUNDY
-    ============================================================ */
-    #rsvp {
-      background: radial-gradient(circle at 50% 30%, #521820 0%, #350f14 60%, #1c0609 100%);
-      color: var(--ivory);
-    }
-    #rsvp .chapter-title-serif { color: var(--ivory); }
-    #rsvp .chapter-tag { color: var(--eucalyptus); }
-    #rsvp .chapter-subtitle-italic { color: var(--champagne); }
-
-    .rsvp-stationery-envelope-card {
-      max-width: 680px;
-      margin: 0 auto;
-      background: var(--ivory);
-      color: var(--ink);
-      padding: clamp(2.4rem, 5.5vw, 3.8rem) clamp(1.5rem, 4vw, 3rem);
-      border-radius: 2px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
-      position: relative;
-    }
-
-    .form-row {
-      margin-bottom: 1.8rem;
-    }
-    .form-label {
-      display: block;
-      font-family: var(--font-sans);
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .timeline-text-col h4 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
       color: var(--burgundy);
-      margin-bottom: 0.6rem;
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
     }
-    .form-input-box, .form-select-box, .form-textarea-box {
-      width: 100%;
-      padding: 0.95rem 1.1rem;
-      background: var(--white);
-      border: 1px solid var(--champagne);
-      border-radius: 1px;
-      font-family: var(--font-sans);
-      font-size: 0.95rem;
-      color: var(--ink);
-      transition: border-color 0.3s, box-shadow 0.3s;
-      outline: none;
-    }
-    .form-input-box:focus, .form-select-box:focus, .form-textarea-box:focus {
-      border-color: var(--burgundy);
-      box-shadow: 0 0 0 3px rgba(110, 42, 49, 0.1);
+    .timeline-text-col p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.5;
     }
 
-    .attendance-grid-choices {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    .attendance-btn-choice {
+    .btn-full-burgundy {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
-      padding: 1.1rem 1rem;
-      border: 1px solid var(--champagne);
-      background: var(--white);
-      color: var(--ink);
+      gap: 0.65rem;
+      width: 100%;
+      padding: 0.95rem 1.4rem;
+      background: var(--burgundy);
+      color: var(--ivory);
       font-family: var(--font-sans);
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      cursor: pointer;
-      border-radius: 1px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 6px 18px rgba(110, 42, 49, 0.25);
       transition: all 0.3s;
-    }
-    .attendance-btn-choice:hover {
-      border-color: var(--burgundy);
-      background: var(--champagne-light);
-    }
-    .attendance-btn-choice input {
-      accent-color: var(--burgundy);
-      transform: scale(1.15);
-    }
-
-    .btn-submit-rsvp-form {
-      width: 100%;
-      padding: 1.15rem 2rem;
-      background: var(--burgundy);
-      color: var(--ivory);
-      font-family: var(--font-sans);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      border-radius: 1px;
       margin-top: 1.2rem;
-      cursor: pointer;
-      transition: all 0.35s var(--ease-silk);
-      box-shadow: 0 8px 24px rgba(110, 42, 49, 0.25);
     }
-    .btn-submit-rsvp-form:hover {
+    .btn-full-burgundy:hover {
       background: var(--oxblood);
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(110, 42, 49, 0.35);
-    }
-
-    .rsvp-personal-feedback {
-      display: none;
-      text-align: center;
-      padding: 2rem 1rem;
     }
 
     /* ============================================================
-       11. CLOSING KEEPSAKE
+       7. DRESS CODE & PALETTE SWATCHES
     ============================================================ */
-    #closing-keepsake {
-      background: var(--oxblood);
-      color: rgba(251, 247, 240, 0.75);
-      text-align: center;
-      padding: 6rem 1.5rem 5rem;
-      position: relative;
+    #atmosphere {
+      background-color: var(--ivory);
     }
-    .keepsake-monogram {
-      width: 60px;
-      height: auto;
-      margin: 0 auto 1.5rem;
-      color: var(--champagne);
+    .palette-swatches-grid {
+      display: flex;
+      justify-content: space-around;
+      margin: 1.6rem 0 1.8rem;
     }
-    .keepsake-couple-title {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: var(--ivory);
-      letter-spacing: 0.04em;
-      margin-bottom: 0.6rem;
+    .swatch-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
     }
-    .keepsake-meta-details {
+    .swatch-round {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      border: 3px solid var(--white);
+    }
+    .swatch-label {
       font-family: var(--font-sans);
-      font-size: 0.78rem;
-      letter-spacing: 0.24em;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--eucalyptus);
-      margin-bottom: 1.8rem;
-    }
-    .keepsake-final-quote {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-      color: var(--champagne);
-      max-width: 540px;
-      margin: 0 auto 1.4rem;
-    }
-    .keepsake-script-love {
-      font-family: var(--font-script);
-      font-size: 2.2rem;
-      color: var(--champagne);
+      color: var(--ink-soft);
     }
 
-    /* Reduced Motion */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-      .reveal-elem { opacity: 1 !important; transform: none !important; }
+    /* ============================================================
+       8. VENUE & TRAVEL (GOOGLE MAPS & STAYS)
+    ============================================================ */
+    #venue {
+      background-color: var(--champagne-soft);
+    }
+    .venue-title-serif {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--burgundy);
+      text-align: center;
+      margin-bottom: 0.3rem;
+    }
+    .venue-sub-caps {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .accommodation-pill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.2rem;
+    }
+    .acc-pill-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.2rem;
+      background: var(--parchment);
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink);
+      transition: all 0.25s;
+    }
+    .acc-pill-btn:hover {
+      background: var(--burgundy);
+      color: var(--white);
+      transform: translateX(4px);
+    }
+
+    /* ============================================================
+       9. BEFORE THE DAY (FAQ ACCORDION)
+    ============================================================ */
+    #guidance {
+      background-color: var(--ivory);
+    }
+    .accordion-box-ewed {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.85rem;
+      box-shadow: 0 4px 14px rgba(44, 38, 32, 0.05);
+      border: 1px solid rgba(231, 217, 190, 0.45);
+      overflow: hidden;
+    }
+    .accordion-btn-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.15rem 1.3rem;
+      font-family: var(--font-serif);
+      font-size: 1.18rem;
+      font-weight: 400;
+      color: var(--burgundy);
+      text-align: left;
+      cursor: pointer;
+    }
+    .accordion-body-text {
+      padding: 0 1.3rem 1.2rem;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       10. RSVP EXPERIENCE & LIVE WISHES WALL
+    ============================================================ */
+    #rsvp {
+      background: radial-gradient(circle at 50% 30%, #521820 0%, #300d12 60%, #150306 100%);
+      color: var(--ivory);
+    }
+    #rsvp .section-heading-serif { color: var(--ivory); }
+    #rsvp .section-category-tag { color: var(--eucalyptus); }
+    #rsvp .section-sub-italic { color: var(--champagne); }
+
+    .form-group-row {
+      margin-bottom: 1.4rem;
+    }
+    .form-field-label {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 0.45rem;
+    }
+    .form-input-ewed, .form-select-ewed, .form-textarea-ewed {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--ivory);
+      border: 1px solid var(--champagne);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-input-ewed:focus, .form-select-ewed:focus, .form-textarea-ewed:focus {
+      border-color: var(--burgundy);
+      box-shadow: 0 0 0 3px rgba(110, 42, 49, 0.12);
+    }
+
+    .attendance-radios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+    .attendance-radio-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 0.6rem;
+      border: 1px solid var(--champagne);
+      border-radius: var(--radius-sm);
+      background: var(--ivory);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      transition: all 0.25s;
+    }
+    .attendance-radio-item:hover {
+      border-color: var(--burgundy);
+      background: var(--champagne-soft);
+    }
+    .attendance-radio-item input { accent-color: var(--burgundy); }
+
+    .btn-submit-rsvp-main {
+      width: 100%;
+      padding: 1.05rem 1.8rem;
+      background: var(--burgundy);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(110, 42, 49, 0.3);
+      transition: all 0.3s;
+      margin-top: 0.6rem;
+    }
+    .btn-submit-rsvp-main:hover {
+      background: var(--oxblood);
+      transform: translateY(-2px);
+    }
+
+    /* Wishes Wall */
+    .wishes-wall-section {
+      margin-top: 2.2rem;
+    }
+    .wishes-title-header {
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .wishes-title-header h3 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--champagne);
+    }
+    .wishes-scroll-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      max-height: 280px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .wish-bubble-item {
+      background: rgba(251, 247, 240, 0.08);
+      border: 1px solid rgba(231, 217, 190, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.2rem;
+      backdrop-filter: blur(8px);
+    }
+    .wish-author-name {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--eucalyptus);
+      margin-bottom: 0.25rem;
+    }
+    .wish-message-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.98rem;
+      color: var(--ivory);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       11. CLOSING KEEPSAKE & FOOTER
+    ============================================================ */
+    footer {
+      background: var(--burgundy-deep);
+      color: rgba(251, 247, 240, 0.7);
+      text-align: center;
+      padding: 3.5rem 1.5rem 4rem;
+    }
+    .footer-flourish {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .footer-couple-names {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      color: var(--ivory);
+      margin-bottom: 0.3rem;
+    }
+    .footer-date-tag {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--eucalyptus);
+      margin-bottom: 1.2rem;
+    }
+    .footer-script-signature {
+      font-family: var(--font-script);
+      font-size: 2rem;
+      color: var(--champagne);
     }
   </style>
 </head>
 <body>
 
-  <a href="#main-content" class="skip-to-main">Skip to main invitation</a>
-
   <!-- ============================================================
-       1. CINEMATIC INVITATION COVER EXPERIENCE
+       1. INTERACTIVE ENVELOPE OPENING (TIKTOK / EWEDLAB SIGNATURE)
   ============================================================ */ -->
-  <section id="invitation-cover" aria-label="Digital Wedding Invitation Cover">
-    <div class="cover-frame-outer" aria-hidden="true"></div>
-    <div class="cover-frame-inner" aria-hidden="true"></div>
+  <div id="envelope-screen" aria-label="Digital Wedding Invitation Envelope">
+    <div class="envelope-pocket-card">
+      <div class="envelope-inner-dash"></div>
 
-    <div class="cover-inner">
-      <!-- Bespoke Intersecting R & L Monogram -->
-      <svg class="monogram-mark" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Rishen and Lizaan Custom Monogram">
-        <path d="M42 32 C42 22, 60 22, 60 38 C60 52, 42 54, 42 66 L42 88" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M42 54 L62 88" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M62 88 C75 88, 88 88, 92 88 C98 88, 100 82, 94 76" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M68 34 C68 28, 78 30, 84 42 C90 56, 78 88, 62 88" stroke="var(--eucalyptus)" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
-        <circle cx="60" cy="60" r="54" stroke="rgba(231, 217, 190, 0.3)" stroke-width="0.8" stroke-dasharray="3 3"/>
-      </svg>
+      <span class="envelope-tag">The Wedding Invitation</span>
+      <h1 class="envelope-names-title">Rishen &amp; Lizaan</h1>
+      <p class="envelope-date-sub">Saturday, 24 October 2026</p>
 
-      <span class="cover-eyebrow">A Celebration of Love</span>
-      <h1 class="cover-names">Rishen <span class="amp">&amp;</span> Lizaan</h1>
-      <p class="cover-date-line">Saturday, 24 October 2026</p>
+      <!-- Gold Wax Seal Button -->
+      <button type="button" class="gold-wax-seal" id="openEnvelopeBtn" aria-label="Tap to Open Invitation">
+        <span class="seal-monogram">R&amp;L</span>
+      </button>
 
-      <button type="button" class="btn-open-invitation" id="btnOpenCover">
-        <span>Open the Invitation</span>
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <span class="open-prompt-text">
+        <span>Tap wax seal to open</span>
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 8h10M9 4l4 4-4 4"/>
         </svg>
-      </button>
-
-      <button type="button" class="btn-skip-intro" id="btnSkipIntro">
-        Skip opening
-      </button>
+      </span>
     </div>
-  </section>
+  </div>
 
   <!-- ============================================================
-       2. EDITORIAL NAVIGATION
+       2. FLOATING MUSIC CONTROL (TIKTOK STYLE)
   ============================================================ */ -->
-  <header>
-    <nav id="site-nav" aria-label="Main Navigation">
-      <a href="#hero" class="nav-monogram-link" aria-label="Rishen and Lizaan Monogram">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M42 32 C42 22, 60 22, 60 38 C60 52, 42 54, 42 66 L42 88" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-          <path d="M42 54 L62 88" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-          <path d="M62 88 C75 88, 88 88, 92 88" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="60" cy="60" r="52" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
-        </svg>
-      </a>
-
-      <ul class="nav-links-desktop" role="list">
-        <li><a href="#story">Our Story</a></li>
-        <li><a href="#celebration">The Day</a></li>
-        <li><a href="#atmosphere">Among the Vines</a></li>
-        <li><a href="#venue">Venue &amp; Lodging</a></li>
-        <li><a href="#guidance">Before the Day</a></li>
-        <li><a href="#rsvp">RSVP</a></li>
-      </ul>
-
-      <button class="nav-toggle-btn" id="navToggleBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navOverlaySheet">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-
-    <div class="nav-overlay-sheet" id="navOverlaySheet" aria-label="Mobile navigation sheet" aria-hidden="true">
-      <a href="#story">Our Story</a>
-      <a href="#celebration">The Day</a>
-      <a href="#atmosphere">Among the Vines</a>
-      <a href="#venue">Venue &amp; Lodging</a>
-      <a href="#guidance">Before the Day</a>
-      <a href="#rsvp">RSVP</a>
-    </div>
-  </header>
-
-  <!-- ============================================================
-       3. MAIN INVITATION SPREAD
-  ============================================================ */ -->
-  <main id="main-content">
-
-    <!-- 1. ASYMMETRICAL EDITORIAL HERO -->
-    <section id="hero" aria-labelledby="heroTitle">
-      <svg class="hero-vine-silhouette" viewBox="0 0 300 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M280 0 Q240 150 200 300 Q160 450 180 600" stroke="currentColor" stroke-width="1.5"/>
-        <ellipse cx="210" cy="180" rx="35" ry="18" stroke="currentColor" stroke-width="1" transform="rotate(-25 210 180)"/>
-        <ellipse cx="170" cy="340" rx="30" ry="15" stroke="currentColor" stroke-width="1" transform="rotate(20 170 340)"/>
-        <ellipse cx="190" cy="480" rx="28" ry="14" stroke="currentColor" stroke-width="1" transform="rotate(-15 190 480)"/>
-      </svg>
-
-      <div class="hero-grid">
-        <div class="hero-text-col reveal-elem">
-          <span class="hero-eyebrow">You are warmly invited</span>
-          
-          <h1 class="hero-title-names" id="heroTitle">
-            Rishen <span class="amp">&amp;</span> Lizaan
-          </h1>
-
-          <p class="hero-poetic-quote">
-            “A glance became a conversation. A conversation became forever.”
-          </p>
-
-          <div class="hero-ceremony-meta">
-            <span>Saturday, 24 October 2026 &nbsp;&middot;&nbsp; 14:30 SAST</span>
-            <span>Highberry Vineyards &amp; Venue &nbsp;&middot;&nbsp; Somerset West, Cape Winelands</span>
-          </div>
-
-          <a href="#story" class="hero-begin-btn" aria-label="Begin reading our story">
-            <span>Begin here</span>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <path d="M8 2v12M3 9l5 5 5-5"/>
-            </svg>
-          </a>
-        </div>
-
-        <div class="hero-photo-moment reveal-elem reveal-delay-1">
-          <div class="hero-photo-frame">
-            <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan standing together among the lush greenery" />
-            <p class="hero-photo-caption">“Where paths crossed in the quietest moment.”</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. OUR STORY: AN EDITORIAL LOVE LETTER -->
-    <section id="story" class="invitation-chapter" aria-labelledby="storyHeading">
-      <div class="chapter-inner">
-        
-        <div class="chapter-header reveal-elem">
-          <span class="chapter-tag">Their Journey</span>
-          <h2 class="chapter-title-serif" id="storyHeading">Our Story</h2>
-          <p class="chapter-subtitle-italic">
-            “What began with a glance, grew through messages, and blossomed into forever.”
-          </p>
-        </div>
-
-        <div class="story-chapters-flow">
-
-          <!-- CHAPTER 1: THE GLANCE -->
-          <div class="story-act-row reveal-elem">
-            <div class="story-act-media">
-              <div class="story-polaroid-frame" style="transform: rotate(-2deg);">
-                <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan outdoor photograph" loading="lazy" />
-                <p class="story-polaroid-caption">“An instant spark across the room.”</p>
-              </div>
-            </div>
-            <div class="story-act-text">
-              <span class="story-act-num-tag">Chapter One &nbsp;&middot;&nbsp; The Glance</span>
-              <h3 class="story-act-heading">Love at first sight — although neither was brave enough to speak.</h3>
-              <div class="story-act-pull-quote">
-                “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
-              </div>
-              <p class="story-act-paragraph">
-                <span class="dropcap-letter">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members.
-              </p>
-              <p class="story-act-paragraph">
-                There was an immediate spark — that rare moment where everything else in the room gently fades into the background. It was true love at first sight, although neither of them was quite brave enough to actually speak in that moment!
-              </p>
-            </div>
-          </div>
-
-          <!-- CHAPTER 2: THE CONVERSATION -->
-          <div class="story-act-row alternate reveal-elem">
-            <div class="story-act-media">
-              <div class="story-polaroid-frame" style="transform: rotate(2.2deg);">
-                <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait close-up" loading="lazy" />
-                <p class="story-polaroid-caption">“Two people who became each other's favourite hello.”</p>
-              </div>
-            </div>
-            <div class="story-act-text">
-              <span class="story-act-num-tag">Chapter Two &nbsp;&middot;&nbsp; The Conversation</span>
-              <h3 class="story-act-heading">The conversation that never happened in person began over text.</h3>
-              <div class="story-act-pull-quote">
-                “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
-              </div>
-              <p class="story-act-paragraph">
-                <span class="dropcap-letter">A</span> few days later, Rishen still couldn't get Lizaan out of his mind. With a little help from the same family member, he got her number. And just like that, the conversation that was always meant to happen began.
-              </p>
-              <p class="story-act-paragraph">
-                Simple texts quickly grew into hours of talking, good-morning messages, late-night phone calls, inside jokes, and countless memories. Two people who were once too shy to speak became each other's favourite part of every day.
-              </p>
-            </div>
-          </div>
-
-          <!-- CHAPTER 3: FAITH & FOREVER -->
-          <div class="story-act-row reveal-elem">
-            <div class="story-act-media">
-              <div class="story-polaroid-frame" style="transform: rotate(-1.5deg);">
-                <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing joyfully in hats" loading="lazy" />
-                <p class="story-polaroid-caption">“Adventures, laughter &amp; shared milestones.”</p>
-              </div>
-            </div>
-            <div class="story-act-text">
-              <span class="story-act-num-tag">Chapter Three &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
-              <h3 class="story-act-heading">Like iron sharpens iron — to encourage, strengthen, and love.</h3>
-              <div class="story-act-pull-quote">
-                “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
-              </div>
-              <p class="story-act-paragraph">
-                <span class="dropcap-letter">S</span>ince then, their relationship has flourished through deep friendship, faith, unwavering encouragement, and bringing out the very best in one another.
-              </p>
-              <p class="story-act-paragraph">
-                Now, as they prepare to exchange lifelong vows and become husband and wife, they are filled with profound gratitude for every step that led here, and anticipation for every chapter God has written ahead.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Central Scripture Art Keepsake -->
-        <div class="scripture-sacred-card reveal-elem">
-          <p class="scripture-verse-text">
-            “Therefore what God has joined together, let no one separate.”
-          </p>
-          <p class="scripture-ref-title">Matthew 19 : 6</p>
-          <p class="scripture-closing-note">
-            And so, what began with a glance and grew through messages is becoming forever.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 3. THE DAY: CEREMONIAL ITINERARY -->
-    <section id="celebration" class="invitation-chapter" aria-labelledby="celebrationHeading">
-      <div class="chapter-inner">
-        
-        <div class="chapter-header reveal-elem">
-          <span class="chapter-tag">The Gathering</span>
-          <h2 class="chapter-title-serif" id="celebrationHeading">The Celebration</h2>
-          <p class="chapter-subtitle-italic">
-            Saturday, 24 October 2026 &nbsp;&middot;&nbsp; Highberry Vineyards &amp; Venue
-          </p>
-        </div>
-
-        <!-- Editorial Timeline Journey -->
-        <div class="itinerary-grid-container reveal-elem">
-          <div class="itinerary-thread-line" aria-hidden="true"></div>
-
-          <!-- 14:15 Arrival -->
-          <div class="itinerary-step-card">
-            <div class="itinerary-node-circle" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <circle cx="12" cy="12" r="9"/>
-                <polyline points="12 7 12 12 15 15"/>
-              </svg>
-            </div>
-            <div class="itinerary-content-box">
-              <span class="itinerary-time-tag">14:15 SAST</span>
-              <h3 class="itinerary-event-name">Guest Arrival &amp; Seating</h3>
-              <p class="itinerary-desc-text">Guests are warmly welcomed and seated among the vines before proceedings begin.</p>
-            </div>
-          </div>
-
-          <!-- 14:30 Ceremony -->
-          <div class="itinerary-step-card">
-            <div class="itinerary-node-circle" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-              </svg>
-            </div>
-            <div class="itinerary-content-box">
-              <span class="itinerary-time-tag">14:30 SAST</span>
-              <h3 class="itinerary-event-name">The Ceremony</h3>
-              <p class="itinerary-desc-text">At Highberry Vineyards &amp; Venue — Rishen &amp; Lizaan exchange their sacred vows and say &ldquo;I do.&rdquo;</p>
-            </div>
-          </div>
-
-          <!-- 16:00 Drinks & Canapés -->
-          <div class="itinerary-step-card">
-            <div class="itinerary-node-circle" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M8 2h8l-4 7v9"/>
-                <path d="M7 22h10"/>
-                <path d="M6 5h12"/>
-              </svg>
-            </div>
-            <div class="itinerary-content-box">
-              <span class="itinerary-time-tag">16:00 SAST</span>
-              <h3 class="itinerary-event-name">Drinks &amp; Canap&eacute;s</h3>
-              <p class="itinerary-desc-text">Sunset drinks and delicious bites on the manicured vineyard lawns with wonderful company.</p>
-            </div>
-          </div>
-
-          <!-- 18:00 Reception & Dinner -->
-          <div class="itinerary-step-card">
-            <div class="itinerary-node-circle" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M3 18h18"/>
-                <path d="M4 18a8 8 0 0 1 16 0"/>
-                <path d="M12 6V3"/>
-              </svg>
-            </div>
-            <div class="itinerary-content-box">
-              <span class="itinerary-time-tag">18:00 SAST</span>
-              <h3 class="itinerary-event-name">Reception &amp; Dinner</h3>
-              <p class="itinerary-desc-text">Celebratory dinner, heartfelt toasts, and cherished moments with those we love most.</p>
-            </div>
-          </div>
-
-          <!-- After Dinner -->
-          <div class="itinerary-step-card">
-            <div class="itinerary-node-circle" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M9 18V5l12-2v13"/>
-                <circle cx="6" cy="18" r="3"/>
-                <circle cx="18" cy="16" r="3"/>
-              </svg>
-            </div>
-            <div class="itinerary-content-box">
-              <span class="itinerary-time-tag">After Dinner</span>
-              <h3 class="itinerary-event-name">Celebration &amp; Dancing</h3>
-              <p class="itinerary-desc-text">Music, laughter, and dancing under the Cape Winelands stars.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Real-Time Fine Numeral Countdown -->
-        <div class="countdown-card-spread reveal-elem">
-          <span class="countdown-header-tag">Counting Down to Forever</span>
-          <div class="countdown-flex-row" id="countdownContainer" aria-live="polite">
-            <div class="countdown-digit-unit">
-              <span class="countdown-digit-value" id="cdDays">--</span>
-              <span class="countdown-digit-label">Days</span>
-            </div>
-            <div class="countdown-digit-unit">
-              <span class="countdown-digit-value" id="cdHours">--</span>
-              <span class="countdown-digit-label">Hours</span>
-            </div>
-            <div class="countdown-digit-unit">
-              <span class="countdown-digit-value" id="cdMins">--</span>
-              <span class="countdown-digit-label">Minutes</span>
-            </div>
-            <div class="countdown-digit-unit">
-              <span class="countdown-digit-value" id="cdSecs">--</span>
-              <span class="countdown-digit-label">Seconds</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Actions -->
-        <div class="celebration-action-buttons reveal-elem">
-          <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//Rishen%20%26%20Lizaan//Wedding//EN%0ABEGIN:VEVENT%0ADTSTART:20261024T123000Z%0ADTEND:20261024T220000Z%0ASUMMARY:Rishen%20%26%20Lizaan%27s%20Wedding%0ADESCRIPTION:Wedding%20celebration%20of%20Rishen%20%26%20Lizaan%20at%20Highberry%20Vineyards%2C%20Somerset%20West.%20Ceremony%20at%2014%3A30.%0ALOCATION:Highberry%20Vineyards%20%26%20Venue%2C%20Somerset%20West%2C%20Cape%20Winelands%2C%20South%20Africa%0AURL:https%3A%2F%2Fwww.highberry.co.za%2F%0AEND:VEVENT%0AEND:VCALENDAR"
-             download="Rishen-and-Lizaan-Wedding-24-Oct-2026.ics"
-             class="btn-action-burgundy">
-            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <rect x="2" y="3" width="12" height="12" rx="1"/>
-              <path d="M5 1v4M11 1v4M2 7h12"/>
-            </svg>
-            Save Date to Calendar
-          </a>
-
-          <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-action-sage">
-            <span>Explore Highberry Venue</span>
-            <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 4. AMONG THE VINES: ATMOSPHERE & WELCOME -->
-    <section id="atmosphere" class="invitation-chapter" aria-labelledby="atmosphereHeading">
-      <div class="chapter-inner">
-        <div class="chapter-header reveal-elem">
-          <span class="chapter-tag">Cape Winelands Atmosphere</span>
-          <h2 class="chapter-title-serif" id="atmosphereHeading">Among the Vines</h2>
-        </div>
-
-        <div class="atmosphere-editorial-box reveal-elem">
-          <p class="atmosphere-lead-poetry">
-            “Come dressed for a beautiful afternoon in the Cape Winelands—where deep burgundy meets soft sage, and every detail is warmed by the light.”
-          </p>
-          <p class="atmosphere-body-desc">
-            Surrounded by rolling vineyards and sweeping mountain silhouettes, our celebration is an unhurried gathering of the people who mean the most to us. Guests are invited to dress elegantly, formally, semi-formally, or in beautiful traditional wear.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. VENUE & LODGING: TRAVEL EDITORIAL -->
-    <section id="venue" class="invitation-chapter" aria-labelledby="venueHeading">
-      <div class="chapter-inner">
-        
-        <div class="chapter-header reveal-elem">
-          <span class="chapter-tag">Destination</span>
-          <h2 class="chapter-title-serif" id="venueHeading">Venue &amp; Lodging</h2>
-        </div>
-
-        <div class="venue-layout-grid">
-          
-          <div class="venue-editorial-info reveal-elem">
-            <h3 class="venue-estate-name">Highberry Vineyards &amp; Venue</h3>
-            <p class="venue-location-sub">Somerset West, Cape Winelands, South Africa</p>
-            
-            <p class="venue-story-p">
-              Nestled against the Hottentots Holland mountain range, Highberry is a boutique vineyard estate known for its breathtaking vistas, manicured lawns, and timeless Cape architectural elegance.
-            </p>
-
-            <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;">
-              <a href="https://www.google.com/maps/search/Highberry+Vineyards+Somerset+West+South+Africa" target="_blank" rel="noopener noreferrer" class="btn-action-burgundy" style="padding:0.85rem 1.6rem; font-size:0.72rem;">
-                Open in Google Maps ↗
-              </a>
-              <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-action-sage" style="padding:0.85rem 1.6rem; font-size:0.72rem;">
-                Visit Venue Website ↗
-              </a>
-            </div>
-          </div>
-
-          <div class="venue-accommodations-col reveal-elem reveal-delay-1">
-            <span class="chapter-tag" style="margin-bottom:0.8rem;">Recommended Lodging Nearby</span>
-            <p style="font-size:0.92rem; color:var(--ink-muted); margin-bottom:1.4rem;">
-              We recommend exploring local guest houses and boutique lodges in Somerset West:
-            </p>
-
-            <ul class="accommodation-editorial-list" role="list">
-              <li>
-                <a href="https://www.lalapanzilodge.co.za" target="_blank" rel="noopener noreferrer" class="accommodation-item-row">
-                  <span>Lalapanzi Lodge</span>
-                  <span>↗</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.winelandsvilla.co.za" target="_blank" rel="noopener noreferrer" class="accommodation-item-row">
-                  <span>Winelands Villa Guesthouse</span>
-                  <span>↗</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.accommodationsomersetwest.co.za" target="_blank" rel="noopener noreferrer" class="accommodation-item-row">
-                  <span>Accommodation Somerset West</span>
-                  <span>↗</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.booking.com/searchresults.html?ss=Somerset+West%2C+South+Africa" target="_blank" rel="noopener noreferrer" class="accommodation-item-row">
-                  <span>Booking.com Somerset West</span>
-                  <span>↗</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.lekkeslaap.co.za/oornag/Somerset-West" target="_blank" rel="noopener noreferrer" class="accommodation-item-row">
-                  <span>LekkeSlaap Somerset West</span>
-                  <span>↗</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 6. BEFORE THE DAY: FAQ & PRACTICAL GUIDANCE -->
-    <section id="guidance" class="invitation-chapter" aria-labelledby="guidanceHeading">
-      <div class="chapter-inner">
-        
-        <div class="chapter-header reveal-elem">
-          <span class="chapter-tag">Guest Information</span>
-          <h2 class="chapter-title-serif" id="guidanceHeading">Before the Day</h2>
-          <p class="chapter-subtitle-italic">Everything you need for an effortless celebration.</p>
-        </div>
-
-        <div class="guidance-accordion-wrap reveal-elem">
-
-          <!-- Q1: Attire -->
-          <div class="guidance-faq-card">
-            <button type="button" class="guidance-faq-trigger" aria-expanded="true" id="btnWearFaq">
-              <span class="guidance-q-title">What should I wear?</span>
-              <span class="guidance-arrow" aria-hidden="true">▾</span>
-            </button>
-            <div class="guidance-panel-body" id="bodyWearFaq">
-              <p>Think <strong>elegant</strong>, <strong>formal</strong>, <strong>semi-formal</strong>, and beautifully comfortable — even <strong>traditional wear</strong>. Come ready for an evening of celebration among the vines!</p>
-            </div>
-          </div>
-
-          <!-- Q2: Arrival -->
-          <div class="guidance-faq-card">
-            <button type="button" class="guidance-faq-trigger" aria-expanded="false" id="btnArrivalFaq">
-              <span class="guidance-q-title">When should I arrive?</span>
-              <span class="guidance-arrow" aria-hidden="true">▸</span>
-            </button>
-            <div class="guidance-panel-body" id="bodyArrivalFaq" style="display:none;">
-              <p>The ceremony commences promptly at <strong>14:30 SAST</strong>. We kindly ask all guests to arrive and be seated by <strong>14:15</strong>.</p>
-            </div>
-          </div>
-
-          <!-- Q3: RSVP Deadline -->
-          <div class="guidance-faq-card">
-            <button type="button" class="guidance-faq-trigger" aria-expanded="false" id="btnRsvpFaq">
-              <span class="guidance-q-title">When is the RSVP deadline?</span>
-              <span class="guidance-arrow" aria-hidden="true">▸</span>
-            </button>
-            <div class="guidance-panel-body" id="bodyRsvpFaq" style="display:none;">
-              <p>Please kindly submit your RSVP by <strong>24 September 2026</strong> so we can finalize arrangements with Highberry.</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 7. RSVP: STATIONERY EXPERIENCE -->
-    <section id="rsvp" class="invitation-chapter" aria-labelledby="rsvpHeading">
-      <div class="chapter-inner">
-        
-        <div class="chapter-header reveal-elem">
-          <span class="chapter-tag">Your Response</span>
-          <h2 class="chapter-title-serif" id="rsvpHeading">Will you join us among the vines?</h2>
-          <p class="chapter-subtitle-italic">
-            We’d be so grateful to celebrate this beginning with you.
-          </p>
-          <p style="font-family:var(--font-sans); font-size:0.75rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--eucalyptus); margin-top:1rem;">
-            Please respond by 24 September 2026
-          </p>
-        </div>
-
-        <div class="rsvp-stationery-envelope-card reveal-elem reveal-delay-1">
-          
-          <div class="rsvp-personal-feedback" id="rsvpFeedbackBox" aria-live="polite">
-            <div style="font-size:2.6rem; color:var(--burgundy); margin-bottom:0.8rem;">🤍</div>
-            <h3 id="feedbackPersonTitle" style="font-family:var(--font-serif); font-size:clamp(1.6rem, 3.5vw, 2.2rem); color:var(--burgundy); font-weight:300; margin-bottom:0.8rem;"></h3>
-            <p id="feedbackPersonMessage" style="font-family:var(--font-serif); font-style:italic; font-size:1.15rem; color:var(--ink-soft); line-height:1.75;"></p>
-          </div>
-
-          <form id="rsvpStationeryForm" novalidate aria-label="Wedding RSVP Form">
-            
-            <div class="form-row">
-              <label for="rsvpFullName" class="form-label">Your Full Name <span aria-label="required">*</span></label>
-              <input type="text" id="rsvpFullName" name="rsvpFullName" class="form-input-box" placeholder="e.g. Eleanor Vance" autocomplete="name" required />
-              <span id="nameValidationError" style="display:none; font-size:0.78rem; color:#b01d2e; margin-top:0.4rem;">Please enter your full name.</span>
-            </div>
-
-            <div class="form-row">
-              <label class="form-label">Attendance <span aria-label="required">*</span></label>
-              <div class="attendance-grid-choices">
-                <label class="attendance-btn-choice">
-                  <input type="radio" name="attendanceOption" value="joyfully" required />
-                  <span>Joyfully Accepts</span>
-                </label>
-                <label class="attendance-btn-choice">
-                  <input type="radio" name="attendanceOption" value="regretfully" required />
-                  <span>Regretfully Declines</span>
-                </label>
-              </div>
-              <span id="attendValidationError" style="display:none; font-size:0.78rem; color:#b01d2e; margin-top:0.4rem;">Please indicate whether you accept or decline.</span>
-            </div>
-
-            <div id="attendingGuestsDetailsGroup">
-              <div class="form-row">
-                <label for="rsvpGuestCount" class="form-label">Total Guests Attending (Including Yourself)</label>
-                <select id="rsvpGuestCount" name="rsvpGuestCount" class="form-select-box">
-                  <option value="1">1 Guest (Just me)</option>
-                  <option value="2">2 Guests</option>
-                  <option value="3">3 Guests</option>
-                  <option value="4">4 Guests</option>
-                </select>
-              </div>
-
-              <div class="form-row">
-                <label for="rsvpDietary" class="form-label">Dietary Requirements (Optional)</label>
-                <input type="text" id="rsvpDietary" name="rsvpDietary" class="form-input-box" placeholder="e.g. Vegetarian, Vegan, Halal, Nut Allergy, None" />
-              </div>
-
-              <div id="extraGuestNamesContainer" style="display:none; margin-bottom:1.8rem;"></div>
-            </div>
-
-            <div class="form-row">
-              <label for="rsvpNotes" class="form-label">A Special Message for Rishen &amp; Lizaan (Optional)</label>
-              <textarea id="rsvpNotes" name="rsvpNotes" rows="3" class="form-textarea-box" placeholder="Share warm wishes, blessings, or a personal note..."></textarea>
-            </div>
-
-            <button type="submit" class="btn-submit-rsvp-form">
-              Send Response
-            </button>
-            
-          </form>
-
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ============================================================
-       4. CLOSING KEEPSAKE
-  ============================================================ */ -->
-  <footer id="closing-keepsake" aria-label="Closing Keepsake">
-    <!-- Monogram Mark -->
-    <svg class="keepsake-monogram" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M42 32 C42 22, 60 22, 60 38 C60 52, 42 54, 42 66 L42 88" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M42 54 L62 88" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M62 88 C75 88, 88 88, 92 88" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="60" cy="60" r="52" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity="0.6"/>
+  <button type="button" class="floating-music-control" id="musicToggleBtn" aria-label="Play/Pause Background Music">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
     </svg>
+  </button>
 
-    <div class="keepsake-couple-title">Rishen &amp; Lizaan</div>
-    <div class="keepsake-meta-details">24 &middot; 10 &middot; 2026 &nbsp;&middot;&nbsp; Highberry Vineyards &nbsp;&middot;&nbsp; Cape Winelands</div>
-    <p class="keepsake-final-quote">“Our greatest adventure is just beginning.”</p>
-    <p class="keepsake-script-love">With all our love ♡</p>
-  </footer>
+  <audio id="weddingBgmAudio" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-acoustic-112191.mp3"></audio>
 
   <!-- ============================================================
-       SCRIPTS: MOTION, ACCORDION, COUNTDOWN & RSVP HANDLER
+       3. FLOATING MOBILE BOTTOM NAVIGATION BAR
+  ============================================================ */ -->
+  <nav class="floating-bottom-nav" aria-label="Mobile Navigation">
+    <a href="#hero" class="bottom-nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="#story" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span>Story</span>
+    </a>
+    <a href="#celebration" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>The Day</span>
+    </a>
+    <a href="#venue" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Venue</span>
+    </a>
+    <a href="#rsvp" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span>RSVP</span>
+    </a>
+  </nav>
+
+  <!-- ============================================================
+       MAIN MOBILE APP CONTENT WRAPPER
+  ============================================================ */ -->
+  <div class="mobile-app-wrapper">
+
+    <!-- 4. HERO SECTION (ARCHED PORTRAIT & COUNTDOWN) -->
+    <header id="hero">
+      <div class="hero-photo-arch-frame">
+        <img src="images/couple-outdoor-clean.jpg" alt="Rishen &amp; Lizaan together outdoors" />
+      </div>
+
+      <span class="hero-eyebrow-tag">The Wedding Celebration of</span>
+      <h1 class="hero-title-main">Rishen &amp; Lizaan</h1>
+
+      <p class="hero-quote-italic">
+        “What began with a glance, grew through messages, and blossomed into forever.”
+      </p>
+
+      <div class="hero-pill-date">
+        Saturday, 24 October 2026 &nbsp;&middot;&nbsp; 14:30
+      </div>
+
+      <!-- Real-Time Countdown Box -->
+      <div class="hero-countdown-box">
+        <span class="countdown-title-lbl">Counting Down To Our Big Day</span>
+        <div class="countdown-units-row" id="heroCountdown">
+          <div class="countdown-digit-col">
+            <span class="countdown-number-val" id="cdDays">--</span>
+            <span class="countdown-name-lbl">Days</span>
+          </div>
+          <div class="countdown-digit-col">
+            <span class="countdown-number-val" id="cdHours">--</span>
+            <span class="countdown-name-lbl">Hours</span>
+          </div>
+          <div class="countdown-digit-col">
+            <span class="countdown-number-val" id="cdMins">--</span>
+            <span class="countdown-name-lbl">Mins</span>
+          </div>
+          <div class="countdown-digit-col">
+            <span class="countdown-number-val" id="cdSecs">--</span>
+            <span class="countdown-name-lbl">Secs</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 5. OUR STORY: FLOWING CARDS WITH ALL 3 PHOTOS -->
+    <section id="story" class="invitation-section">
+      <div class="section-header-center">
+        <span class="section-category-tag">Love Story</span>
+        <h2 class="section-heading-serif">Our Story</h2>
+        <p class="section-sub-italic">Written long before we even realised it.</p>
+      </div>
+
+      <!-- Chapter 1 + Photo 1 -->
+      <div class="editorial-content-card story-card-flow-item">
+        <div class="story-photo-box">
+          <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan standing outdoors" loading="lazy" />
+        </div>
+        <div>
+          <span class="story-chapter-badge">Chapter 01 &nbsp;&middot;&nbsp; The Glance</span>
+          <h3 class="story-card-heading">Love at first sight — although neither was brave enough to speak!</h3>
+          <div class="story-pull-quote-line">
+            “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
+          </div>
+          <p class="story-body-p">
+            Almost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members. There was an instant spark — that rare feeling where the rest of the room fades away. It was true love at first sight, although neither was brave enough to speak in that moment!
+          </p>
+        </div>
+      </div>
+
+      <!-- Chapter 2 + Photo 2 -->
+      <div class="editorial-content-card story-card-flow-item">
+        <div class="story-photo-box">
+          <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan close-up portrait" loading="lazy" />
+        </div>
+        <div>
+          <span class="story-chapter-badge">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
+          <h3 class="story-card-heading">The conversation that never happened in person began over text.</h3>
+          <div class="story-pull-quote-line">
+            “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
+          </div>
+          <p class="story-body-p">
+            A few days later, Rishen still couldn't get Lizaan out of his mind. So, with a little help from the same family member, he got her number. Messages turned into late-night phone calls, inside jokes, and countless memories. Two people who were once too shy to speak became each other's favourite part of every day.
+          </p>
+        </div>
+      </div>
+
+      <!-- Chapter 3 + Photo 3 -->
+      <div class="editorial-content-card story-card-flow-item">
+        <div class="story-photo-box">
+          <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing joyfully in hats" loading="lazy" />
+        </div>
+        <div>
+          <span class="story-chapter-badge">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
+          <h3 class="story-card-heading">Like iron sharpens iron — to encourage, strengthen and love.</h3>
+          <div class="story-pull-quote-line">
+            “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
+          </div>
+          <p class="story-body-p">
+            Since then, their relationship has flourished through deep friendship, faith, unwavering encouragement, and bringing out the very best in one another. Now, as they prepare to exchange lifelong vows, they are filled with profound gratitude and joy for every chapter God has written ahead.
+          </p>
+        </div>
+      </div>
+
+      <!-- Scripture Keepsake Card -->
+      <div class="scripture-card-ewed">
+        <div style="color:var(--gold); font-size:1.6rem; margin-bottom:0.4rem;">❦</div>
+        <p class="scripture-verse-italic">
+          “Therefore what God has joined together,<br>let no one separate.”
+        </p>
+        <p class="scripture-verse-ref">Matthew 19 : 6</p>
+      </div>
+    </section>
+
+    <!-- 6. THE CELEBRATION (SCHEDULE & CALENDAR) -->
+    <section id="celebration" class="invitation-section">
+      <div class="section-header-center">
+        <span class="section-category-tag">Itinerary</span>
+        <h2 class="section-heading-serif">The Celebration</h2>
+        <p class="section-sub-italic">Saturday, 24 October 2026</p>
+      </div>
+
+      <div class="editorial-content-card">
+        
+        <!-- 14:15 Arrival -->
+        <div class="timeline-row-item">
+          <span class="timeline-time-badge">14:15 SAST</span>
+          <div class="timeline-text-col">
+            <h4>Guest Arrival &amp; Seating</h4>
+            <p>Guests seated among the vines before the ceremony begins.</p>
+          </div>
+        </div>
+
+        <!-- 14:30 Ceremony -->
+        <div class="timeline-row-item">
+          <span class="timeline-time-badge">14:30 SAST</span>
+          <div class="timeline-text-col">
+            <h4>The Ceremony</h4>
+            <p>At Highberry Vineyards &amp; Venue — exchanging our vows.</p>
+          </div>
+        </div>
+
+        <!-- 16:00 Drinks -->
+        <div class="timeline-row-item">
+          <span class="timeline-time-badge">16:00 SAST</span>
+          <div class="timeline-text-col">
+            <h4>Drinks &amp; Canapés</h4>
+            <p>Sunset drinks and delicious bites on the manicured lawns.</p>
+          </div>
+        </div>
+
+        <!-- 18:00 Dinner -->
+        <div class="timeline-row-item">
+          <span class="timeline-time-badge">18:00 SAST</span>
+          <div class="timeline-text-col">
+            <h4>Reception &amp; Dinner</h4>
+            <p>Celebratory dinner, heartfelt toasts, and cherished moments.</p>
+          </div>
+        </div>
+
+        <!-- After Dinner -->
+        <div class="timeline-row-item">
+          <span class="timeline-time-badge">After Dinner</span>
+          <div class="timeline-text-col">
+            <h4>Celebration &amp; Dancing</h4>
+            <p>Music and celebration under the Cape Winelands stars.</p>
+          </div>
+        </div>
+
+        <!-- Add to Calendar Action -->
+        <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//Rishen%20%26%20Lizaan//Wedding//EN%0ABEGIN:VEVENT%0ADTSTART:20261024T123000Z%0ADTEND:20261024T220000Z%0ASUMMARY:Rishen%20%26%20Lizaan%27s%20Wedding%0ADESCRIPTION:Wedding%20celebration%20of%20Rishen%20%26%20Lizaan%20at%20Highberry%20Vineyards%2C%20Somerset%20West.%0ALOCATION:Highberry%20Vineyards%20%26%20Venue%2C%20Somerset%20West%2C%20Cape%20Winelands%2C%20South%20Africa%0AURL:https%3A%2F%2Fwww.highberry.co.za%2F%0AEND:VEVENT%0AEND:VCALENDAR"
+           download="Rishen-and-Lizaan-Wedding.ics"
+           class="btn-full-burgundy">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="3" width="12" height="12" rx="1"/>
+            <path d="M5 1v4M11 1v4M2 7h12"/>
+          </svg>
+          Save Date to Calendar
+        </a>
+
+      </div>
+    </section>
+
+    <!-- 7. DRESS CODE & PALETTE SWATCHES -->
+    <section id="atmosphere" class="invitation-section">
+      <div class="section-header-center">
+        <span class="section-category-tag">Dress Code</span>
+        <h2 class="section-heading-serif">Among the Vines</h2>
+        <p class="section-sub-italic">“Come dressed for a beautiful afternoon in the Cape Winelands—where deep burgundy meets soft sage, and every detail is warmed by the light.”</p>
+      </div>
+
+      <div class="editorial-content-card" style="text-align:center;">
+        <span class="section-category-tag" style="margin-bottom:0;">Wedding Palette Inspiration</span>
+        
+        <div class="palette-swatches-grid">
+          <div class="swatch-col">
+            <div class="swatch-round" style="background-color: #6E2A31;"></div>
+            <span class="swatch-label">Burgundy</span>
+          </div>
+          <div class="swatch-col">
+            <div class="swatch-round" style="background-color: #7C8B6F;"></div>
+            <span class="swatch-label">Sage</span>
+          </div>
+          <div class="swatch-col">
+            <div class="swatch-round" style="background-color: #E7D9BE;"></div>
+            <span class="swatch-label">Champagne</span>
+          </div>
+          <div class="swatch-col">
+            <div class="swatch-round" style="background-color: #FBF7F0; border-color:#E7D9BE;"></div>
+            <span class="swatch-label">Ivory</span>
+          </div>
+        </div>
+
+        <p style="font-size:0.92rem; color:var(--ink-soft); line-height:1.7;">
+          Think <strong>elegant</strong>, <strong>formal</strong>, <strong>semi-formal</strong>, or traditional wear.
+        </p>
+      </div>
+    </section>
+
+    <!-- 8. VENUE & TRAVEL (HIGHBERRY & LODGING) -->
+    <section id="venue" class="invitation-section">
+      <div class="section-header-center">
+        <span class="section-category-tag">Destination</span>
+        <h2 class="section-heading-serif">Venue &amp; Lodging</h2>
+      </div>
+
+      <div class="editorial-content-card">
+        <h3 class="venue-title-serif">Highberry Vineyards &amp; Venue</h3>
+        <p class="venue-sub-caps">Somerset West, Cape Winelands, South Africa</p>
+        <p style="font-size:0.94rem; color:var(--ink-soft); line-height:1.75; text-align:center; margin-bottom:1.4rem;">
+          A picturesque boutique vineyard surrounded by rolling vines, dams, and the Hottentots Holland mountains.
+        </p>
+
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+          <a href="https://www.google.com/maps/search/Highberry+Vineyards+Somerset+West+South+Africa" target="_blank" rel="noopener noreferrer" class="btn-full-burgundy" style="margin-top:0;">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2C5.79 2 4 3.79 4 6c0 3.5 4 8 4 8s4-4.5 4-8c0-2.21-1.79-4-4-4Z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Open in Google Maps
+          </a>
+          <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-full-burgundy" style="margin-top:0; background:var(--sage-dark);">
+            Visit Venue Website ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Lodging List -->
+      <div class="editorial-content-card">
+        <span class="section-category-tag" style="margin-bottom:0.6rem;">Nearby Lodging Options</span>
+        <p style="font-size:0.9rem; color:var(--ink-muted); margin-bottom:1rem;">Recommended boutique guest houses in Somerset West:</p>
+        
+        <div class="accommodation-pill-list">
+          <a href="https://www.lalapanzilodge.co.za" target="_blank" rel="noopener noreferrer" class="acc-pill-btn">
+            <span>Lalapanzi Lodge</span>
+            <span>↗</span>
+          </a>
+          <a href="https://www.winelandsvilla.co.za" target="_blank" rel="noopener noreferrer" class="acc-pill-btn">
+            <span>Winelands Villa Guesthouse</span>
+            <span>↗</span>
+          </a>
+          <a href="https://www.accommodationsomersetwest.co.za" target="_blank" rel="noopener noreferrer" class="acc-pill-btn">
+            <span>Accommodation Somerset West</span>
+            <span>↗</span>
+          </a>
+          <a href="https://www.booking.com/searchresults.html?ss=Somerset+West%2C+South+Africa" target="_blank" rel="noopener noreferrer" class="acc-pill-btn">
+            <span>Booking.com Somerset West</span>
+            <span>↗</span>
+          </a>
+          <a href="https://www.lekkeslaap.co.za/oornag/Somerset-West" target="_blank" rel="noopener noreferrer" class="acc-pill-btn">
+            <span>LekkeSlaap Somerset West</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. BEFORE THE DAY: FAQ ACCORDION -->
+    <section id="guidance" class="invitation-section">
+      <div class="section-header-center">
+        <span class="section-category-tag">Guest Guide</span>
+        <h2 class="section-heading-serif">Before the Day</h2>
+      </div>
+
+      <div class="accordion-box-ewed">
+        <button type="button" class="accordion-btn-trigger" id="btnAcc1">
+          <span>What should I wear?</span>
+          <span class="acc-arrow-icon">▾</span>
+        </button>
+        <div class="accordion-body-text" id="panelAcc1">
+          <p>Think <strong>elegant</strong>, <strong>formal</strong>, <strong>semi-formal</strong>, or traditional wear — beautifully comfortable for vineyard celebration!</p>
+        </div>
+      </div>
+
+      <div class="accordion-box-ewed">
+        <button type="button" class="accordion-btn-trigger" id="btnAcc2">
+          <span>When should I arrive?</span>
+          <span class="acc-arrow-icon">▸</span>
+        </button>
+        <div class="accordion-body-text" id="panelAcc2" style="display:none;">
+          <p>The ceremony begins promptly at <strong>14:30 SAST</strong>. Please arrive and be seated by <strong>14:15</strong>.</p>
+        </div>
+      </div>
+
+      <div class="accordion-box-ewed">
+        <button type="button" class="accordion-btn-trigger" id="btnAcc3">
+          <span>When is the RSVP deadline?</span>
+          <span class="acc-arrow-icon">▸</span>
+        </button>
+        <div class="accordion-body-text" id="panelAcc3" style="display:none;">
+          <p>Please RSVP by <strong>24 September 2026</strong> so we can finalize seating and dining with Highberry.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. RSVP EXPERIENCE & LIVE WISHES WALL -->
+    <section id="rsvp" class="invitation-section">
+      <div class="section-header-center">
+        <span class="section-category-tag">Your Response</span>
+        <h2 class="section-heading-serif">Will you join us among the vines?</h2>
+        <p class="section-sub-italic">We’d be so grateful to celebrate this beginning with you.</p>
+        <p style="font-size:0.75rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--eucalyptus); margin-top:0.6rem;">
+          Please respond by 24 September 2026
+        </p>
+      </div>
+
+      <div class="editorial-content-card" style="color:var(--ink);">
+        
+        <div id="rsvpSuccessBox" style="display:none; text-align:center; padding:1.2rem 0.5rem;">
+          <div style="font-size:2.4rem; color:var(--burgundy); margin-bottom:0.6rem;">🤍</div>
+          <h3 id="rsvpSuccessName" style="font-family:var(--font-serif); font-size:1.7rem; color:var(--burgundy); margin-bottom:0.5rem;"></h3>
+          <p id="rsvpSuccessMsg" style="font-size:0.95rem; color:var(--ink-soft); line-height:1.7;"></p>
+        </div>
+
+        <form id="rsvpForm" novalidate>
+          
+          <div class="form-group-row">
+            <label for="guestFullNameInput" class="form-field-label">Your Full Name *</label>
+            <input type="text" id="guestFullNameInput" class="form-input-ewed" placeholder="Enter your full name" required />
+            <span id="nameErrorMsg" style="display:none; font-size:0.75rem; color:#b01d2e; margin-top:0.3rem;">Please enter your name.</span>
+          </div>
+
+          <div class="form-group-row">
+            <label class="form-field-label">Will you attend? *</label>
+            <div class="attendance-radios-grid">
+              <label class="attendance-radio-item">
+                <input type="radio" name="attendanceChoice" value="joyfully" required />
+                <span>Joyfully Accepts</span>
+              </label>
+              <label class="attendance-radio-item">
+                <input type="radio" name="attendanceChoice" value="regretfully" required />
+                <span>Regretfully Declines</span>
+              </label>
+            </div>
+            <span id="attendErrorMsg" style="display:none; font-size:0.75rem; color:#b01d2e; margin-top:0.3rem;">Please indicate attendance.</span>
+          </div>
+
+          <div id="attendingDetailsContainer">
+            <div class="form-group-row">
+              <label for="guestCountDropdown" class="form-field-label">Number of Guests (including yourself)</label>
+              <select id="guestCountDropdown" class="form-select-ewed">
+                <option value="1">1 Guest (Just me)</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+              </select>
+            </div>
+
+            <div class="form-group-row">
+              <label for="dietaryInputBox" class="form-field-label">Dietary Requirements (Optional)</label>
+              <input type="text" id="dietaryInputBox" class="form-input-ewed" placeholder="e.g. Vegetarian, Halal, Nut allergy, None" />
+            </div>
+
+            <div id="dynamicExtraGuestsBox" style="display:none; margin-bottom:1.4rem;"></div>
+          </div>
+
+          <div class="form-group-row">
+            <label for="wishTextBox" class="form-field-label">Leave a Blessing or Message for Rishen &amp; Lizaan</label>
+            <textarea id="wishTextBox" rows="3" class="form-textarea-ewed" placeholder="Write your heartfelt wishes..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit-rsvp-main">
+            Send RSVP &amp; Post Wishes
+          </button>
+        </form>
+
+      </div>
+
+      <!-- Live Wishes Wall -->
+      <div class="wishes-wall-section">
+        <div class="wishes-title-header">
+          <div style="font-size:1.4rem; color:var(--champagne); margin-bottom:0.2rem;">💌</div>
+          <h3>Wishes &amp; Blessings</h3>
+          <p style="font-size:0.8rem; color:var(--eucalyptus); letter-spacing:0.1em; text-transform:uppercase;">From Loved Ones</p>
+        </div>
+
+        <div class="wishes-scroll-box" id="wishesScrollList">
+          <div class="wish-bubble-item">
+            <div class="wish-author-name">Family &amp; Friends</div>
+            <p class="wish-message-quote">“May your love story continue to grow more beautiful every single day. Wishing you a lifetime of joy, laughter, and blessings!”</p>
+          </div>
+          <div class="wish-bubble-item">
+            <div class="wish-author-name">Aunty &amp; Uncle</div>
+            <p class="wish-message-quote">“We cannot wait to celebrate with you both under the Cape Winelands stars! God bless your union.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. CLOSING KEEPSAKE & FOOTER -->
+    <footer>
+      <div class="footer-flourish">❦</div>
+      <div class="footer-couple-names">Rishen &amp; Lizaan</div>
+      <div class="footer-date-tag">24 October 2026 &nbsp;&middot;&nbsp; Highberry Vineyards</div>
+      <p class="footer-script-signature">With all our love ♡</p>
+    </footer>
+
+  </div>
+
+  <!-- ============================================================
+       SCRIPTS: ENVELOPE OPENING, AUDIO, COUNTDOWN, ACCORDION, RSVP
   ============================================================ */ -->
   <script>
   'use strict';
 
-  // 1. Digital Invitation Cover Experience
-  const coverElem   = document.getElementById('invitation-cover');
-  const openCoverBtn = document.getElementById('btnOpenCover');
-  const skipCoverBtn = document.getElementById('btnSkipIntro');
+  // 1. Envelope Tap-to-Open Experience
+  const envScreen = document.getElementById('envelope-screen');
+  const openSeal  = document.getElementById('openEnvelopeBtn');
+  const audioEl   = document.getElementById('weddingBgmAudio');
+  const musicBtn  = document.getElementById('musicToggleBtn');
 
-  function dismissCover() {
-    if (!coverElem) return;
-    coverElem.classList.add('opened');
-    sessionStorage.setItem('rl_invitation_unveiled', 'true');
-  }
-
-  if (openCoverBtn) openCoverBtn.addEventListener('click', dismissCover);
-  if (skipCoverBtn) skipCoverBtn.addEventListener('click', dismissCover);
-
-  if (sessionStorage.getItem('rl_invitation_unveiled') === 'true') {
-    if (coverElem) coverElem.classList.add('opened');
-  }
-
-  // 2. Navigation Scroll & Overlay Menu
-  const siteNav       = document.getElementById('site-nav');
-  const navToggleBtn  = document.getElementById('navToggleBtn');
-  const navOverlay    = document.getElementById('navOverlaySheet');
-
-  window.addEventListener('scroll', () => {
-    if (siteNav) siteNav.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  if (navToggleBtn && navOverlay) {
-    navToggleBtn.addEventListener('click', () => {
-      const isOpen = navOverlay.classList.toggle('open');
-      navToggleBtn.classList.toggle('active', isOpen);
-      navToggleBtn.setAttribute('aria-expanded', isOpen);
-      navOverlay.setAttribute('aria-hidden', !isOpen);
-    });
-
-    navOverlay.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navOverlay.classList.remove('open');
-        navToggleBtn.classList.remove('active');
-        navToggleBtn.setAttribute('aria-expanded', 'false');
-        navOverlay.setAttribute('aria-hidden', 'true');
+  function openEnvelope() {
+    if (envScreen) envScreen.classList.add('opened');
+    sessionStorage.setItem('rl_env_opened_v2', 'true');
+    // Start romantic background music
+    if (audioEl) {
+      audioEl.play().then(() => {
+        if (musicBtn) musicBtn.classList.add('playing');
+      }).catch(() => {
+        // Fallback for browser autoplay policies
       });
-    });
+    }
   }
 
-  // 3. Smooth Scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+  if (openSeal) openSeal.addEventListener('click', openEnvelope);
+  if (sessionStorage.getItem('rl_env_opened_v2') === 'true') {
+    if (envScreen) envScreen.classList.add('opened');
+  }
+
+  // 2. Music Player Control
+  if (musicBtn && audioEl) {
+    musicBtn.addEventListener('click', () => {
+      if (audioEl.paused) {
+        audioEl.play();
+        musicBtn.classList.add('playing');
+      } else {
+        audioEl.pause();
+        musicBtn.classList.remove('playing');
       }
     });
-  });
-
-  // 4. Scroll Reveal Observer
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.reveal-elem').forEach(el => observer.observe(el));
-  } else {
-    document.querySelectorAll('.reveal-elem').forEach(el => el.classList.add('revealed'));
   }
 
-  // 5. Real-Time Fine Numeral Countdown
+  // 3. Active Nav on Scroll
+  const navSections = document.querySelectorAll('section, header');
+  const navItems = document.querySelectorAll('.bottom-nav-item');
+
+  window.addEventListener('scroll', () => {
+    let currentId = '';
+    navSections.forEach(sec => {
+      const top = sec.offsetTop - 160;
+      if (window.scrollY >= top) currentId = sec.getAttribute('id');
+    });
+
+    navItems.forEach(item => {
+      item.classList.remove('active');
+      if (item.getAttribute('href') === '#' + currentId) {
+        item.classList.add('active');
+      }
+    });
+  }, { passive: true });
+
+  // 4. Real-Time Countdown
   const TARGET_DATE = new Date('2026-10-24T14:30:00+02:00');
-
   function updateCountdown() {
-    const cdContainer = document.getElementById('countdownContainer');
-    if (!cdContainer) return;
-
     const diff = TARGET_DATE - new Date();
+    const box = document.getElementById('heroCountdown');
+    if (!box) return;
 
     if (diff <= 0) {
-      cdContainer.innerHTML = '<p style="font-family:var(--font-serif); font-size:1.5rem; color:var(--burgundy); font-style:italic;">Today is the day. With full hearts, thank you for being here.</p>';
+      box.innerHTML = '<p style="font-family:var(--font-serif); font-size:1.4rem; color:var(--burgundy); font-style:italic;">Today is the day! 🤍</p>';
       return;
     }
 
@@ -1960,126 +1477,133 @@
       const el = document.getElementById(id);
       if (el) el.textContent = String(val).padStart(2, '0');
     };
-
     set('cdDays', d); set('cdHours', h); set('cdMins', m); set('cdSecs', s);
   }
-
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 6. Before the Day Accordion Guidance
-  ['Wear', 'Arrival', 'Rsvp'].forEach(k => {
-    const btn   = document.getElementById('btn' + k + 'Faq');
-    const panel = document.getElementById('body' + k + 'Faq');
-    if (btn && panel) {
+  // 5. Accordion Logic
+  ['1', '2', '3'].forEach(n => {
+    const btn = document.getElementById('btnAcc' + n);
+    const pnl = document.getElementById('panelAcc' + n);
+    if (btn && pnl) {
       btn.addEventListener('click', () => {
-        const isClosed = panel.style.display === 'none' || panel.style.display === '';
-        const arrow = btn.querySelector('.guidance-arrow');
-        if (isClosed) {
-          panel.style.display = 'block';
-          if (arrow) arrow.textContent = '▾';
-          btn.setAttribute('aria-expanded', 'true');
-        } else {
-          panel.style.display = 'none';
-          if (arrow) arrow.textContent = '▸';
-          btn.setAttribute('aria-expanded', 'false');
-        }
+        const isClosed = pnl.style.display === 'none';
+        const arr = btn.querySelector('.acc-arrow-icon');
+        pnl.style.display = isClosed ? 'block' : 'none';
+        if (arr) arr.textContent = isClosed ? '▾' : '▸';
       });
     }
   });
 
-  // 7. Dynamic RSVP Form Handler
-  const rsvpForm       = document.getElementById('rsvpStationeryForm');
-  const rsvpFeedback   = document.getElementById('rsvpFeedbackBox');
-  const guestSelect    = document.getElementById('rsvpGuestCount');
-  const extraCont      = document.getElementById('extraGuestNamesContainer');
-  const acceptGroup    = document.getElementById('attendingGuestsDetailsGroup');
-  const attendRadios   = document.querySelectorAll('input[name="attendanceOption"]');
+  // 6. Dynamic Extra Guests Fields
+  const guestDropdown = document.getElementById('guestCountDropdown');
+  const dynamicExtraBox = document.getElementById('dynamicExtraGuestsBox');
+  const detailsGroup = document.getElementById('attendingDetailsContainer');
+  const choiceRadios = document.querySelectorAll('input[name="attendanceChoice"]');
 
-  if (attendRadios) {
-    attendRadios.forEach(radio => {
+  if (choiceRadios) {
+    choiceRadios.forEach(radio => {
       radio.addEventListener('change', () => {
         if (radio.value === 'regretfully') {
-          if (acceptGroup) acceptGroup.style.display = 'none';
+          if (detailsGroup) detailsGroup.style.display = 'none';
         } else {
-          if (acceptGroup) acceptGroup.style.display = 'block';
+          if (detailsGroup) detailsGroup.style.display = 'block';
         }
       });
     });
   }
 
-  function renderExtraGuestInputs() {
-    if (!guestSelect || !extraCont) return;
-    const count = parseInt(guestSelect.value, 10) || 1;
-    extraCont.innerHTML = '';
+  function updateDynamicGuestFields() {
+    if (!guestDropdown || !dynamicExtraBox) return;
+    const count = parseInt(guestDropdown.value, 10) || 1;
+    dynamicExtraBox.innerHTML = '';
 
     if (count > 1) {
-      extraCont.style.display = 'block';
+      dynamicExtraBox.style.display = 'block';
       for (let i = 2; i <= count; i++) {
         const row = document.createElement('div');
-        row.style.cssText = 'padding:1.1rem; margin-top:1.1rem; background:var(--parchment); border-radius:1px;';
+        row.style.cssText = 'padding:0.9rem; margin-top:0.8rem; background:var(--parchment); border-radius:8px;';
         row.innerHTML = `
-          <div style="font-family:var(--font-serif); font-size:1.1rem; color:var(--burgundy); margin-bottom:0.7rem;">Guest ${i}</div>
-          <div class="form-row" style="margin-bottom:0.8rem;">
-            <label class="form-label">Full Name</label>
-            <input type="text" class="form-input-box" name="guest_${i}_name" placeholder="Guest ${i}'s full name" style="padding:0.75rem 0.9rem;" />
+          <div style="font-family:var(--font-serif); font-size:1.05rem; color:var(--burgundy); margin-bottom:0.4rem;">Guest ${i}</div>
+          <div class="form-group-row" style="margin-bottom:0.6rem;">
+            <label class="form-field-label">Full Name</label>
+            <input type="text" class="form-input-ewed" name="guest_${i}_name" placeholder="Guest ${i}'s name" style="padding:0.75rem 0.9rem;" />
           </div>
-          <div class="form-row" style="margin-bottom:0;">
-            <label class="form-label">Dietary Requirements (Optional)</label>
-            <input type="text" class="form-input-box" name="guest_${i}_dietary" placeholder="e.g. Vegetarian, Halal, None" style="padding:0.75rem 0.9rem;" />
+          <div class="form-group-row" style="margin-bottom:0;">
+            <label class="form-field-label">Dietary Requirements (Optional)</label>
+            <input type="text" class="form-input-ewed" name="guest_${i}_dietary" placeholder="e.g. Vegetarian, Halal, None" style="padding:0.75rem 0.9rem;" />
           </div>
         `;
-        extraCont.appendChild(row);
+        dynamicExtraBox.appendChild(row);
       }
     } else {
-      extraCont.style.display = 'none';
+      dynamicExtraBox.style.display = 'none';
     }
   }
 
-  if (guestSelect) guestSelect.addEventListener('change', renderExtraGuestInputs);
+  if (guestDropdown) guestDropdown.addEventListener('change', updateDynamicGuestFields);
 
-  if (rsvpForm) {
-    rsvpForm.addEventListener('submit', e => {
+  // 7. RSVP Submit & Live Wishes Wall
+  const rsvpFormEl = document.getElementById('rsvpForm');
+  const successBox = document.getElementById('rsvpSuccessBox');
+  const wishesList = document.getElementById('wishesScrollList');
+
+  if (rsvpFormEl) {
+    rsvpFormEl.addEventListener('submit', e => {
       e.preventDefault();
       let isValid = true;
 
-      const nameInput   = document.getElementById('rsvpFullName');
-      const nameError   = document.getElementById('nameValidationError');
-      const attendInput = document.querySelector('input[name="attendanceOption"]:checked');
-      const attendError = document.getElementById('attendValidationError');
+      const nameInput = document.getElementById('guestFullNameInput');
+      const nameErr   = document.getElementById('nameErrorMsg');
+      const attendIn  = document.querySelector('input[name="attendanceChoice"]:checked');
+      const attendErr = document.getElementById('attendErrorMsg');
+      const wishInput = document.getElementById('wishTextBox');
 
       if (!nameInput || !nameInput.value.trim()) {
-        if (nameError) nameError.style.display = 'block';
+        if (nameErr) nameErr.style.display = 'block';
         isValid = false;
       } else {
-        if (nameError) nameError.style.display = 'none';
+        if (nameErr) nameErr.style.display = 'none';
       }
 
-      if (!attendInput) {
-        if (attendError) attendError.style.display = 'block';
+      if (!attendIn) {
+        if (attendErr) attendErr.style.display = 'block';
         isValid = false;
       } else {
-        if (attendError) attendError.style.display = 'none';
+        if (attendErr) attendErr.style.display = 'none';
       }
 
       if (!isValid) return;
 
-      const firstName     = nameInput.value.trim().split(' ')[0] || 'Friend';
-      const feedbackTitle = document.getElementById('feedbackPersonTitle');
-      const feedbackMsg   = document.getElementById('feedbackPersonMessage');
+      const fullName = nameInput.value.trim();
+      const firstName = fullName.split(' ')[0] || 'Friend';
+      const successName = document.getElementById('rsvpSuccessName');
+      const successMsg  = document.getElementById('rsvpSuccessMsg');
 
-      if (attendInput.value === 'joyfully') {
-        if (feedbackTitle) feedbackTitle.textContent = `We can't wait to celebrate with you, ${firstName}! 🤍`;
-        if (feedbackMsg) feedbackMsg.textContent = 'Your RSVP has been lovingly received. Having you with us among the vines means the world to us as we begin this new chapter together.';
+      if (attendIn.value === 'joyfully') {
+        if (successName) successName.textContent = `We can't wait to celebrate with you, ${firstName}! 🤍`;
+        if (successMsg) successMsg.textContent = 'Your RSVP has been lovingly received. Having you with us among the vines means everything to us!';
       } else {
-        if (feedbackTitle) feedbackTitle.textContent = `With so much love, ${firstName} 🤍`;
-        if (feedbackMsg) feedbackMsg.textContent = 'Thank you for letting us know. You will be dearly missed on our special day, but you will remain in our hearts as we say forever.';
+        if (successName) successName.textContent = `With so much love, ${firstName} 🤍`;
+        if (successMsg) successMsg.textContent = 'Thank you for letting us know. You will be dearly missed on our special day!';
       }
 
-      rsvpForm.style.display = 'none';
-      if (rsvpFeedback) {
-        rsvpFeedback.style.display = 'block';
-        rsvpFeedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Add to live wishes wall
+      if (wishInput && wishInput.value.trim() && wishesList) {
+        const bubble = document.createElement('div');
+        bubble.className = 'wish-bubble-item';
+        bubble.innerHTML = `
+          <div class="wish-author-name">${fullName}</div>
+          <p class="wish-message-quote">“${wishInput.value.trim()}”</p>
+        `;
+        wishesList.insertBefore(bubble, wishesList.firstChild);
+      }
+
+      rsvpFormEl.style.display = 'none';
+      if (successBox) {
+        successBox.style.display = 'block';
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
   }
