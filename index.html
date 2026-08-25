@@ -822,7 +822,7 @@
     }
 
     /* ============================================================
-       6. THE GATHERING (MUTED SAGE VINEYARD BACKGROUND)
+       6. THE GATHERING
     ============================================================ */
     #celebration {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -1273,11 +1273,20 @@
       cursor: pointer;
       transition: all 0.35s var(--ease-silk);
       box-shadow: 0 8px 24px rgba(110, 42, 49, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
     }
     .btn-submit-rsvp:hover {
       background: var(--oxblood);
       transform: translateY(-2px);
       box-shadow: 0 12px 30px rgba(110, 42, 49, 0.35);
+    }
+    .btn-submit-rsvp:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
     }
 
     .rsvp-success-feedback {
@@ -1293,7 +1302,7 @@
       background: var(--oxblood);
       color: rgba(251, 247, 240, 0.75);
       text-align: center;
-      padding: 6rem 1.5rem 5rem;
+      padding: 6rem 1.5rem 4rem;
       position: relative;
     }
     .keepsake-names {
@@ -1315,6 +1324,20 @@
     .keepsake-sign {
       font-family: var(--font-script);
       font-size: 2.2rem;
+      color: var(--champagne);
+      margin-bottom: 2rem;
+    }
+
+    .dashboard-link-footer {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(231, 217, 190, 0.45);
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+    .dashboard-link-footer:hover {
       color: var(--champagne);
     }
 
@@ -1488,6 +1511,7 @@
       <a href="#atmosphere">Atmosphere</a>
       <a href="#venue">Venue &amp; Lodging</a>
       <a href="#rsvp">RSVP</a>
+      <a href="dashboard.html" style="font-size:1.4rem; color:var(--gold); margin-top:1rem;">Live RSVP Dashboard ↗</a>
     </div>
   </header>
 
@@ -1937,8 +1961,9 @@
               <textarea id="guestWishesTextarea" name="guestWishesTextarea" rows="3" class="form-textarea" placeholder="Share warm wishes, blessings, or a personal note..."></textarea>
             </div>
 
-            <button type="submit" class="btn-submit-rsvp">
-              Send Response
+            <button type="submit" class="btn-submit-rsvp" id="rsvpSubmitBtn">
+              <span id="rsvpBtnText">Send Response</span>
+              <span id="rsvpBtnSpinner" style="display:none;">Sending...</span>
             </button>
             
           </form>
@@ -1957,6 +1982,10 @@
     <div class="keepsake-names">Rishen &amp; Lizaan</div>
     <p class="keepsake-quote">“Our greatest adventure is just beginning.”</p>
     <p class="keepsake-sign">With all our love ♡</p>
+
+    <div>
+      <a href="dashboard.html" class="dashboard-link-footer">Live RSVP Dashboard ↗</a>
+    </div>
   </footer>
 
   <!-- ============================================================
@@ -1964,6 +1993,10 @@
   ============================================================ */ -->
   <script>
   'use strict';
+
+  // GOOGLE APPS SCRIPT WEB APP BACKEND URL
+  // You can set your deployed Apps Script Web App URL below:
+  var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz_placeholder/exec';
 
   // 1. Ambient Stardust Canvas Particles
   const canvas = document.getElementById('ambientStardustCanvas');
@@ -2043,13 +2076,13 @@
 
     setTimeout(() => {
       gatefoldOverlay.classList.add('opened');
-      sessionStorage.setItem('rl_invitation_butterfly_v6', 'true');
+      sessionStorage.setItem('rl_invitation_butterfly_v7', 'true');
     }, 750);
   }
 
   if (butterflyTrigger) butterflyTrigger.addEventListener('click', launchButterflyUnboxing);
 
-  if (sessionStorage.getItem('rl_invitation_butterfly_v6') === 'true') {
+  if (sessionStorage.getItem('rl_invitation_butterfly_v7') === 'true') {
     if (gatefoldOverlay) gatefoldOverlay.classList.add('opened');
   }
 
@@ -2141,13 +2174,16 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 8. Dynamic RSVP Form Handler with Short, Heartfelt & Sincere Confirmation
+  // 8. Dynamic RSVP Form Handler with Google Sheets Persistence
   const rsvpFormNode    = document.getElementById('rsvpFormElement');
   const rsvpFeedbackBox = document.getElementById('rsvpFeedbackSuccess');
   const guestSelectEl   = document.getElementById('guestQuantitySelect');
   const extraRowsBox    = document.getElementById('additionalGuestInputRows');
   const acceptGroupEl   = document.getElementById('attendingGuestsDetailsGroup');
   const attendRadios    = document.querySelectorAll('input[name="attendanceStatusRadio"]');
+  const submitBtn       = document.getElementById('rsvpSubmitBtn');
+  const btnTextEl       = document.getElementById('rsvpBtnText');
+  const btnSpinnerEl    = document.getElementById('rsvpBtnSpinner');
 
   if (attendRadios) {
     attendRadios.forEach(radio => {
@@ -2192,7 +2228,7 @@
   if (guestSelectEl) guestSelectEl.addEventListener('change', renderExtraGuestFields);
 
   if (rsvpFormNode) {
-    rsvpFormNode.addEventListener('submit', e => {
+    rsvpFormNode.addEventListener('submit', function(e) {
       e.preventDefault();
       let isValid = true;
 
@@ -2222,22 +2258,76 @@
       const feedbackTitle = document.getElementById('feedbackPersonName');
       const feedbackMsg   = document.getElementById('feedbackPersonalMessage');
       const feedbackSign  = document.getElementById('feedbackSignOff');
+      const isAttending   = attendInput.value === 'joyfully';
+      const count         = isAttending ? (parseInt(guestSelectEl.value, 10) || 1) : 0;
+      const dietaryNotes  = document.getElementById('guestDietaryNotesInput') ? document.getElementById('guestDietaryNotesInput').value.trim() : '';
+      const wishesMsg     = document.getElementById('guestWishesTextarea') ? document.getElementById('guestWishesTextarea').value.trim() : '';
 
-      if (attendInput.value === 'joyfully') {
-        if (feedbackTitle) feedbackTitle.textContent = `We can’t wait to celebrate with you, ${firstName}!`;
-        if (feedbackMsg) feedbackMsg.textContent = 'Thank you from the bottom of our hearts. Having you with us as we exchange our vows means the absolute world to us. We look forward to sharing this unforgettable day and making beautiful memories together.';
-        if (feedbackSign) feedbackSign.textContent = 'With all our love, Rishen & Lizaan';
-      } else {
-        if (feedbackTitle) feedbackTitle.textContent = `Sending you so much love, ${firstName}.`;
-        if (feedbackMsg) feedbackMsg.textContent = 'Thank you so much for letting us know. You will be dearly missed on our special day, but we carry your love, prayers, and warm blessings with us into this new chapter.';
-        if (feedbackSign) feedbackSign.textContent = 'With all our love, Rishen & Lizaan';
+      // Build payload
+      const payload = {
+        primaryName: fullName,
+        attendance: isAttending ? "Yes, I'll be there" : "No, unfortunately I can't attend",
+        guestCount: count,
+        dietary: dietaryNotes,
+        message: wishesMsg,
+        guests: [{
+          name: fullName,
+          dietary: dietaryNotes || "No special requirements"
+        }]
+      };
+
+      if (isAttending && count > 1) {
+        for (let i = 2; i <= count; i++) {
+          const gNameInput = document.querySelector(`input[name="guest_${i}_name"]`);
+          const gDietInput = document.querySelector(`input[name="guest_${i}_dietary"]`);
+          payload.guests.push({
+            name: gNameInput ? gNameInput.value.trim() : `Guest ${i}`,
+            dietary: gDietInput ? gDietInput.value.trim() : "No special requirements"
+          });
+        }
       }
 
-      rsvpFormNode.style.display = 'none';
-      if (rsvpFeedbackBox) {
-        rsvpFeedbackBox.style.display = 'block';
-        rsvpFeedbackBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Save locally as reliable backup
+      try {
+        const saved = JSON.parse(localStorage.getItem('rl_saved_rsvps') || '[]');
+        saved.push({ ...payload, timestamp: new Date().toISOString() });
+        localStorage.setItem('rl_saved_rsvps', JSON.stringify(saved));
+      } catch(err) {}
+
+      // UI Submitting state
+      if (submitBtn) submitBtn.disabled = true;
+      if (btnTextEl) btnTextEl.style.display = 'none';
+      if (btnSpinnerEl) btnSpinnerEl.style.display = 'inline';
+
+      // Send to Google Apps Script Web App
+      if (GOOGLE_APPS_SCRIPT_URL && GOOGLE_APPS_SCRIPT_URL.indexOf('placeholder') === -1) {
+        fetch(GOOGLE_APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
       }
+
+      // Display Heartfelt Confirmation
+      setTimeout(function() {
+        if (isAttending) {
+          if (feedbackTitle) feedbackTitle.textContent = `We can’t wait to celebrate with you, ${firstName}!`;
+          if (feedbackMsg) feedbackMsg.textContent = 'Thank you from the bottom of our hearts. Having you with us as we exchange our vows means the absolute world to us. We look forward to sharing this unforgettable day and making beautiful memories together.';
+          if (feedbackSign) feedbackSign.textContent = 'With all our love, Rishen & Lizaan';
+        } else {
+          if (feedbackTitle) feedbackTitle.textContent = `Sending you so much love, ${firstName}.`;
+          if (feedbackMsg) feedbackMsg.textContent = 'Thank you so much for letting us know. You will be dearly missed on our special day, but we carry your love, prayers, and warm blessings with us into this new chapter.';
+          if (feedbackSign) feedbackSign.textContent = 'With all our love, Rishen & Lizaan';
+        }
+
+        rsvpFormNode.style.display = 'none';
+        if (rsvpFeedbackBox) {
+          rsvpFeedbackBox.style.display = 'block';
+          rsvpFeedbackBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 600);
+
     });
   }
   </script>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Live RSVP Dashboard — Rishen &amp; Lizaan</title>
+
+  <!-- Typography matching invitation -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..700;1,9..144,200..600&family=Jost:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --burgundy:         #6E2A31;
+      --oxblood:          #431A1F;
+      --burgundy-rich:    #4D161D;
+      --burgundy-night:   #150305;
+      --parchment-light:  #F4EFE6;
+      --parchment:        #EFE7DA;
+      --ivory:            #FDFBF7;
+      --champagne:        #E7D9BE;
+      --sage:             #7C8B6F;
+      --sage-dark:        #3D4A36;
+      --ink:              #26201B;
+      --ink-soft:         #544A41;
+      --ink-muted:        #857A70;
+      --gold:             #D4AF37;
+      --green-attending:  #2E7D32;
+      --red-declined:     #8C2630;
+      
+      --font-serif:       'Fraunces', Georgia, serif;
+      --font-sans:        'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-script:      'Pinyon Script', cursive;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--parchment-light);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Burgundy Header */
+    .dashboard-top-nav {
+      background: var(--oxblood);
+      color: var(--ivory);
+      padding: 1.1rem clamp(1.2rem, 4vw, 3rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .brand-monogram {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      letter-spacing: 0.08em;
+      color: var(--champagne);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .brand-monogram span {
+      font-family: var(--font-script);
+      font-size: 1.8rem;
+      color: var(--sage);
+    }
+    .back-to-site-link {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: color 0.25s, transform 0.25s;
+    }
+    .back-to-site-link:hover {
+      color: var(--ivory);
+      transform: translateX(-3px);
+    }
+
+    /* Main Container */
+    .dashboard-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 3.5rem) clamp(1.2rem, 4vw, 2.5rem);
+    }
+
+    /* Editorial Headline */
+    .dashboard-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .dashboard-title-serif {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 400;
+      color: var(--oxblood);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .dashboard-title-serif em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--burgundy-soft);
+    }
+    .dashboard-subtitle {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      margin-top: 0.6rem;
+      margin-bottom: 1.8rem;
+    }
+
+    /* Action Controls */
+    .dashboard-actions-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .btn-refresh {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.75rem 1.6rem;
+      background: var(--ivory);
+      border: 1px solid rgba(110, 42, 49, 0.35);
+      border-radius: 1px;
+      color: var(--burgundy);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: all 0.25s;
+    }
+    .btn-refresh:hover {
+      background: var(--burgundy);
+      color: var(--ivory);
+      border-color: var(--burgundy);
+    }
+    .btn-refresh.spinning svg {
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .btn-google-sheet-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      background: transparent;
+      color: var(--ink-soft);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .btn-google-sheet-link:hover {
+      color: var(--burgundy);
+    }
+
+    .sync-time-stamp {
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+    }
+
+    /* Metric Summary Grid */
+    .metric-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(110, 42, 49, 0.15);
+      border: 1px solid rgba(110, 42, 49, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 2.8rem;
+    }
+    @media (max-width: 768px) {
+      .metric-summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .metric-cell-card {
+      background: var(--ivory);
+      padding: clamp(1.4rem, 3vw, 2rem) 1.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .metric-big-numeral {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 400;
+      color: var(--burgundy);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .metric-label-caps {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    /* Search & Filter Bar */
+    .search-filter-box {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+      flex-wrap: wrap;
+    }
+    .search-input-field {
+      flex: 1;
+      min-width: 240px;
+      padding: 0.8rem 1.1rem;
+      background: var(--ivory);
+      border: 1px solid rgba(110, 42, 49, 0.25);
+      border-radius: 1px;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.25s;
+    }
+    .search-input-field:focus {
+      border-color: var(--burgundy);
+    }
+    .filter-select-field {
+      padding: 0.8rem 1.1rem;
+      background: var(--ivory);
+      border: 1px solid rgba(110, 42, 49, 0.25);
+      border-radius: 1px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: var(--ink);
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Guest Responses List Cards */
+    .guest-responses-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .guest-card-editorial {
+      background: var(--ivory);
+      border: 1px solid rgba(110, 42, 49, 0.15);
+      border-radius: 2px;
+      padding: clamp(1.8rem, 4vw, 2.5rem);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      row-gap: 1.1rem;
+      column-gap: 1.5rem;
+      align-items: baseline;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .guest-card-editorial:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 680px) {
+      .guest-card-editorial {
+        grid-template-columns: 1fr;
+        row-gap: 0.4rem;
+      }
+    }
+
+    .card-meta-label {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    .guest-name-heading {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+      font-weight: 400;
+      color: var(--oxblood);
+      line-height: 1.15;
+    }
+
+    .status-badge-outline {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid currentColor;
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 1px;
+    }
+    .status-badge-outline.attending {
+      color: var(--green-attending);
+      border-color: rgba(46, 125, 50, 0.4);
+      background: rgba(46, 125, 50, 0.04);
+    }
+    .status-badge-outline.declined {
+      color: var(--red-declined);
+      border-color: rgba(140, 38, 48, 0.4);
+      background: rgba(140, 38, 48, 0.04);
+    }
+
+    .card-val-text {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+    .card-message-quote {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+      padding-left: 0.85rem;
+      border-left: 2px solid var(--champagne);
+    }
+
+    .loading-state-banner {
+      text-align: center;
+      padding: 4rem 1rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--burgundy);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Burgundy Nav Bar -->
+  <header>
+    <nav class="dashboard-top-nav" aria-label="Dashboard Top Navigation">
+      <a href="index.html" class="brand-monogram">
+        R<span>&amp;</span>L
+      </a>
+      <a href="index.html" class="back-to-site-link">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M13 8H3M7 4L3 8l4 4"/>
+        </svg>
+        <span>Back to Invitation</span>
+      </a>
+    </nav>
+  </header>
+
+  <main class="dashboard-wrapper">
+    
+    <span class="dashboard-eyebrow">Google Sheets Overview</span>
+    <h1 class="dashboard-title-serif">Every response, <em>in one place.</em></h1>
+    <p class="dashboard-subtitle">Live totals and guest details from the wedding RSVP sheet.</p>
+
+    <!-- Actions Bar -->
+    <div class="dashboard-actions-bar">
+      <button type="button" class="btn-refresh" id="refreshDataBtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M23 4v6h-6M1 20v-6h6"/>
+          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+        </svg>
+        <span>Refresh Now</span>
+      </button>
+
+      <a href="https://docs.google.com/spreadsheets/d/1b0m89-RZq79QvfhU3DkczC4Y262kbVvcO9WUVlQcCL4/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-google-sheet-link">
+        <span>Open in Google Sheets ↗</span>
+      </a>
+
+      <span class="sync-time-stamp" id="lastSyncTimeLabel">Synced just now</span>
+    </div>
+
+    <!-- Live Metric Summary Cards (Matching Attached Design) -->
+    <div class="metric-summary-grid" id="metricsGrid">
+      <div class="metric-cell-card">
+        <span class="metric-big-numeral" id="statTotalRsvps">--</span>
+        <span class="metric-label-caps">Total RSVPs</span>
+      </div>
+      <div class="metric-cell-card">
+        <span class="metric-big-numeral" id="statAttending">--</span>
+        <span class="metric-label-caps">Attending</span>
+      </div>
+      <div class="metric-cell-card">
+        <span class="metric-big-numeral" id="statDeclined">--</span>
+        <span class="metric-label-caps">Declined</span>
+      </div>
+      <div class="metric-cell-card">
+        <span class="metric-big-numeral" id="statAwaiting">0</span>
+        <span class="metric-label-caps">Awaiting RSVP</span>
+      </div>
+      <div class="metric-cell-card">
+        <span class="metric-big-numeral" id="statTotalGuests">--</span>
+        <span class="metric-label-caps">Total Guests</span>
+      </div>
+      <div class="metric-cell-card">
+        <span class="metric-big-numeral" id="statVegetarian">0</span>
+        <span class="metric-label-caps">Vegetarian</span>
+      </div>
+      <div class="metric-cell-card">
+        <span class="metric-big-numeral" id="statVegan">0</span>
+        <span class="metric-label-caps">Vegan</span>
+      </div>
+      <div class="metric-cell-card">
+        <span class="metric-big-numeral" id="statOtherDietary">0</span>
+        <span class="metric-label-caps">Other Dietary</span>
+      </div>
+    </div>
+
+    <!-- Search & Filters -->
+    <div class="search-filter-box">
+      <input type="text" id="guestSearchInput" class="search-input-field" placeholder="Search by guest name or message..." />
+      <select id="statusFilterSelect" class="filter-select-field">
+        <option value="all">All Statuses</option>
+        <option value="attending">Attending Only</option>
+        <option value="declined">Declined Only</option>
+      </select>
+    </div>
+
+    <!-- Guest Cards List -->
+    <div class="guest-responses-stack" id="guestCardsContainer">
+      <div class="loading-state-banner">Loading live responses from Google Sheets...</div>
+    </div>
+
+  </main>
+
+  <script>
+  'use strict';
+
+  var SHEET_ID = '1b0m89-RZq79QvfhU3DkczC4Y262kbVvcO9WUVlQcCL4';
+  var CSV_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/export?format=csv';
+
+  var allResponses = [];
+
+  function parseCSV(text) {
+    var lines = [];
+    var row = [];
+    var inQuotes = false;
+    var currentStr = '';
+
+    for (var i = 0; i < text.length; i++) {
+      var c = text[i];
+      var next = text[i + 1];
+
+      if (c === '"') {
+        if (inQuotes && next === '"') {
+          currentStr += '"';
+          i++;
+        } else {
+          inQuotes = !inQuotes;
+        }
+      } else if (c === ',' && !inQuotes) {
+        row.push(currentStr.trim());
+        currentStr = '';
+      } else if ((c === '\r' || c === '\n') && !inQuotes) {
+        if (c === '\r' && next === '\n') i++;
+        row.push(currentStr.trim());
+        if (row.length > 1 || row[0] !== '') lines.push(row);
+        row = [];
+        currentStr = '';
+      } else {
+        currentStr += c;
+      }
+    }
+    if (row.length > 0 || currentStr !== '') {
+      row.push(currentStr.trim());
+      lines.push(row);
+    }
+    return lines;
+  }
+
+  function fetchSheetData() {
+    var refreshBtn = document.getElementById('refreshDataBtn');
+    if (refreshBtn) refreshBtn.classList.add('spinning');
+
+    fetch(CSV_URL + '&t=' + Date.now())
+      .then(function(res) {
+        if (!res.ok) throw new Error('Network error');
+        return res.text();
+      })
+      .then(function(csvText) {
+        var rows = parseCSV(csvText);
+        if (rows.length < 2) return;
+
+        var headers = rows[0];
+        allResponses = [];
+
+        for (var i = 1; i < rows.length; i++) {
+          var r = rows[i];
+          if (!r || r.length < 3 || !r[2]) continue;
+
+          var item = {
+            timestamp: r[0] || '',
+            submissionId: r[1] || '',
+            name: r[2] || 'Guest',
+            attendance: r[3] || '',
+            guestCount: parseInt(r[4], 10) || 0,
+            guests: [],
+            dietarySummary: [],
+            message: r[r.length - 1] || ''
+          };
+
+          // Parse individual guests
+          for (var g = 0; g < 5; g++) {
+            var colIdx = 5 + (g * 3);
+            if (colIdx < r.length && r[colIdx]) {
+              var gName = r[colIdx];
+              var gDiet = r[colIdx + 1] || '';
+              var gDietDetail = r[colIdx + 2] || '';
+              item.guests.push(gName);
+              if (gDiet && gDiet !== 'No special requirements' && gDiet !== 'None') {
+                item.dietarySummary.push(gDiet + (gDietDetail ? ' (' + gDietDetail + ')' : ''));
+              }
+            }
+          }
+
+          allResponses.push(item);
+        }
+
+        renderDashboard();
+        var syncTime = document.getElementById('lastSyncTimeLabel');
+        if (syncTime) syncTime.textContent = 'Synced ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      })
+      .catch(function(err) {
+        console.error(err);
+        var container = document.getElementById('guestCardsContainer');
+        if (container && allResponses.length === 0) {
+          container.innerHTML = '<div class="loading-state-banner" style="color:#b01d2e;">Unable to load live sheet directly. Please ensure Google Sheet sharing is set to Anyone with the link.</div>';
+        }
+      })
+      .finally(function() {
+        if (refreshBtn) refreshBtn.classList.remove('spinning');
+      });
+  }
+
+  function renderDashboard() {
+    var totalRsvps = allResponses.length;
+    var attending = 0;
+    var declined = 0;
+    var totalGuests = 0;
+    var vegCount = 0;
+    var veganCount = 0;
+    var otherDietCount = 0;
+
+    allResponses.forEach(function(r) {
+      var isYes = (r.attendance.indexOf("Yes") !== -1 || r.attendance.toLowerCase().indexOf("joyful") !== -1);
+      if (isYes) {
+        attending++;
+        totalGuests += (r.guestCount > 0 ? r.guestCount : 1);
+      } else {
+        declined++;
+      }
+
+      r.dietarySummary.forEach(function(d) {
+        var low = d.toLowerCase();
+        if (low.indexOf('vegetarian') !== -1) vegCount++;
+        else if (low.indexOf('vegan') !== -1) veganCount++;
+        else otherDietCount++;
+      });
+    });
+
+    document.getElementById('statTotalRsvps').textContent = totalRsvps;
+    document.getElementById('statAttending').textContent = attending;
+    document.getElementById('statDeclined').textContent = declined;
+    document.getElementById('statTotalGuests').textContent = totalGuests;
+    document.getElementById('statVegetarian').textContent = vegCount;
+    document.getElementById('statVegan').textContent = veganCount;
+    document.getElementById('statOtherDietary').textContent = otherDietCount;
+
+    filterAndRenderCards();
+  }
+
+  function filterAndRenderCards() {
+    var container = document.getElementById('guestCardsContainer');
+    if (!container) return;
+
+    var searchVal = (document.getElementById('guestSearchInput').value || '').toLowerCase();
+    var filterVal = document.getElementById('statusFilterSelect').value;
+
+    var filtered = allResponses.filter(function(r) {
+      var isYes = (r.attendance.indexOf("Yes") !== -1 || r.attendance.toLowerCase().indexOf("joyful") !== -1);
+      
+      if (filterVal === 'attending' && !isYes) return false;
+      if (filterVal === 'declined' && isYes) return false;
+
+      if (searchVal) {
+        var matchName = r.name.toLowerCase().indexOf(searchVal) !== -1;
+        var matchMsg = r.message.toLowerCase().indexOf(searchVal) !== -1;
+        var matchGuests = r.guests.some(function(g) { return g.toLowerCase().indexOf(searchVal) !== -1; });
+        return matchName || matchMsg || matchGuests;
+      }
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      container.innerHTML = '<div class="loading-state-banner">No guest responses match your filter.</div>';
+      return;
+    }
+
+    var html = '';
+    filtered.forEach(function(r) {
+      var isYes = (r.attendance.indexOf("Yes") !== -1 || r.attendance.toLowerCase().indexOf("joyful") !== -1);
+      var statusBadgeClass = isYes ? 'attending' : 'declined';
+      var statusText = isYes ? "YES, I'LL BE THERE" : "NO, UNFORTUNATELY I CAN'T ATTEND";
+      var guestNamesFormatted = (r.guests.length > 0 && isYes) ? r.guests.join(', ') : '—';
+      var dateFormatted = r.timestamp ? r.timestamp.split(' ')[0] : '—';
+
+      html += '<div class="guest-card-editorial">';
+      
+      // Name
+      html += '<span class="card-meta-label">NAME</span>';
+      html += '<h2 class="guest-name-heading">' + r.name + '</h2>';
+
+      // Status
+      html += '<span class="card-meta-label">STATUS</span>';
+      html += '<div><span class="status-badge-outline ' + statusBadgeClass + '">' + statusText + '</span></div>';
+
+      // Guests count
+      html += '<span class="card-meta-label">GUESTS</span>';
+      html += '<span class="card-val-text">' + (isYes ? r.guestCount : 0) + '</span>';
+
+      // Guest Names
+      html += '<span class="card-meta-label">GUEST NAMES</span>';
+      html += '<span class="card-val-text">' + guestNamesFormatted + '</span>';
+
+      // Message (if present)
+      if (r.message && r.message.trim()) {
+        html += '<span class="card-meta-label">A MESSAGE FOR US</span>';
+        html += '<div class="card-message-quote">' + r.message + '</div>';
+      }
+
+      // Date Submitted
+      html += '<span class="card-meta-label">DATE SUBMITTED</span>';
+      html += '<span class="card-val-text" style="color:var(--ink-muted); font-size:0.85rem;">' + dateFormatted + '</span>';
+
+      html += '</div>';
+    });
+
+    container.innerHTML = html;
+  }
+
+  document.getElementById('refreshDataBtn').addEventListener('click', fetchSheetData);
+  document.getElementById('guestSearchInput').addEventListener('input', filterAndRenderCards);
+  document.getElementById('statusFilterSelect').addEventListener('change', filterAndRenderCards);
+
+  // Initial fetch on page load
+  fetchSheetData();
+  </script>
+</body>
+</html>
