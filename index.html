@@ -630,7 +630,7 @@
       margin: 0 auto;
     }
 
-    .story-title-with-heart {
+    .story-title-header {
       text-align: center;
       margin-bottom: clamp(3rem, 6vw, 4.5rem);
     }
@@ -641,18 +641,6 @@
       color: var(--burgundy);
       line-height: 1.15;
       letter-spacing: -0.01em;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .story-heart-symbol {
-      color: var(--burgundy-soft);
-      font-size: 0.8em;
-      animation: heartGlow 2.5s infinite alternate;
-    }
-    @keyframes heartGlow {
-      from { transform: scale(1); opacity: 0.85; }
-      to { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 2px 8px rgba(110, 42, 49, 0.3)); }
     }
 
     .story-intro-subheading {
@@ -762,7 +750,7 @@
       margin-bottom: 1.6rem;
     }
 
-    /* SCRIPTURE CLIMAX WITH ORGANIC BEATING HEART MOTION */
+    /* SCRIPTURE CLIMAX WITH GENTLE FLOATING MOTION */
     .sacred-scripture-climax {
       margin-top: clamp(4rem, 8vw, 6rem);
       text-align: center;
@@ -802,21 +790,27 @@
       gap: 1.4rem;
     }
 
-    /* Organic Rhythmic Heartbeat Motion */
+    /* Gentle Floating Motion for Burgundy & Sage Heart Emblem */
     .burgundy-sage-heart-emblem {
       width: clamp(44px, 8vw, 54px);
       height: auto;
-      filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.2));
-      animation: heartbeatPulse 1.8s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.25));
+      animation: gentleHeartFloat 4s ease-in-out infinite alternate;
       transform-origin: center center;
     }
-    @keyframes heartbeatPulse {
-      0%   { transform: scale(1); filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.2)); }
-      14%  { transform: scale(1.18); filter: drop-shadow(0 8px 22px rgba(212, 175, 55, 0.6)); }
-      28%  { transform: scale(1.04); filter: drop-shadow(0 4px 14px rgba(110, 42, 49, 0.25)); }
-      42%  { transform: scale(1.22); filter: drop-shadow(0 10px 28px rgba(212, 175, 55, 0.7)); }
-      70%  { transform: scale(1); filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.2)); }
-      100% { transform: scale(1); filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.2)); }
+    @keyframes gentleHeartFloat {
+      0% {
+        transform: translateY(0px) rotate(0deg) scale(1);
+        filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.25));
+      }
+      50% {
+        transform: translateY(-6px) rotate(2deg) scale(1.04);
+        filter: drop-shadow(0 8px 18px rgba(212, 175, 55, 0.4));
+      }
+      100% {
+        transform: translateY(0px) rotate(-2deg) scale(1);
+        filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.25));
+      }
     }
 
     .story-adventure-whisper {
@@ -1122,13 +1116,6 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--sage-dark);
-      margin-bottom: 1.4rem;
-    }
-    .venue-story-paragraph {
-      font-family: var(--font-sans);
-      font-size: 0.96rem;
-      color: var(--ink-soft);
-      line-height: 1.85;
       margin-bottom: 1.8rem;
     }
 
@@ -1296,7 +1283,7 @@
     .rsvp-success-feedback {
       display: none;
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2.5rem 1.2rem;
     }
 
     /* ============================================================
@@ -1548,9 +1535,9 @@
     <section id="story" aria-labelledby="storyHeadingTitle">
       <div class="story-max-container">
         
-        <div class="story-title-with-heart">
+        <div class="story-title-header">
           <h2 class="story-main-heading-serif" id="storyHeadingTitle">
-            Our Story <span class="story-heart-symbol" aria-hidden="true">🤍</span>
+            Our Story
           </h2>
           <p class="story-intro-subheading">
             Some love stories begin with a first conversation. Ours began with a glance.
@@ -1625,7 +1612,7 @@
           </p>
         </div>
 
-        <!-- SCRIPTURE CLIMAX WITH BEATING HEART MOTION -->
+        <!-- SCRIPTURE CLIMAX WITH GENTLE FLOATING MOTION -->
         <div class="sacred-scripture-climax">
           <p class="sacred-scripture-main-verse">
             “Therefore what God has joined together, let no one separate.”
@@ -1633,9 +1620,9 @@
           <span class="sacred-scripture-citation-tag">Matthew 19:6</span>
           
           <div class="story-climax-becoming-forever">
-            <p>And so, what began with a glance, grew through messages, and blossomed into a love we never expected, is becoming forever 🤍.</p>
+            <p>And so, what began with a glance, grew through messages, and blossomed into a love we never expected, is becoming forever.</p>
             
-            <!-- Intertwined Burgundy & Sage Heart Emblem with Organic Heartbeat Motion -->
+            <!-- Intertwined Burgundy & Sage Heart Emblem with Gentle Floating Motion -->
             <svg class="burgundy-sage-heart-emblem" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Burgundy and Sage Heart Monogram">
               <path d="M50 82 C50 82, 12 55, 12 30 C12 16, 23 8, 35 8 C43 8, 48 13, 50 18 C52 13, 57 8, 65 8 C77 8, 88 16, 88 30 C88 55, 50 82, 50 82 Z" fill="url(#burgundyHeartGrad)" stroke="var(--gold)" stroke-width="1.8"/>
               <path d="M50 82 Q30 50 48 24" stroke="var(--sage-dark)" stroke-width="2.5" stroke-linecap="round"/>
@@ -1825,10 +1812,6 @@
           <div class="venue-text-side">
             <h3 class="venue-estate-name">Highberry Vineyards &amp; Venue</h3>
             <p class="venue-location-tagline">Somerset West, Cape Winelands, South Africa</p>
-            
-            <p class="venue-story-paragraph">
-              Nestled against the Hottentots Holland mountain range, Highberry is a boutique vineyard estate known for its breathtaking vistas, manicured lawns, and timeless Cape architectural elegance.
-            </p>
 
             <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;">
               <a href="https://www.google.com/maps/search/Highberry+Vineyards+Somerset+West+South+Africa" target="_blank" rel="noopener noreferrer" class="btn-celebration-burgundy" style="padding:0.85rem 1.6rem; font-size:0.72rem;">
@@ -1902,9 +1885,9 @@
         <div class="rsvp-reply-stationery-envelope">
           
           <div class="rsvp-success-feedback" id="rsvpFeedbackSuccess" aria-live="polite">
-            <div style="font-size:2.6rem; color:var(--burgundy); margin-bottom:0.8rem;">🤍</div>
-            <h3 id="feedbackPersonName" style="font-family:var(--font-serif); font-size:clamp(1.6rem, 3.5vw, 2.2rem); color:var(--burgundy); font-weight:300; margin-bottom:0.8rem;"></h3>
-            <p id="feedbackPersonalMessage" style="font-family:var(--font-serif); font-style:italic; font-size:1.15rem; color:var(--ink-soft); line-height:1.75;"></p>
+            <h3 id="feedbackPersonName" style="font-family:var(--font-serif); font-size:clamp(1.7rem, 3.8vw, 2.4rem); color:var(--burgundy); font-weight:300; margin-bottom:1.2rem; line-height:1.25;"></h3>
+            <p id="feedbackPersonalMessage" style="font-family:var(--font-serif); font-style:italic; font-size:clamp(1.08rem, 2.2vw, 1.25rem); color:var(--ink-soft); line-height:1.85; margin-bottom:1.4rem;"></p>
+            <p id="feedbackSignOff" style="font-family:var(--font-script); font-size:1.85rem; color:var(--burgundy);"></p>
           </div>
 
           <form id="rsvpFormElement" novalidate aria-label="Wedding RSVP Form">
@@ -2049,27 +2032,24 @@
     if (isOpening || !gatefoldOverlay) return;
     isOpening = true;
 
-    // Start 3D slow motion flight animation
     if (butterflyEntity) butterflyEntity.classList.add('flying');
     if (butterflyPrompt) butterflyPrompt.style.opacity = '0';
 
-    // Play Kiss Me Audio soundtrack
     if (romanticAudio) {
       romanticAudio.play().then(() => {
         if (turntableBtn) turntableBtn.classList.add('playing');
       }).catch(() => {});
     }
 
-    // Open velvet gatefold doors smoothly as butterfly ascends
     setTimeout(() => {
       gatefoldOverlay.classList.add('opened');
-      sessionStorage.setItem('rl_invitation_butterfly_v4', 'true');
+      sessionStorage.setItem('rl_invitation_butterfly_v5', 'true');
     }, 750);
   }
 
   if (butterflyTrigger) butterflyTrigger.addEventListener('click', launchButterflyUnboxing);
 
-  if (sessionStorage.getItem('rl_invitation_butterfly_v4') === 'true') {
+  if (sessionStorage.getItem('rl_invitation_butterfly_v5') === 'true') {
     if (gatefoldOverlay) gatefoldOverlay.classList.add('opened');
   }
 
@@ -2161,7 +2141,7 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 8. Dynamic RSVP Form Handler
+  // 8. Dynamic RSVP Form Handler with Sincere & Loving Confirmation
   const rsvpFormNode    = document.getElementById('rsvpFormElement');
   const rsvpFeedbackBox = document.getElementById('rsvpFeedbackSuccess');
   const guestSelectEl   = document.getElementById('guestQuantitySelect');
@@ -2237,16 +2217,20 @@
 
       if (!isValid) return;
 
-      const firstName     = nameInput.value.trim().split(' ')[0] || 'Friend';
+      const fullName      = nameInput.value.trim();
+      const firstName     = fullName.split(' ')[0] || fullName;
       const feedbackTitle = document.getElementById('feedbackPersonName');
       const feedbackMsg   = document.getElementById('feedbackPersonalMessage');
+      const feedbackSign  = document.getElementById('feedbackSignOff');
 
       if (attendInput.value === 'joyfully') {
-        if (feedbackTitle) feedbackTitle.textContent = `We can't wait to celebrate with you, ${firstName}! 🤍`;
-        if (feedbackMsg) feedbackMsg.textContent = 'Your RSVP has been lovingly received. Having you with us among the vines means the world to us as we begin this new chapter together.';
+        if (feedbackTitle) feedbackTitle.textContent = `We cannot wait to celebrate with you, ${firstName}!`;
+        if (feedbackMsg) feedbackMsg.textContent = 'Thank you from the bottom of our hearts for your response. Having you join us among the vines at Highberry as we exchange our lifelong vows means more to us than words can say. We look forward to sharing this magical day, raising a glass, and creating memories with you that we will treasure forever.';
+        if (feedbackSign) feedbackSign.textContent = 'With all our love, Rishen & Lizaan';
       } else {
-        if (feedbackTitle) feedbackTitle.textContent = `With so much love, ${firstName} 🤍`;
-        if (feedbackMsg) feedbackMsg.textContent = 'Thank you for letting us know. You will be dearly missed on our special day, but you will remain in our hearts as we say forever.';
+        if (feedbackTitle) feedbackTitle.textContent = `Sending you all our love, ${firstName}.`;
+        if (feedbackMsg) feedbackMsg.textContent = 'Thank you so much for letting us know. While we will dearly miss your presence among the vines on our wedding day, we feel your love and blessings from afar. You hold a special place in our hearts as we begin this new chapter together.';
+        if (feedbackSign) feedbackSign.textContent = 'With warmest love and gratitude, Rishen & Lizaan';
       }
 
       rsvpFormNode.style.display = 'none';
