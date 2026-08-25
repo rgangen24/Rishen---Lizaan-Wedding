@@ -3,35 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta name="description" content="Wedding Invitation of Rishen &amp; Lizaan — 24 October 2026 at Highberry Vineyards &amp; Venue, Somerset West." />
+  <meta name="description" content="Wedding Celebration of Rishen &amp; Lizaan — 24 October 2026 at Highberry Vineyards &amp; Venue, Somerset West." />
   <meta name="theme-color" content="#431A1F" />
-  <title>Rishen &amp; Lizaan — The Wedding Invitation</title>
+  <title>Rishen &amp; Lizaan — 24 October 2026</title>
 
-  <!-- Typography: Fraunces (Editorial Display) & Jost (Clean Luxury Sans) & Pinyon Script -->
+  <!-- Typography: Fraunces (Editorial Serif) & Jost (Clean Luxury Sans) & Pinyon Script -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..500,0..100&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" />
 
   <style>
     /* ============================================================
-       THEME VARIABLES: BURGUNDY & SAGE VINEYARD LUXURY
+       THEME TOKENS: BURGUNDY & SAGE COUTURE
     ============================================================ */
     :root {
       --burgundy:         #6E2A31;
       --oxblood:          #431A1F;
-      --burgundy-deep:    #2B0E12;
+      --burgundy-deep:    #25080C;
       --sage:             #7C8B6F;
       --sage-dark:        #4E5B43;
       --eucalyptus:       #AAB89C;
-      --sage-light:       #EAF0E6;
+      --sage-wash:        #EAF0E6;
       --sage-subtle:      #F5F8F3;
 
       --ivory:            #FBF7F0;
       --parchment:        #F3EAD8;
       --champagne:        #E7D9BE;
-      --champagne-soft:   #F9F4EB;
+      --champagne-soft:   #F9F5EC;
       --gold:             #C5A869;
-      --gold-dark:        #9B8045;
+      --gold-light:       #E8D39E;
       --ink:              #2C2620;
       --ink-soft:         #594F45;
       --ink-muted:        #7D7267;
@@ -41,12 +41,8 @@
       --font-sans:        'Jost', -apple-system, system-ui, sans-serif;
       --font-script:      'Pinyon Script', cursive;
 
-      --shadow-sm:        0 4px 15px rgba(44, 38, 32, 0.05);
-      --shadow-md:        0 10px 30px rgba(44, 38, 32, 0.08);
-      --shadow-lg:        0 20px 50px rgba(67, 26, 31, 0.15);
-      --shadow-envelope:  0 30px 70px rgba(0, 0, 0, 0.45);
-
-      --ease-smooth:      cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-silk:        cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-fly:         cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     *, *::before, *::after {
@@ -70,148 +66,187 @@
       font-weight: 300;
       line-height: 1.8;
       overflow-x: hidden;
-      padding-bottom: 75px; /* space for bottom nav on mobile */
+      padding-bottom: 75px; /* space for bottom nav */
     }
 
-    img { display: block; max-width: 100%; height: auto; }
-    a { color: inherit; text-decoration: none; }
-    button { font-family: inherit; cursor: pointer; border: none; background: none; }
-
-    /* Fine Paper Texture */
+    /* Fine Paper Grain Texture */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 999;
-      opacity: 0.03;
+      opacity: 0.025;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
     /* ============================================================
-       1. TIKTOK/EWEDLAB SIGNATURE WAX SEAL ENVELOPE OPENING
+       1. FLYING BUTTERFLY OPENING SCREEN
     ============================================================ */
-    #envelope-screen {
+    #butterfly-cover-screen {
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background: radial-gradient(circle at 50% 40%, #521820 0%, #300d12 60%, #150306 100%);
+      background: radial-gradient(circle at 50% 45%, #551921 0%, #300d12 60%, #150306 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
-      transition: opacity 1s var(--ease-smooth), transform 1s var(--ease-smooth);
+      text-align: center;
+      color: var(--ivory);
+      transition: opacity 1.2s var(--ease-silk), transform 1.2s var(--ease-silk);
     }
-    #envelope-screen.opened {
+    #butterfly-cover-screen.opened {
       opacity: 0;
-      transform: scale(1.06);
+      transform: translateY(-100%);
       pointer-events: none;
     }
 
-    .envelope-box {
+    .butterfly-container {
       position: relative;
-      width: min(92vw, 420px);
-      background: #4A1A20;
-      border: 1px solid rgba(231, 217, 190, 0.35);
-      border-radius: 6px;
-      box-shadow: var(--shadow-envelope);
-      padding: clamp(2.4rem, 6vw, 3.4rem) clamp(1.4rem, 4vw, 2.2rem);
-      text-align: center;
+      cursor: pointer;
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: var(--ivory);
+      z-index: 10;
+      padding: 1.5rem;
+      border-radius: 50%;
     }
 
-    .envelope-gold-border {
-      position: absolute;
-      inset: 8px;
-      border: 1px dashed rgba(231, 217, 190, 0.25);
-      border-radius: 4px;
-      pointer-events: none;
+    /* Butterfly SVG with R & L scripted wings */
+    .butterfly-svg {
+      width: clamp(120px, 28vw, 170px);
+      height: auto;
+      filter: drop-shadow(0 8px 25px rgba(232, 211, 158, 0.45));
+      transform-origin: center center;
+      transition: transform 0.4s var(--ease-silk);
+      animation: butterflyHover 3s ease-in-out infinite;
     }
 
-    .envelope-eyebrow {
+    .butterfly-svg.flying {
+      animation: butterflyFlyAway 1.4s var(--ease-fly) forwards !important;
+    }
+
+    .butterfly-wing-l {
+      transform-origin: 50% 50%;
+      animation: flapLeft 1.2s ease-in-out infinite alternate;
+    }
+    .butterfly-wing-r {
+      transform-origin: 50% 50%;
+      animation: flapRight 1.2s ease-in-out infinite alternate;
+    }
+
+    .butterfly-svg.flying .butterfly-wing-l {
+      animation: rapidFlapLeft 0.15s ease-in-out infinite alternate !important;
+    }
+    .butterfly-svg.flying .butterfly-wing-r {
+      animation: rapidFlapRight 0.15s ease-in-out infinite alternate !important;
+    }
+
+    .cover-card-box {
+      max-width: 480px;
+      margin-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cover-eyebrow-tag {
       font-family: var(--font-sans);
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--eucalyptus);
-      margin-bottom: 1rem;
-    }
-
-    .envelope-couple-names {
-      font-family: var(--font-serif);
-      font-size: clamp(2.1rem, 6.5vw, 2.9rem);
-      font-weight: 300;
-      line-height: 1.15;
-      color: var(--ivory);
       margin-bottom: 0.8rem;
     }
 
-    .envelope-date-tag {
+    .cover-title-names {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 7vw, 3.8rem);
+      font-weight: 300;
+      color: var(--ivory);
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+
+    .cover-date-sub {
       font-family: var(--font-sans);
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
+      font-size: 0.8rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--champagne);
-      margin-bottom: 2.2rem;
+      margin-bottom: 2rem;
     }
 
-    /* Wax Seal Button */
-    .wax-seal-btn {
-      position: relative;
-      width: 82px;
-      height: 82px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #d9b873 0%, #9e7f3b 60%, #684f18 100%);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
-      display: flex;
-      flex-direction: column;
+    .btn-enter-invitation {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s;
-      animation: waxPulse 2.4s infinite ease-in-out;
-      margin-bottom: 1.5rem;
-      border: 2px solid rgba(255, 240, 200, 0.3);
-    }
-    .wax-seal-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 12px 35px rgba(217, 184, 115, 0.4);
-    }
-
-    .wax-seal-monogram {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 1.6rem;
-      color: #3b2807;
-      letter-spacing: 0.05em;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
-    }
-
-    .tap-to-open-hint {
+      gap: 0.8rem;
+      padding: 0.9rem 2.2rem;
+      background: rgba(231, 217, 190, 0.15);
+      border: 1px solid var(--champagne);
+      color: var(--ivory);
       font-family: var(--font-sans);
-      font-size: 0.68rem;
-      letter-spacing: 0.26em;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(251, 247, 240, 0.85);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      border-radius: 40px;
+      transition: all 0.35s var(--ease-silk);
+    }
+    .btn-enter-invitation:hover {
+      background: var(--champagne);
+      color: var(--oxblood);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     }
 
-    @keyframes waxPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    /* Butterfly Animations */
+    @keyframes butterflyHover {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(1.5deg); }
+    }
+    @keyframes flapLeft {
+      0% { transform: scaleX(1); }
+      100% { transform: scaleX(0.85) skewY(2deg); }
+    }
+    @keyframes flapRight {
+      0% { transform: scaleX(1); }
+      100% { transform: scaleX(0.85) skewY(-2deg); }
+    }
+    @keyframes rapidFlapLeft {
+      0% { transform: scaleX(1); }
+      100% { transform: scaleX(0.4) skewY(5deg); }
+    }
+    @keyframes rapidFlapRight {
+      0% { transform: scaleX(1); }
+      100% { transform: scaleX(0.4) skewY(-5deg); }
+    }
+    @keyframes butterflyFlyAway {
+      0% {
+        transform: translateY(0px) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+      40% {
+        transform: translateY(-80px) translateX(25px) scale(1.1) rotate(12deg);
+        opacity: 0.95;
+      }
+      100% {
+        transform: translateY(-600px) translateX(-50px) scale(0.2) rotate(-20deg);
+        opacity: 0;
+      }
     }
 
     /* ============================================================
-       2. FLOATING MUSIC PLAYER (TIKTOK STYLE)
+       2. FLOATING MUSIC TOGGLE
     ============================================================ */
-    .music-floating-toggle {
+    .music-floating-btn {
       position: fixed;
       top: 1.2rem;
       right: 1.2rem;
@@ -227,23 +262,22 @@
       align-items: center;
       justify-content: center;
       color: var(--champagne);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
       cursor: pointer;
       transition: transform 0.3s;
     }
-    .music-floating-toggle:hover { transform: scale(1.08); }
-    .music-floating-toggle.playing {
-      animation: rotateVinyl 4s linear infinite;
-      color: var(--gold);
+    .music-floating-btn:hover { transform: scale(1.08); }
+    .music-floating-btn.playing {
+      animation: spinVinyl 4s linear infinite;
+      color: var(--gold-light);
     }
-
-    @keyframes rotateVinyl {
+    @keyframes spinVinyl {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
 
     /* ============================================================
-       3. FLOATING MOBILE BOTTOM NAVIGATION (TIKTOK / EWEDLAB STYLE)
+       3. FLOATING MOBILE BOTTOM NAVIGATION
     ============================================================ */
     .mobile-bottom-nav {
       position: fixed;
@@ -252,7 +286,7 @@
       transform: translateX(-50%);
       z-index: 850;
       width: min(92vw, 460px);
-      background: rgba(67, 26, 31, 0.92);
+      background: rgba(67, 26, 31, 0.94);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1px solid rgba(231, 217, 190, 0.3);
@@ -303,7 +337,7 @@
       position: relative;
     }
 
-    .hero-arch-container {
+    .hero-arch-box {
       max-width: 580px;
       width: 100%;
       margin: 0 auto;
@@ -321,7 +355,6 @@
       box-shadow: 0 18px 45px rgba(67, 26, 31, 0.14);
       border: 6px solid var(--white);
       margin-bottom: 2rem;
-      transition: transform 0.5s var(--ease-smooth);
     }
     .hero-photo-arch img {
       width: 100%;
@@ -376,14 +409,14 @@
     }
 
     /* ============================================================
-       SECTION STRUCTURE & CARDS
+       SECTION STRUCTURE & STYLING
     ============================================================ */
     .invitation-section {
       padding: clamp(4.5rem, 8vw, 6.5rem) 1.2rem;
       position: relative;
     }
     .section-wrapper {
-      max-width: 680px;
+      max-width: 780px;
       margin: 0 auto;
     }
 
@@ -416,76 +449,129 @@
       margin-top: 0.5rem;
     }
 
-    .editorial-luxury-card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: clamp(1.8rem, 5vw, 2.8rem) clamp(1.4rem, 4vw, 2.2rem);
-      box-shadow: var(--shadow-md);
-      margin-bottom: 2rem;
-      border: 1px solid rgba(231, 217, 190, 0.4);
-      position: relative;
-    }
-
     /* ============================================================
-       5. OUR STORY: SWEET TIKTOK EDITORIAL CHAPTERS
+       5. OUR STORY: UNIQUE FUNKY ELEGANT 1-PAGE PHOTO & STORY SPREAD
     ============================================================ */
     #story {
       background-color: var(--ivory);
     }
 
-    .story-card-item {
-      margin-bottom: 2.2rem;
+    .story-mosaic-container {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(3rem, 6vw, 4.5rem);
     }
-    .story-chapter-badge {
+
+    .story-mosaic-row {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: clamp(1.8rem, 4vw, 3.5rem);
+      align-items: center;
+    }
+    .story-mosaic-row.reversed {
+      grid-template-columns: 1.35fr 1fr;
+    }
+    .story-mosaic-row.reversed .mosaic-photo-wrap { order: 2; }
+    .story-mosaic-row.reversed .mosaic-text-wrap { order: 1; }
+
+    @media (max-width: 768px) {
+      .story-mosaic-row, .story-mosaic-row.reversed {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .story-mosaic-row.reversed .mosaic-photo-wrap { order: 1; }
+      .story-mosaic-row.reversed .mosaic-text-wrap { order: 2; }
+    }
+
+    /* Funky Polaroid / Gallery Photo Cards */
+    .mosaic-photo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    .funky-photo-card {
+      background: var(--white);
+      padding: clamp(8px, 1.5vw, 12px);
+      border-radius: 3px;
+      box-shadow: 0 14px 35px rgba(67, 26, 31, 0.1);
+      max-width: 320px;
+      width: 100%;
+      transition: transform 0.4s var(--ease-silk), box-shadow 0.4s;
+    }
+    .funky-photo-card:hover {
+      transform: translateY(-4px) scale(1.02) !important;
+      box-shadow: 0 20px 45px rgba(67, 26, 31, 0.16);
+    }
+    .funky-photo-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 2px;
+    }
+    .funky-photo-caption {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+      color: var(--burgundy);
+      text-align: center;
+      margin-top: 0.6rem;
+      line-height: 1.35;
+    }
+
+    .mosaic-text-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .story-chapter-pill {
       display: inline-block;
       font-family: var(--font-sans);
       font-size: 0.65rem;
       font-weight: 600;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--burgundy);
       background: rgba(110, 42, 49, 0.08);
-      padding: 0.3rem 0.8rem;
+      padding: 0.3rem 0.85rem;
       border-radius: 20px;
       margin-bottom: 0.8rem;
     }
-    .story-card-title {
+    .story-chapter-title {
       font-family: var(--font-serif);
-      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      font-size: clamp(1.4rem, 2.8vw, 1.95rem);
       font-weight: 400;
       color: var(--burgundy);
-      line-height: 1.3;
+      line-height: 1.25;
       margin-bottom: 0.8rem;
     }
-    .story-pull-quote {
+    .story-pull-quote-bar {
       font-family: var(--font-serif);
       font-style: italic;
       font-size: 1.05rem;
       color: var(--sage-dark);
       padding-left: 0.9rem;
       border-left: 2.5px solid var(--gold);
-      margin-bottom: 1rem;
-      line-height: 1.6;
+      margin-bottom: 0.9rem;
+      line-height: 1.55;
     }
-    .story-body-text {
-      font-size: 0.95rem;
+    .story-paragraph {
+      font-size: 0.94rem;
       color: var(--ink-soft);
       line-height: 1.85;
     }
 
-    /* Scripture Keepsake Card */
+    /* Scripture Keepsake */
     .scripture-card-ewed {
       background: radial-gradient(circle at 50% 50%, #431A1F 0%, #2B0E12 100%);
       color: var(--ivory);
       text-align: center;
       border-radius: 12px;
-      padding: 2.5rem 1.8rem;
-      box-shadow: var(--shadow-lg);
+      padding: 2.8rem 1.8rem;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.3);
+      margin-top: 1.5rem;
     }
     .scripture-quote-text {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: clamp(1.35rem, 3.2vw, 1.95rem);
+      font-size: clamp(1.4rem, 3.2vw, 2.1rem);
       font-weight: 300;
       color: var(--champagne);
       line-height: 1.5;
@@ -493,7 +579,7 @@
     }
     .scripture-ref-tag {
       font-family: var(--font-sans);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
@@ -507,12 +593,21 @@
       background-color: var(--champagne-soft);
     }
 
+    .editorial-luxury-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: clamp(1.8rem, 5vw, 2.8rem) clamp(1.4rem, 4vw, 2.2rem);
+      box-shadow: 0 10px 30px rgba(44, 38, 32, 0.06);
+      margin-bottom: 2rem;
+      border: 1px solid rgba(231, 217, 190, 0.45);
+    }
+
     .countdown-box-ewed {
       background: var(--white);
       border-radius: 12px;
       padding: 1.8rem 1.2rem;
       text-align: center;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 6px 20px rgba(44, 38, 32, 0.05);
       margin-bottom: 2.2rem;
     }
     .countdown-grid-ewed {
@@ -543,7 +638,6 @@
       margin-top: 0.4rem;
     }
 
-    /* Event Itinerary Timeline */
     .event-timeline-card {
       display: flex;
       align-items: flex-start;
@@ -601,12 +695,11 @@
     }
 
     /* ============================================================
-       7. DRESS CODE & ATMOSPHERE (COLOR PALETTE SWATCHES)
+       7. DRESS CODE & ATMOSPHERE
     ============================================================ */
     #atmosphere {
       background-color: var(--ivory);
     }
-
     .dresscode-palette-container {
       text-align: center;
     }
@@ -640,12 +733,11 @@
     }
 
     /* ============================================================
-       8. VENUE & TRAVEL (HIGHBERRY & ACCOMMODATION)
+       8. VENUE & TRAVEL
     ============================================================ */
     #venue {
       background-color: var(--champagne-soft);
     }
-
     .venue-highlight-card {
       text-align: center;
     }
@@ -664,7 +756,6 @@
       color: var(--sage-dark);
       margin-bottom: 1.5rem;
     }
-
     .accommodation-button-grid {
       display: flex;
       flex-direction: column;
@@ -690,19 +781,18 @@
     }
 
     /* ============================================================
-       9. ACCORDION: BEFORE THE DAY
+       9. BEFORE THE DAY (FAQ)
     ============================================================ */
     #guidance {
       background-color: var(--ivory);
     }
-
     .accordion-item-ewed {
       background: var(--white);
       border-radius: 10px;
       margin-bottom: 1rem;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 4px 15px rgba(44, 38, 32, 0.05);
       overflow: hidden;
-      border: 1px solid rgba(231, 217, 190, 0.4);
+      border: 1px solid rgba(231, 217, 190, 0.45);
     }
     .accordion-header-btn {
       width: 100%;
@@ -764,7 +854,6 @@
       border-color: var(--burgundy);
       box-shadow: 0 0 0 3px rgba(110, 42, 49, 0.12);
     }
-
     .attendance-radios-flex {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -814,7 +903,7 @@
       transform: translateY(-2px);
     }
 
-    /* Live Wishes Wall */
+    /* Wishes Wall */
     .wishes-wall-container {
       margin-top: 2.8rem;
     }
@@ -899,48 +988,91 @@
 <body>
 
   <!-- ============================================================
-       1. TIKTOK/EWEDLAB SIGNATURE ENVELOPE OPENING EXPERIENCE
+       1. FLYING BUTTERFLY MONOGRAM OPENING MOMENT
   ============================================================ */ -->
-  <div id="envelope-screen" aria-label="Digital Wedding Invitation Envelope">
-    <div class="envelope-box">
-      <div class="envelope-gold-border"></div>
+  <div id="butterfly-cover-screen" aria-label="Wedding Invitation Opening">
+    
+    <div class="butterfly-container" id="butterflyTrigger" title="Tap to enter">
+      <!-- Bespoke Gold R & L Butterfly -->
+      <svg class="butterfly-svg" id="butterflyIcon" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Rishen and Lizaan Butterfly Monogram">
+        <!-- Left Wing (Forms an elegant 'R' curve) -->
+        <g class="butterfly-wing-l">
+          <path d="M96 75 C85 30, 30 15, 18 45 C8 70, 35 105, 94 85 Z" fill="url(#goldGradL)" stroke="var(--champagne)" stroke-width="2"/>
+          <path d="M94 85 C65 95, 35 130, 55 145 C75 160, 95 110, 96 90 Z" fill="url(#goldGradL2)" stroke="var(--champagne)" stroke-width="1.8"/>
+          <!-- R Calligraphic Stroke in Wing -->
+          <path d="M50 48 C65 38, 78 52, 70 68 C64 80, 52 82, 52 94" stroke="#431A1F" stroke-width="3" stroke-linecap="round"/>
+          <path d="M52 48 L52 108" stroke="#431A1F" stroke-width="3" stroke-linecap="round"/>
+          <path d="M64 74 L80 108" stroke="#431A1F" stroke-width="3" stroke-linecap="round"/>
+        </g>
 
-      <span class="envelope-eyebrow">The Wedding Invitation</span>
-      <h1 class="envelope-couple-names">Rishen &amp; Lizaan</h1>
-      <p class="envelope-date-tag">Saturday, 24 October 2026 &nbsp;&middot;&nbsp; 14:30</p>
+        <!-- Right Wing (Forms an elegant 'L' curve) -->
+        <g class="butterfly-wing-r">
+          <path d="M104 75 C115 30, 170 15, 182 45 C192 70, 165 105, 106 85 Z" fill="url(#goldGradR)" stroke="var(--champagne)" stroke-width="2"/>
+          <path d="M106 85 C135 95, 165 130, 145 145 C125 160, 105 110, 104 90 Z" fill="url(#goldGradR2)" stroke="var(--champagne)" stroke-width="1.8"/>
+          <!-- L Calligraphic Stroke in Wing -->
+          <path d="M148 48 C148 78, 148 98, 148 108 C148 108, 165 108, 174 108" stroke="#431A1F" stroke-width="3" stroke-linecap="round"/>
+        </g>
 
-      <!-- Interactive Gold Wax Seal -->
-      <button type="button" class="wax-seal-btn" id="openEnvelopeBtn" aria-label="Tap to Open Invitation">
-        <span class="wax-seal-monogram">R&amp;L</span>
-      </button>
+        <!-- Center Butterfly Body & Antennae -->
+        <path d="M100 65 L100 115" stroke="var(--gold-light)" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M100 65 Q92 45 80 40" stroke="var(--champagne)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M100 65 Q108 45 120 40" stroke="var(--champagne)" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="80" cy="40" r="2.5" fill="var(--champagne)"/>
+        <circle cx="120" cy="40" r="2.5" fill="var(--champagne)"/>
 
-      <span class="tap-to-open-hint">
-        <span>Tap wax seal to open</span>
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 8h10M9 4l4 4-4 4"/>
-        </svg>
-      </span>
+        <!-- Gradients -->
+        <defs>
+          <linearGradient id="goldGradL" x1="20" y1="20" x2="100" y2="90" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F5E4B8"/>
+            <stop offset="0.6" stop-color="#D4AF37"/>
+            <stop offset="1" stop-color="#997722"/>
+          </linearGradient>
+          <linearGradient id="goldGradL2" x1="40" y1="90" x2="100" y2="150" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E8D39E"/>
+            <stop offset="1" stop-color="#997722"/>
+          </linearGradient>
+          <linearGradient id="goldGradR" x1="180" y1="20" x2="100" y2="90" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F5E4B8"/>
+            <stop offset="0.6" stop-color="#D4AF37"/>
+            <stop offset="1" stop-color="#997722"/>
+          </linearGradient>
+          <linearGradient id="goldGradR2" x1="160" y1="90" x2="100" y2="150" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E8D39E"/>
+            <stop offset="1" stop-color="#997722"/>
+          </linearGradient>
+        </defs>
+      </svg>
     </div>
+
+    <div class="cover-card-box">
+      <span class="cover-eyebrow-tag">A Celebration of Love</span>
+      <h1 class="cover-title-names">Rishen &amp; Lizaan</h1>
+      <p class="cover-date-sub">Saturday, 24 October 2026</p>
+
+      <button type="button" class="btn-enter-invitation" id="btnEnterStory">
+        <span>Enter the Celebration 🦋</span>
+      </button>
+    </div>
+
   </div>
 
   <!-- ============================================================
-       2. FLOATING MUSIC TOGGLE (TIKTOK / EWEDLAB STYLE)
+       2. FLOATING MUSIC TOGGLE
   ============================================================ */ -->
-  <button type="button" class="music-floating-toggle" id="musicToggle" aria-label="Play/Pause Background Music">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="musicIcon">
+  <button type="button" class="music-floating-btn" id="musicToggle" aria-label="Play/Pause Romantic Background Music">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M9 18V5l12-2v13"/>
       <circle cx="6" cy="18" r="3"/>
       <circle cx="18" cy="16" r="3"/>
     </svg>
   </button>
 
-  <!-- Audio Element (Royalty-Free Romantic Acoustic Guitar & Strings) -->
   <audio id="weddingAudio" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-acoustic-112191.mp3"></audio>
 
   <!-- ============================================================
        3. FLOATING MOBILE BOTTOM NAVIGATION
   ============================================================ */ -->
-  <nav class="mobile-bottom-nav" aria-label="Mobile quick navigation">
+  <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
     <a href="#hero" class="bottom-nav-link active">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       <span>Home</span>
@@ -964,12 +1096,11 @@
   </nav>
 
   <!-- ============================================================
-       4. HERO COVER INVITATION (ARCHED EDITORIAL)
+       4. HERO COVER INVITATION
   ============================================================ */ -->
   <header id="hero">
-    <div class="hero-arch-container">
+    <div class="hero-arch-box">
       
-      <!-- Arched Photo Frame -->
       <div class="hero-photo-arch">
         <img src="images/couple-outdoor-clean.jpg" alt="Rishen &amp; Lizaan together outdoors" />
       </div>
@@ -989,7 +1120,7 @@
   </header>
 
   <!-- ============================================================
-       5. OUR STORY: TIKTOK / EWEDLAB EDITORIAL
+       5. OUR STORY: UNIQUE FUNKY ELEGANT 1-PAGE PHOTO & STORY SPREAD
   ============================================================ */ -->
   <section id="story" class="invitation-section">
     <div class="section-wrapper">
@@ -1000,43 +1131,71 @@
         <p class="section-desc-italic">Written long before we even realised it.</p>
       </div>
 
-      <!-- Chapter 1 -->
-      <div class="editorial-luxury-card story-card-item">
-        <span class="story-chapter-badge">Chapter 01 &nbsp;&middot;&nbsp; The Glance</span>
-        <h3 class="story-card-title">Love at first sight — although neither was brave enough to speak!</h3>
-        <div class="story-pull-quote">
-          “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
+      <div class="story-mosaic-container">
+
+        <!-- Chapter 1 + Photo 1 -->
+        <div class="story-mosaic-row">
+          <div class="mosaic-photo-wrap">
+            <div class="funky-photo-card" style="transform: rotate(-2.5deg);">
+              <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan standing outdoors" loading="lazy" />
+              <p class="funky-photo-caption">“Where paths crossed in the quietest moment.”</p>
+            </div>
+          </div>
+          <div class="mosaic-text-wrap">
+            <span class="story-chapter-pill">Chapter 01 &nbsp;&middot;&nbsp; The Glance</span>
+            <h3 class="story-chapter-title">Love at first sight — although neither was brave enough to speak!</h3>
+            <div class="story-pull-quote-bar">
+              “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
+            </div>
+            <p class="story-paragraph">
+              Almost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members. There was an instant spark — that rare feeling where the rest of the room fades away. It was true love at first sight, although neither was brave enough to speak in that moment!
+            </p>
+          </div>
         </div>
-        <p class="story-body-text">
-          Almost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members. There was an instant spark — that rare feeling where the rest of the room fades away. It was true love at first sight, although neither was brave enough to speak in that moment!
-        </p>
+
+        <!-- Chapter 2 + Photo 2 -->
+        <div class="story-mosaic-row reversed">
+          <div class="mosaic-photo-wrap">
+            <div class="funky-photo-card" style="transform: rotate(2.2deg);">
+              <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan close-up portrait" loading="lazy" />
+              <p class="funky-photo-caption">“Two people who became each other's favourite hello.”</p>
+            </div>
+          </div>
+          <div class="mosaic-text-wrap">
+            <span class="story-chapter-pill">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
+            <h3 class="story-chapter-title">The conversation that never happened in person began over text.</h3>
+            <div class="story-pull-quote-bar">
+              “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
+            </div>
+            <p class="story-paragraph">
+              A few days later, Rishen still couldn't get Lizaan out of his mind. So, with a little help from the same family member, he got her number. Messages turned into late-night phone calls, inside jokes, and countless memories. Two people who were once too shy to speak became each other's favourite part of every day.
+            </p>
+          </div>
+        </div>
+
+        <!-- Chapter 3 + Photo 3 -->
+        <div class="story-mosaic-row">
+          <div class="mosaic-photo-wrap">
+            <div class="funky-photo-card" style="transform: rotate(-1.8deg);">
+              <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing joyfully in hats" loading="lazy" />
+              <p class="funky-photo-caption">“Inside jokes, laughter &amp; endless conversations.”</p>
+            </div>
+          </div>
+          <div class="mosaic-text-wrap">
+            <span class="story-chapter-pill">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
+            <h3 class="story-chapter-title">Like iron sharpens iron — to encourage, strengthen and love.</h3>
+            <div class="story-pull-quote-bar">
+              “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
+            </div>
+            <p class="story-paragraph">
+              Since then, their relationship has flourished through deep friendship, faith, unwavering encouragement, and bringing out the very best in one another. Now, as they prepare to exchange lifelong vows, they are filled with profound gratitude and joy for every chapter God has planned for them.
+            </p>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Chapter 2 -->
-      <div class="editorial-luxury-card story-card-item">
-        <span class="story-chapter-badge">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
-        <h3 class="story-card-title">The conversation that never happened in person began over text.</h3>
-        <div class="story-pull-quote">
-          “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
-        </div>
-        <p class="story-body-text">
-          A few days later, Rishen still couldn't get Lizaan out of his mind. So, with a little help from the same family member, he got her number. Messages turned into late-night phone calls, inside jokes, and countless memories. Two people who were once too shy to speak became each other's favourite part of every day.
-        </p>
-      </div>
-
-      <!-- Chapter 3 -->
-      <div class="editorial-luxury-card story-card-item">
-        <span class="story-chapter-badge">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
-        <h3 class="story-card-title">Like iron sharpens iron — to encourage, strengthen and love.</h3>
-        <div class="story-pull-quote">
-          “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
-        </div>
-        <p class="story-body-text">
-          Since then, their relationship has flourished through deep friendship, faith, unwavering encouragement, and bringing out the very best in one another. Now, as they prepare to exchange lifelong vows, they are filled with profound gratitude and joy for every chapter God has written ahead.
-        </p>
-      </div>
-
-      <!-- Scripture Keepsake -->
+      <!-- Scripture Keepsake Card -->
       <div class="scripture-card-ewed">
         <div style="color:var(--gold); font-size:1.8rem; margin-bottom:0.6rem;">❦</div>
         <p class="scripture-quote-text">
@@ -1135,7 +1294,7 @@
   </section>
 
   <!-- ============================================================
-       7. DRESS CODE & ATMOSPHERE (COLOR PALETTE SWATCHES)
+       7. DRESS CODE & ATMOSPHERE
   ============================================================ */ -->
   <section id="atmosphere" class="invitation-section">
     <div class="section-wrapper">
@@ -1177,7 +1336,7 @@
   </section>
 
   <!-- ============================================================
-       8. VENUE & TRAVEL (HIGHBERRY & ACCOMMODATION)
+       8. VENUE & TRAVEL
   ============================================================ */ -->
   <section id="venue" class="invitation-section">
     <div class="section-wrapper">
@@ -1238,7 +1397,7 @@
   </section>
 
   <!-- ============================================================
-       9. ACCORDION: BEFORE THE DAY (FAQ)
+       9. BEFORE THE DAY (FAQ)
   ============================================================ */ -->
   <section id="guidance" class="invitation-section">
     <div class="section-wrapper">
@@ -1282,7 +1441,7 @@
   </section>
 
   <!-- ============================================================
-       10. RSVP EXPERIENCE & INTERACTIVE WISHES WALL
+       10. RSVP EXPERIENCE & LIVE WISHES WALL
   ============================================================ */ -->
   <section id="rsvp" class="invitation-section">
     <div class="section-wrapper">
@@ -1296,7 +1455,6 @@
         </p>
       </div>
 
-      <!-- RSVP Form Card -->
       <div class="editorial-luxury-card" style="color:var(--ink);">
         
         <div id="rsvpSuccessBox" style="display:none; text-align:center; padding:1.5rem 0.5rem;">
@@ -1393,33 +1551,43 @@
   </footer>
 
   <!-- ============================================================
-       SCRIPTS: WAX SEAL OPENING, AUDIO, COUNTDOWN, RSVP & WISHES
+       SCRIPTS: BUTTERFLY FLIGHT, AUDIO, COUNTDOWN, RSVP & WISHES
   ============================================================ */ -->
   <script>
   'use strict';
 
-  // 1. Wax Seal Open Experience
-  const envScreen = document.getElementById('envelope-screen');
-  const openBtn   = document.getElementById('openEnvelopeBtn');
-  const audio     = document.getElementById('weddingAudio');
-  const musicBtn  = document.getElementById('musicToggle');
+  // 1. Butterfly Monogram Flight Animation
+  const coverScreen     = document.getElementById('butterfly-cover-screen');
+  const butterflyBtn    = document.getElementById('butterflyTrigger');
+  const enterBtn        = document.getElementById('btnEnterStory');
+  const butterflyIcon   = document.getElementById('butterflyIcon');
+  const audio           = document.getElementById('weddingAudio');
+  const musicBtn        = document.getElementById('musicToggle');
 
-  function openEnvelope() {
-    if (envScreen) envScreen.classList.add('opened');
-    sessionStorage.setItem('rl_env_opened', 'true');
-    // Try to play romantic audio
+  function triggerButterflyFly() {
+    if (!butterflyIcon) return;
+    butterflyIcon.classList.add('flying');
+
+    // Play romantic background music
     if (audio) {
       audio.play().then(() => {
         if (musicBtn) musicBtn.classList.add('playing');
       }).catch(() => {
-        // Autoplay policy fallback: user can tap floating music button
+        // Fallback for browser autoplay policies
       });
     }
+
+    setTimeout(() => {
+      if (coverScreen) coverScreen.classList.add('opened');
+      sessionStorage.setItem('rl_butterfly_opened', 'true');
+    }, 700);
   }
 
-  if (openBtn) openBtn.addEventListener('click', openEnvelope);
-  if (sessionStorage.getItem('rl_env_opened') === 'true') {
-    if (envScreen) envScreen.classList.add('opened');
+  if (butterflyBtn) butterflyBtn.addEventListener('click', triggerButterflyFly);
+  if (enterBtn)     enterBtn.addEventListener('click', triggerButterflyFly);
+
+  if (sessionStorage.getItem('rl_butterfly_opened') === 'true') {
+    if (coverScreen) coverScreen.classList.add('opened');
   }
 
   // 2. Music Player Control
