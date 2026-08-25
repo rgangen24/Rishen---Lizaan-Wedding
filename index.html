@@ -323,12 +323,8 @@
       border: 1px solid rgba(88, 18, 32, 0.25);
     }
 
-    .section-rule {
-      width: 50px; height: 2px; background: var(--sage);
-      margin: 1rem auto 1.4rem;
-    }
     .section-heading {
-      font-family: var(--font-luxury); font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-family: var(--font-luxury); font-size: clamp(2.5rem, 5.5vw, 4.4rem);
       font-weight: 400; color: var(--burgundy); line-height: 1.15; letter-spacing: 0.02em;
     }
 
@@ -336,10 +332,10 @@
     .dropcap {
       float: left;
       font-family: var(--font-luxury);
-      font-size: clamp(2.8rem, 4vw, 3.4rem);
+      font-size: clamp(3.2rem, 4.5vw, 3.8rem);
       line-height: 0.8;
       padding-top: 4px;
-      padding-right: 10px;
+      padding-right: 12px;
       padding-bottom: 2px;
       color: var(--burgundy);
       font-weight: 600;
@@ -351,129 +347,142 @@
     .reveal-delay-1 { transition-delay: 0.15s; }
 
     /* ============================================================
-       OUR STORY: PAIRED CHAPTER ROWS (PHOTO ON LEFT, STORY ON RIGHT EVERYWHERE)
+       OUR STORY: BORDERLESS, FREE-FLOWING EDITORIAL MAGAZINE LAYOUT
     ============================================================ */
     #story {
       background: var(--ivory);
-      border-top: 1px solid var(--sage-pale);
-      border-bottom: 1px solid var(--sage-pale);
+      border-top: 1px solid rgba(147, 172, 138, 0.25);
+      border-bottom: 1px solid rgba(147, 172, 138, 0.25);
     }
 
     .story-rows-container {
-      margin-top: 3.8rem;
+      margin-top: 3.5rem;
       display: flex;
       flex-direction: column;
-      gap: clamp(2.5rem, 5vw, 4.5rem);
+      gap: clamp(3.5rem, 6vw, 5.5rem);
     }
 
-    /* Side-by-Side layout that preserves Photo on Left and Story on Right across screen sizes */
+    /* Natural, Free-flowing Chapter Row */
     .story-chapter-row {
       display: grid;
-      grid-template-columns: 0.95fr 1.2fr;
-      gap: clamp(1.4rem, 3.5vw, 3.8rem);
+      grid-template-columns: 0.9fr 1.25fr;
+      gap: clamp(2rem, 4.5vw, 4.5rem);
       align-items: center;
     }
 
-    @media (max-width: 680px) {
+    @media (max-width: 780px) {
       .story-chapter-row {
-        grid-template-columns: 0.85fr 1.15fr;
-        gap: 0.9rem;
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+        text-align: left;
       }
     }
 
     .story-photo-col {
       width: 100%;
+      display: flex;
+      justify-content: center;
     }
 
-    /* Funky-Chic Photo Card Styling (No Tape Stickers) */
+    /* Organic Framed Photography (No Top Stickers, No Clumsy Outlines) */
     .chic-photo-card {
       position: relative;
       background: var(--white);
-      padding: clamp(8px, 1.5vw, 14px);
+      padding: clamp(10px, 2vw, 14px);
       border-radius: 3px;
-      border: 1px solid rgba(196, 164, 98, 0.4);
-      box-shadow: 0 10px 30px rgba(56, 10, 19, 0.08);
-      transition: transform 0.35s var(--ease-luxury), box-shadow 0.35s var(--ease-luxury);
+      border: 1px solid rgba(196, 164, 98, 0.35);
+      box-shadow: 0 14px 35px rgba(56, 10, 19, 0.08);
+      max-width: 420px;
+      width: 100%;
+      transition: transform 0.4s var(--ease-luxury), box-shadow 0.4s var(--ease-luxury);
     }
     .chic-photo-card:hover {
       transform: translateY(-4px) scale(1.01) !important;
-      box-shadow: 0 18px 45px rgba(56, 10, 19, 0.14);
-      z-index: 5;
+      box-shadow: 0 20px 50px rgba(56, 10, 19, 0.14);
     }
 
-    /* Organic stylish tilts */
-    .chic-photo-card--1 { transform: rotate(-2deg); }
-    .chic-photo-card--2 { transform: rotate(1.8deg); }
-    .chic-photo-card--3 { transform: rotate(-1.5deg); }
+    /* Elegant subtle tilts on desktop */
+    @media (min-width: 781px) {
+      .chic-photo-card--1 { transform: rotate(-2deg); }
+      .chic-photo-card--2 { transform: rotate(1.8deg); }
+      .chic-photo-card--3 { transform: rotate(-1.5deg); }
+    }
 
     .chic-photo-card img {
       width: 100%; height: auto;
       border-radius: 2px;
+      display: block;
     }
     .chic-photo-caption {
       font-family: var(--font-serif); font-style: italic;
-      font-size: clamp(0.75rem, 1.4vw, 0.94rem);
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
       color: var(--burgundy);
-      text-align: center; margin-top: 0.6rem; line-height: 1.35;
+      text-align: center; margin-top: 0.8rem; line-height: 1.4;
     }
 
-    /* Story Narrative Box */
-    .story-chapter-box {
-      background: var(--white);
-      padding: clamp(1.2rem, 2.8vw, 2.4rem);
-      border-radius: 4px;
-      border: 1px solid var(--sage-pale);
-      border-left: 4px solid var(--sage);
-      box-shadow: 0 6px 22px rgba(56, 10, 19, 0.04);
+    /* Free-Flowing Story Narrative (Zero Boxes, Zero Box Borders) */
+    .story-text-col {
+      width: 100%;
+    }
+    .story-chapter-flow {
+      background: transparent;
+      padding: 0;
+      border: none;
+      box-shadow: none;
     }
 
-    .story-chapter-box h3 {
+    .story-chapter-flow h3 {
       font-family: var(--font-luxury);
-      font-size: clamp(1.25rem, 2.4vw, 1.95rem);
+      font-size: clamp(1.6rem, 2.8vw, 2.3rem);
       font-weight: 400; color: var(--burgundy);
-      line-height: 1.25; margin: 0.5rem 0 0.8rem;
+      line-height: 1.25; margin: 0.8rem 0 1rem;
     }
     .story-chapter-quote {
       font-family: var(--font-serif); font-style: italic;
-      font-size: clamp(0.88rem, 1.6vw, 1.08rem);
+      font-size: clamp(1.05rem, 1.8vw, 1.2rem);
       color: var(--burgundy-soft);
-      line-height: 1.5; margin-bottom: 0.8rem;
-      padding-left: 0.7rem; border-left: 2px solid var(--gold);
+      line-height: 1.6; margin-bottom: 1.2rem;
+      padding-left: 1rem; border-left: 2px solid var(--gold);
     }
-    .story-chapter-box p {
+    .story-chapter-flow p {
       font-family: var(--font-body);
-      font-size: clamp(0.82rem, 1.3vw, 0.95rem);
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
       font-weight: 400;
       color: var(--text-main);
-      line-height: 1.8; margin-bottom: 0.8rem;
+      line-height: 1.9; margin-bottom: 1rem;
     }
-    .story-chapter-box p:last-child { margin-bottom: 0; }
+    .story-chapter-flow p:last-child { margin-bottom: 0; }
 
-    /* Scripture Feature Card */
+    /* Free-flowing Scripture Badge */
     .scripture-luxury-card {
-      margin-top: 3.5rem;
-      background: linear-gradient(145deg, #EFF5EE 0%, #E2EBE0 100%);
-      border: 1.5px solid var(--sage-light);
-      border-radius: 4px;
-      padding: clamp(1.8rem, 4vw, 2.8rem) 1.5rem;
+      margin-top: 4.5rem;
+      background: transparent;
+      border: none;
+      padding: 2rem 1rem;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(77, 102, 69, 0.08);
+      box-shadow: none;
+      position: relative;
+    }
+    .scripture-luxury-card::before {
+      content: ''; display: block; width: 60px; height: 1px;
+      background: var(--gold); margin: 0 auto 2rem;
     }
     .scripture-text {
       font-family: var(--font-serif); font-style: italic;
-      font-size: clamp(1.3rem, 2.8vw, 1.95rem);
+      font-size: clamp(1.5rem, 3.2vw, 2.3rem);
       color: var(--burgundy); font-weight: 400; line-height: 1.5;
     }
     .scripture-verse-ref {
-      font-family: var(--font-caps); font-size: 0.78rem; font-weight: 600;
+      font-family: var(--font-caps); font-size: 0.82rem; font-weight: 600;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--sage-dark); margin-top: 0.9rem;
+      color: var(--sage-dark); margin-top: 1rem;
     }
     .scripture-footnote {
-      margin-top: 1.2rem;
+      margin-top: 1.4rem;
       font-family: var(--font-serif); font-style: italic;
-      font-size: clamp(0.95rem, 1.8vw, 1.12rem);
-      color: var(--text-main); line-height: 1.7;
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      color: var(--text-main); line-height: 1.8;
+      max-width: 680px; margin-left: auto; margin-right: auto;
     }
 
     /* ============================================================
@@ -843,14 +852,13 @@
       </div>
     </section>
 
-    <!-- OUR STORY: PAIRED CHAPTER ROWS (PHOTO ON LEFT, STORY ON RIGHT ACROSS ALL SCREENS) -->
+    <!-- OUR STORY: BORDERLESS, FREE-FLOWING EDITORIAL SPREAD -->
     <section id="story" class="section" aria-labelledby="storyHeading">
       <div class="section-inner">
         
         <div class="reveal" style="text-align: center; max-width: 820px; margin: 0 auto;">
           <span class="badge-pill badge-pill--sage">A Celebration of True Love</span>
-          <div class="section-rule"></div>
-          <h2 class="section-heading" id="storyHeading">Our Story 🤍</h2>
+          <h2 class="section-heading" id="storyHeading" style="margin-top: 1.2rem;">Our Story 🤍</h2>
           <p style="font-family: var(--font-serif); font-style: italic; font-size: clamp(1.25rem, 2.8vw, 1.6rem); color: var(--burgundy); margin-top: 0.8rem; font-weight: 500;">
             Written long before we even realised it.
           </p>
@@ -861,7 +869,7 @@
 
         <div class="story-rows-container">
 
-          <!-- ROW 1: PHOTO 1 (LEFT) + CHAPTER 1 (RIGHT) -->
+          <!-- CHAPTER 1 -->
           <div class="story-chapter-row reveal">
             <div class="story-photo-col">
               <div class="chic-photo-card chic-photo-card--1">
@@ -870,7 +878,7 @@
               </div>
             </div>
             <div class="story-text-col">
-              <div class="story-chapter-box">
+              <div class="story-chapter-flow">
                 <span class="badge-pill badge-pill--burgundy">Chapter 01 &nbsp;&middot;&nbsp; The Glance</span>
                 <h3>Love at first sight — although neither was brave enough to speak!</h3>
                 <div class="story-chapter-quote">
@@ -882,7 +890,7 @@
             </div>
           </div>
 
-          <!-- ROW 2: PHOTO 2 (LEFT) + CHAPTER 2 (RIGHT) -->
+          <!-- CHAPTER 2 -->
           <div class="story-chapter-row reveal reveal-delay-1">
             <div class="story-photo-col">
               <div class="chic-photo-card chic-photo-card--2">
@@ -891,7 +899,7 @@
               </div>
             </div>
             <div class="story-text-col">
-              <div class="story-chapter-box">
+              <div class="story-chapter-flow">
                 <span class="badge-pill badge-pill--sage">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
                 <h3>The conversation that never happened in person began over text.</h3>
                 <div class="story-chapter-quote">
@@ -903,7 +911,7 @@
             </div>
           </div>
 
-          <!-- ROW 3: PHOTO 3 (LEFT) + CHAPTER 3 (RIGHT) -->
+          <!-- CHAPTER 3 -->
           <div class="story-chapter-row reveal">
             <div class="story-photo-col">
               <div class="chic-photo-card chic-photo-card--3">
@@ -912,7 +920,7 @@
               </div>
             </div>
             <div class="story-text-col">
-              <div class="story-chapter-box">
+              <div class="story-chapter-flow">
                 <span class="badge-pill badge-pill--burgundy">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
                 <h3>Like iron sharpens iron — to encourage, strengthen and love.</h3>
                 <div class="story-chapter-quote">
@@ -927,7 +935,7 @@
 
         </div>
 
-        <!-- Scripture Badge -->
+        <!-- Scripture Badge (Free Flow) -->
         <div class="scripture-luxury-card reveal">
           <div style="color:var(--sage-mid); font-size:1.8rem; margin-bottom:0.4rem;">❦</div>
           <p class="scripture-text">
@@ -937,7 +945,7 @@
           <p class="scripture-footnote">
             And so, what began with a glance, grew through messages, and blossomed into a love we never expected, is becoming forever 🤍.
           </p>
-          <div style="margin-top:1.2rem;">
+          <div style="margin-top:1.4rem;">
             <span class="badge-pill badge-pill--burgundy" style="font-size:0.72rem;">Our Greatest Adventure is Just Beginning</span>
           </div>
         </div>
@@ -951,8 +959,7 @@
         
         <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
           <span class="badge-pill badge-pill--burgundy">The Celebration</span>
-          <div class="section-rule"></div>
-          <h2 class="section-heading" id="celebrationHeading">Join Us Among the Vines</h2>
+          <h2 class="section-heading" id="celebrationHeading" style="margin-top: 1.2rem;">Join Us Among the Vines</h2>
           <p style="font-family: var(--font-serif); font-style: italic; font-size: 1.25rem; color: var(--text-muted); margin-top: 0.6rem;">
             A day, unhurried — from vows among the vines to dancing under the stars.
           </p>
@@ -1073,8 +1080,7 @@
           
           <div class="reveal">
             <span class="badge-pill badge-pill--sage">Guest Information</span>
-            <div class="section-rule" style="margin: 0.8rem 0 1.4rem;"></div>
-            <h2 class="section-heading" id="guidanceHeading" style="font-size: clamp(2.4rem, 4.8vw, 3.8rem); text-align: left;">
+            <h2 class="section-heading" id="guidanceHeading" style="font-size: clamp(2.4rem, 4.8vw, 3.8rem); text-align: left; margin-top: 1.2rem;">
               Before the Day
             </h2>
             <p style="font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; color: var(--text-muted); margin-top: 1rem; line-height: 1.7;">
@@ -1156,8 +1162,7 @@
         
         <div class="reveal" style="text-align: center;">
           <span class="badge-pill badge-pill--sage" style="background: rgba(77, 102, 69, 0.4); color: var(--gold-light); border-color: var(--sage-light);">RSVP</span>
-          <div class="section-rule" style="background: var(--gold);"></div>
-          <h2 class="section-heading" id="rsvpHeading" style="color: var(--white);">
+          <h2 class="section-heading" id="rsvpHeading" style="color: var(--white); margin-top: 1.2rem;">
             Will You Join Us?
           </h2>
           <p style="font-family: var(--font-serif); font-style: italic; font-size: 1.3rem; color: var(--cream); opacity: 0.95; margin-top: 0.6rem;">
