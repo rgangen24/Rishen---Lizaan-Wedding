@@ -90,7 +90,6 @@
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       padding: 0.9rem 3.5rem;
       box-shadow: 0 4px 20px rgba(56, 10, 19, 0.08);
-      border-bottom: 1px solid var(--sage-pale);
     }
     .nav-monogram {
       font-family: var(--font-caps); font-size: 1.15rem; font-weight: 600;
@@ -105,7 +104,7 @@
     }
     .nav-links a::after {
       content: ''; position: absolute; bottom: -4px; left: 50%;
-      width: 0; height: 1.5px; background: var(--sage-light);
+      width: 0; height: 1.5px; background: var(--gold-light);
       transform: translateX(-50%); transition: width 0.3s var(--ease-luxury);
     }
     .nav-links a:hover::after { width: 100%; }
@@ -157,21 +156,16 @@
 
     .hero-frame {
       position: absolute; inset: 20px;
-      border: 1px solid rgba(196, 164, 98, 0.3);
+      border: 1px solid rgba(196, 164, 98, 0.25);
       pointer-events: none; z-index: 2;
-    }
-    .hero-frame::before {
-      content: ''; position: absolute; inset: 6px;
-      border: 1px solid rgba(147, 172, 138, 0.25);
     }
     @media (max-width: 600px) {
       .hero-frame { inset: 10px; }
-      .hero-frame::before { inset: 4px; }
     }
 
     .hero-corner {
-      position: absolute; width: 22px; height: 22px;
-      border-color: var(--gold); border-style: solid; opacity: 0.8;
+      position: absolute; width: 20px; height: 20px;
+      border-color: var(--gold); border-style: solid; opacity: 0.7;
     }
     .hero-corner--tl { top: 20px; left: 20px; border-width: 1px 0 0 1px; }
     .hero-corner--tr { top: 20px; right: 20px; border-width: 1px 1px 0 0; }
@@ -187,7 +181,7 @@
     /* Sage foliage silhouettes */
     .hero-vine-left, .hero-vine-right {
       position: absolute; top: 0; bottom: 0; width: 180px;
-      z-index: 1; pointer-events: none; opacity: 0.18;
+      z-index: 1; pointer-events: none; opacity: 0.15;
     }
     .hero-vine-left { left: 0; }
     .hero-vine-right { right: 0; transform: scaleX(-1); }
@@ -202,23 +196,15 @@
       display: inline-flex; align-items: center; gap: 0.6rem;
       padding: 0.45rem 1.4rem;
       border-radius: 50px;
-      background: rgba(77, 102, 69, 0.3);
-      border: 1px solid rgba(147, 172, 138, 0.45);
+      background: rgba(77, 102, 69, 0.25);
       font-family: var(--font-caps); font-size: 0.68rem; font-weight: 500;
       letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-light);
       opacity: 0; animation: fadeUp 1.2s var(--ease-reveal) 0.2s forwards;
     }
 
-    .hero-rule {
-      width: 60px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 1.4rem auto 0.8rem;
-      opacity: 0; animation: expandRule 1.2s var(--ease-reveal) 0.4s forwards;
-    }
-
     .hero-title {
-      margin: 0.5rem 0 1rem;
-      opacity: 0; animation: fadeUp 1.3s var(--ease-reveal) 0.6s forwards;
+      margin: 0.8rem 0 1rem;
+      opacity: 0; animation: fadeUp 1.3s var(--ease-reveal) 0.5s forwards;
     }
     .hero-name-row {
       display: flex; align-items: center; justify-content: center;
@@ -245,26 +231,24 @@
       font-family: var(--font-serif); font-style: italic;
       font-size: clamp(1.1rem, 2.4vw, 1.45rem);
       color: var(--cream);
-      max-width: 620px; margin: 0.8rem auto 0;
+      max-width: 620px; margin: 0.6rem auto 0;
       line-height: 1.6;
       opacity: 0; animation: fadeUp 1.2s var(--ease-reveal) 0.8s forwards;
     }
 
     .hero-date-badge {
-      margin-top: 2rem;
+      margin-top: 1.8rem;
       display: inline-flex; align-items: center; gap: 0.8rem;
       font-family: var(--font-caps); font-size: clamp(0.72rem, 1.8vw, 0.82rem); font-weight: 500;
       letter-spacing: 0.26em; text-transform: uppercase;
       color: var(--gold-light);
       padding: 0.55rem 1.6rem;
-      border-top: 1px solid rgba(196, 164, 98, 0.35);
-      border-bottom: 1px solid rgba(196, 164, 98, 0.35);
       opacity: 0; animation: fadeUp 1.2s var(--ease-reveal) 1s forwards;
     }
 
     /* Countdown */
     .hero-countdown {
-      margin-top: 2.8rem; display: flex; gap: clamp(1.2rem, 3vw, 2rem);
+      margin-top: 2.5rem; display: flex; gap: clamp(1.2rem, 3vw, 2rem);
       justify-content: center; flex-wrap: wrap;
       opacity: 0; animation: fadeUp 1.2s var(--ease-reveal) 1.2s forwards;
     }
@@ -293,7 +277,7 @@
     }
     .hero-scroll-line {
       width: 1.5px; height: 35px;
-      background: linear-gradient(to bottom, var(--sage-light), transparent);
+      background: linear-gradient(to bottom, var(--gold-light), transparent);
       animation: scrollPulse 2s ease-in-out infinite;
     }
 
@@ -315,12 +299,10 @@
     .badge-pill--sage {
       background: var(--sage-mist);
       color: var(--sage-dark);
-      border: 1px solid var(--sage-light);
     }
     .badge-pill--burgundy {
       background: rgba(88, 18, 32, 0.08);
       color: var(--burgundy);
-      border: 1px solid rgba(88, 18, 32, 0.25);
     }
 
     .section-heading {
@@ -347,34 +329,38 @@
     .reveal-delay-1 { transition-delay: 0.15s; }
 
     /* ============================================================
-       OUR STORY: BORDERLESS, FREE-FLOWING EDITORIAL MAGAZINE LAYOUT
+       OUR STORY: COMPLETELY BORDERLESS, ARTISTIC & FREE-FLOWING
     ============================================================ */
     #story {
       background: var(--ivory);
-      border-top: 1px solid rgba(147, 172, 138, 0.25);
-      border-bottom: 1px solid rgba(147, 172, 138, 0.25);
+      padding: clamp(4rem, 7vw, 6.5rem) 1.5rem;
     }
 
-    .story-rows-container {
+    .story-flow-wrapper {
       margin-top: 3.5rem;
       display: flex;
       flex-direction: column;
       gap: clamp(3.5rem, 6vw, 5.5rem);
     }
 
-    /* Natural, Free-flowing Chapter Row */
-    .story-chapter-row {
+    /* Alternating Free-Flowing Layout */
+    .story-act {
       display: grid;
-      grid-template-columns: 0.9fr 1.25fr;
-      gap: clamp(2rem, 4.5vw, 4.5rem);
+      grid-template-columns: 1fr 1.25fr;
+      gap: clamp(2rem, 5vw, 5rem);
       align-items: center;
     }
+    .story-act--reverse {
+      grid-template-columns: 1.25fr 1fr;
+    }
 
-    @media (max-width: 780px) {
-      .story-chapter-row {
+    @media (max-width: 820px) {
+      .story-act, .story-act--reverse {
         grid-template-columns: 1fr;
-        gap: 1.8rem;
-        text-align: left;
+        gap: 1.6rem;
+      }
+      .story-act--reverse .story-photo-col {
+        order: -1;
       }
     }
 
@@ -384,88 +370,72 @@
       justify-content: center;
     }
 
-    /* Organic Framed Photography (No Top Stickers, No Clumsy Outlines) */
-    .chic-photo-card {
+    /* Fluid, Borderless Floating Photo */
+    .fluid-photo-wrap {
       position: relative;
-      background: var(--white);
-      padding: clamp(10px, 2vw, 14px);
-      border-radius: 3px;
-      border: 1px solid rgba(196, 164, 98, 0.35);
-      box-shadow: 0 14px 35px rgba(56, 10, 19, 0.08);
-      max-width: 420px;
+      max-width: 380px;
       width: 100%;
-      transition: transform 0.4s var(--ease-luxury), box-shadow 0.4s var(--ease-luxury);
+      transition: transform 0.4s var(--ease-luxury);
     }
-    .chic-photo-card:hover {
-      transform: translateY(-4px) scale(1.01) !important;
-      box-shadow: 0 20px 50px rgba(56, 10, 19, 0.14);
-    }
-
-    /* Elegant subtle tilts on desktop */
-    @media (min-width: 781px) {
-      .chic-photo-card--1 { transform: rotate(-2deg); }
-      .chic-photo-card--2 { transform: rotate(1.8deg); }
-      .chic-photo-card--3 { transform: rotate(-1.5deg); }
+    .fluid-photo-wrap:hover {
+      transform: translateY(-4px) scale(1.01);
     }
 
-    .chic-photo-card img {
-      width: 100%; height: auto;
-      border-radius: 2px;
+    .fluid-photo-wrap img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 16px 40px rgba(56, 10, 19, 0.1);
       display: block;
     }
-    .chic-photo-caption {
+    .fluid-photo-caption {
       font-family: var(--font-serif); font-style: italic;
       font-size: clamp(0.95rem, 1.6vw, 1.1rem);
       color: var(--burgundy);
       text-align: center; margin-top: 0.8rem; line-height: 1.4;
     }
 
-    /* Free-Flowing Story Narrative (Zero Boxes, Zero Box Borders) */
-    .story-text-col {
+    /* Free-Flowing Story Text (No Boxes, No Borders) */
+    .story-narrative-col {
       width: 100%;
     }
-    .story-chapter-flow {
+    .story-narrative-content {
       background: transparent;
       padding: 0;
       border: none;
       box-shadow: none;
     }
 
-    .story-chapter-flow h3 {
+    .story-narrative-content h3 {
       font-family: var(--font-luxury);
       font-size: clamp(1.6rem, 2.8vw, 2.3rem);
       font-weight: 400; color: var(--burgundy);
       line-height: 1.25; margin: 0.8rem 0 1rem;
     }
-    .story-chapter-quote {
+    .story-pull-quote {
       font-family: var(--font-serif); font-style: italic;
       font-size: clamp(1.05rem, 1.8vw, 1.2rem);
       color: var(--burgundy-soft);
       line-height: 1.6; margin-bottom: 1.2rem;
       padding-left: 1rem; border-left: 2px solid var(--gold);
     }
-    .story-chapter-flow p {
+    .story-narrative-content p {
       font-family: var(--font-body);
       font-size: clamp(0.95rem, 1.5vw, 1.05rem);
       font-weight: 400;
       color: var(--text-main);
       line-height: 1.9; margin-bottom: 1rem;
     }
-    .story-chapter-flow p:last-child { margin-bottom: 0; }
+    .story-narrative-content p:last-child { margin-bottom: 0; }
 
-    /* Free-flowing Scripture Badge */
-    .scripture-luxury-card {
+    /* Free-flowing Scripture Emblem */
+    .scripture-free-card {
       margin-top: 4.5rem;
       background: transparent;
       border: none;
       padding: 2rem 1rem;
       text-align: center;
       box-shadow: none;
-      position: relative;
-    }
-    .scripture-luxury-card::before {
-      content: ''; display: block; width: 60px; height: 1px;
-      background: var(--gold); margin: 0 auto 2rem;
     }
     .scripture-text {
       font-family: var(--font-serif); font-style: italic;
@@ -490,7 +460,6 @@
     ============================================================ */
     #celebration {
       background: var(--sage-mist);
-      border-bottom: 1px solid var(--sage-pale);
     }
 
     .itinerary-container {
@@ -501,7 +470,7 @@
     }
     .itinerary-timeline::before {
       content: ''; position: absolute; top: 24px; bottom: 24px; left: 35px;
-      width: 2px; background: var(--sage-light);
+      width: 2px; background: rgba(77, 102, 69, 0.2);
     }
     .itinerary-item {
       position: relative; display: flex; align-items: flex-start;
@@ -510,16 +479,15 @@
     .itinerary-item:last-child { margin-bottom: 0; }
     .itinerary-node {
       flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
-      border: 2px solid var(--burgundy); background: var(--white);
+      background: var(--white);
       display: flex; align-items: center; justify-content: center;
       color: var(--burgundy); position: relative; z-index: 2;
-      box-shadow: 0 0 0 6px var(--sage-mist);
+      box-shadow: 0 4px 15px rgba(56, 10, 19, 0.08);
     }
     .itinerary-content {
       background: var(--white);
       padding: 1.5rem 1.8rem;
       border-radius: 4px;
-      border: 1px solid var(--sage-pale);
       box-shadow: 0 4px 18px rgba(56, 10, 19, 0.04);
       flex: 1;
     }
@@ -539,8 +507,6 @@
     .celebration-action-box {
       margin-top: 3.5rem; padding: 2.5rem 2rem;
       background: var(--white); border-radius: 4px;
-      border: 1.5px solid var(--sage-light);
-      border-top: 4px solid var(--burgundy);
       text-align: center; box-shadow: 0 8px 30px rgba(56, 10, 19, 0.06);
     }
     .action-venue-name {
@@ -583,7 +549,6 @@
     ============================================================ */
     #guidance {
       background: var(--ivory);
-      border-bottom: 1px solid var(--sage-pale);
     }
     .guidance-wrapper {
       display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(2.5rem, 5vw, 5rem); align-items: start;
@@ -594,15 +559,13 @@
 
     .guidance-card {
       background: var(--white);
-      border: 1px solid var(--sage-pale);
       border-radius: 4px;
       margin-bottom: 1.8rem;
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(56, 10, 19, 0.04);
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: box-shadow 0.3s;
     }
     .guidance-card:hover {
-      border-color: var(--sage-light);
       box-shadow: 0 8px 30px rgba(56, 10, 19, 0.08);
     }
     .guidance-header {
@@ -633,7 +596,6 @@
       padding: 0 2rem 2rem;
       font-family: var(--font-body); font-size: 0.96rem;
       color: var(--text-main); line-height: 1.85;
-      border-top: 1px solid var(--sage-pale);
       margin-top: 0.4rem; padding-top: 1.4rem;
     }
     .guidance-links-grid {
@@ -642,12 +604,12 @@
     .guidance-link-item a {
       display: flex; align-items: center; justify-content: space-between;
       padding: 0.85rem 1.2rem; background: var(--sage-mist);
-      border: 1px solid var(--sage-pale); border-radius: 2px;
+      border-radius: 2px;
       font-weight: 500; color: var(--burgundy);
       transition: all 0.25s;
     }
     .guidance-link-item a:hover {
-      background: var(--sage-pale); border-color: var(--sage-light);
+      background: var(--sage-pale);
       transform: translateX(4px);
     }
 
@@ -661,7 +623,7 @@
     .rsvp-container { max-width: 680px; margin: 0 auto; }
     .rsvp-form-card {
       margin-top: 3.5rem; background: rgba(250, 248, 244, 0.06);
-      border: 1px solid rgba(147, 172, 138, 0.35); padding: 3.2rem 2.6rem;
+      padding: 3.2rem 2.6rem;
       border-radius: 4px; box-shadow: 0 25px 60px rgba(0,0,0,0.45);
       position: relative;
     }
@@ -675,7 +637,8 @@
     }
     .form-input, .form-select, .form-textarea {
       width: 100%; padding: 0.95rem 1.1rem;
-      background: rgba(250, 248, 244, 0.09); border: 1px solid rgba(147, 172, 138, 0.35);
+      background: rgba(250, 248, 244, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: var(--white); font-family: var(--font-body); font-size: 0.96rem; font-weight: 400;
       outline: none; transition: border-color 0.3s, background 0.3s;
       border-radius: 2px;
@@ -694,21 +657,22 @@
     }
     .attendance-btn {
       display: flex; align-items: center; justify-content: center; gap: 0.6rem;
-      padding: 1.1rem 1rem; border: 1.5px solid rgba(147, 172, 138, 0.35);
+      padding: 1.1rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       background: rgba(250, 248, 244, 0.05); color: var(--white);
       font-family: var(--font-caps); font-size: 0.78rem; font-weight: 600;
       letter-spacing: 0.2em; text-transform: uppercase;
       cursor: pointer; transition: all 0.3s; border-radius: 2px;
     }
     .attendance-btn:hover {
-      background: rgba(77, 102, 69, 0.3); border-color: var(--sage-light);
+      background: rgba(77, 102, 69, 0.3);
     }
     .attendance-btn input { accent-color: var(--gold-light); transform: scale(1.2); }
 
     .btn-rsvp-submit {
       width: 100%; padding: 1.15rem 2rem; background: var(--sage); color: var(--white);
       font-family: var(--font-caps); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.28em;
-      text-transform: uppercase; border: 1px solid var(--sage-light); margin-top: 1.2rem;
+      text-transform: uppercase; margin-top: 1.2rem;
       border-radius: 2px; cursor: pointer;
       transition: background 0.35s, transform 0.3s, box-shadow 0.35s;
     }
@@ -727,7 +691,6 @@
     footer {
       background: var(--oxblood); color: rgba(244, 239, 230, 0.7);
       text-align: center; padding: 4rem 1.5rem;
-      border-top: 1px solid rgba(147, 172, 138, 0.2);
     }
     .footer-monogram {
       font-family: var(--font-caps); font-size: 1.6rem; color: var(--gold-light);
@@ -745,7 +708,6 @@
     /* Keyframes */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes expandRule { from { opacity: 0; width: 0; } to { opacity: 1; width: 60px; } }
     @keyframes scrollPulse {
       0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
       50% { opacity: 1; transform: scaleY(1.1); }
@@ -778,7 +740,7 @@
   <!-- MAIN CONTENT -->
   <main id="main">
 
-    <!-- HERO COVER (SPACIOUS & BALANCED) -->
+    <!-- HERO COVER -->
     <section id="hero" aria-label="Welcome">
       <div class="hero-frame" aria-hidden="true"></div>
       <div class="hero-corner hero-corner--tl" aria-hidden="true"></div>
@@ -804,7 +766,6 @@
 
       <div class="hero-content">
         <div class="hero-eyebrow-pill">We're Getting Married</div>
-        <div class="hero-rule" aria-hidden="true"></div>
 
         <div class="hero-title">
           <div class="hero-name-row">
@@ -852,7 +813,7 @@
       </div>
     </section>
 
-    <!-- OUR STORY: BORDERLESS, FREE-FLOWING EDITORIAL SPREAD -->
+    <!-- OUR STORY: COMPLETELY BORDERLESS & FREE-FLOWING EDITORIAL -->
     <section id="story" class="section" aria-labelledby="storyHeading">
       <div class="section-inner">
         
@@ -867,21 +828,21 @@
           </p>
         </div>
 
-        <div class="story-rows-container">
+        <div class="story-flow-wrapper">
 
-          <!-- CHAPTER 1 -->
-          <div class="story-chapter-row reveal">
+          <!-- ACT 1: THE GLANCE (PHOTO LEFT, TEXT RIGHT) -->
+          <div class="story-act reveal">
             <div class="story-photo-col">
-              <div class="chic-photo-card chic-photo-card--1">
+              <div class="fluid-photo-wrap">
                 <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan standing together outdoors" loading="lazy" />
-                <p class="chic-photo-caption">“Where paths crossed in the quietest moment.”</p>
+                <p class="fluid-photo-caption">“Where paths crossed in the quietest moment.”</p>
               </div>
             </div>
-            <div class="story-text-col">
-              <div class="story-chapter-flow">
+            <div class="story-narrative-col">
+              <div class="story-narrative-content">
                 <span class="badge-pill badge-pill--burgundy">Chapter 01 &nbsp;&middot;&nbsp; The Glance</span>
                 <h3>Love at first sight — although neither was brave enough to speak!</h3>
-                <div class="story-chapter-quote">
+                <div class="story-pull-quote">
                   “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
                 </div>
                 <p><span class="dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members.</p>
@@ -890,40 +851,40 @@
             </div>
           </div>
 
-          <!-- CHAPTER 2 -->
-          <div class="story-chapter-row reveal reveal-delay-1">
-            <div class="story-photo-col">
-              <div class="chic-photo-card chic-photo-card--2">
-                <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan close-up portrait" loading="lazy" />
-                <p class="chic-photo-caption">“Two people who became each other's favourite hello.”</p>
-              </div>
-            </div>
-            <div class="story-text-col">
-              <div class="story-chapter-flow">
+          <!-- ACT 2: THE CONVERSATION (TEXT LEFT, PHOTO RIGHT ON DESKTOP) -->
+          <div class="story-act story-act--reverse reveal reveal-delay-1">
+            <div class="story-narrative-col">
+              <div class="story-narrative-content">
                 <span class="badge-pill badge-pill--sage">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
                 <h3>The conversation that never happened in person began over text.</h3>
-                <div class="story-chapter-quote">
+                <div class="story-pull-quote">
                   “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
                 </div>
                 <p><span class="dropcap">A</span> few days later, Rishen still couldn't get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that was meant to be began.</p>
                 <p>Messages turned into late-night phone calls, inside jokes, and countless memories. Two people who were once too shy to speak became each other's favourite good morning and favourite good night.</p>
               </div>
             </div>
-          </div>
-
-          <!-- CHAPTER 3 -->
-          <div class="story-chapter-row reveal">
             <div class="story-photo-col">
-              <div class="chic-photo-card chic-photo-card--3">
-                <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing together in hats" loading="lazy" />
-                <p class="chic-photo-caption">“Late-night conversations, inside jokes &amp; laughter.”</p>
+              <div class="fluid-photo-wrap">
+                <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan close-up portrait" loading="lazy" />
+                <p class="fluid-photo-caption">“Two people who became each other's favourite hello.”</p>
               </div>
             </div>
-            <div class="story-text-col">
-              <div class="story-chapter-flow">
+          </div>
+
+          <!-- ACT 3: FAITH & FOREVER (PHOTO LEFT, TEXT RIGHT) -->
+          <div class="story-act reveal">
+            <div class="story-photo-col">
+              <div class="fluid-photo-wrap">
+                <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing together in hats" loading="lazy" />
+                <p class="fluid-photo-caption">“Late-night conversations, inside jokes &amp; laughter.”</p>
+              </div>
+            </div>
+            <div class="story-narrative-col">
+              <div class="story-narrative-content">
                 <span class="badge-pill badge-pill--burgundy">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
                 <h3>Like iron sharpens iron — to encourage, strengthen and love.</h3>
-                <div class="story-chapter-quote">
+                <div class="story-pull-quote">
                   “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
                 </div>
                 <p><span class="dropcap">S</span>ince then, we've shared so many unforgettable moments together — adventures, laughter, milestones, and quiet days made special simply by being with each other.</p>
@@ -935,8 +896,8 @@
 
         </div>
 
-        <!-- Scripture Badge (Free Flow) -->
-        <div class="scripture-luxury-card reveal">
+        <!-- Scripture Emblem (Completely Free Flowing) -->
+        <div class="scripture-free-card reveal">
           <div style="color:var(--sage-mid); font-size:1.8rem; margin-bottom:0.4rem;">❦</div>
           <p class="scripture-text">
             “Therefore what God has joined together,<br>let no one separate.”
@@ -1161,7 +1122,7 @@
       <div class="section-inner rsvp-container">
         
         <div class="reveal" style="text-align: center;">
-          <span class="badge-pill badge-pill--sage" style="background: rgba(77, 102, 69, 0.4); color: var(--gold-light); border-color: var(--sage-light);">RSVP</span>
+          <span class="badge-pill badge-pill--sage" style="background: rgba(77, 102, 69, 0.4); color: var(--gold-light);">RSVP</span>
           <h2 class="section-heading" id="rsvpHeading" style="color: var(--white); margin-top: 1.2rem;">
             Will You Join Us?
           </h2>
@@ -1380,7 +1341,7 @@
       additionalGuestsContainer.style.display = 'block';
       for (let i = 2; i <= count; i++) {
         const guestBox = document.createElement('div');
-        guestBox.style.cssText = 'padding:1.2rem; margin-top:1.2rem; border:1px solid rgba(147,172,138,0.35); background:rgba(250,248,244,0.06); border-radius:2px;';
+        guestBox.style.cssText = 'padding:1.2rem; margin-top:1.2rem; background:rgba(250,248,244,0.06); border-radius:2px;';
         guestBox.innerHTML = `
           <div style="font-family:var(--font-luxury); font-size:1.15rem; color:var(--gold-light); margin-bottom:0.8rem;">
             Guest ${i}
