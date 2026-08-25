@@ -81,7 +81,7 @@
       inset: 0;
       pointer-events: none;
       z-index: 100;
-      opacity: 0.65;
+      opacity: 0.75;
     }
 
     /* Tactile Fine Paper Texture */
@@ -114,7 +114,7 @@
     }
 
     /* ============================================================
-       2. CINEMATIC REALISTIC 3D BUTTERFLY UNBOXING
+       2. HAUTE COUTURE 3D BUTTERFLY & VELVET ENVELOPE UNBOXING
     ============================================================ */
     #gatefold-unboxing-experience {
       position: fixed;
@@ -123,9 +123,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      perspective: 1600px;
+      perspective: 1800px;
       overflow: hidden;
-      background: radial-gradient(circle at 50% 45%, #4A141C 0%, #2A080E 50%, #120205 100%);
+      background: radial-gradient(circle at 50% 45%, #4C131B 0%, #29080E 45%, #140205 85%, #080002 100%);
       transition: opacity 1.8s var(--ease-silk), visibility 1.8s;
     }
     #gatefold-unboxing-experience.opened {
@@ -134,37 +134,61 @@
       pointer-events: none;
     }
 
+    /* Velvet Envelope Panels with Depth & Candlelight Warmth */
     .gate-panel-left, .gate-panel-right {
       position: absolute;
       top: 0; bottom: 0;
       width: 50%;
       z-index: 2;
-      transition: transform 2s cubic-bezier(0.65, 0, 0.15, 1), opacity 1.6s cubic-bezier(0.65, 0, 0.15, 1);
-      box-shadow: 0 0 70px rgba(0, 0, 0, 0.9);
-      background-size: cover;
+      transition: transform 2.1s cubic-bezier(0.65, 0, 0.15, 1), opacity 1.7s cubic-bezier(0.65, 0, 0.15, 1);
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.95);
     }
     .gate-panel-left {
       left: 0;
-      background: linear-gradient(135deg, rgba(82, 24, 32, 0.95) 0%, rgba(36, 9, 13, 0.98) 100%),
-                  radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.15), transparent 70%);
+      background: 
+        linear-gradient(135deg, rgba(92, 26, 35, 0.96) 0%, rgba(38, 9, 14, 0.98) 100%),
+        radial-gradient(ellipse at 85% 50%, rgba(212, 175, 55, 0.18), transparent 65%);
       transform-origin: left center;
-      border-right: 1px solid rgba(231, 217, 190, 0.4);
+      border-right: 1.5px solid rgba(231, 217, 190, 0.45);
     }
     .gate-panel-right {
       right: 0;
-      background: linear-gradient(225deg, rgba(74, 20, 28, 0.95) 0%, rgba(28, 6, 10, 0.98) 100%),
-                  radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.15), transparent 70%);
+      background: 
+        linear-gradient(225deg, rgba(82, 22, 30, 0.96) 0%, rgba(30, 6, 11, 0.98) 100%),
+        radial-gradient(ellipse at 15% 50%, rgba(212, 175, 55, 0.18), transparent 65%);
       transform-origin: right center;
-      border-left: 1px solid rgba(231, 217, 190, 0.4);
+      border-left: 1.5px solid rgba(231, 217, 190, 0.45);
     }
 
+    /* Fine Gold Inset Frame on Envelope */
     .gate-panel-left::before, .gate-panel-right::before {
       content: '';
       position: absolute;
-      inset: clamp(14px, 3vw, 24px);
-      border: 1px solid rgba(231, 217, 190, 0.25);
-      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
+      inset: clamp(14px, 3.2vw, 28px);
+      border: 1px solid rgba(231, 217, 190, 0.28);
+      box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.45);
       pointer-events: none;
+    }
+
+    /* Vertical Woven Silk Ribbon Band */
+    .gate-ribbon-band {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: clamp(50px, 12vw, 75px);
+      background: linear-gradient(90deg, 
+        rgba(30, 7, 11, 0.6) 0%, 
+        rgba(212, 175, 55, 0.25) 25%, 
+        rgba(231, 217, 190, 0.45) 50%, 
+        rgba(212, 175, 55, 0.25) 75%, 
+        rgba(30, 7, 11, 0.6) 100%
+      );
+      border-left: 1px dashed rgba(212, 175, 55, 0.4);
+      border-right: 1px dashed rgba(212, 175, 55, 0.4);
+      z-index: 3;
+      pointer-events: none;
+      box-shadow: 0 0 25px rgba(0,0,0,0.5);
     }
 
     #gatefold-unboxing-experience.opened .gate-panel-left {
@@ -176,7 +200,7 @@
       opacity: 0;
     }
 
-    /* 3D Realistic Gold Butterfly Entity */
+    /* Butterfly Interaction Wrapper */
     .butterfly-unboxing-wrapper {
       position: relative;
       z-index: 10;
@@ -184,141 +208,199 @@
       flex-direction: column;
       align-items: center;
       cursor: pointer;
-      padding: 2rem;
-      perspective: 1200px;
+      padding: 2.5rem;
+      perspective: 1400px;
     }
 
+    /* Ambient Warm Glow Halo Under Butterfly */
+    .butterfly-backlight-halo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(260px, 55vw, 360px);
+      height: clamp(260px, 55vw, 360px);
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, rgba(124, 139, 111, 0.2) 40%, rgba(110, 42, 49, 0) 70%);
+      filter: blur(28px);
+      pointer-events: none;
+      z-index: 1;
+      animation: ambientGlowBreathe 4s ease-in-out infinite alternate;
+    }
+    @keyframes ambientGlowBreathe {
+      0%   { opacity: 0.6; transform: translate(-50%, -50%) scale(0.92); }
+      100% { opacity: 1;   transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    /* 3D Realistic Butterfly Model */
     .butterfly-3d-entity {
       position: relative;
-      width: clamp(220px, 46vw, 300px);
-      height: clamp(170px, 36vw, 230px);
+      width: clamp(260px, 56vw, 360px);
+      height: clamp(200px, 44vw, 280px);
       transform-style: preserve-3d;
-      transition: transform 0.45s var(--ease-spring);
+      transition: transform 0.5s var(--ease-spring);
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 5;
     }
     .butterfly-unboxing-wrapper:hover .butterfly-3d-entity {
-      transform: scale(1.08) translateZ(30px);
+      transform: scale(1.08) translateZ(35px);
     }
 
+    /* Left & Right 3D Hinged Wings */
     .butterfly-wing-left, .butterfly-wing-right {
       position: absolute;
       top: 0;
       width: 50%;
       height: 100%;
       transform-style: preserve-3d;
-      filter: drop-shadow(0 15px 35px rgba(212, 175, 55, 0.45)) drop-shadow(0 20px 45px rgba(0, 0, 0, 0.8));
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.85)) drop-shadow(0 6px 18px rgba(212, 175, 55, 0.5));
     }
     .butterfly-wing-left {
       left: 0;
-      transform-origin: right center;
-      animation: gentleFlutterLeft 3.6s ease-in-out infinite alternate;
+      transform-origin: 100% 50%;
+      animation: realisticFlutterLeft 4s ease-in-out infinite alternate;
     }
     .butterfly-wing-right {
       right: 0;
-      transform-origin: left center;
-      animation: gentleFlutterRight 3.6s ease-in-out infinite alternate;
+      transform-origin: 0% 50%;
+      animation: realisticFlutterRight 4s ease-in-out infinite alternate;
     }
 
-    @keyframes gentleFlutterLeft {
-      0%   { transform: rotateY(0deg) rotateZ(0deg); }
-      50%  { transform: rotateY(28deg) rotateZ(-3deg); }
-      100% { transform: rotateY(-10deg) rotateZ(2deg); }
+    @keyframes realisticFlutterLeft {
+      0%   { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg); }
+      35%  { transform: rotateY(24deg) rotateX(3deg) rotateZ(-2deg); }
+      70%  { transform: rotateY(-8deg) rotateX(-2deg) rotateZ(1deg); }
+      100% { transform: rotateY(32deg) rotateX(4deg) rotateZ(-3deg); }
     }
-    @keyframes gentleFlutterRight {
-      0%   { transform: rotateY(0deg) rotateZ(0deg); }
-      50%  { transform: rotateY(-28deg) rotateZ(3deg); }
-      100% { transform: rotateY(10deg) rotateZ(-2deg); }
+    @keyframes realisticFlutterRight {
+      0%   { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg); }
+      35%  { transform: rotateY(-24deg) rotateX(3deg) rotateZ(2deg); }
+      70%  { transform: rotateY(8deg) rotateX(-2deg) rotateZ(-1deg); }
+      100% { transform: rotateY(-32deg) rotateX(4deg) rotateZ(3deg); }
     }
 
+    /* Active Flying Away in Cinematic Slow Motion */
     .butterfly-3d-entity.flying {
-      animation: slowMotionFlight 3.4s cubic-bezier(0.22, 0.08, 0.2, 1) forwards;
+      animation: cinematicSlowMotionFlight 3.4s cubic-bezier(0.22, 0.08, 0.2, 1) forwards;
     }
     .butterfly-3d-entity.flying .butterfly-wing-left {
-      animation: activeFastFlutterLeft 0.3s ease-in-out infinite alternate !important;
+      animation: activeFlightWingFlapL 0.26s ease-in-out infinite alternate !important;
     }
     .butterfly-3d-entity.flying .butterfly-wing-right {
-      animation: activeFastFlutterRight 0.3s ease-in-out infinite alternate !important;
+      animation: activeFlightWingFlapR 0.26s ease-in-out infinite alternate !important;
     }
 
-    @keyframes activeFastFlutterLeft {
-      0%   { transform: rotateY(60deg) rotateZ(-10deg); }
-      100% { transform: rotateY(-40deg) rotateZ(8deg); }
+    @keyframes activeFlightWingFlapL {
+      0%   { transform: rotateY(65deg) rotateX(8deg) rotateZ(-8deg); }
+      100% { transform: rotateY(-45deg) rotateX(-6deg) rotateZ(6deg); }
     }
-    @keyframes activeFastFlutterRight {
-      0%   { transform: rotateY(-60deg) rotateZ(10deg); }
-      100% { transform: rotateY(40deg) rotateZ(-8deg); }
+    @keyframes activeFlightWingFlapR {
+      0%   { transform: rotateY(-65deg) rotateX(8deg) rotateZ(8deg); }
+      100% { transform: rotateY(45deg) rotateX(-6deg) rotateZ(-6deg); }
     }
 
-    @keyframes slowMotionFlight {
+    @keyframes cinematicSlowMotionFlight {
       0% {
         transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
         opacity: 1;
       }
       20% {
-        transform: translate3d(-35px, -70px, 180px) scale(1.35) rotate(-8deg);
+        transform: translate3d(-30px, -70px, 200px) scale(1.4) rotate(-8deg);
         opacity: 1;
       }
       50% {
-        transform: translate3d(70px, -200px, 420px) scale(1.85) rotate(14deg);
+        transform: translate3d(80px, -220px, 500px) scale(2.1) rotate(14deg);
         opacity: 0.95;
       }
       75% {
-        transform: translate3d(-50px, -360px, 700px) scale(2.35) rotate(-6deg);
+        transform: translate3d(-60px, -420px, 800px) scale(2.8) rotate(-6deg);
         opacity: 0.65;
       }
       100% {
-        transform: translate3d(120px, -600px, 1000px) scale(3.2) rotate(18deg);
+        transform: translate3d(140px, -750px, 1200px) scale(3.8) rotate(18deg);
         opacity: 0;
         visibility: hidden;
       }
     }
 
+    /* Central Thorax & Embossed Gold Coin Monogram Crest */
     .butterfly-body-core {
       position: absolute;
-      z-index: 6;
-      width: clamp(54px, 11vw, 68px);
-      height: clamp(54px, 11vw, 68px);
+      z-index: 8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Curled Gold Antennae */
+    .butterfly-antennae-svg {
+      width: clamp(48px, 10vw, 64px);
+      height: clamp(32px, 7vw, 44px);
+      margin-bottom: -10px;
+      filter: drop-shadow(0 2px 6px rgba(212, 175, 55, 0.8));
+    }
+
+    .butterfly-embossed-gold-crest {
+      width: clamp(56px, 12vw, 72px);
+      height: clamp(56px, 12vw, 72px);
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #FFF6E0 0%, #E5C365 35%, #B88E28 70%, #5E1A22 100%);
-      box-shadow: 0 6px 30px rgba(212, 175, 55, 0.8), inset 0 2px 5px rgba(255, 255, 255, 0.9), 0 0 20px rgba(231, 217, 190, 0.5);
+      background: 
+        radial-gradient(circle at 35% 30%, #FFF8E7 0%, #F5D77F 30%, #C59B35 65%, #6E2A31 100%);
+      box-shadow: 
+        0 6px 25px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(212, 175, 55, 0.75),
+        inset 0 2px 4px rgba(255, 255, 255, 0.9),
+        inset 0 -2px 6px rgba(56, 15, 20, 0.7);
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid rgba(255, 255, 255, 0.75);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      position: relative;
     }
+    .butterfly-embossed-gold-crest::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border-radius: 50%;
+      border: 1px dashed rgba(84, 26, 34, 0.45);
+      pointer-events: none;
+    }
+
     .butterfly-monogram-label {
       font-family: var(--font-serif);
-      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-size: clamp(1.1rem, 2.4vw, 1.35rem);
       font-weight: 600;
       color: #380F14;
-      letter-spacing: 0.05em;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.04em;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
     }
     .butterfly-monogram-label span {
       font-family: var(--font-script);
-      font-size: clamp(1.3rem, 2.8vw, 1.55rem);
+      font-size: clamp(1.4rem, 3vw, 1.7rem);
       color: #6E2A31;
       margin: 0 0.08em;
     }
 
     .butterfly-touch-prompt-text {
       font-family: var(--font-sans);
-      font-size: 0.74rem;
-      font-weight: 500;
+      font-size: clamp(0.72rem, 1.6vw, 0.82rem);
+      font-weight: 600;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--champagne);
-      margin-top: 2rem;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+      margin-top: 2.2rem;
+      text-shadow: 0 3px 15px rgba(0, 0, 0, 0.95);
       display: flex;
       align-items: center;
-      gap: 0.55rem;
-      transition: opacity 0.4s, color 0.4s;
+      gap: 0.6rem;
+      transition: all 0.35s;
     }
     .butterfly-unboxing-wrapper:hover .butterfly-touch-prompt-text {
       color: var(--gold-light);
+      transform: translateY(-2px);
+      letter-spacing: 0.36em;
     }
 
     /* ============================================================
@@ -1362,113 +1444,164 @@
   </div>
 
   <!-- ============================================================
-       1. CINEMATIC REALISTIC 3D BUTTERFLY UNBOXING
+       1. HAUTE COUTURE 3D BUTTERFLY UNBOXING
   ============================================================ */ -->
   <div id="gatefold-unboxing-experience" aria-label="Digital Wedding Invitation Butterfly Unboxing">
     <div class="gate-panel-left"></div>
     <div class="gate-panel-right"></div>
+    <div class="gate-ribbon-band"></div>
 
     <div class="butterfly-unboxing-wrapper" id="butterflyUnboxingTrigger" title="Tap the butterfly to begin your journey">
       
+      <!-- Ambient Halo Glow -->
+      <div class="butterfly-backlight-halo" aria-hidden="true"></div>
+
       <div class="butterfly-3d-entity" id="butterfly3dEntity">
         
-        <!-- Left Wing -->
+        <!-- Left Wing: Biological Swallowtail Anatomy with Translucent Emerald Sage & Gold Veins -->
         <div class="butterfly-wing-left">
-          <svg viewBox="0 0 150 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; overflow:visible;">
+          <svg viewBox="0 0 170 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; overflow:visible;">
             <defs>
-              <linearGradient id="goldWingL" x1="150" y1="100" x2="0" y2="30" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#FFF8E7" />
-                <stop offset="0.25" stop-color="#F2D379" />
-                <stop offset="0.6" stop-color="#C59B35" />
-                <stop offset="0.9" stop-color="#785314" />
-                <stop offset="1" stop-color="#3D1A20" />
+              <!-- 24K Gold Leaf Foil Gradient -->
+              <linearGradient id="goldLeafL" x1="170" y1="120" x2="0" y2="20" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFFBF0" />
+                <stop offset="0.2" stop-color="#F7E298" />
+                <stop offset="0.55" stop-color="#D4AF37" />
+                <stop offset="0.85" stop-color="#8F6A1A" />
+                <stop offset="1" stop-color="#4A1820" />
               </linearGradient>
-              <linearGradient id="sageGlowL" x1="150" y1="100" x2="20" y2="40" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#E1ECD8" stop-opacity="0.8" />
-                <stop offset="0.4" stop-color="#7C8B6F" stop-opacity="0.75" />
-                <stop offset="0.8" stop-color="#3D4A36" stop-opacity="0.65" />
-                <stop offset="1" stop-color="#1A2416" stop-opacity="0.9" />
+
+              <!-- Translucent Iridescent Emerald & Sage Gradient -->
+              <radialGradient id="sageIridescentL" cx="120" cy="110" r="140" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#E8F4E1" stop-opacity="0.9" />
+                <stop offset="35%" stop-color="#7C8B6F" stop-opacity="0.82" />
+                <stop offset="70%" stop-color="#3D4A36" stop-opacity="0.75" />
+                <stop offset="100%" stop-color="#232D20" stop-opacity="0.92" />
+              </radialGradient>
+
+              <!-- Velvet Burgundy Wing Accent -->
+              <linearGradient id="burgundyCellL" x1="170" y1="180" x2="40" y2="220" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#6E2A31" stop-opacity="0.95" />
+                <stop offset="60%" stop-color="#431A1F" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#200508" stop-opacity="0.95" />
               </linearGradient>
-              <radialGradient id="jewelGlowL" cx="50%" cy="50%" r="50%">
+
+              <!-- Diamond Shimmer Tip Glow -->
+              <radialGradient id="diamondPearlGlow" cx="50%" cy="50%" r="50%">
                 <stop stop-color="#FFFFFF" />
-                <stop offset="0.5" stop-color="#FDE8B3" />
-                <stop offset="1" stop-color="#C59B35" />
+                <stop offset="0.6" stop-color="#FDF4DC" />
+                <stop offset="1" stop-color="#D4AF37" />
               </radialGradient>
             </defs>
 
-            <path d="M150 100 C140 45, 95 10, 35 12 C-5 14, -8 55, 18 90 C45 125, 105 110, 150 100 Z" 
-                  fill="url(#goldWingL)" stroke="#FFF6DB" stroke-width="1.8"/>
-            <path d="M145 98 C135 48, 92 18, 38 20 C5 22, 2 54, 25 84 C50 115, 102 105, 145 98 Z" 
-                  fill="url(#sageGlowL)"/>
+            <!-- Forewing (Top Wing): Sinuous Natural Curve with Scalloped Margins -->
+            <path d="M170 120 C160 55, 110 5, 38 12 C10 15, -12 52, 12 102 C32 144, 110 135, 170 120 Z" 
+                  fill="url(#goldLeafL)" stroke="#FFF8E7" stroke-width="2.2"/>
+            <path d="M164 118 C154 60, 108 14, 42 20 C18 24, 0 54, 20 95 C38 132, 108 128, 164 118 Z" 
+                  fill="url(#sageIridescentL)"/>
 
-            <path d="M150 105 C120 130, 65 180, 32 192 C6 202, 10 168, 35 142 C68 110, 120 102, 150 105 Z" 
-                  fill="url(#goldWingL)" stroke="#E7D9BE" stroke-width="1.5"/>
-            <path d="M145 108 C118 132, 68 175, 38 185 C18 190, 20 165, 42 142 C70 114, 118 106, 145 108 Z" 
-                  fill="url(#sageGlowL)"/>
+            <!-- Hindwing (Bottom Wing): Swallowtail with Scalloped Outer Margin & Tail Extension -->
+            <path d="M170 125 C135 155, 75 205, 38 225 C14 238, 8 202, 32 170 C58 135, 125 120, 170 125 Z" 
+                  fill="url(#burgundyCellL)" stroke="#FFF8E7" stroke-width="1.8"/>
+            <path d="M162 130 C130 156, 78 200, 44 218 C26 226, 20 200, 40 172 C62 140, 122 126, 162 130 Z" 
+                  fill="url(#sageIridescentL)"/>
 
-            <path d="M150 100 Q80 50 35 22" stroke="#FFF8E7" stroke-width="2.2" stroke-linecap="round" opacity="0.95"/>
-            <path d="M150 100 Q65 78 20 90" stroke="#F7E7C4" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
-            <path d="M150 105 Q85 145 35 190" stroke="#FFF8E7" stroke-width="2" stroke-linecap="round" opacity="0.95"/>
-            <path d="M105 72 Q70 40 45 42 M85 86 Q50 68 28 65 M115 125 Q75 145 45 160" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+            <!-- Anatomical Vein Filigree Architecture (24k Raised Gold Foil) -->
+            <!-- Main Costa & Radial Stems -->
+            <path d="M170 120 Q95 55 42 24" stroke="#FFFBF0" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M170 120 Q80 82 22 100" stroke="#F7E298" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M170 125 Q92 165 42 222" stroke="#FFFBF0" stroke-width="2.4" stroke-linecap="round"/>
+            
+            <!-- Secondary Radiating Cellular Veins -->
+            <path d="M118 78 Q78 44 48 50 M96 98 Q58 76 34 78 M125 145 Q82 170 52 188" 
+                  stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/>
 
-            <circle cx="48" cy="42" r="5.5" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="1"/>
-            <circle cx="28" cy="78" r="4.2" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="0.8"/>
-            <circle cx="46" cy="165" r="4.8" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="0.8"/>
+            <!-- Inlaid Scalloped Pearl Gems Along Wing Periphery -->
+            <circle cx="50" cy="38" r="4.8" fill="url(#diamondPearlGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
+            <circle cx="28" cy="74" r="3.8" fill="url(#diamondPearlGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
+            <circle cx="22" cy="115" r="3.4" fill="url(#diamondPearlGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
+            <circle cx="48" cy="195" r="4.2" fill="url(#diamondPearlGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
           </svg>
         </div>
 
-        <!-- Central Body Core -->
+        <!-- Central Body Core: Slender Gold Thorax, Antennae, and Monogram Crest -->
         <div class="butterfly-body-core">
-          <div class="butterfly-monogram-label">
-            R<span>&amp;</span>L
+          <!-- Curled Antennae -->
+          <svg class="butterfly-antennae-svg" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 38 C28 22, 18 8, 8 10 C3 12, 6 18, 12 16" stroke="#FFF8E7" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M30 38 C32 22, 42 8, 52 10 C57 12, 54 18, 48 16" stroke="#FFF8E7" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="12" cy="16" r="2.2" fill="#D4AF37"/>
+            <circle cx="48" cy="16" r="2.2" fill="#D4AF37"/>
+          </svg>
+
+          <!-- Embossed 24K Gold Wax Seal Monogram -->
+          <div class="butterfly-embossed-gold-crest">
+            <div class="butterfly-monogram-label">
+              R<span>&amp;</span>L
+            </div>
           </div>
         </div>
 
-        <!-- Right Wing -->
+        <!-- Right Wing: Biological Swallowtail Anatomy with Translucent Emerald Sage & Gold Veins -->
         <div class="butterfly-wing-right">
-          <svg viewBox="0 0 150 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; overflow:visible;">
+          <svg viewBox="0 0 170 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; overflow:visible;">
             <defs>
-              <linearGradient id="goldWingR" x1="0" y1="100" x2="150" y2="30" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#FFF8E7" />
-                <stop offset="0.25" stop-color="#F2D379" />
-                <stop offset="0.6" stop-color="#C59B35" />
-                <stop offset="0.9" stop-color="#785314" />
-                <stop offset="1" stop-color="#3D1A20" />
+              <linearGradient id="goldLeafR" x1="0" y1="120" x2="170" y2="20" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFFBF0" />
+                <stop offset="0.2" stop-color="#F7E298" />
+                <stop offset="0.55" stop-color="#D4AF37" />
+                <stop offset="0.85" stop-color="#8F6A1A" />
+                <stop offset="1" stop-color="#4A1820" />
               </linearGradient>
-              <linearGradient id="sageGlowR" x1="0" y1="100" x2="130" y2="40" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#E1ECD8" stop-opacity="0.8" />
-                <stop offset="0.4" stop-color="#7C8B6F" stop-opacity="0.75" />
-                <stop offset="0.8" stop-color="#3D4A36" stop-opacity="0.65" />
-                <stop offset="1" stop-color="#1A2416" stop-opacity="0.9" />
+
+              <radialGradient id="sageIridescentR" cx="50" cy="110" r="140" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#E8F4E1" stop-opacity="0.9" />
+                <stop offset="35%" stop-color="#7C8B6F" stop-opacity="0.82" />
+                <stop offset="70%" stop-color="#3D4A36" stop-opacity="0.75" />
+                <stop offset="100%" stop-color="#232D20" stop-opacity="0.92" />
+              </radialGradient>
+
+              <linearGradient id="burgundyCellR" x1="0" y1="180" x2="130" y2="220" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#6E2A31" stop-opacity="0.95" />
+                <stop offset="60%" stop-color="#431A1F" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#200508" stop-opacity="0.95" />
               </linearGradient>
             </defs>
 
-            <path d="M0 100 C10 45, 55 10, 115 12 C155 14, 158 55, 132 90 C105 125, 45 110, 0 100 Z" 
-                  fill="url(#goldWingR)" stroke="#FFF6DB" stroke-width="1.8"/>
-            <path d="M5 98 C15 48, 58 18, 112 20 C145 22, 148 54, 125 84 C100 115, 48 105, 5 98 Z" 
-                  fill="url(#sageGlowR)"/>
+            <!-- Forewing (Top Wing) -->
+            <path d="M0 120 C10 55, 60 5, 132 12 C160 15, 182 52, 158 102 C138 144, 60 135, 0 120 Z" 
+                  fill="url(#goldLeafR)" stroke="#FFF8E7" stroke-width="2.2"/>
+            <path d="M6 118 C16 60, 62 14, 128 20 C152 24, 170 54, 150 95 C132 132, 62 128, 6 118 Z" 
+                  fill="url(#sageIridescentR)"/>
 
-            <path d="M0 105 C30 130, 85 180, 118 192 C144 202, 140 168, 115 142 C82 110, 30 102, 0 105 Z" 
-                  fill="url(#goldWingR)" stroke="#E7D9BE" stroke-width="1.5"/>
-            <path d="M5 108 C32 132, 82 175, 112 185 C132 190, 130 165, 108 142 C80 114, 32 106, 5 108 Z" 
-                  fill="url(#sageGlowR)"/>
+            <!-- Hindwing (Bottom Wing) -->
+            <path d="M0 125 C35 155, 95 205, 132 225 C156 238, 162 202, 138 170 C112 135, 45 120, 0 125 Z" 
+                  fill="url(#burgundyCellR)" stroke="#FFF8E7" stroke-width="1.8"/>
+            <path d="M8 130 C40 156, 92 200, 126 218 C144 226, 150 200, 130 172 C108 140, 48 126, 8 130 Z" 
+                  fill="url(#sageIridescentR)"/>
 
-            <path d="M0 100 Q70 50 115 22" stroke="#FFF8E7" stroke-width="2.2" stroke-linecap="round" opacity="0.95"/>
-            <path d="M0 100 Q85 78 130 90" stroke="#F7E7C4" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
-            <path d="M0 105 Q65 145 115 190" stroke="#FFF8E7" stroke-width="2" stroke-linecap="round" opacity="0.95"/>
-            <path d="M45 72 Q80 40 105 42 M65 86 Q100 68 122 65 M35 125 Q75 145 105 160" stroke="#D4AF37" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+            <!-- Anatomical Vein Filigree Architecture -->
+            <path d="M0 120 Q75 55 128 24" stroke="#FFFBF0" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M0 120 Q90 82 148 100" stroke="#F7E298" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M0 125 Q78 165 128 222" stroke="#FFFBF0" stroke-width="2.4" stroke-linecap="round"/>
+            
+            <path d="M52 78 Q92 44 122 50 M74 98 Q112 76 136 78 M45 145 Q88 170 118 188" 
+                  stroke="#D4AF37" stroke-width="1.4" stroke-linecap="round"/>
 
-            <circle cx="102" cy="42" r="5.5" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="1"/>
-            <circle cx="122" cy="78" r="4.2" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="0.8"/>
-            <circle cx="104" cy="165" r="4.8" fill="url(#jewelGlowL)" stroke="#FFF" stroke-width="0.8"/>
+            <!-- Inlaid Pearl Gems -->
+            <circle cx="120" cy="38" r="4.8" fill="url(#diamondPearlGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
+            <circle cx="142" cy="74" r="3.8" fill="url(#diamondPearlGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
+            <circle cx="148" cy="115" r="3.4" fill="url(#diamondPearlGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
+            <circle cx="122" cy="195" r="4.2" fill="url(#diamondPearlGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
           </svg>
         </div>
 
       </div>
 
+      <!-- Compelling Call to Action -->
       <span class="butterfly-touch-prompt-text" id="butterflyPromptTag">
         <span>Tap to open invitation</span>
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2">
           <path d="M3 8h10M9 4l4 4-4 4"/>
         </svg>
       </span>
@@ -1995,7 +2128,6 @@
   'use strict';
 
   // GOOGLE APPS SCRIPT WEB APP BACKEND URL
-  // You can set your deployed Apps Script Web App URL below:
   var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz_placeholder/exec';
 
   // 1. Ambient Stardust Canvas Particles
@@ -2021,7 +2153,7 @@
         this.size = Math.random() * 2 + 0.5;
         this.speedY = -(Math.random() * 0.4 + 0.1);
         this.speedX = (Math.random() - 0.5) * 0.2;
-        this.opacity = Math.random() * 0.7 + 0.2;
+        this.opacity = Math.random() * 0.75 + 0.25;
         this.fadeSpeed = Math.random() * 0.008 + 0.002;
       }
       update() {
@@ -2038,7 +2170,7 @@
       }
     }
 
-    for (let i = 0; i < 40; i++) particles.push(new Particle());
+    for (let i = 0; i < 45; i++) particles.push(new Particle());
 
     function animateParticles() {
       ctx.clearRect(0, 0, width, height);
@@ -2051,7 +2183,7 @@
     animateParticles();
   }
 
-  // 2. 3D Butterfly Realistic Slow Motion Flight Unboxing
+  // 2. Haute Couture 3D Butterfly Realistic Slow Motion Flight Unboxing
   const gatefoldOverlay  = document.getElementById('gatefold-unboxing-experience');
   const butterflyTrigger = document.getElementById('butterflyUnboxingTrigger');
   const butterflyEntity  = document.getElementById('butterfly3dEntity');
@@ -2076,13 +2208,13 @@
 
     setTimeout(() => {
       gatefoldOverlay.classList.add('opened');
-      sessionStorage.setItem('rl_invitation_butterfly_v7', 'true');
-    }, 750);
+      sessionStorage.setItem('rl_invitation_butterfly_couture_v1', 'true');
+    }, 850);
   }
 
   if (butterflyTrigger) butterflyTrigger.addEventListener('click', launchButterflyUnboxing);
 
-  if (sessionStorage.getItem('rl_invitation_butterfly_v7') === 'true') {
+  if (sessionStorage.getItem('rl_invitation_butterfly_couture_v1') === 'true') {
     if (gatefoldOverlay) gatefoldOverlay.classList.add('opened');
   }
 
@@ -2263,7 +2395,6 @@
       const dietaryNotes  = document.getElementById('guestDietaryNotesInput') ? document.getElementById('guestDietaryNotesInput').value.trim() : '';
       const wishesMsg     = document.getElementById('guestWishesTextarea') ? document.getElementById('guestWishesTextarea').value.trim() : '';
 
-      // Build payload
       const payload = {
         primaryName: fullName,
         attendance: isAttending ? "Yes, I'll be there" : "No, unfortunately I can't attend",
@@ -2287,19 +2418,16 @@
         }
       }
 
-      // Save locally as reliable backup
       try {
         const saved = JSON.parse(localStorage.getItem('rl_saved_rsvps') || '[]');
         saved.push({ ...payload, timestamp: new Date().toISOString() });
         localStorage.setItem('rl_saved_rsvps', JSON.stringify(saved));
       } catch(err) {}
 
-      // UI Submitting state
       if (submitBtn) submitBtn.disabled = true;
       if (btnTextEl) btnTextEl.style.display = 'none';
       if (btnSpinnerEl) btnSpinnerEl.style.display = 'inline';
 
-      // Send to Google Apps Script Web App
       if (GOOGLE_APPS_SCRIPT_URL && GOOGLE_APPS_SCRIPT_URL.indexOf('placeholder') === -1) {
         fetch(GOOGLE_APPS_SCRIPT_URL, {
           method: 'POST',
@@ -2309,7 +2437,6 @@
         }).catch(() => {});
       }
 
-      // Display Heartfelt Confirmation
       setTimeout(function() {
         if (isAttending) {
           if (feedbackTitle) feedbackTitle.textContent = `We can’t wait to celebrate with you, ${firstName}!`;
