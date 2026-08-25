@@ -3,39 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta name="description" content="Digital Wedding Invitation for Rishen &amp; Lizaan — Saturday, 24 October 2026 at Highberry Vineyards &amp; Venue, Somerset West." />
+  <meta name="description" content="The Haute Couture Digital Wedding Invitation of Rishen &amp; Lizaan — Saturday, 24 October 2026 at Highberry Vineyards &amp; Venue, Somerset West." />
   <meta name="theme-color" content="#431A1F" />
-  <title>Rishen &amp; Lizaan — The Wedding Invitation</title>
+  <title>Rishen &amp; Lizaan — The Wedding Celebration</title>
 
-  <!-- Google Fonts: Fraunces (Editorial Display Serif) & Jost (Clean Luxury Sans) & Pinyon Script (Romantic Flourish) -->
+  <!-- Editorial Luxury Fonts: Fraunces (Optical Serif), Jost (Clean Humanist Sans) & Pinyon Script (Romantic Flourish) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..500,0..100&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" />
 
+  <!-- Canvas Confetti for Celebration Moment -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
   <style>
     /* ============================================================
-       THEME TOKENS: SABINA DESIGNS BURGUNDY & SAGE LUXURY
+       1. LUXURY EDITORIAL COLOR SYSTEM
     ============================================================ */
     :root {
       --burgundy:         #6E2A31;
       --oxblood:          #431A1F;
-      --burgundy-deep:    #24080B;
+      --burgundy-deep:    #220609;
+      --burgundy-glow:    rgba(110, 42, 49, 0.18);
+      --burgundy-soft:    #85363F;
+
       --sage:             #7C8B6F;
-      --sage-dark:        #4E5B43;
+      --sage-dark:        #4A5840;
       --eucalyptus:       #AAB89C;
-      --sage-wash:        #EBF1E8;
+      --sage-light:       #EBF1E8;
+      --sage-wash:        #F4F7F2;
 
       --ivory:            #FBF7F0;
-      --parchment:        #F4EBD9;
-      --gate-left:        #E8DFD1;
-      --gate-right:       #D9CEBE;
+      --parchment:        #F3EAD8;
       --champagne:        #E7D9BE;
       --champagne-soft:   #FAF5EC;
-      --gold-seal:        #C8A870;
-      --gold-highlight:   #F3E3B8;
-      
-      --ink:              #2C2620;
-      --ink-soft:         #594F45;
+      --gold:             #C5A869;
+      --gold-light:       #F2E2B8;
+      --gold-dark:        #997938;
+
+      --ink:              #241E19;
+      --ink-soft:         #544A41;
       --ink-muted:        #7D7267;
       --white:            #FFFFFF;
 
@@ -43,13 +49,10 @@
       --font-sans:        'Jost', -apple-system, system-ui, sans-serif;
       --font-script:      'Pinyon Script', cursive;
 
-      --radius-sm:        8px;
-      --radius-md:        14px;
-      --radius-pill:      40px;
-      --shadow-card:      0 8px 24px rgba(67, 26, 31, 0.08);
-      --shadow-float:     0 12px 35px rgba(0, 0, 0, 0.28);
+      --ease-silk:        cubic-bezier(0.19, 1, 0.22, 1);
       --ease-gate:        cubic-bezier(0.7, 0, 0.2, 1);
-      --ease-silk:        cubic-bezier(0.22, 1, 0.36, 1);
+      --shadow-mag:       0 18px 45px rgba(36, 9, 13, 0.12);
+      --shadow-float:     0 14px 35px rgba(0, 0, 0, 0.35);
     }
 
     *, *::before, *::after {
@@ -63,15 +66,15 @@
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      background-color: #1A0507;
+      background-color: #160406;
     }
 
     body {
-      background-color: #1A0507;
+      background-color: #160406;
       color: var(--ink);
       font-family: var(--font-sans);
       font-weight: 300;
-      line-height: 1.75;
+      line-height: 1.8;
       overflow-x: hidden;
       display: flex;
       justify-content: center;
@@ -82,204 +85,251 @@
     a { color: inherit; text-decoration: none; }
     button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
-    /* ============================================================
-       MOBILE APP CONTAINER
-    ============================================================ */
-    .mobile-app-canvas {
-      width: 100%;
-      max-width: 460px;
-      background-color: var(--ivory);
-      position: relative;
-      min-height: 100vh;
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
-      padding-bottom: 85px; /* space for bottom nav */
-      overflow-x: hidden;
-    }
-
-    /* Paper Texture */
-    .mobile-app-canvas::before {
-      content: '';
-      position: absolute;
+    /* Fine Paper Grain Texture */
+    .paper-texture-overlay {
+      position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 100;
-      opacity: 0.03;
+      z-index: 998;
+      opacity: 0.032;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
+    /* Ambient Floating Stardust Canvas */
+    #stardustCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.7;
+    }
+
     /* ============================================================
-       1. EXACT SABINA DESIGNS GATEFOLD DOORS & WAX SEAL OPENING
+       MOBILE APP CANVAS VIEWPORT
     ============================================================ */
-    #gatefold-cover-screen {
+    .magazine-app-viewport {
+      width: 100%;
+      max-width: 480px;
+      background-color: var(--ivory);
+      position: relative;
+      min-height: 100vh;
+      box-shadow: 0 0 70px rgba(0, 0, 0, 0.75);
+      padding-bottom: 90px;
+      overflow-x: hidden;
+    }
+
+    /* Reading Progress Line on Top */
+    .top-scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(100vw, 480px);
+      height: 3px;
+      background: rgba(197, 168, 105, 0.2);
+      z-index: 890;
+    }
+    .top-scroll-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--burgundy), var(--gold));
+      transition: width 0.1s linear;
+    }
+
+    /* ============================================================
+       2. 3D FRENCH GATEFOLD DOORS WITH GOLD EMBOSSED WAX SEAL
+    ============================================================ */
+    #gatefold-cover-experience {
       position: fixed;
       inset: 0;
       z-index: 9999;
       display: flex;
       align-items: center;
       justify-content: center;
-      perspective: 1200px;
+      perspective: 1400px;
       overflow: hidden;
+      background: #180507;
+      transition: opacity 1.2s var(--ease-silk), visibility 1.2s;
     }
-    #gatefold-cover-screen.opened {
+    #gatefold-cover-experience.unveiled {
+      opacity: 0;
+      visibility: hidden;
       pointer-events: none;
     }
 
-    /* Left Gate Door */
-    .gate-door-left {
+    .gate-panel-l, .gate-panel-r {
       position: absolute;
-      top: 0; bottom: 0; left: 0;
+      top: 0; bottom: 0;
       width: 50%;
-      background: linear-gradient(135deg, #E6DDD0 0%, #D8CEBE 100%);
+      z-index: 2;
+      transition: transform 1.4s var(--ease-gate), opacity 1.2s var(--ease-gate);
+      box-shadow: 0 0 40px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .gate-panel-l {
+      left: 0;
+      background: linear-gradient(135deg, #4A1A20 0%, #300e13 100%);
       transform-origin: left center;
-      transition: transform 1.3s var(--ease-gate), opacity 1.1s var(--ease-gate);
-      z-index: 2;
-      box-shadow: inset -5px 0 25px rgba(0, 0, 0, 0.12);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: center;
+      border-right: 1px solid rgba(231, 217, 190, 0.35);
       padding-right: 1.5rem;
-      border-right: 1px solid rgba(197, 168, 105, 0.4);
+      align-items: flex-end;
     }
-
-    /* Right Gate Door */
-    .gate-door-right {
-      position: absolute;
-      top: 0; bottom: 0; right: 0;
-      width: 50%;
-      background: linear-gradient(135deg, #CFBEAD 0%, #C4B1A0 100%);
+    .gate-panel-r {
+      right: 0;
+      background: linear-gradient(225deg, #40151B 0%, #26090D 100%);
       transform-origin: right center;
-      transition: transform 1.3s var(--ease-gate), opacity 1.1s var(--ease-gate);
-      z-index: 2;
-      box-shadow: inset 5px 0 25px rgba(0, 0, 0, 0.15);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
+      border-left: 1px solid rgba(231, 217, 190, 0.35);
       padding-left: 1.5rem;
+      align-items: flex-start;
     }
 
-    /* Subtle Floral Toile Watermark on Doors */
-    .gate-door-left::before, .gate-door-right::before {
+    /* Gold Filigree Line Art on Doors */
+    .gate-panel-l::before, .gate-panel-r::before {
       content: '';
       position: absolute;
-      inset: 0;
-      opacity: 0.15;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30,50 Q40,30 50,50 Q60,70 70,50 Q80,30 90,50' stroke='%23431A1F' fill='none' stroke-width='1.5'/%3E%3Ccircle cx='35' cy='40' r='5' fill='%23431A1F'/%3E%3Ccircle cx='65' cy='60' r='6' fill='%23431A1F'/%3E%3C/svg%3E");
-      background-size: 140px 140px;
+      inset: 16px;
+      border: 1px solid rgba(231, 217, 190, 0.2);
       pointer-events: none;
     }
 
-    #gatefold-cover-screen.opened .gate-door-left {
-      transform: translateX(-100%) rotateY(-30deg);
+    #gatefold-cover-experience.unveiled .gate-panel-l {
+      transform: translateX(-100%) rotateY(-80deg);
       opacity: 0;
     }
-    #gatefold-cover-screen.opened .gate-door-right {
-      transform: translateX(100%) rotateY(30deg);
+    #gatefold-cover-experience.unveiled .gate-panel-r {
+      transform: translateX(100%) rotateY(80deg);
       opacity: 0;
     }
 
-    /* Center Embossed Wax Seal Button */
-    .center-wax-seal-btn {
+    /* Embossed Gold Wax Seal ("R & L") */
+    .wax-seal-center-btn {
       position: relative;
       z-index: 10;
-      width: 92px;
-      height: 92px;
+      width: 96px;
+      height: 96px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #F5E6BE 0%, #D4AF37 55%, #8C6A1E 100%);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.6);
+      background: radial-gradient(circle at 35% 30%, #F5E6BD 0%, #C8A870 50%, #7A5B20 100%);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), inset 0 2px 6px rgba(255, 255, 255, 0.65);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      border: 3px solid rgba(255, 245, 210, 0.4);
-      transition: transform 0.4s var(--ease-silk), opacity 0.6s var(--ease-silk);
-      animation: sealGlowPulse 2.4s infinite ease-in-out;
+      border: 3px solid rgba(255, 245, 215, 0.5);
+      transition: transform 0.4s var(--ease-silk);
+      animation: sealPulseGlow 2.5s infinite ease-in-out;
     }
-    .center-wax-seal-btn:hover { transform: scale(1.08); }
+    .wax-seal-center-btn:hover { transform: scale(1.1); }
 
-    #gatefold-cover-screen.opened .center-wax-seal-btn {
-      transform: scale(1.4);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .seal-monogram-text {
+    .seal-monogram-initials {
       font-family: var(--font-serif);
-      font-size: 1.65rem;
+      font-size: 1.75rem;
       font-weight: 400;
       color: #382405;
-      letter-spacing: 0.04em;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+      letter-spacing: 0.05em;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
       line-height: 1;
     }
 
-    .seal-tap-subtext {
+    .seal-prompt-subtext {
       position: absolute;
-      bottom: -32px;
+      bottom: -36px;
       font-family: var(--font-sans);
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: #FFFFFF;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+      color: var(--champagne);
       white-space: nowrap;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
       pointer-events: none;
     }
 
-    @keyframes sealGlowPulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
-      50% { transform: scale(1.05); box-shadow: 0 14px 40px rgba(212, 175, 55, 0.6); }
+    @keyframes sealPulseGlow {
+      0%, 100% { transform: scale(1); box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6); }
+      50% { transform: scale(1.06); box-shadow: 0 18px 50px rgba(200, 168, 112, 0.65); }
     }
 
     /* ============================================================
-       2. FLOATING MUSIC DISC (TIKTOK STYLE)
+       3. FLOATING VINYL MUSIC PLAYER (WITH EQUALIZER BARS)
     ============================================================ */
-    .floating-music-btn {
+    .vinyl-music-player-btn {
       position: fixed;
       top: 1.2rem;
-      right: max(1.2rem, calc(50% - 210px));
+      right: max(1.2rem, calc(50% - 220px));
       z-index: 900;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: rgba(67, 26, 31, 0.9);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid var(--champagne);
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 0.5rem;
+      background: rgba(67, 26, 31, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--champagne);
+      border-radius: 30px;
+      padding: 0.35rem 0.8rem 0.35rem 0.4rem;
       color: var(--champagne);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
       cursor: pointer;
       transition: transform 0.3s;
     }
-    .floating-music-btn:hover { transform: scale(1.08); }
-    .floating-music-btn.playing {
-      animation: spinVinyl 4s linear infinite;
-      color: var(--gold-highlight);
+    .vinyl-music-player-btn:hover { transform: scale(1.05); }
+
+    .vinyl-disc-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #E7D9BE 25%, #220609 26%, #220609 70%, #C5A869 71%, #220609 75%);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vinyl-music-player-btn.playing .vinyl-disc-icon {
+      animation: spinVinyl 3.5s linear infinite;
     }
     @keyframes spinVinyl {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
 
+    /* Equalizer Sound Waves */
+    .sound-bars-wrapper {
+      display: flex;
+      align-items: flex-end;
+      gap: 2.5px;
+      height: 12px;
+    }
+    .sound-bar {
+      width: 2px;
+      background: var(--gold-light);
+      height: 3px;
+      border-radius: 1px;
+      transition: height 0.2s;
+    }
+    .vinyl-music-player-btn.playing .sound-bar:nth-child(1) { animation: eqJump 0.8s ease-in-out infinite alternate; }
+    .vinyl-music-player-btn.playing .sound-bar:nth-child(2) { animation: eqJump 1.1s ease-in-out infinite 0.2s alternate; }
+    .vinyl-music-player-btn.playing .sound-bar:nth-child(3) { animation: eqJump 0.9s ease-in-out infinite 0.4s alternate; }
+    @keyframes eqJump {
+      0% { height: 3px; }
+      100% { height: 12px; }
+    }
+
     /* ============================================================
-       3. FLOATING MOBILE BOTTOM NAVIGATION
+       4. FLOATING GLASSMORPHIC BOTTOM NAVIGATION
     ============================================================ */
-    .mobile-bottom-bar {
+    .magazine-bottom-nav {
       position: fixed;
       bottom: 0.8rem;
       left: 50%;
       transform: translateX(-50%);
       z-index: 850;
-      width: min(92vw, 420px);
+      width: min(92vw, 440px);
       background: rgba(67, 26, 31, 0.94);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border: 1px solid rgba(231, 217, 190, 0.3);
       border-radius: 35px;
       padding: 0.45rem 0.6rem;
@@ -289,7 +339,7 @@
       box-shadow: var(--shadow-float);
     }
 
-    .bottom-nav-tab {
+    .bottom-nav-pill {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -297,107 +347,114 @@
       color: rgba(251, 247, 240, 0.7);
       font-size: 0.62rem;
       font-weight: 500;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 0.3rem 0.5rem;
       border-radius: 20px;
       transition: color 0.25s, transform 0.25s;
     }
-    .bottom-nav-tab svg {
+    .bottom-nav-pill svg {
       width: 18px;
       height: 18px;
       stroke: currentColor;
     }
-    .bottom-nav-tab:hover, .bottom-nav-tab.active {
+    .bottom-nav-pill:hover, .bottom-nav-pill.active {
       color: var(--champagne);
       transform: translateY(-2px);
     }
 
     /* ============================================================
-       4. HERO SECTION (ARCHED PORTRAIT & COUNTDOWN)
+       5. HAUTE COUTURE HERO SECTION
     ============================================================ */
     #hero {
-      padding: 4.8rem 1.4rem 3.2rem;
+      padding: 4.8rem 1.4rem 3.5rem;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       background: linear-gradient(180deg, #FBF7F0 0%, #F4EBD9 100%);
+      position: relative;
     }
 
-    .hero-arch-photo-container {
+    .hero-magazine-edition {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-photo-magazine-frame {
       position: relative;
-      width: 270px;
-      height: 360px;
-      border-radius: 135px 135px 10px 10px;
+      width: 280px;
+      height: 380px;
+      border-radius: 140px 140px 12px 12px;
       overflow: hidden;
-      box-shadow: 0 16px 40px rgba(67, 26, 31, 0.15);
-      border: 5px solid var(--white);
+      box-shadow: var(--shadow-mag);
+      border: 6px solid var(--white);
       margin-bottom: 1.8rem;
     }
-    .hero-arch-photo-container img {
+    .hero-photo-magazine-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 20%;
     }
 
-    .hero-eyebrow-line {
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--sage-dark);
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-names-display {
+    .hero-names-editorial {
       font-family: var(--font-serif);
-      font-size: clamp(2.7rem, 8vw, 3.6rem);
+      font-size: clamp(2.9rem, 8.5vw, 4rem);
       font-weight: 300;
       color: var(--burgundy);
-      line-height: 1.1;
-      margin-bottom: 0.6rem;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.8rem;
+    }
+    .hero-names-editorial .amp {
+      font-style: italic;
+      color: var(--gold);
+      margin: 0 0.12em;
     }
 
-    .hero-poetic-statement {
+    .hero-poetic-lead {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       color: var(--ink-soft);
-      max-width: 360px;
+      max-width: 380px;
       margin: 0 auto 1.4rem;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
-    .hero-pill-badge {
+    .hero-gold-meta-tag {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.5rem 1.5rem;
+      padding: 0.55rem 1.6rem;
       background: var(--burgundy);
       color: var(--ivory);
       border-radius: var(--radius-pill);
       font-family: var(--font-sans);
       font-size: 0.75rem;
       font-weight: 500;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      box-shadow: 0 6px 18px rgba(110, 42, 49, 0.25);
-      margin-bottom: 2rem;
+      box-shadow: 0 6px 20px rgba(110, 42, 49, 0.25);
+      margin-bottom: 2.2rem;
     }
 
-    /* Real-Time Countdown Box */
-    .hero-countdown-wrapper {
+    /* Live Countdown Box */
+    .hero-countdown-editorial {
       width: 100%;
       background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 1.5rem 1rem;
-      box-shadow: var(--shadow-card);
-      border: 1px solid rgba(231, 217, 190, 0.45);
+      border-radius: 14px;
+      padding: 1.6rem 1rem;
+      box-shadow: 0 8px 24px rgba(67, 26, 31, 0.08);
+      border: 1px solid rgba(231, 217, 190, 0.5);
     }
-    .countdown-header-lbl {
+    .countdown-caps-tag {
       font-family: var(--font-sans);
       font-size: 0.65rem;
       font-weight: 600;
@@ -407,25 +464,25 @@
       margin-bottom: 0.9rem;
       display: block;
     }
-    .countdown-cells-grid {
+    .countdown-digits-flex {
       display: flex;
       justify-content: center;
-      gap: clamp(0.7rem, 3vw, 1.8rem);
+      gap: clamp(0.8rem, 3vw, 1.8rem);
     }
-    .countdown-cell-item {
+    .countdown-unit-box {
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 50px;
+      min-width: 52px;
     }
-    .countdown-value-num {
+    .countdown-big-num {
       font-family: var(--font-serif);
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 400;
       color: var(--burgundy);
       line-height: 1;
     }
-    .countdown-label-txt {
+    .countdown-small-lbl {
       font-family: var(--font-sans);
       font-size: 0.62rem;
       font-weight: 600;
@@ -436,159 +493,185 @@
     }
 
     /* ============================================================
-       SECTION BASE LAYOUT (LUXURY CARDS)
+       6. OUR STORY: SUPERIOR MAGAZINE EDITORIAL SPREAD
     ============================================================ */
-    .invitation-section {
-      padding: 3.5rem 1.3rem;
-      position: relative;
+    #story {
+      background-color: var(--ivory);
+      padding: 4rem 1.3rem;
     }
 
-    .section-title-wrap {
+    .section-header-box {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
-    .section-tag-caps {
+    .section-eyebrow-pill {
       font-family: var(--font-sans);
       font-size: 0.68rem;
       font-weight: 600;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--sage-dark);
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.5rem;
       display: inline-block;
     }
     .section-title-serif {
       font-family: var(--font-serif);
-      font-size: clamp(2.1rem, 6vw, 2.7rem);
+      font-size: clamp(2.2rem, 6.5vw, 2.9rem);
       font-weight: 300;
       color: var(--burgundy);
-      line-height: 1.2;
+      line-height: 1.15;
     }
-    .section-sub-italic {
+    .section-subtitle-italic {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 1.08rem;
+      font-size: 1.1rem;
       color: var(--ink-soft);
-      margin-top: 0.35rem;
+      margin-top: 0.4rem;
     }
 
-    .luxury-card-box {
-      background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 1.6rem 1.3rem;
-      box-shadow: var(--shadow-card);
-      border: 1px solid rgba(231, 217, 190, 0.45);
-      margin-bottom: 1.6rem;
-    }
-
-    /* ============================================================
-       5. OUR STORY: CARDS WITH ALL 3 PHOTOS
-    ============================================================ */
-    #story {
-      background-color: var(--ivory);
-    }
-
-    .story-card-item {
-      margin-bottom: 1.8rem;
+    .magazine-act-container {
       display: flex;
       flex-direction: column;
-      gap: 1.1rem;
+      gap: 2.8rem;
     }
 
-    .story-photo-holder {
-      width: 100%;
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(67, 26, 31, 0.1);
-      border: 3px solid var(--white);
+    /* Spread 1: Polaroid Moment */
+    .magazine-spread-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-mag);
+      border: 1px solid rgba(231, 217, 190, 0.45);
+      position: relative;
     }
-    .story-photo-holder img {
+
+    .polaroid-frame-tilted {
+      background: #FFFFFF;
+      padding: 10px 10px 14px;
+      border-radius: 2px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      transform: rotate(-2.5deg);
+      transition: transform 0.4s var(--ease-silk);
+      margin-bottom: 1.4rem;
+    }
+    .polaroid-frame-tilted:hover { transform: rotate(0deg) scale(1.02); }
+    .polaroid-frame-tilted img {
       width: 100%;
-      height: 220px;
+      height: 230px;
       object-fit: cover;
-      object-position: center center;
+      border-radius: 2px;
+    }
+    .polaroid-handwritten-note {
+      font-family: var(--font-script);
+      font-size: 1.4rem;
+      color: var(--burgundy);
+      text-align: center;
+      margin-top: 0.5rem;
     }
 
-    .story-chapter-pill {
-      display: inline-block;
-      font-family: var(--font-sans);
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--burgundy);
-      background: rgba(110, 42, 49, 0.08);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      margin-bottom: 0.5rem;
+    /* Spread 2: SMS Conversation Keepsake Bubble */
+    .sms-chat-keepsake-box {
+      background: var(--parchment);
+      border-radius: 12px;
+      padding: 1.2rem;
+      margin: 1.2rem 0;
+      border-left: 3px solid var(--burgundy);
     }
-    .story-chapter-heading {
+    .sms-bubble {
+      background: var(--white);
+      padding: 0.75rem 1rem;
+      border-radius: 16px 16px 16px 2px;
+      font-size: 0.88rem;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      line-height: 1.5;
+    }
+    .sms-bubble.reply {
+      background: var(--burgundy);
+      color: var(--ivory);
+      border-radius: 16px 16px 2px 16px;
+      margin-left: 1.5rem;
+      margin-bottom: 0;
+    }
+
+    .magazine-act-title {
       font-family: var(--font-serif);
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 400;
       color: var(--burgundy);
       line-height: 1.25;
       margin-bottom: 0.6rem;
     }
-    .story-quote-bar {
+    .magazine-act-quote {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 1rem;
+      font-size: 1.02rem;
       color: var(--sage-dark);
       padding-left: 0.8rem;
-      border-left: 2.5px solid var(--gold-seal);
-      margin-bottom: 0.75rem;
+      border-left: 2.5px solid var(--gold);
+      margin-bottom: 0.8rem;
       line-height: 1.55;
     }
-    .story-paragraph-text {
-      font-size: 0.92rem;
+    .magazine-act-body {
+      font-size: 0.94rem;
       color: var(--ink-soft);
       line-height: 1.8;
     }
 
-    /* Scripture Card */
-    .scripture-card-sabina {
+    /* Sacred Scripture Keepsake */
+    .scripture-sacred-seal {
       background: radial-gradient(circle at 50% 50%, #431A1F 0%, #24080B 100%);
       color: var(--ivory);
       text-align: center;
-      border-radius: var(--radius-md);
-      padding: 2.2rem 1.3rem;
-      box-shadow: var(--shadow-card);
+      border-radius: 14px;
+      padding: 2.5rem 1.4rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      position: relative;
     }
-    .scripture-quote-display {
+    .scripture-verse-italic {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 300;
       color: var(--champagne);
       line-height: 1.45;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.8rem;
     }
-    .scripture-citation-tag {
+    .scripture-ref-caps {
       font-family: var(--font-sans);
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.26em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--eucalyptus);
     }
 
     /* ============================================================
-       6. THE CELEBRATION (SCHEDULE & ACTIONS)
+       7. THE CELEBRATION (CEREMONIAL TIMELINE & 1-CLICK CALENDAR)
     ============================================================ */
     #celebration {
       background-color: var(--champagne-soft);
+      padding: 4rem 1.3rem;
     }
 
-    .schedule-item-row {
+    .timeline-luxury-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.8rem 1.4rem;
+      box-shadow: var(--shadow-mag);
+      border: 1px solid rgba(231, 217, 190, 0.45);
+    }
+
+    .ceremonial-event-step {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
-      padding: 1.1rem 0;
+      gap: 1.1rem;
+      padding: 1.2rem 0;
       border-bottom: 1px dashed rgba(110, 42, 49, 0.15);
     }
-    .schedule-item-row:last-child { border-bottom: none; }
-    .schedule-time-pill {
+    .ceremonial-event-step:last-child { border-bottom: none; }
+    .event-badge-pill {
       background: var(--burgundy);
       color: var(--ivory);
       font-family: var(--font-sans);
@@ -599,27 +682,27 @@
       border-radius: 20px;
       white-space: nowrap;
     }
-    .schedule-text-info h4 {
+    .event-info-col h4 {
       font-family: var(--font-serif);
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 400;
       color: var(--burgundy);
       line-height: 1.2;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
     }
-    .schedule-text-info p {
-      font-size: 0.88rem;
+    .event-info-col p {
+      font-size: 0.9rem;
       color: var(--ink-soft);
       line-height: 1.5;
     }
 
-    .btn-action-burgundy-full {
+    .btn-action-burgundy-glow {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.65rem;
       width: 100%;
-      padding: 0.95rem 1.4rem;
+      padding: 1rem 1.4rem;
       background: var(--burgundy);
       color: var(--ivory);
       font-family: var(--font-sans);
@@ -628,40 +711,45 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       border-radius: var(--radius-pill);
-      box-shadow: 0 6px 18px rgba(110, 42, 49, 0.25);
+      box-shadow: 0 8px 25px rgba(110, 42, 49, 0.28);
       transition: all 0.3s;
-      margin-top: 1.1rem;
+      margin-top: 1.2rem;
     }
-    .btn-action-burgundy-full:hover {
+    .btn-action-burgundy-glow:hover {
       background: var(--oxblood);
       transform: translateY(-2px);
     }
 
     /* ============================================================
-       7. DRESS CODE & PALETTE SWATCHES
+       8. DRESS CODE & INTERACTIVE PALETTE HARMONY
     ============================================================ */
     #atmosphere {
       background-color: var(--ivory);
+      padding: 4rem 1.3rem;
     }
-    .palette-circle-row {
+
+    .palette-swatches-interactive {
       display: flex;
       justify-content: space-around;
-      margin: 1.5rem 0 1.6rem;
+      margin: 1.6rem 0 1.8rem;
     }
-    .palette-item-col {
+    .swatch-interactive-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
+      cursor: pointer;
+      transition: transform 0.25s;
     }
-    .palette-color-ball {
-      width: 48px;
-      height: 48px;
+    .swatch-interactive-item:hover { transform: translateY(-3px); }
+    .swatch-disc {
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
       border: 3px solid var(--white);
     }
-    .palette-color-title {
+    .swatch-name-tag {
       font-family: var(--font-sans);
       font-size: 0.68rem;
       font-weight: 500;
@@ -671,40 +759,39 @@
     }
 
     /* ============================================================
-       8. VENUE & TRAVEL (HIGHBERRY & LODGING)
+       9. VENUE, WEATHER WIDGET & LODGING
     ============================================================ */
     #venue {
       background-color: var(--champagne-soft);
-    }
-    .venue-title-display {
-      font-family: var(--font-serif);
-      font-size: 1.75rem;
-      font-weight: 400;
-      color: var(--burgundy);
-      text-align: center;
-      margin-bottom: 0.3rem;
-    }
-    .venue-address-caps {
-      font-family: var(--font-sans);
-      font-size: 0.8rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--sage-dark);
-      text-align: center;
-      margin-bottom: 1.1rem;
+      padding: 4rem 1.3rem;
     }
 
-    .lodging-pills-wrap {
+    .venue-weather-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--sage-light);
+      color: var(--sage-dark);
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .lodging-pills-list {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 1.1rem;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
     }
-    .lodging-item-button {
+    .lodging-pill-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.85rem 1.2rem;
+      padding: 0.9rem 1.2rem;
       background: var(--parchment);
       border-radius: 30px;
       font-size: 0.9rem;
@@ -712,61 +799,63 @@
       color: var(--ink);
       transition: all 0.25s;
     }
-    .lodging-item-button:hover {
+    .lodging-pill-row:hover {
       background: var(--burgundy);
       color: var(--white);
       transform: translateX(4px);
     }
 
     /* ============================================================
-       9. BEFORE THE DAY (FAQ ACCORDION)
+       10. BEFORE THE DAY (FAQ ACCORDION)
     ============================================================ */
     #guidance {
       background-color: var(--ivory);
+      padding: 4rem 1.3rem;
     }
-    .accordion-card-item {
+    .faq-accordion-card {
       background: var(--white);
-      border-radius: var(--radius-sm);
-      margin-bottom: 0.8rem;
+      border-radius: 10px;
+      margin-bottom: 0.85rem;
       box-shadow: 0 4px 14px rgba(44, 38, 32, 0.05);
       border: 1px solid rgba(231, 217, 190, 0.45);
       overflow: hidden;
     }
-    .accordion-trigger-button {
+    .faq-header-btn {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.1rem 1.2rem;
+      padding: 1.15rem 1.3rem;
       font-family: var(--font-serif);
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 400;
       color: var(--burgundy);
       text-align: left;
       cursor: pointer;
     }
-    .accordion-body-content {
-      padding: 0 1.2rem 1.1rem;
+    .faq-panel-body {
+      padding: 0 1.3rem 1.2rem;
       font-size: 0.92rem;
       color: var(--ink-soft);
       line-height: 1.75;
     }
 
     /* ============================================================
-       10. RSVP EXPERIENCE & LIVE WISHES WALL
+       11. RSVP EXPERIENCE & LIVE WISHES WALL
     ============================================================ */
     #rsvp {
       background: radial-gradient(circle at 50% 30%, #521820 0%, #300d12 60%, #150306 100%);
       color: var(--ivory);
+      padding: 4.5rem 1.3rem;
     }
     #rsvp .section-title-serif { color: var(--ivory); }
-    #rsvp .section-tag-caps { color: var(--eucalyptus); }
-    #rsvp .section-sub-italic { color: var(--champagne); }
+    #rsvp .section-eyebrow-pill { color: var(--eucalyptus); }
+    #rsvp .section-subtitle-italic { color: var(--champagne); }
 
-    .form-field-group {
-      margin-bottom: 1.35rem;
+    .form-group-item {
+      margin-bottom: 1.4rem;
     }
-    .form-input-label {
+    .form-label-caps {
       display: block;
       font-family: var(--font-sans);
       font-size: 0.72rem;
@@ -776,36 +865,36 @@
       color: var(--burgundy);
       margin-bottom: 0.45rem;
     }
-    .form-input-field, .form-select-field, .form-textarea-field {
+    .form-input-control, .form-select-control, .form-textarea-control {
       width: 100%;
-      padding: 0.85rem 1rem;
+      padding: 0.9rem 1rem;
       background: var(--ivory);
       border: 1px solid var(--champagne);
-      border-radius: var(--radius-sm);
+      border-radius: 8px;
       font-family: var(--font-sans);
       font-size: 0.95rem;
       color: var(--ink);
       outline: none;
       transition: border-color 0.3s;
     }
-    .form-input-field:focus, .form-select-field:focus, .form-textarea-field:focus {
+    .form-input-control:focus, .form-select-control:focus, .form-textarea-control:focus {
       border-color: var(--burgundy);
       box-shadow: 0 0 0 3px rgba(110, 42, 49, 0.12);
     }
 
-    .attendance-options-grid {
+    .attendance-grid-duo {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
+      gap: 0.8rem;
     }
-    .attendance-option-card {
+    .attendance-pill-choice {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.85rem 0.6rem;
+      padding: 0.9rem 0.6rem;
       border: 1px solid var(--champagne);
-      border-radius: var(--radius-sm);
+      border-radius: 8px;
       background: var(--ivory);
       cursor: pointer;
       font-family: var(--font-sans);
@@ -816,348 +905,361 @@
       color: var(--ink);
       transition: all 0.25s;
     }
-    .attendance-option-card:hover {
+    .attendance-pill-choice:hover {
       border-color: var(--burgundy);
       background: var(--champagne-soft);
     }
-    .attendance-option-card input { accent-color: var(--burgundy); }
+    .attendance-pill-choice input { accent-color: var(--burgundy); }
 
-    .btn-submit-rsvp-action {
+    .btn-submit-rsvp-celebrate {
       width: 100%;
-      padding: 1.05rem 1.8rem;
+      padding: 1.1rem 1.8rem;
       background: var(--burgundy);
       color: var(--ivory);
       font-family: var(--font-sans);
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.24em;
       text-transform: uppercase;
       border-radius: var(--radius-pill);
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(110, 42, 49, 0.3);
+      box-shadow: 0 8px 25px rgba(110, 42, 49, 0.3);
       transition: all 0.3s;
-      margin-top: 0.5rem;
+      margin-top: 0.6rem;
     }
-    .btn-submit-rsvp-action:hover {
+    .btn-submit-rsvp-celebrate:hover {
       background: var(--oxblood);
       transform: translateY(-2px);
     }
 
     /* Wishes Wall */
-    .wishes-guestbook-section {
-      margin-top: 2.2rem;
+    .wishes-guestbook-box {
+      margin-top: 2.5rem;
     }
-    .wishes-header-box {
+    .wishes-title-center {
       text-align: center;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1.2rem;
     }
-    .wishes-header-box h3 {
+    .wishes-title-center h3 {
       font-family: var(--font-serif);
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       font-weight: 300;
       color: var(--champagne);
     }
-    .wishes-feed-list {
+    .wishes-feed-scroll {
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
-      max-height: 280px;
+      gap: 0.9rem;
+      max-height: 300px;
       overflow-y: auto;
       padding-right: 4px;
     }
     .wish-feed-card {
       background: rgba(251, 247, 240, 0.08);
       border: 1px solid rgba(231, 217, 190, 0.2);
-      border-radius: var(--radius-sm);
-      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      padding: 1.1rem 1.3rem;
       backdrop-filter: blur(8px);
     }
-    .wish-guest-name {
+    .wish-author-meta {
       font-family: var(--font-sans);
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--eucalyptus);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.3rem;
     }
-    .wish-text-quote {
+    .wish-quote-msg {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 0.98rem;
+      font-size: 1rem;
       color: var(--ivory);
       line-height: 1.5;
     }
 
     /* ============================================================
-       11. CLOSING KEEPSAKE & FOOTER
+       12. CLOSING KEEPSAKE & FOOTER
     ============================================================ */
     footer {
       background: var(--burgundy-deep);
       color: rgba(251, 247, 240, 0.7);
       text-align: center;
-      padding: 3.5rem 1.5rem 4rem;
+      padding: 4rem 1.5rem 4.5rem;
     }
-    .footer-emblem {
+    .footer-seal-emblem {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .footer-names-serif {
+      font-family: var(--font-serif);
       font-size: 1.8rem;
-      color: var(--gold-seal);
+      color: var(--ivory);
       margin-bottom: 0.3rem;
     }
-    .footer-names {
-      font-family: var(--font-serif);
-      font-size: 1.65rem;
-      color: var(--ivory);
-      margin-bottom: 0.25rem;
-    }
-    .footer-date-info {
+    .footer-date-sub {
       font-family: var(--font-sans);
       font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--eucalyptus);
-      margin-bottom: 1.1rem;
+      margin-bottom: 1.4rem;
     }
-    .footer-signature-script {
+    .footer-script-farewell {
       font-family: var(--font-script);
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: var(--champagne);
     }
   </style>
 </head>
 <body>
 
-  <!-- ============================================================
-       1. SABINA DESIGNS GATEFOLD DOORS & WAX SEAL OPENING
-  ============================================================ */ -->
-  <div id="gatefold-cover-screen" aria-label="Digital Wedding Invitation Gatefold">
-    
-    <!-- Left French Door -->
-    <div class="gate-door-left"></div>
+  <!-- Ambient Stardust Canvas -->
+  <canvas id="stardustCanvas"></canvas>
+  <div class="paper-texture-overlay"></div>
 
-    <!-- Right French Door -->
-    <div class="gate-door-right"></div>
-
-    <!-- Embossed Gold Wax Seal ("R & L") -->
-    <button type="button" class="center-wax-seal-btn" id="waxSealTriggerBtn" aria-label="Tap Wax Seal to Open Gatefold Invitation">
-      <span class="seal-monogram-text">R&amp;L</span>
-      <span class="seal-tap-subtext">Tap seal to open</span>
-    </button>
-
+  <!-- Reading Progress Bar -->
+  <div class="top-scroll-progress">
+    <div class="top-scroll-progress-bar" id="topProgressBar"></div>
   </div>
 
   <!-- ============================================================
-       2. FLOATING MUSIC CONTROL (TIKTOK STYLE)
+       1. 3D FRENCH GATEFOLD DOORS WITH GOLD EMBOSSED WAX SEAL
   ============================================================ */ -->
-  <button type="button" class="floating-music-btn" id="musicToggleBtn" aria-label="Play/Pause Background Music">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M9 18V5l12-2v13"/>
-      <circle cx="6" cy="18" r="3"/>
-      <circle cx="18" cy="16" r="3"/>
-    </svg>
-  </button>
+  <div id="gatefold-cover-experience" aria-label="Gatefold Digital Wedding Invitation">
+    <div class="gate-panel-l"></div>
+    <div class="gate-panel-r"></div>
 
-  <audio id="weddingBgmAudio" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-acoustic-112191.mp3"></audio>
+    <button type="button" class="wax-seal-center-btn" id="gatefoldSealBtn" aria-label="Tap to Open Wedding Invitation">
+      <span class="seal-monogram-initials">R&amp;L</span>
+      <span class="seal-prompt-subtext">Tap seal to open</span>
+    </button>
+  </div>
 
   <!-- ============================================================
-       3. FLOATING MOBILE BOTTOM NAVIGATION
+       2. FLOATING VINYL MUSIC PLAYER (WITH EQUALIZER BARS)
   ============================================================ */ -->
-  <nav class="mobile-bottom-bar" aria-label="Mobile Navigation">
-    <a href="#hero" class="bottom-nav-tab active">
+  <button type="button" class="vinyl-music-player-btn" id="musicPlayerToggle" aria-label="Toggle Romantic Background Music">
+    <div class="vinyl-disc-icon"></div>
+    <div class="sound-bars-wrapper">
+      <div class="sound-bar"></div>
+      <div class="sound-bar"></div>
+      <div class="sound-bar"></div>
+    </div>
+  </button>
+
+  <audio id="weddingRomanticAudio" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-acoustic-112191.mp3"></audio>
+
+  <!-- ============================================================
+       3. FLOATING GLASSMORPHIC BOTTOM NAVIGATION
+  ============================================================ */ -->
+  <nav class="magazine-bottom-nav" aria-label="Mobile Navigation">
+    <a href="#hero" class="bottom-nav-pill active">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       <span>Home</span>
     </a>
-    <a href="#story" class="bottom-nav-tab">
+    <a href="#story" class="bottom-nav-pill">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       <span>Story</span>
     </a>
-    <a href="#celebration" class="bottom-nav-tab">
+    <a href="#celebration" class="bottom-nav-pill">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       <span>The Day</span>
     </a>
-    <a href="#venue" class="bottom-nav-tab">
+    <a href="#venue" class="bottom-nav-pill">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
       <span>Venue</span>
     </a>
-    <a href="#rsvp" class="bottom-nav-tab">
+    <a href="#rsvp" class="bottom-nav-pill">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       <span>RSVP</span>
     </a>
   </nav>
 
   <!-- ============================================================
-       MAIN MOBILE CANVAS
+       MAIN EDITORIAL MAGAZINE CANVAS
   ============================================================ */ -->
-  <div class="mobile-app-canvas">
+  <div class="magazine-app-viewport">
 
-    <!-- 4. HERO SECTION (ARCHED PORTRAIT & COUNTDOWN) -->
+    <!-- 4. HAUTE COUTURE HERO SECTION -->
     <header id="hero">
-      <div class="hero-arch-photo-container">
-        <img src="images/couple-outdoor-clean.jpg" alt="Rishen &amp; Lizaan together outdoors" />
+      <span class="hero-magazine-edition">The Wedding Celebration of</span>
+
+      <div class="hero-photo-magazine-frame">
+        <img src="images/couple-outdoor-clean.jpg" alt="Rishen &amp; Lizaan standing outdoors" />
       </div>
 
-      <span class="hero-eyebrow-line">The Wedding Celebration of</span>
-      <h1 class="hero-names-display">Rishen &amp; Lizaan</h1>
+      <h1 class="hero-names-editorial">Rishen <span class="amp">&amp;</span> Lizaan</h1>
 
-      <p class="hero-poetic-statement">
+      <p class="hero-poetic-lead">
         “What began with a glance, grew through messages, and blossomed into forever.”
       </p>
 
-      <div class="hero-pill-badge">
-        Saturday, 24 October 2026 &nbsp;&middot;&nbsp; 14:30
+      <div class="hero-gold-meta-tag">
+        Saturday, 24 October 2026 &nbsp;&middot;&nbsp; 14:30 SAST
       </div>
 
-      <!-- Real-Time Countdown Box -->
-      <div class="hero-countdown-wrapper">
-        <span class="countdown-header-lbl">Counting Down To Our Big Day</span>
-        <div class="countdown-cells-grid" id="heroCountdownBox">
-          <div class="countdown-cell-item">
-            <span class="countdown-value-num" id="cdDays">--</span>
-            <span class="countdown-label-txt">Days</span>
+      <!-- Live Real-Time Countdown -->
+      <div class="hero-countdown-editorial">
+        <span class="countdown-caps-tag">Counting Down To Our Big Day</span>
+        <div class="countdown-digits-flex" id="editorialCountdown">
+          <div class="countdown-unit-box">
+            <span class="countdown-big-num" id="cdDays">--</span>
+            <span class="countdown-small-lbl">Days</span>
           </div>
-          <div class="countdown-cell-item">
-            <span class="countdown-value-num" id="cdHours">--</span>
-            <span class="countdown-label-txt">Hours</span>
+          <div class="countdown-unit-box">
+            <span class="countdown-big-num" id="cdHours">--</span>
+            <span class="countdown-small-lbl">Hours</span>
           </div>
-          <div class="countdown-cell-item">
-            <span class="countdown-value-num" id="cdMins">--</span>
-            <span class="countdown-label-txt">Mins</span>
+          <div class="countdown-unit-box">
+            <span class="countdown-big-num" id="cdMins">--</span>
+            <span class="countdown-small-lbl">Mins</span>
           </div>
-          <div class="countdown-cell-item">
-            <span class="countdown-value-num" id="cdSecs">--</span>
-            <span class="countdown-label-txt">Secs</span>
+          <div class="countdown-unit-box">
+            <span class="countdown-big-num" id="cdSecs">--</span>
+            <span class="countdown-small-lbl">Secs</span>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- 5. OUR STORY: CARDS WITH ALL 3 PHOTOS -->
-    <section id="story" class="invitation-section">
-      <div class="section-title-wrap">
-        <span class="section-tag-caps">Love Story</span>
+    <!-- 5. OUR STORY: SUPERIOR MAGAZINE SPREAD -->
+    <section id="story">
+      <div class="section-header-box">
+        <span class="section-eyebrow-pill">Love Story</span>
         <h2 class="section-title-serif">Our Story</h2>
-        <p class="section-sub-italic">Written long before we even realised it.</p>
+        <p class="section-subtitle-italic">Written long before we even realised it.</p>
       </div>
 
-      <!-- Chapter 1 + Photo 1 -->
-      <div class="luxury-card-box story-card-item">
-        <div class="story-photo-holder">
-          <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan standing outdoors" loading="lazy" />
-        </div>
-        <div>
-          <span class="story-chapter-pill">Chapter 01 &nbsp;&middot;&nbsp; The Glance</span>
-          <h3 class="story-chapter-heading">Love at first sight — although neither was brave enough to speak!</h3>
-          <div class="story-quote-bar">
+      <div class="magazine-act-container">
+
+        <!-- Act 1: The Glance + Polaroid Photo 1 -->
+        <div class="magazine-spread-card">
+          <div class="polaroid-frame-tilted">
+            <img src="images/couple-outdoor-clean.jpg" alt="Rishen &amp; Lizaan together" loading="lazy" />
+            <p class="polaroid-handwritten-note">“Love at first sight”</p>
+          </div>
+          <span class="section-eyebrow-pill" style="margin-bottom:0.4rem;">Chapter 01 &nbsp;&middot;&nbsp; The Glance</span>
+          <h3 class="magazine-act-title">Love at first sight — although neither was brave enough to speak!</h3>
+          <div class="magazine-act-quote">
             “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
           </div>
-          <p class="story-paragraph-text">
+          <p class="magazine-act-body">
             Almost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members. There was an instant spark — that rare feeling where the rest of the room fades away. It was true love at first sight, although neither was brave enough to speak in that moment!
           </p>
         </div>
-      </div>
 
-      <!-- Chapter 2 + Photo 2 -->
-      <div class="luxury-card-box story-card-item">
-        <div class="story-photo-holder">
-          <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan close-up portrait" loading="lazy" />
-        </div>
-        <div>
-          <span class="story-chapter-pill">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
-          <h3 class="story-chapter-heading">The conversation that never happened in person began over text.</h3>
-          <div class="story-quote-bar">
+        <!-- Act 2: The Conversation + SMS Chat Keepsake + Portrait Photo 2 -->
+        <div class="magazine-spread-card">
+          <div class="polaroid-frame-tilted" style="transform: rotate(2.2deg);">
+            <img src="images/couple-portrait.jpg" alt="Rishen &amp; Lizaan close-up portrait" loading="lazy" />
+            <p class="polaroid-handwritten-note">“Favourite Hello”</p>
+          </div>
+          <span class="section-eyebrow-pill" style="margin-bottom:0.4rem;">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
+          <h3 class="magazine-act-title">The conversation that never happened in person began over text.</h3>
+          
+          <!-- Cute Keepsake Message Bubbles -->
+          <div class="sms-chat-keepsake-box">
+            <div class="sms-bubble">“Hey Lizaan... got your number from family. Couldn't stop thinking about you 😊”</div>
+            <div class="sms-bubble reply">“So happy you texted! I couldn't stop thinking about you either ✨”</div>
+          </div>
+
+          <div class="magazine-act-quote">
             “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
           </div>
-          <p class="story-paragraph-text">
+          <p class="magazine-act-body">
             A few days later, Rishen still couldn't get Lizaan out of his mind. So, with a little help from the same family member, he got her number. Messages turned into late-night phone calls, inside jokes, and countless memories. Two people who were once too shy to speak became each other's favourite part of every day.
           </p>
         </div>
-      </div>
 
-      <!-- Chapter 3 + Photo 3 -->
-      <div class="luxury-card-box story-card-item">
-        <div class="story-photo-holder">
-          <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing joyfully in hats" loading="lazy" />
-        </div>
-        <div>
-          <span class="story-chapter-pill">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
-          <h3 class="story-chapter-heading">Like iron sharpens iron — to encourage, strengthen and love.</h3>
-          <div class="story-quote-bar">
+        <!-- Act 3: Faith & Forever + Fun Hats Photo 3 -->
+        <div class="magazine-spread-card">
+          <div class="polaroid-frame-tilted" style="transform: rotate(-1.8deg);">
+            <img src="images/couple-fun.jpg" alt="Rishen &amp; Lizaan laughing in hats" loading="lazy" />
+            <p class="polaroid-handwritten-note">“Adventures &amp; Laughter”</p>
+          </div>
+          <span class="section-eyebrow-pill" style="margin-bottom:0.4rem;">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
+          <h3 class="magazine-act-title">Like iron sharpens iron — to encourage, strengthen and love.</h3>
+          <div class="magazine-act-quote">
             “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
           </div>
-          <p class="story-paragraph-text">
+          <p class="magazine-act-body">
             Since then, their relationship has flourished through deep friendship, faith, unwavering encouragement, and bringing out the very best in one another. Now, as they prepare to exchange lifelong vows, they are filled with profound gratitude and joy for every chapter God has written ahead.
           </p>
         </div>
-      </div>
 
-      <!-- Scripture Keepsake Card -->
-      <div class="scripture-card-sabina">
-        <div style="color:var(--gold-seal); font-size:1.6rem; margin-bottom:0.4rem;">❦</div>
-        <p class="scripture-quote-display">
-          “Therefore what God has joined together,<br>let no one separate.”
-        </p>
-        <p class="scripture-citation-tag">Matthew 19 : 6</p>
+        <!-- Sacred Scripture Keepsake -->
+        <div class="scripture-sacred-seal">
+          <div style="color:var(--gold); font-size:1.8rem; margin-bottom:0.4rem;">❦</div>
+          <p class="scripture-verse-italic">
+            “Therefore what God has joined together,<br>let no one separate.”
+          </p>
+          <p class="scripture-ref-caps">Matthew 19 : 6</p>
+        </div>
+
       </div>
     </section>
 
-    <!-- 6. THE CELEBRATION (SCHEDULE & ACTIONS) -->
-    <section id="celebration" class="invitation-section">
-      <div class="section-title-wrap">
-        <span class="section-tag-caps">Itinerary</span>
+    <!-- 6. THE CELEBRATION (CEREMONIAL ITINERARY & CALENDAR) -->
+    <section id="celebration">
+      <div class="section-header-box">
+        <span class="section-eyebrow-pill">Itinerary</span>
         <h2 class="section-title-serif">The Celebration</h2>
-        <p class="section-sub-italic">Saturday, 24 October 2026</p>
+        <p class="section-subtitle-italic">Saturday, 24 October 2026</p>
       </div>
 
-      <div class="luxury-card-box">
+      <div class="timeline-luxury-card">
         
         <!-- 14:15 Arrival -->
-        <div class="schedule-item-row">
-          <span class="schedule-time-pill">14:15 SAST</span>
-          <div class="schedule-text-info">
+        <div class="ceremonial-event-step">
+          <span class="event-badge-pill">14:15 SAST</span>
+          <div class="event-info-col">
             <h4>Guest Arrival &amp; Seating</h4>
             <p>Guests seated among the vines before the ceremony begins.</p>
           </div>
         </div>
 
         <!-- 14:30 Ceremony -->
-        <div class="schedule-item-row">
-          <span class="schedule-time-pill">14:30 SAST</span>
-          <div class="schedule-text-info">
+        <div class="ceremonial-event-step">
+          <span class="event-badge-pill">14:30 SAST</span>
+          <div class="event-info-col">
             <h4>The Ceremony</h4>
-            <p>At Highberry Vineyards &amp; Venue — exchanging our sacred vows.</p>
+            <p>At Highberry Vineyards &amp; Venue — exchanging our vows.</p>
           </div>
         </div>
 
         <!-- 16:00 Drinks -->
-        <div class="schedule-item-row">
-          <span class="schedule-time-pill">16:00 SAST</span>
-          <div class="schedule-text-info">
+        <div class="ceremonial-event-step">
+          <span class="event-badge-pill">16:00 SAST</span>
+          <div class="event-info-col">
             <h4>Drinks &amp; Canapés</h4>
             <p>Sunset drinks and delicious bites on the vineyard lawns.</p>
           </div>
         </div>
 
         <!-- 18:00 Dinner -->
-        <div class="schedule-item-row">
-          <span class="schedule-time-pill">18:00 SAST</span>
-          <div class="schedule-text-info">
+        <div class="ceremonial-event-step">
+          <span class="event-badge-pill">18:00 SAST</span>
+          <div class="event-info-col">
             <h4>Reception &amp; Dinner</h4>
             <p>Celebratory dinner, heartfelt toasts, and cherished moments.</p>
           </div>
         </div>
 
         <!-- After Dinner -->
-        <div class="schedule-item-row">
-          <span class="schedule-time-pill">After Dinner</span>
-          <div class="schedule-text-info">
+        <div class="ceremonial-event-step">
+          <span class="event-badge-pill">After Dinner</span>
+          <div class="event-info-col">
             <h4>Celebration &amp; Dancing</h4>
-            <p>Music and celebration under the Cape Winelands stars.</p>
+            <p>Music and dancing under the Cape Winelands stars.</p>
           </div>
         </div>
 
-        <!-- Add to Calendar Action -->
+        <!-- Save Date Action -->
         <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//Rishen%20%26%20Lizaan//Wedding//EN%0ABEGIN:VEVENT%0ADTSTART:20261024T123000Z%0ADTEND:20261024T220000Z%0ASUMMARY:Rishen%20%26%20Lizaan%27s%20Wedding%0ADESCRIPTION:Wedding%20celebration%20of%20Rishen%20%26%20Lizaan%20at%20Highberry%20Vineyards%2C%20Somerset%20West.%0ALOCATION:Highberry%20Vineyards%20%26%20Venue%2C%20Somerset%20West%2C%20Cape%20Winelands%2C%20South%20Africa%0AURL:https%3A%2F%2Fwww.highberry.co.za%2F%0AEND:VEVENT%0AEND:VCALENDAR"
            download="Rishen-and-Lizaan-Wedding.ics"
-           class="btn-action-burgundy-full">
+           class="btn-action-burgundy-glow">
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
             <rect x="2" y="3" width="12" height="12" rx="1"/>
             <path d="M5 1v4M11 1v4M2 7h12"/>
@@ -1168,33 +1270,33 @@
       </div>
     </section>
 
-    <!-- 7. DRESS CODE & PALETTE SWATCHES -->
-    <section id="atmosphere" class="invitation-section">
-      <div class="section-title-wrap">
-        <span class="section-tag-caps">Dress Code</span>
+    <!-- 7. DRESS CODE & PALETTE HARMONY -->
+    <section id="atmosphere">
+      <div class="section-header-box">
+        <span class="section-eyebrow-pill">Dress Code</span>
         <h2 class="section-title-serif">Among the Vines</h2>
-        <p class="section-sub-italic">“Come dressed for a beautiful afternoon in the Cape Winelands—where deep burgundy meets soft sage, and every detail is warmed by the light.”</p>
+        <p class="section-subtitle-italic">“Come dressed for a beautiful afternoon in the Cape Winelands—where deep burgundy meets soft sage, and every detail is warmed by the light.”</p>
       </div>
 
-      <div class="luxury-card-box" style="text-align:center;">
-        <span class="section-tag-caps" style="margin-bottom:0;">Wedding Palette Inspiration</span>
+      <div class="timeline-luxury-card" style="text-align:center;">
+        <span class="section-eyebrow-pill" style="margin-bottom:0;">Wedding Palette Inspiration</span>
         
-        <div class="palette-circle-row">
-          <div class="palette-item-col">
-            <div class="palette-color-ball" style="background-color: #6E2A31;"></div>
-            <span class="palette-color-title">Burgundy</span>
+        <div class="palette-swatches-interactive">
+          <div class="swatch-interactive-item">
+            <div class="swatch-disc" style="background-color: #6E2A31;"></div>
+            <span class="swatch-name-tag">Burgundy</span>
           </div>
-          <div class="palette-item-col">
-            <div class="palette-color-ball" style="background-color: #7C8B6F;"></div>
-            <span class="palette-color-title">Sage</span>
+          <div class="swatch-interactive-item">
+            <div class="swatch-disc" style="background-color: #7C8B6F;"></div>
+            <span class="swatch-name-tag">Sage</span>
           </div>
-          <div class="palette-item-col">
-            <div class="palette-color-ball" style="background-color: #E7D9BE;"></div>
-            <span class="palette-color-title">Champagne</span>
+          <div class="swatch-interactive-item">
+            <div class="swatch-disc" style="background-color: #E7D9BE;"></div>
+            <span class="swatch-name-tag">Champagne</span>
           </div>
-          <div class="palette-item-col">
-            <div class="palette-color-ball" style="background-color: #FBF7F0; border-color:#E7D9BE;"></div>
-            <span class="palette-color-title">Ivory</span>
+          <div class="swatch-interactive-item">
+            <div class="swatch-disc" style="background-color: #FBF7F0; border-color:#E7D9BE;"></div>
+            <span class="swatch-name-tag">Ivory</span>
           </div>
         </div>
 
@@ -1205,53 +1307,54 @@
     </section>
 
     <!-- 8. VENUE & TRAVEL (HIGHBERRY & LODGING) -->
-    <section id="venue" class="invitation-section">
-      <div class="section-title-wrap">
-        <span class="section-tag-caps">Destination</span>
+    <section id="venue">
+      <div class="section-header-box">
+        <span class="section-eyebrow-pill">Destination</span>
         <h2 class="section-title-serif">Venue &amp; Lodging</h2>
       </div>
 
-      <div class="luxury-card-box">
-        <h3 class="venue-title-display">Highberry Vineyards &amp; Venue</h3>
-        <p class="venue-address-caps">Somerset West, Cape Winelands, South Africa</p>
-        <p style="font-size:0.94rem; color:var(--ink-soft); line-height:1.75; text-align:center; margin-bottom:1.4rem;">
+      <div class="timeline-luxury-card" style="text-align:center;">
+        <span class="venue-weather-badge">🌤️ Cape Winelands &nbsp;&middot;&nbsp; 23°C Golden Hour</span>
+        <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:400; color:var(--burgundy); margin-bottom:0.3rem;">Highberry Vineyards &amp; Venue</h3>
+        <p style="font-family:var(--font-sans); font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--sage-dark); margin-bottom:1.2rem;">Somerset West, Cape Winelands, South Africa</p>
+        <p style="font-size:0.94rem; color:var(--ink-soft); line-height:1.75; margin-bottom:1.5rem;">
           A picturesque boutique vineyard surrounded by rolling vines, dams, and the Hottentots Holland mountains.
         </p>
 
         <div style="display:flex; flex-direction:column; gap:0.75rem;">
-          <a href="https://www.google.com/maps/search/Highberry+Vineyards+Somerset+West+South+Africa" target="_blank" rel="noopener noreferrer" class="btn-action-burgundy-full" style="margin-top:0;">
+          <a href="https://www.google.com/maps/search/Highberry+Vineyards+Somerset+West+South+Africa" target="_blank" rel="noopener noreferrer" class="btn-action-burgundy-glow" style="margin-top:0;">
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2C5.79 2 4 3.79 4 6c0 3.5 4 8 4 8s4-4.5 4-8c0-2.21-1.79-4-4-4Z"/><circle cx="8" cy="6" r="1.5"/></svg>
             Open in Google Maps
           </a>
-          <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-action-burgundy-full" style="margin-top:0; background:var(--sage-dark);">
+          <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-action-burgundy-glow" style="margin-top:0; background:var(--sage-dark);">
             Visit Venue Website ↗
           </a>
         </div>
       </div>
 
-      <!-- Lodging List -->
-      <div class="luxury-card-box">
-        <span class="section-tag-caps" style="margin-bottom:0.6rem;">Nearby Lodging Options</span>
+      <!-- Lodging Options -->
+      <div class="timeline-luxury-card" style="margin-top:1.4rem;">
+        <span class="section-eyebrow-pill" style="margin-bottom:0.6rem;">Nearby Lodging Options</span>
         <p style="font-size:0.9rem; color:var(--ink-muted); margin-bottom:1rem;">Recommended boutique guest houses in Somerset West:</p>
         
-        <div class="lodging-pills-wrap">
-          <a href="https://www.lalapanzilodge.co.za" target="_blank" rel="noopener noreferrer" class="lodging-item-button">
+        <div class="lodging-pills-list">
+          <a href="https://www.lalapanzilodge.co.za" target="_blank" rel="noopener noreferrer" class="lodging-pill-row">
             <span>Lalapanzi Lodge</span>
             <span>↗</span>
           </a>
-          <a href="https://www.winelandsvilla.co.za" target="_blank" rel="noopener noreferrer" class="lodging-item-button">
+          <a href="https://www.winelandsvilla.co.za" target="_blank" rel="noopener noreferrer" class="lodging-pill-row">
             <span>Winelands Villa Guesthouse</span>
             <span>↗</span>
           </a>
-          <a href="https://www.accommodationsomersetwest.co.za" target="_blank" rel="noopener noreferrer" class="lodging-item-button">
+          <a href="https://www.accommodationsomersetwest.co.za" target="_blank" rel="noopener noreferrer" class="lodging-pill-row">
             <span>Accommodation Somerset West</span>
             <span>↗</span>
           </a>
-          <a href="https://www.booking.com/searchresults.html?ss=Somerset+West%2C+South+Africa" target="_blank" rel="noopener noreferrer" class="lodging-item-button">
+          <a href="https://www.booking.com/searchresults.html?ss=Somerset+West%2C+South+Africa" target="_blank" rel="noopener noreferrer" class="lodging-pill-row">
             <span>Booking.com Somerset West</span>
             <span>↗</span>
           </a>
-          <a href="https://www.lekkeslaap.co.za/oornag/Somerset-West" target="_blank" rel="noopener noreferrer" class="lodging-item-button">
+          <a href="https://www.lekkeslaap.co.za/oornag/Somerset-West" target="_blank" rel="noopener noreferrer" class="lodging-pill-row">
             <span>LekkeSlaap Somerset West</span>
             <span>↗</span>
           </a>
@@ -1259,90 +1362,90 @@
       </div>
     </section>
 
-    <!-- 9. BEFORE THE DAY: FAQ ACCORDION -->
-    <section id="guidance" class="invitation-section">
-      <div class="section-title-wrap">
-        <span class="section-tag-caps">Guest Guide</span>
+    <!-- 9. BEFORE THE DAY (FAQ ACCORDION) -->
+    <section id="guidance">
+      <div class="section-header-box">
+        <span class="section-eyebrow-pill">Guest Guide</span>
         <h2 class="section-title-serif">Before the Day</h2>
       </div>
 
-      <div class="accordion-card-item">
-        <button type="button" class="accordion-trigger-button" id="btnAcc1">
+      <div class="faq-accordion-card">
+        <button type="button" class="faq-header-btn" id="btnFaq1">
           <span>What should I wear?</span>
-          <span class="acc-arrow-symbol">▾</span>
+          <span class="faq-arrow-icon">▾</span>
         </button>
-        <div class="accordion-body-content" id="panelAcc1">
+        <div class="faq-panel-body" id="panelFaq1">
           <p>Think <strong>elegant</strong>, <strong>formal</strong>, <strong>semi-formal</strong>, or traditional wear — beautifully comfortable for vineyard celebration!</p>
         </div>
       </div>
 
-      <div class="accordion-card-item">
-        <button type="button" class="accordion-trigger-button" id="btnAcc2">
+      <div class="faq-accordion-card">
+        <button type="button" class="faq-header-btn" id="btnFaq2">
           <span>When should I arrive?</span>
-          <span class="acc-arrow-symbol">▸</span>
+          <span class="faq-arrow-icon">▸</span>
         </button>
-        <div class="accordion-body-content" id="panelAcc2" style="display:none;">
+        <div class="faq-panel-body" id="panelFaq2" style="display:none;">
           <p>The ceremony begins promptly at <strong>14:30 SAST</strong>. Please arrive and be seated by <strong>14:15</strong>.</p>
         </div>
       </div>
 
-      <div class="accordion-card-item">
-        <button type="button" class="accordion-trigger-button" id="btnAcc3">
+      <div class="faq-accordion-card">
+        <button type="button" class="faq-header-btn" id="btnFaq3">
           <span>When is the RSVP deadline?</span>
-          <span class="acc-arrow-symbol">▸</span>
+          <span class="faq-arrow-icon">▸</span>
         </button>
-        <div class="accordion-body-content" id="panelAcc3" style="display:none;">
+        <div class="faq-panel-body" id="panelFaq3" style="display:none;">
           <p>Please RSVP by <strong>24 September 2026</strong> so we can finalize seating and dining with Highberry.</p>
         </div>
       </div>
     </section>
 
     <!-- 10. RSVP EXPERIENCE & LIVE WISHES WALL -->
-    <section id="rsvp" class="invitation-section">
-      <div class="section-title-wrap">
-        <span class="section-tag-caps">Your Response</span>
+    <section id="rsvp">
+      <div class="section-header-box">
+        <span class="section-eyebrow-pill">Your Response</span>
         <h2 class="section-title-serif">Will you join us among the vines?</h2>
-        <p class="section-sub-italic">We’d be so grateful to celebrate this beginning with you.</p>
+        <p class="section-subtitle-italic">We’d be so grateful to celebrate this beginning with you.</p>
         <p style="font-size:0.75rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--eucalyptus); margin-top:0.6rem;">
           Please respond by 24 September 2026
         </p>
       </div>
 
-      <div class="luxury-card-box" style="color:var(--ink);">
+      <div class="timeline-luxury-card" style="color:var(--ink);">
         
-        <div id="rsvpSuccessBox" style="display:none; text-align:center; padding:1.2rem 0.5rem;">
-          <div style="font-size:2.4rem; color:var(--burgundy); margin-bottom:0.6rem;">🤍</div>
-          <h3 id="rsvpSuccessName" style="font-family:var(--font-serif); font-size:1.7rem; color:var(--burgundy); margin-bottom:0.5rem;"></h3>
-          <p id="rsvpSuccessMsg" style="font-size:0.95rem; color:var(--ink-soft); line-height:1.7;"></p>
+        <div id="rsvpSuccessBox" style="display:none; text-align:center; padding:1.4rem 0.5rem;">
+          <div style="font-size:2.6rem; color:var(--burgundy); margin-bottom:0.6rem;">🤍</div>
+          <h3 id="rsvpSuccessName" style="font-family:var(--font-serif); font-size:1.8rem; color:var(--burgundy); margin-bottom:0.5rem;"></h3>
+          <p id="rsvpSuccessMsg" style="font-size:0.98rem; color:var(--ink-soft); line-height:1.7;"></p>
         </div>
 
-        <form id="rsvpForm" novalidate>
+        <form id="rsvpStationeryForm" novalidate>
           
-          <div class="form-field-group">
-            <label for="guestFullNameInput" class="form-input-label">Your Full Name *</label>
-            <input type="text" id="guestFullNameInput" class="form-input-field" placeholder="Enter your full name" required />
-            <span id="nameErrorMsg" style="display:none; font-size:0.75rem; color:#b01d2e; margin-top:0.3rem;">Please enter your name.</span>
+          <div class="form-group-item">
+            <label for="rsvpNameInput" class="form-label-caps">Your Full Name *</label>
+            <input type="text" id="rsvpNameInput" class="form-input-control" placeholder="Enter your full name" required />
+            <span id="rsvpNameError" style="display:none; font-size:0.75rem; color:#b01d2e; margin-top:0.3rem;">Please enter your name.</span>
           </div>
 
-          <div class="form-field-group">
-            <label class="form-input-label">Will you attend? *</label>
-            <div class="attendance-options-grid">
-              <label class="attendance-option-card">
-                <input type="radio" name="attendanceChoice" value="joyfully" required />
+          <div class="form-group-item">
+            <label class="form-label-caps">Will you attend? *</label>
+            <div class="attendance-grid-duo">
+              <label class="attendance-pill-choice">
+                <input type="radio" name="attendanceOption" value="joyfully" required />
                 <span>Joyfully Accepts</span>
               </label>
-              <label class="attendance-option-card">
-                <input type="radio" name="attendanceChoice" value="regretfully" required />
+              <label class="attendance-pill-choice">
+                <input type="radio" name="attendanceOption" value="regretfully" required />
                 <span>Regretfully Declines</span>
               </label>
             </div>
-            <span id="attendErrorMsg" style="display:none; font-size:0.75rem; color:#b01d2e; margin-top:0.3rem;">Please indicate attendance.</span>
+            <span id="rsvpAttendError" style="display:none; font-size:0.75rem; color:#b01d2e; margin-top:0.3rem;">Please indicate attendance.</span>
           </div>
 
-          <div id="attendingDetailsContainer">
-            <div class="form-field-group">
-              <label for="guestCountDropdown" class="form-input-label">Number of Guests (including yourself)</label>
-              <select id="guestCountDropdown" class="form-select-field">
+          <div id="attendingDetailsGroup">
+            <div class="form-group-item">
+              <label for="rsvpGuestsCount" class="form-label-caps">Number of Guests (including yourself)</label>
+              <select id="rsvpGuestsCount" class="form-select-control">
                 <option value="1">1 Guest (Just me)</option>
                 <option value="2">2 Guests</option>
                 <option value="3">3 Guests</option>
@@ -1350,42 +1453,42 @@
               </select>
             </div>
 
-            <div class="form-field-group">
-              <label for="dietaryInputBox" class="form-input-label">Dietary Requirements (Optional)</label>
-              <input type="text" id="dietaryInputBox" class="form-input-field" placeholder="e.g. Vegetarian, Halal, Nut allergy, None" />
+            <div class="form-group-item">
+              <label for="rsvpDietaryInput" class="form-label-caps">Dietary Requirements (Optional)</label>
+              <input type="text" id="rsvpDietaryInput" class="form-input-control" placeholder="e.g. Vegetarian, Halal, Nut allergy, None" />
             </div>
 
-            <div id="dynamicExtraGuestsBox" style="display:none; margin-bottom:1.4rem;"></div>
+            <div id="dynamicGuestsBox" style="display:none; margin-bottom:1.4rem;"></div>
           </div>
 
-          <div class="form-field-group">
-            <label for="wishTextBox" class="form-input-label">Leave a Blessing or Message for Rishen &amp; Lizaan</label>
-            <textarea id="wishTextBox" rows="3" class="form-textarea-field" placeholder="Write your heartfelt wishes..."></textarea>
+          <div class="form-group-item">
+            <label for="rsvpWishInput" class="form-label-caps">Leave a Blessing or Message for Rishen &amp; Lizaan</label>
+            <textarea id="rsvpWishInput" rows="3" class="form-textarea-control" placeholder="Write your heartfelt wishes..."></textarea>
           </div>
 
-          <button type="submit" class="btn-submit-rsvp-action">
-            Send RSVP &amp; Post Wishes
+          <button type="submit" class="btn-submit-rsvp-celebrate">
+            Send RSVP &amp; Post Wishes 🍾
           </button>
         </form>
 
       </div>
 
       <!-- Live Wishes Wall -->
-      <div class="wishes-guestbook-section">
-        <div class="wishes-header-box">
+      <div class="wishes-guestbook-box">
+        <div class="wishes-title-center">
           <div style="font-size:1.4rem; color:var(--champagne); margin-bottom:0.2rem;">💌</div>
           <h3>Wishes &amp; Blessings</h3>
           <p style="font-size:0.8rem; color:var(--eucalyptus); letter-spacing:0.1em; text-transform:uppercase;">From Loved Ones</p>
         </div>
 
-        <div class="wishes-feed-list" id="wishesFeedContainer">
+        <div class="wishes-feed-scroll" id="wishesFeedBox">
           <div class="wish-feed-card">
-            <div class="wish-guest-name">Family &amp; Friends</div>
-            <p class="wish-text-quote">“May your love story continue to grow more beautiful every single day. Wishing you a lifetime of joy, laughter, and blessings!”</p>
+            <div class="wish-author-meta">Family &amp; Friends</div>
+            <p class="wish-quote-msg">“May your love story continue to grow more beautiful every single day. Wishing you a lifetime of joy, laughter, and blessings!”</p>
           </div>
           <div class="wish-feed-card">
-            <div class="wish-guest-name">Aunty &amp; Uncle</div>
-            <p class="wish-text-quote">“We cannot wait to celebrate with you both under the Cape Winelands stars! God bless your union.”</p>
+            <div class="wish-author-meta">Aunty &amp; Uncle</div>
+            <p class="wish-quote-msg">“We cannot wait to celebrate with you both under the Cape Winelands stars! God bless your union.”</p>
           </div>
         </div>
       </div>
@@ -1393,83 +1496,144 @@
 
     <!-- 11. CLOSING KEEPSAKE & FOOTER -->
     <footer>
-      <div class="footer-emblem">❦</div>
-      <div class="footer-names">Rishen &amp; Lizaan</div>
-      <div class="footer-date-info">24 October 2026 &nbsp;&middot;&nbsp; Highberry Vineyards</div>
-      <p class="footer-signature-script">With all our love ♡</p>
+      <div class="footer-seal-emblem">❦</div>
+      <div class="footer-names-serif">Rishen &amp; Lizaan</div>
+      <div class="footer-date-sub">24 October 2026 &nbsp;&middot;&nbsp; Highberry Vineyards</div>
+      <p class="footer-script-farewell">With all our love ♡</p>
     </footer>
 
   </div>
 
   <!-- ============================================================
-       SCRIPTS: GATEFOLD OPENING, AUDIO, COUNTDOWN, ACCORDION, RSVP
+       SCRIPTS: PARTICLES, GATEFOLD, AUDIO, COUNTDOWN, RSVP & CONFETTI
   ============================================================ */ -->
   <script>
   'use strict';
 
-  // 1. Sabina Designs Gatefold Doors & Wax Seal Opening
-  const gateScreen = document.getElementById('gatefold-cover-screen');
-  const sealTrigger = document.getElementById('waxSealTriggerBtn');
-  const audioObj   = document.getElementById('weddingBgmAudio');
-  const musicToggle = document.getElementById('musicToggleBtn');
+  // 1. Ambient Stardust Particles Canvas
+  const canvas = document.getElementById('stardustCanvas');
+  const ctx = canvas ? canvas.getContext('2d') : null;
+  let particles = [];
 
-  function openGatefoldInvitation() {
-    if (gateScreen) gateScreen.classList.add('opened');
-    sessionStorage.setItem('rl_gatefold_opened', 'true');
+  function resizeCanvas() {
+    if (!canvas) return;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
 
-    // Start background romantic melody
-    if (audioObj) {
-      audioObj.play().then(() => {
-        if (musicToggle) musicToggle.classList.add('playing');
-      }).catch(() => {
-        // Handle browser autoplay policy gracefully
+  function initParticles() {
+    particles = [];
+    const count = window.innerWidth < 600 ? 25 : 45;
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 0.8,
+        speedY: Math.random() * 0.4 + 0.15,
+        speedX: (Math.random() - 0.5) * 0.2,
+        opacity: Math.random() * 0.6 + 0.2
       });
     }
   }
+  initParticles();
 
-  if (sealTrigger) sealTrigger.addEventListener('click', openGatefoldInvitation);
+  function animateParticles() {
+    if (!ctx || !canvas) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'rgba(231, 217, 190, ';
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(231, 217, 190, ${p.opacity})`;
+      ctx.fill();
+      p.y -= p.speedY;
+      p.x += p.speedX;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
 
-  if (sessionStorage.getItem('rl_gatefold_opened') === 'true') {
-    if (gateScreen) gateScreen.classList.add('opened');
+  // 2. 3D Gatefold Wax Seal Opening & Celebration Sparkle
+  const gatefoldCover = document.getElementById('gatefold-cover-experience');
+  const sealButton    = document.getElementById('gatefoldSealBtn');
+  const bgmAudio      = document.getElementById('weddingRomanticAudio');
+  const musicToggle   = document.getElementById('musicPlayerToggle');
+
+  function openGatefold() {
+    if (!gatefoldCover) return;
+    
+    // Sparkle confetti burst on seal open
+    if (window.confetti) {
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: { y: 0.5 },
+        colors: ['#C5A869', '#E7D9BE', '#6E2A31', '#FBF7F0']
+      });
+    }
+
+    gatefoldCover.classList.add('unveiled');
+    sessionStorage.setItem('rl_gatefold_opened_v3', 'true');
+
+    if (bgmAudio) {
+      bgmAudio.play().then(() => {
+        if (musicToggle) musicToggle.classList.add('playing');
+      }).catch(() => {});
+    }
   }
 
-  // 2. Music Disc Toggle
-  if (musicToggle && audioObj) {
+  if (sealButton) sealButton.addEventListener('click', openGatefold);
+  if (sessionStorage.getItem('rl_gatefold_opened_v3') === 'true') {
+    if (gatefoldCover) gatefoldCover.classList.add('unveiled');
+  }
+
+  // 3. Music Player Toggle
+  if (musicToggle && bgmAudio) {
     musicToggle.addEventListener('click', () => {
-      if (audioObj.paused) {
-        audioObj.play();
+      if (bgmAudio.paused) {
+        bgmAudio.play();
         musicToggle.classList.add('playing');
       } else {
-        audioObj.pause();
+        bgmAudio.pause();
         musicToggle.classList.remove('playing');
       }
     });
   }
 
-  // 3. Active Nav Highlighting on Scroll
-  const trackSections = document.querySelectorAll('section, header');
-  const navTabs = document.querySelectorAll('.bottom-nav-tab');
+  // 4. Reading Progress Bar & Active Nav Tracking
+  const progressBar = document.getElementById('topProgressBar');
+  const sections = document.querySelectorAll('section, header');
+  const navPills = document.querySelectorAll('.bottom-nav-pill');
 
   window.addEventListener('scroll', () => {
-    let activeId = '';
-    trackSections.forEach(sec => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (window.scrollY / totalHeight) * 100;
+    if (progressBar) progressBar.style.width = progress + '%';
+
+    let current = '';
+    sections.forEach(sec => {
       const top = sec.offsetTop - 160;
-      if (window.scrollY >= top) activeId = sec.getAttribute('id');
+      if (window.scrollY >= top) current = sec.getAttribute('id');
     });
 
-    navTabs.forEach(tab => {
-      tab.classList.remove('active');
-      if (tab.getAttribute('href') === '#' + activeId) {
-        tab.classList.add('active');
+    navPills.forEach(pill => {
+      pill.classList.remove('active');
+      if (pill.getAttribute('href') === '#' + current) {
+        pill.classList.add('active');
       }
     });
   }, { passive: true });
 
-  // 4. Real-Time Countdown
-  const WEDDING_TARGET_DATE = new Date('2026-10-24T14:30:00+02:00');
-  function refreshCountdown() {
-    const diff = WEDDING_TARGET_DATE - new Date();
-    const box = document.getElementById('heroCountdownBox');
+  // 5. Real-Time Countdown
+  const TARGET_DATE = new Date('2026-10-24T14:30:00+02:00');
+  function updateCountdown() {
+    const diff = TARGET_DATE - new Date();
+    const box = document.getElementById('editorialCountdown');
     if (!box) return;
 
     if (diff <= 0) {
@@ -1488,131 +1652,141 @@
     };
     setVal('cdDays', d); setVal('cdHours', h); setVal('cdMins', m); setVal('cdSecs', s);
   }
-  refreshCountdown();
-  setInterval(refreshCountdown, 1000);
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 
-  // 5. Accordion Logic
+  // 6. Accordion
   ['1', '2', '3'].forEach(n => {
-    const btn = document.getElementById('btnAcc' + n);
-    const pnl = document.getElementById('panelAcc' + n);
+    const btn = document.getElementById('btnFaq' + n);
+    const pnl = document.getElementById('panelFaq' + n);
     if (btn && pnl) {
       btn.addEventListener('click', () => {
         const isHidden = pnl.style.display === 'none';
-        const symbol = btn.querySelector('.acc-arrow-symbol');
+        const arr = btn.querySelector('.faq-arrow-icon');
         pnl.style.display = isHidden ? 'block' : 'none';
-        if (symbol) symbol.textContent = isHidden ? '▾' : '▸';
+        if (arr) arr.textContent = isHidden ? '▾' : '▸';
       });
     }
   });
 
-  // 6. Dynamic Additional Guest Rows
-  const guestCountEl = document.getElementById('guestCountDropdown');
-  const extraGuestBox = document.getElementById('dynamicExtraGuestsBox');
-  const detailsGroupEl = document.getElementById('attendingDetailsContainer');
-  const radioChoices = document.querySelectorAll('input[name="attendanceChoice"]');
+  // 7. Dynamic Extra Guest Fields
+  const guestSelect = document.getElementById('rsvpGuestsCount');
+  const dynamicBox = document.getElementById('dynamicGuestsBox');
+  const detailsGroup = document.getElementById('attendingDetailsGroup');
+  const radios = document.querySelectorAll('input[name="attendanceOption"]');
 
-  if (radioChoices) {
-    radioChoices.forEach(r => {
+  if (radios) {
+    radios.forEach(r => {
       r.addEventListener('change', () => {
         if (r.value === 'regretfully') {
-          if (detailsGroupEl) detailsGroupEl.style.display = 'none';
+          if (detailsGroup) detailsGroup.style.display = 'none';
         } else {
-          if (detailsGroupEl) detailsGroupEl.style.display = 'block';
+          if (detailsGroup) detailsGroup.style.display = 'block';
         }
       });
     });
   }
 
-  function renderDynamicGuestRows() {
-    if (!guestCountEl || !extraGuestBox) return;
-    const num = parseInt(guestCountEl.value, 10) || 1;
-    extraGuestBox.innerHTML = '';
+  function renderGuestFields() {
+    if (!guestSelect || !dynamicBox) return;
+    const count = parseInt(guestSelect.value, 10) || 1;
+    dynamicBox.innerHTML = '';
 
-    if (num > 1) {
-      extraGuestBox.style.display = 'block';
-      for (let i = 2; i <= num; i++) {
-        const item = document.createElement('div');
-        item.style.cssText = 'padding:0.9rem; margin-top:0.8rem; background:var(--parchment); border-radius:8px;';
-        item.innerHTML = `
+    if (count > 1) {
+      dynamicBox.style.display = 'block';
+      for (let i = 2; i <= count; i++) {
+        const row = document.createElement('div');
+        row.style.cssText = 'padding:0.9rem; margin-top:0.8rem; background:var(--parchment); border-radius:8px;';
+        row.innerHTML = `
           <div style="font-family:var(--font-serif); font-size:1.05rem; color:var(--burgundy); margin-bottom:0.4rem;">Guest ${i}</div>
-          <div class="form-field-group" style="margin-bottom:0.6rem;">
-            <label class="form-input-label">Full Name</label>
-            <input type="text" class="form-input-field" name="guest_${i}_name" placeholder="Guest ${i}'s name" style="padding:0.75rem 0.9rem;" />
+          <div class="form-group-item" style="margin-bottom:0.6rem;">
+            <label class="form-label-caps">Full Name</label>
+            <input type="text" class="form-input-control" name="guest_${i}_name" placeholder="Guest ${i}'s name" style="padding:0.75rem 0.9rem;" />
           </div>
-          <div class="form-field-group" style="margin-bottom:0;">
-            <label class="form-input-label">Dietary Requirements (Optional)</label>
-            <input type="text" class="form-input-field" name="guest_${i}_dietary" placeholder="e.g. Vegetarian, Halal, None" style="padding:0.75rem 0.9rem;" />
+          <div class="form-group-item" style="margin-bottom:0;">
+            <label class="form-label-caps">Dietary Requirements (Optional)</label>
+            <input type="text" class="form-input-control" name="guest_${i}_dietary" placeholder="e.g. Vegetarian, Halal, None" style="padding:0.75rem 0.9rem;" />
           </div>
         `;
-        extraGuestBox.appendChild(item);
+        dynamicBox.appendChild(row);
       }
     } else {
-      extraGuestBox.style.display = 'none';
+      dynamicBox.style.display = 'none';
     }
   }
 
-  if (guestCountEl) guestCountEl.addEventListener('change', renderDynamicGuestRows);
+  if (guestSelect) guestSelect.addEventListener('change', renderGuestFields);
 
-  // 7. RSVP Submit & Live Wishes Wall
-  const rsvpFormNode = document.getElementById('rsvpForm');
-  const successBoxNode = document.getElementById('rsvpSuccessBox');
-  const wishesListNode = document.getElementById('wishesFeedContainer');
+  // 8. RSVP Submit, Confetti Burst & Live Wishes Wall
+  const rsvpForm = document.getElementById('rsvpStationeryForm');
+  const successBox = document.getElementById('rsvpSuccessBox');
+  const wishesList = document.getElementById('wishesFeedBox');
 
-  if (rsvpFormNode) {
-    rsvpFormNode.addEventListener('submit', e => {
+  if (rsvpForm) {
+    rsvpForm.addEventListener('submit', e => {
       e.preventDefault();
-      let isFormValid = true;
+      let isValid = true;
 
-      const nameIn = document.getElementById('guestFullNameInput');
-      const nameErr = document.getElementById('nameErrorMsg');
-      const attendIn = document.querySelector('input[name="attendanceChoice"]:checked');
-      const attendErr = document.getElementById('attendErrorMsg');
-      const wishIn = document.getElementById('wishTextBox');
+      const nameIn = document.getElementById('rsvpNameInput');
+      const nameErr = document.getElementById('rsvpNameError');
+      const attendIn = document.querySelector('input[name="attendanceOption"]:checked');
+      const attendErr = document.getElementById('rsvpAttendError');
+      const wishIn = document.getElementById('rsvpWishInput');
 
       if (!nameIn || !nameIn.value.trim()) {
         if (nameErr) nameErr.style.display = 'block';
-        isFormValid = false;
+        isValid = false;
       } else {
         if (nameErr) nameErr.style.display = 'none';
       }
 
       if (!attendIn) {
         if (attendErr) attendErr.style.display = 'block';
-        isFormValid = false;
+        isValid = false;
       } else {
         if (attendErr) attendErr.style.display = 'none';
       }
 
-      if (!isFormValid) return;
+      if (!isValid) return;
 
-      const fullNameStr = nameIn.value.trim();
-      const firstNameStr = fullNameStr.split(' ')[0] || 'Friend';
-      const successNameEl = document.getElementById('rsvpSuccessName');
-      const successMsgEl = document.getElementById('rsvpSuccessMsg');
+      // Launch celebratory confetti burst!
+      if (window.confetti) {
+        confetti({
+          particleCount: 100,
+          spread: 80,
+          origin: { y: 0.6 },
+          colors: ['#C5A869', '#E7D9BE', '#6E2A31', '#7C8B6F', '#FBF7F0']
+        });
+      }
+
+      const fullName = nameIn.value.trim();
+      const firstName = fullName.split(' ')[0] || 'Friend';
+      const successName = document.getElementById('rsvpSuccessName');
+      const successMsg = document.getElementById('rsvpSuccessMsg');
 
       if (attendIn.value === 'joyfully') {
-        if (successNameEl) successNameEl.textContent = `We can't wait to celebrate with you, ${firstNameStr}! 🤍`;
-        if (successMsgEl) successMsgEl.textContent = 'Your RSVP has been lovingly received. Having you with us among the vines means everything to us!';
+        if (successName) successName.textContent = `We can't wait to celebrate with you, ${firstName}! 🤍`;
+        if (successMsg) successMsg.textContent = 'Your RSVP has been lovingly received. Having you with us among the vines means everything to us!';
       } else {
-        if (successNameEl) successNameEl.textContent = `With so much love, ${firstNameStr} 🤍`;
-        if (successMsgEl) successMsgEl.textContent = 'Thank you for letting us know. You will be dearly missed on our special day!';
+        if (successName) successName.textContent = `With so much love, ${firstName} 🤍`;
+        if (successMsg) successMsg.textContent = 'Thank you for letting us know. You will be dearly missed on our special day!';
       }
 
       // Add to live wishes wall
-      if (wishIn && wishIn.value.trim() && wishesListNode) {
-        const bubbleEl = document.createElement('div');
-        bubbleEl.className = 'wish-feed-card';
-        bubbleEl.innerHTML = `
-          <div class="wish-guest-name">${fullNameStr}</div>
-          <p class="wish-text-quote">“${wishIn.value.trim()}”</p>
+      if (wishIn && wishIn.value.trim() && wishesList) {
+        const bubble = document.createElement('div');
+        bubble.className = 'wish-feed-card';
+        bubble.innerHTML = `
+          <div class="wish-author-meta">${fullName}</div>
+          <p class="wish-quote-msg">“${wishIn.value.trim()}”</p>
         `;
-        wishesListNode.insertBefore(bubbleEl, wishesListNode.firstChild);
+        wishesList.insertBefore(bubble, wishesList.firstChild);
       }
 
-      rsvpFormNode.style.display = 'none';
-      if (successBoxNode) {
-        successBoxNode.style.display = 'block';
-        successBoxNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      rsvpForm.style.display = 'none';
+      if (successBox) {
+        successBox.style.display = 'block';
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
   }
