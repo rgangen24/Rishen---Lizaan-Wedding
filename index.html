@@ -150,88 +150,86 @@
     ============================================================ */
     #opening {
       position: fixed; inset: 0; z-index: 1000;
-      background: var(--oxblood);
+      background: radial-gradient(circle at 50% 45%, #581422 0%, #360a13 60%, #1a0408 100%);
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      text-align: center; padding: 2rem;
+      text-align: center; padding: 2.5rem 1.5rem;
       transition: opacity 1.2s var(--ease-luxury), visibility 1.2s;
     }
     #opening.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
     .opening-grain {
       position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-      background-size: 200px 200px; pointer-events: none; opacity: 0.4;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      background-size: 200px 200px; pointer-events: none; opacity: 0.35;
     }
     .opening-border {
-      position: absolute; inset: 20px;
-      border: 1px solid rgba(184,154,94,0.3); pointer-events: none;
+      position: absolute; inset: 24px;
+      border: 1px solid rgba(184,154,94,0.35); pointer-events: none;
     }
     .opening-border::before {
       content: ''; position: absolute; inset: 6px;
-      border: 1px solid rgba(184,154,94,0.12);
+      border: 1px solid rgba(184,154,94,0.15);
     }
     .opening-corner {
-      position: absolute; width: 24px; height: 24px;
-      border-color: var(--gold); border-style: solid; opacity: 0.7;
+      position: absolute; width: 20px; height: 20px;
+      border-color: var(--gold); border-style: solid; opacity: 0.8;
     }
-    .opening-corner--tl { top: 20px; left: 20px; border-width: 1px 0 0 1px; }
-    .opening-corner--tr { top: 20px; right: 20px; border-width: 1px 1px 0 0; }
-    .opening-corner--bl { bottom: 20px; left: 20px; border-width: 0 0 1px 1px; }
-    .opening-corner--br { bottom: 20px; right: 20px; border-width: 0 1px 1px 0; }
+    .opening-corner--tl { top: 24px; left: 24px; border-width: 1px 0 0 1px; }
+    .opening-corner--tr { top: 24px; right: 24px; border-width: 1px 1px 0 0; }
+    .opening-corner--bl { bottom: 24px; left: 24px; border-width: 0 0 1px 1px; }
+    .opening-corner--br { bottom: 24px; right: 24px; border-width: 0 1px 1px 0; }
 
     .opening-eyebrow {
       font-family: var(--font-body); font-size: 0.65rem;
-      letter-spacing: 0.25em; text-transform: uppercase;
+      letter-spacing: 0.3em; text-transform: uppercase;
       color: var(--gold-light);
-      opacity: 0; animation: fadeUp 1s var(--ease-reveal) 0.4s forwards;
+      opacity: 0; animation: fadeUp 1s var(--ease-reveal) 0.3s forwards;
     }
     .opening-rule {
-      width: 40px; height: 1px; background: var(--gold);
+      width: 45px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
       opacity: 0; margin: 1.2rem auto;
-      animation: expandRule 1s var(--ease-reveal) 0.7s forwards;
+      animation: expandRule 1.2s var(--ease-reveal) 0.6s forwards;
     }
     .opening-names {
       font-family: var(--font-display);
-      font-size: clamp(2.8rem, 9vw, 6rem); font-weight: 300;
-      color: var(--ivory); line-height: 1.05; letter-spacing: 0.02em;
-      opacity: 0; animation: fadeUp 1.2s var(--ease-reveal) 0.9s forwards;
+      font-size: clamp(2.6rem, 7vw, 4.8rem); font-weight: 300;
+      color: var(--ivory); line-height: 1.15; letter-spacing: 0.03em;
+      opacity: 0; animation: fadeUp 1.2s var(--ease-reveal) 0.8s forwards;
     }
-    .opening-names em { font-style: italic; color: var(--champagne); }
+    .opening-names em { font-style: italic; color: var(--champagne); font-weight: 300; }
     .opening-ampersand {
       font-family: var(--font-script);
-      font-size: clamp(2.5rem, 7vw, 4.5rem);
-      color: var(--gold-light); display: block; line-height: 1; margin: 0.1em 0;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--gold-light); display: inline-block; margin: 0 0.3em; vertical-align: middle;
+      font-weight: 400;
     }
     .opening-date {
-      font-family: var(--font-body); font-size: 0.7rem;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(247,243,236,0.6); margin-top: 1.4rem;
-      opacity: 0; animation: fadeUp 1s var(--ease-reveal) 1.2s forwards;
+      font-family: var(--font-body); font-size: 0.68rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(247,243,236,0.7); margin-top: 1.5rem;
+      opacity: 0; animation: fadeUp 1s var(--ease-reveal) 1.1s forwards;
     }
     .opening-tagline {
       font-family: var(--font-display); font-style: italic;
-      font-size: clamp(0.85rem, 2vw, 1.05rem);
-      color: var(--champagne); margin-top: 0.6rem;
-      opacity: 0; animation: fadeUp 1s var(--ease-reveal) 1.4s forwards;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--champagne); margin-top: 0.6rem; opacity: 0;
+      animation: fadeUp 1s var(--ease-reveal) 1.3s forwards;
+      max-width: 520px;
     }
     .opening-cta {
-      margin-top: 3rem;
-      opacity: 0; animation: fadeUp 1s var(--ease-reveal) 1.7s forwards;
-      display: flex; flex-direction: column; align-items: center; gap: 1rem;
-    }
-    .opening-botanical {
-      position: absolute; bottom: 40px; right: 40px;
-      opacity: 0.12; width: 120px; pointer-events: none;
+      margin-top: 2.8rem;
+      opacity: 0; animation: fadeUp 1s var(--ease-reveal) 1.5s forwards;
     }
 
     .btn-enter {
       display: inline-flex; align-items: center; gap: 0.7rem;
-      padding: 1rem 2.2rem; border: 1px solid var(--gold);
+      padding: 0.95rem 2.5rem; border: 1px solid var(--gold);
       color: var(--ivory); font-family: var(--font-body);
-      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-      transition: background 0.4s, color 0.4s; background: transparent;
+      font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase;
+      transition: background 0.4s, color 0.4s, box-shadow 0.4s; background: rgba(184,154,94,0.08);
       position: relative; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
     .btn-enter::before {
       content: ''; position: absolute; inset: 0;
@@ -241,50 +239,42 @@
     .btn-enter:hover::before, .btn-enter:focus-visible::before { transform: scaleX(1); }
     .btn-enter span { position: relative; z-index: 1; }
     .btn-enter:hover span, .btn-enter:focus-visible span { color: var(--oxblood); }
+    .btn-enter:hover { box-shadow: 0 6px 25px rgba(184,154,94,0.3); }
     .btn-enter:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
-
-    .btn-skip {
-      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(247,243,236,0.4); text-decoration: underline; text-underline-offset: 3px;
-      transition: color 0.3s;
-    }
-    .btn-skip:hover, .btn-skip:focus-visible { color: rgba(247,243,236,0.8); }
-    .btn-skip:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
 
     /* ============================================================
        NAVIGATION
     ============================================================ */
     #nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-      padding: 1.2rem 2.5rem;
+      padding: 1.4rem 3rem;
       display: flex; align-items: center; justify-content: space-between;
       transition: background 0.5s, backdrop-filter 0.5s, padding 0.4s, box-shadow 0.4s;
     }
     #nav.scrolled {
-      background: rgba(247,243,236,0.93);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      padding: 0.8rem 2.5rem;
-      box-shadow: 0 1px 0 rgba(107,26,42,0.08);
+      background: rgba(247,243,236,0.95);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      padding: 0.9rem 3rem;
+      box-shadow: 0 1px 15px rgba(107,26,42,0.06);
     }
     .nav-monogram {
-      font-family: var(--font-display); font-size: 1.2rem; font-weight: 400;
-      color: var(--ivory); letter-spacing: 0.05em; transition: color 0.4s;
+      font-family: var(--font-display); font-size: 1.25rem; font-weight: 400;
+      color: var(--ivory); letter-spacing: 0.08em; transition: color 0.4s;
     }
     #nav.scrolled .nav-monogram { color: var(--burgundy); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
-      font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(247,243,236,0.8); transition: color 0.3s; position: relative;
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(247,243,236,0.85); transition: color 0.3s; position: relative;
     }
     .nav-links a::after {
-      content: ''; position: absolute; bottom: -3px; left: 0;
+      content: ''; position: absolute; bottom: -4px; left: 0;
       width: 0; height: 1px; background: var(--gold);
       transition: width 0.3s var(--ease-luxury);
     }
     .nav-links a:hover::after, .nav-links a:focus-visible::after { width: 100%; }
     #nav.scrolled .nav-links a { color: var(--text-mid); }
     .nav-links a:hover, #nav.scrolled .nav-links a:hover { color: var(--burgundy); }
-    .nav-links a:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
 
     .nav-toggle {
       display: none; flex-direction: column; gap: 5px; padding: 4px;
@@ -301,12 +291,12 @@
     .nav-drawer {
       display: none; position: fixed; inset: 0;
       background: var(--oxblood); z-index: 490;
-      flex-direction: column; align-items: center; justify-content: center; gap: 0.2rem;
+      flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
     }
     .nav-drawer.open { display: flex; }
     .nav-drawer a {
-      font-family: var(--font-display); font-size: clamp(1.6rem, 5vw, 2.2rem);
-      font-weight: 300; color: var(--ivory); letter-spacing: 0.05em;
+      font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 2.4rem);
+      font-weight: 300; font-style: italic; color: var(--ivory); letter-spacing: 0.05em;
       padding: 0.5rem 1rem; transition: color 0.3s;
     }
     .nav-drawer a:hover { color: var(--champagne); }
@@ -314,6 +304,7 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
+      #nav, #nav.scrolled { padding: 1rem 1.5rem; }
     }
 
     /* ============================================================
@@ -322,12 +313,12 @@
     #hero {
       min-height: 100vh; position: relative;
       display: flex; flex-direction: column;
-      align-items: center; justify-content: flex-end;
-      padding-bottom: 8vh; overflow: hidden;
+      align-items: center; justify-content: center;
+      padding: 7rem 1.5rem 5rem; overflow: hidden;
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(160deg, #1a0810 0%, #2E0C1A 35%, #3d1a0a 65%, #1E1008 100%);
+      background: radial-gradient(ellipse at 50% 40%, #521320 0%, #2f0a12 55%, #150306 100%);
     }
     .hero-image-placeholder {
       position: absolute; inset: 0;
@@ -336,17 +327,16 @@
     .hero-image-placeholder::before {
       content: ''; position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse at 30% 60%, rgba(107,26,42,0.7) 0%, transparent 60%),
-        radial-gradient(ellipse at 75% 30%, rgba(94,114,86,0.4) 0%, transparent 50%),
-        linear-gradient(180deg, rgba(26,8,16,0.3) 0%, rgba(26,8,16,0.8) 100%);
+        radial-gradient(ellipse at 50% 45%, rgba(90,16,28,0.55) 0%, rgba(20,4,8,0.85) 100%),
+        linear-gradient(180deg, rgba(20,4,8,0.3) 0%, rgba(20,4,8,0.9) 100%);
       z-index: 1;
     }
     .hero-vine-left, .hero-vine-right {
       position: absolute; top: 0; bottom: 0; width: 180px;
-      z-index: 2; pointer-events: none; opacity: 0.15;
+      z-index: 2; pointer-events: none; opacity: 0.12;
     }
-    .hero-vine-left { left: -20px; }
-    .hero-vine-right { right: -20px; transform: scaleX(-1); }
+    .hero-vine-left { left: -10px; }
+    .hero-vine-right { right: -10px; transform: scaleX(-1); }
     .hero-texture {
       position: absolute; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
@@ -354,72 +344,73 @@
     }
     .hero-content {
       position: relative; z-index: 5;
-      text-align: center; padding: 0 1.5rem; max-width: 860px;
+      text-align: center; padding: 0 1rem; max-width: 800px;
     }
     .hero-eyebrow {
-      font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.28em;
+      font-family: var(--font-body); font-size: 0.65rem; letter-spacing: 0.32em;
       text-transform: uppercase; color: var(--gold-light);
       opacity: 0; transform: translateY(20px);
       transition: opacity 1s var(--ease-reveal), transform 1s var(--ease-reveal);
     }
     .hero-eyebrow.revealed { opacity: 1; transform: none; }
     .hero-rule {
-      width: 0; height: 1px; background: var(--gold);
+      width: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
       margin: 1.1rem auto; transition: width 1.2s var(--ease-reveal) 0.2s;
     }
-    .hero-rule.revealed { width: 60px; }
+    .hero-rule.revealed { width: 50px; }
     .hero-names {
-      font-family: var(--font-display); font-size: clamp(3.5rem, 11vw, 8rem);
-      font-weight: 300; color: var(--ivory); line-height: 0.9; letter-spacing: -0.01em;
+      font-family: var(--font-display); font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+      font-weight: 300; color: var(--ivory); line-height: 1.15; letter-spacing: 0.04em;
       opacity: 0; transform: translateY(30px);
       transition: opacity 1.2s var(--ease-reveal) 0.3s, transform 1.2s var(--ease-reveal) 0.3s;
     }
     .hero-names.revealed { opacity: 1; transform: none; }
-    .hero-names .name-lizaan { display: block; font-style: italic; }
+    .hero-names .name-lizaan { font-style: italic; color: var(--champagne); }
     .hero-names .name-amp {
-      font-family: var(--font-script); font-size: clamp(2rem, 6vw, 4rem);
-      color: var(--gold-light); display: block; line-height: 1.4;
+      font-family: var(--font-script); font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--gold-light); display: inline-block; margin: 0 0.3em; vertical-align: middle;
+      font-weight: 400;
     }
-    .hero-names .name-rishen { display: block; }
+    .hero-names .name-rishen { font-style: normal; color: var(--ivory); }
     .hero-tagline {
-      margin-top: 1.6rem; font-family: var(--font-display); font-style: italic;
-      font-size: clamp(1rem, 2.5vw, 1.3rem); color: var(--champagne);
+      margin-top: 1.4rem; font-family: var(--font-display); font-style: italic;
+      font-size: clamp(1.05rem, 2.4vw, 1.35rem); color: var(--champagne);
       opacity: 0; transform: translateY(20px);
       transition: opacity 1s var(--ease-reveal) 0.7s, transform 1s var(--ease-reveal) 0.7s;
     }
-    .hero-tagline.revealed { opacity: 0.85; transform: none; }
+    .hero-tagline.revealed { opacity: 0.9; transform: none; }
     .hero-meta {
-      margin-top: 2.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
       opacity: 0; transform: translateY(20px);
       transition: opacity 1s var(--ease-reveal) 0.9s, transform 1s var(--ease-reveal) 0.9s;
     }
     .hero-meta.revealed { opacity: 1; transform: none; }
     .hero-meta-date {
-      font-family: var(--font-body); font-size: 0.65rem;
-      letter-spacing: 0.22em; text-transform: uppercase; color: rgba(247,243,236,0.7);
+      font-family: var(--font-body); font-size: 0.68rem;
+      letter-spacing: 0.25em; text-transform: uppercase; color: rgba(247,243,236,0.75);
     }
-    .hero-meta-venue { font-family: var(--font-display); font-size: 0.95rem; color: rgba(232,217,184,0.8); }
+    .hero-meta-venue { font-family: var(--font-display); font-size: 1rem; color: rgba(232,217,184,0.85); }
 
     /* Countdown */
     .hero-countdown {
-      margin-top: 2.5rem; display: flex; gap: 1.5rem;
+      margin-top: 2.8rem; display: flex; gap: 1.8rem;
       justify-content: center; flex-wrap: wrap;
       opacity: 0; transform: translateY(20px);
       transition: opacity 1s var(--ease-reveal) 1.1s, transform 1s var(--ease-reveal) 1.1s;
     }
     .hero-countdown.revealed { opacity: 1; transform: none; }
-    .countdown-unit { display: flex; flex-direction: column; align-items: center; min-width: 56px; }
+    .countdown-unit { display: flex; flex-direction: column; align-items: center; min-width: 50px; }
     .countdown-number {
-      font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem);
+      font-family: var(--font-display); font-size: clamp(1.8rem, 4.5vw, 2.6rem);
       font-weight: 300; color: var(--ivory); line-height: 1;
     }
     .countdown-label {
       font-family: var(--font-body); font-size: 0.55rem;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-top: 0.3rem;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-light); margin-top: 0.35rem;
     }
     .countdown-divider {
-      font-family: var(--font-display); font-size: 1.8rem;
-      color: var(--gold); opacity: 0.4; align-self: flex-start; margin-top: 0.2rem;
+      font-family: var(--font-display); font-size: 1.5rem;
+      color: var(--gold); opacity: 0.4; align-self: flex-start; margin-top: 0.1rem;
     }
     .countdown-done {
       font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--champagne);
@@ -836,33 +827,20 @@
   <div class="opening-corner opening-corner--bl" aria-hidden="true"></div>
   <div class="opening-corner opening-corner--br" aria-hidden="true"></div>
 
-  <svg class="opening-botanical" viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M60 200 Q60 160 60 140" stroke="var(--sage-light)" stroke-width="1"/>
-    <path d="M60 170 Q40 155 20 150" stroke="var(--sage-light)" stroke-width="0.8"/>
-    <path d="M60 160 Q80 145 100 148" stroke="var(--sage-light)" stroke-width="0.8"/>
-    <path d="M60 145 Q35 125 15 118" stroke="var(--sage-light)" stroke-width="0.7"/>
-    <path d="M60 132 Q85 115 105 110" stroke="var(--sage-light)" stroke-width="0.7"/>
-    <ellipse cx="20" cy="148" rx="18" ry="10" stroke="var(--sage-light)" stroke-width="0.6" transform="rotate(-25 20 148)"/>
-    <ellipse cx="100" cy="146" rx="18" ry="10" stroke="var(--sage-light)" stroke-width="0.6" transform="rotate(20 100 146)"/>
-    <ellipse cx="15" cy="115" rx="16" ry="9" stroke="var(--sage-light)" stroke-width="0.5" transform="rotate(-35 15 115)"/>
-    <ellipse cx="105" cy="108" rx="16" ry="9" stroke="var(--sage-light)" stroke-width="0.5" transform="rotate(30 105 108)"/>
-  </svg>
-
-  <p class="opening-eyebrow">A Celebration of Love</p>
+  <p class="opening-eyebrow">A Celebration of True Love</p>
   <div class="opening-rule" aria-hidden="true"></div>
   <h1 class="opening-names">
     <em>Lizaan</em>
     <span class="opening-ampersand">&amp;</span>
-    Rishen
+    <span>Rishen</span>
   </h1>
-  <p class="opening-date">24 October 2026 &nbsp;·&nbsp; Somerset West &nbsp;·&nbsp; Cape Winelands</p>
-  <p class="opening-tagline">What began with a glance, grew through messages, and blossomed into forever.</p>
+  <p class="opening-date">24 October 2026 &nbsp;·&nbsp; Highberry Vineyards &nbsp;·&nbsp; Cape Winelands</p>
+  <p class="opening-tagline">“What began with a glance, grew through messages, and blossomed into forever.”</p>
 
   <div class="opening-cta">
-    <button class="btn-enter" id="enterBtn">
-      <span>Begin the Story</span>
+    <button class="btn-enter" id="enterBtn" aria-label="Enter the wedding invitation">
+      <span>Enter Invitation</span>
     </button>
-    <button class="btn-skip" id="skipBtn">Skip</button>
   </div>
 </section>
 
@@ -875,10 +853,7 @@
     <li><a href="#story">Our Story</a></li>
     <li><a href="#celebration">The Day</a></li>
     <li><a href="#guidance">Before the Day</a></li>
-    <li><a href="#party">Wedding Party</a></li>
-    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#rsvp">RSVP</a></li>
-    <li><a href="#faq">Questions</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navDrawer">
     <span></span><span></span><span></span>
@@ -889,21 +864,8 @@
   <a href="#story">Our Story</a>
   <a href="#celebration">The Day</a>
   <a href="#guidance">Before the Day</a>
-  <a href="#party">Wedding Party</a>
-  <a href="#gallery">Gallery</a>
   <a href="#rsvp">RSVP</a>
-  <a href="#faq">Questions</a>
 </nav>
-
-<!-- Lightbox -->
-<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox" tabindex="-1">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
-  <div class="lightbox-content">
-    <div class="lightbox-placeholder" role="img" aria-label="Placeholder: Replace with photograph">
-      [ Photograph — replace with actual image ]
-    </div>
-  </div>
-</div>
 
 <!-- ======================================================
      MAIN
@@ -914,7 +876,7 @@
   <section id="hero" aria-label="Welcome">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-image-placeholder" aria-hidden="true">
-      <img src="images/couple-outdoor.jpg" alt="Rishen and Lizaan together" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;">
+      <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan together" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;">
     </div>
     <div class="hero-texture" aria-hidden="true"></div>
 
@@ -925,9 +887,6 @@
       <ellipse cx="62" cy="440" rx="30" ry="16" stroke="var(--sage-light)" stroke-width="0.7" transform="rotate(15 62 440)"/>
       <ellipse cx="55" cy="330" rx="28" ry="15" stroke="var(--sage-light)" stroke-width="0.7" transform="rotate(-25 55 330)"/>
       <ellipse cx="65" cy="200" rx="32" ry="14" stroke="var(--sage-light)" stroke-width="0.6" transform="rotate(10 65 200)"/>
-      <circle cx="48" cy="480" r="3" fill="var(--burgundy)" opacity="0.4"/>
-      <circle cx="70" cy="390" r="2.5" fill="var(--burgundy)" opacity="0.35"/>
-      <circle cx="52" cy="280" r="2" fill="var(--burgundy)" opacity="0.3"/>
     </svg>
     <svg class="hero-vine-right" viewBox="0 0 180 800" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M90 800 Q90 700 85 650 Q70 600 60 550 Q45 490 65 440 Q80 400 75 350 Q65 300 70 250 Q80 200 60 150 Q40 100 70 50 Q85 20 90 0" stroke="var(--sage-light)" stroke-width="1.5"/>
@@ -935,9 +894,6 @@
       <ellipse cx="62" cy="440" rx="30" ry="16" stroke="var(--sage-light)" stroke-width="0.7" transform="rotate(15 62 440)"/>
       <ellipse cx="55" cy="330" rx="28" ry="15" stroke="var(--sage-light)" stroke-width="0.7" transform="rotate(-25 55 330)"/>
       <ellipse cx="65" cy="200" rx="32" ry="14" stroke="var(--sage-light)" stroke-width="0.6" transform="rotate(10 65 200)"/>
-      <circle cx="48" cy="480" r="3" fill="var(--burgundy)" opacity="0.4"/>
-      <circle cx="70" cy="390" r="2.5" fill="var(--burgundy)" opacity="0.35"/>
-      <circle cx="52" cy="280" r="2" fill="var(--burgundy)" opacity="0.3"/>
     </svg>
 
     <div class="hero-content">
@@ -953,7 +909,7 @@
       </p>
       <div class="hero-meta" id="heroMeta">
         <span class="hero-meta-date">24<sup>th</sup> October 2026 &nbsp;&middot;&nbsp; 14:30</span>
-        <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="hero-meta-venue" style="text-decoration:none; border-bottom: 1px solid rgba(232,217,184,0.3); padding-bottom:1px; transition:border-color 0.3s;" aria-label="Visit Highberry Vineyards website">Highberry Vineyards &amp; Venue, Somerset West</a>
+        <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="hero-meta-venue" style="text-decoration:none; border-bottom: 1px solid rgba(232,217,184,0.35); padding-bottom:2px; transition:border-color 0.3s;" aria-label="Visit Highberry Vineyards website">Highberry Vineyards &amp; Venue, Somerset West</a>
       </div>
       <div class="hero-countdown" id="heroCountdown" aria-label="Countdown to the wedding">
         <div class="countdown-unit">
@@ -985,7 +941,7 @@
   </section>
 
   <!-- OUR STORY -->
-  <section id="story" aria-labelledby="storyHeading">
+  <section id="story" aria-labelledby="storyHeading" style="background: var(--ivory); padding: 8rem 1.5rem; position: relative;">
     <svg class="story-bg-motif" viewBox="0 0 340 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M170 400 Q170 350 165 320 Q140 280 120 240 Q95 190 115 150 Q135 110 130 70 Q125 30 145 5" stroke="var(--burgundy)" stroke-width="2"/>
       <path d="M170 350 Q130 330 100 310" stroke="var(--sage)" stroke-width="1.2"/>
@@ -994,12 +950,20 @@
       <ellipse cx="240" cy="258" rx="50" ry="25" stroke="var(--sage)" stroke-width="1" transform="rotate(15 240 258)"/>
     </svg>
 
-    <div class="section-inner" style="padding: 8rem 1.5rem; position: relative; z-index:1;">
-      <div class="reveal">
-        <div class="section-eyebrow">Our Story 🤍</div>
-        <div class="section-rule" aria-hidden="true"></div>
-        <h2 class="section-heading" id="storyHeading"><em>Written long before<br>we realised it.</em></h2>
-        <p style="font-family:var(--font-display);font-style:italic;font-size:1.15rem;color:var(--text-mid);margin-top:1rem;max-width:560px;">Some love stories begin with a first conversation. Ours began with a glance.</p>
+    <div class="section-inner" style="position: relative; z-index:1;">
+      <!-- Prominent Grand Heading for Our Story -->
+      <div class="reveal" style="text-align: center; max-width: 780px; margin: 0 auto 3.5rem;">
+        <div class="section-eyebrow" style="color: var(--burgundy); letter-spacing: 0.28em;">A Celebration of True Love</div>
+        <div class="section-rule" style="margin: 0.8rem auto 1.4rem;"></div>
+        <h2 class="section-heading" id="storyHeading" style="font-size: clamp(3.2rem, 7.5vw, 5.5rem); line-height: 1.05; letter-spacing: -0.01em;">
+          Our Story
+        </h2>
+        <p style="font-family: var(--font-display); font-style: italic; font-size: clamp(1.2rem, 2.5vw, 1.55rem); color: var(--burgundy-mid); margin-top: 0.8rem;">
+          Written long before we even realised it.
+        </p>
+        <p style="font-family: var(--font-display); font-style: italic; font-size: 1.05rem; color: var(--text-mid); margin-top: 0.8rem; line-height: 1.7;">
+          Some love stories begin with a first conversation. Ours began with a glance.
+        </p>
       </div>
 
       <div class="story-grid">
@@ -1008,14 +972,14 @@
         <div class="story-chapter reveal reveal-delay-1">
           <div class="story-chapter-number" aria-hidden="true">01</div>
           <div class="story-chapter-label">A Glance</div>
-          <h3>Love at first sight — although neither of them was brave enough to say a word!</h3>
+          <h3>Love at first sight — although neither was brave enough to say a word!</h3>
           <p>Almost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members. There was an instant connection, a quiet, undeniable feeling that something about this person was different.</p>
           <p>It was love at first sight — although neither of them was brave enough to actually say a word to the other 😂!</p>
         </div>
 
         <!-- Photo 1: Full outdoor garden portrait (no crop, full frame) -->
         <div class="reveal reveal-delay-2" style="display:flex; justify-content:center; align-items:center;">
-          <div style="background:var(--ivory); padding:10px; border:1px solid rgba(184,154,94,0.35); box-shadow: 0 12px 35px rgba(0,0,0,0.06); max-width:440px; width:100%;">
+          <div style="background:var(--white); padding:10px; border:1px solid rgba(184,154,94,0.35); box-shadow: 0 12px 35px rgba(0,0,0,0.06); max-width:440px; width:100%;">
             <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan in the garden"
               style="width:100%; height:auto; display:block;" loading="lazy"/>
             <p style="font-family:var(--font-display); font-style:italic; font-size:0.75rem; color:var(--text-light); text-align:center; margin-top:0.6rem;">
@@ -1026,7 +990,7 @@
 
         <!-- Photo 2: Full close-up couple portrait -->
         <div class="reveal reveal-delay-1" style="display:flex; justify-content:center; align-items:center;">
-          <div style="background:var(--ivory); padding:10px; border:1px solid rgba(184,154,94,0.35); box-shadow: 0 12px 35px rgba(0,0,0,0.06); max-width:440px; width:100%;">
+          <div style="background:var(--white); padding:10px; border:1px solid rgba(184,154,94,0.35); box-shadow: 0 12px 35px rgba(0,0,0,0.06); max-width:440px; width:100%;">
             <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait"
               style="width:100%; height:auto; display:block;" loading="lazy"/>
             <p style="font-family:var(--font-display); font-style:italic; font-size:0.75rem; color:var(--text-light); text-align:center; margin-top:0.6rem;">
@@ -1058,7 +1022,7 @@
 
         <!-- Photo 3: Fun memories with hats (full uncropped photo) -->
         <div class="reveal" style="grid-column: 1 / -1; max-width: 540px; margin: 1rem auto 2rem; width: 100%;">
-          <div style="background:var(--ivory); padding:12px; border:1px solid rgba(184,154,94,0.35); box-shadow: 0 14px 40px rgba(0,0,0,0.07); text-align:center;">
+          <div style="background:var(--white); padding:12px; border:1px solid rgba(184,154,94,0.35); box-shadow: 0 14px 40px rgba(0,0,0,0.07); text-align:center;">
             <img src="images/couple-fun.jpg" alt="Rishen and Lizaan having fun together"
               style="width:100%; height:auto; display:block;" loading="lazy"/>
             <p style="font-family:var(--font-display); font-style:italic; font-size:0.85rem; color:var(--text-mid); margin-top:0.8rem;">
@@ -1078,7 +1042,7 @@
             Matthew 19 : 6
           </p>
 
-          <div style="margin-top: 3.5rem; padding: 2.5rem 2rem; border: 1px solid rgba(184,154,94,0.3); background: rgba(247,243,236,0.5); position: relative; border-radius: 2px;">
+          <div style="margin-top: 3.5rem; padding: 2.5rem 2rem; border: 1px solid rgba(184,154,94,0.3); background: rgba(247,243,236,0.6); position: relative; border-radius: 2px;">
             <p style="font-family: var(--font-display); font-style: italic; font-size: clamp(1.1rem, 2.4vw, 1.35rem); color: var(--text-dark); line-height: 1.8;">
               And so, what began with a glance, grew through messages, and blossomed into a love we never expected, is becoming forever 🤍.
             </p>
@@ -1093,7 +1057,7 @@
   </section>
 
   <!-- THE CELEBRATION / ITINERARY -->
-  <section id="celebration" class="section" aria-labelledby="celebrationHeading">
+  <section id="celebration" class="section" aria-labelledby="celebrationHeading" style="background: var(--white); padding: 8rem 1.5rem;">
     <div class="section-inner">
       <div class="reveal" style="text-align:center; max-width:680px; margin:0 auto;">
         <div class="section-eyebrow">The Celebration</div>
@@ -1173,7 +1137,7 @@
       </div>
 
       <!-- Action Card with Venue Link & Calendar -->
-      <div class="reveal reveal-delay-2" style="max-width:620px; margin:3.5rem auto 0; padding:2rem 2.5rem; background:var(--white); border:1px solid rgba(107,26,42,0.12); border-left:3px solid var(--burgundy); text-align:center;">
+      <div class="reveal reveal-delay-2" style="max-width:620px; margin:3.5rem auto 0; padding:2rem 2.5rem; background:var(--ivory); border:1px solid rgba(107,26,42,0.12); border-left:3px solid var(--burgundy); text-align:center;">
         <div style="font-family:var(--font-display); font-size:1.35rem; color:var(--burgundy); margin-bottom:0.4rem;">
           <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline; text-underline-offset:4px;">
             Highberry Vineyards &amp; Venue ↗
@@ -1229,30 +1193,25 @@
 
       <div class="reveal reveal-delay-1" style="display: flex; flex-direction: column;">
         <!-- Item 1: What should I wear? -->
-        <div class="guidance-item" style="border-top: 1px solid rgba(107,26,42,0.14); border-bottom: 1px solid rgba(107,26,42,0.14);">
-          <div style="padding: 1.4rem 0;">
-            <h3 style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; font-style: italic; color: var(--text-dark); margin-bottom: 0.8rem;">
-              What should I wear?
-            </h3>
-            <p style="font-family: var(--font-body); font-size: 0.95rem; color: var(--text-mid); line-height: 1.85;">
-              Think elegant, think formal, semi formal and beautifully comfortable — even traditional wear. However you choose to dress, come ready for an evening of celebration.
-            </p>
-            <p style="margin-top: 0.8rem; font-family: var(--font-body); font-size: 0.85rem; color: var(--text-light); font-style: italic; line-height: 1.7;">
-              A gentle note: the ceremony is held among the vines and grass lawns. Block heels, wedges, or elegant flats are recommended. Kindly avoid white or ivory, which is reserved for the bride.
-            </p>
+        <div class="guidance-accordion" style="border-top: 1px solid rgba(107,26,42,0.14); border-bottom: 1px solid rgba(107,26,42,0.14);">
+          <button class="guidance-toggle" style="display:flex; justify-content:space-between; align-items:center; width:100%; padding:1.4rem 0; font-family:var(--font-display); font-size:1.35rem; font-style:italic; font-weight:400; color:var(--text-dark); text-align:left; background:none; border:none; cursor:pointer;">
+            <span>What should I wear?</span>
+            <span class="guidance-arrow" style="font-size:0.85rem; color:var(--burgundy); transition:transform 0.3s;">▾</span>
+          </button>
+          <div class="guidance-body" style="padding-bottom: 1.4rem; font-family: var(--font-body); font-size: 0.95rem; color: var(--text-mid); line-height: 1.85;">
+            <p>Think elegant, think formal, semi formal and beautifully comfortable — even traditional wear. However you choose to dress, come ready for an evening of celebration.</p>
           </div>
         </div>
 
         <!-- Item 2: Where should I stay? -->
-        <div class="guidance-item" style="border-bottom: 1px solid rgba(107,26,42,0.14);">
-          <div style="padding: 1.4rem 0;">
-            <h3 style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; font-style: italic; color: var(--text-dark); margin-bottom: 0.8rem;">
-              Where should I stay?
-            </h3>
-            <p style="font-family: var(--font-body); font-size: 0.95rem; color: var(--text-mid); line-height: 1.85;">
-              Somerset West and the surrounding Cape Winelands offer wonderful guest houses and lodges. We recommend exploring and booking early:
-            </p>
-            <ul style="list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+        <div class="guidance-accordion" style="border-bottom: 1px solid rgba(107,26,42,0.14);">
+          <button class="guidance-toggle" style="display:flex; justify-content:space-between; align-items:center; width:100%; padding:1.4rem 0; font-family:var(--font-display); font-size:1.35rem; font-style:italic; font-weight:400; color:var(--text-dark); text-align:left; background:none; border:none; cursor:pointer;">
+            <span>Where should I stay?</span>
+            <span class="guidance-arrow" style="font-size:0.85rem; color:var(--burgundy); transition:transform 0.3s;">▾</span>
+          </button>
+          <div class="guidance-body" style="padding-bottom: 1.4rem; font-family: var(--font-body); font-size: 0.95rem; color: var(--text-mid); line-height: 1.85;">
+            <p>Somerset West and the surrounding Cape Winelands offer wonderful guest houses and lodges:</p>
+            <ul style="list-style: none; margin-top: 1.1rem; display: flex; flex-direction: column; gap: 0.75rem;">
               <li><a href="https://www.lalapanzilodge.co.za" target="_blank" rel="noopener noreferrer" style="color: var(--burgundy); text-decoration: underline; text-underline-offset: 3px; font-size: 0.92rem; font-weight: 400;">Lalapanzi Lodge ↗</a></li>
               <li><a href="https://www.winelandsvilla.co.za" target="_blank" rel="noopener noreferrer" style="color: var(--burgundy); text-decoration: underline; text-underline-offset: 3px; font-size: 0.92rem; font-weight: 400;">Winelands Villa ↗</a></li>
               <li><a href="https://www.accommodationsomersetwest.co.za" target="_blank" rel="noopener noreferrer" style="color: var(--burgundy); text-decoration: underline; text-underline-offset: 3px; font-size: 0.92rem; font-weight: 400;">Accommodation Somerset West ↗</a></li>
@@ -1267,124 +1226,68 @@
     </div>
   </section>
 
-  <!-- WEDDING PARTY -->
-  <section id="party" class="section" aria-labelledby="partyHeading">
-    <div class="section-inner">
-      <div class="reveal">
-        <div class="section-eyebrow">People We Love</div>
-        <div class="section-rule" aria-hidden="true"></div>
-        <h2 class="section-heading" id="partyHeading">The ones who walked<br><em>this road with us.</em></h2>
-        <p class="section-subheading">[ Wedding party details to be added by the couple ]</p>
-      </div>
-
-      <div class="party-grid">
-        <div class="party-card reveal reveal-delay-1">
-          <div class="party-portrait" role="img" aria-label="Portrait placeholder">[ Portrait ]</div>
-          <div class="party-role">[ Role — e.g. Best Man ]</div>
-          <div class="party-name">[ Name ]</div>
-          <div class="party-note">[ Short note — optional ]</div>
-        </div>
-        <div class="party-card reveal reveal-delay-2">
-          <div class="party-portrait" role="img" aria-label="Portrait placeholder">[ Portrait ]</div>
-          <div class="party-role">[ Role — e.g. Maid of Honour ]</div>
-          <div class="party-name">[ Name ]</div>
-          <div class="party-note">[ Short note — optional ]</div>
-        </div>
-        <div class="party-card reveal reveal-delay-3">
-          <div class="party-portrait" role="img" aria-label="Portrait placeholder">[ Portrait ]</div>
-          <div class="party-role">[ Role ]</div>
-          <div class="party-name">[ Name ]</div>
-          <div class="party-note">[ Short note — optional ]</div>
-        </div>
-        <div class="party-card reveal reveal-delay-4">
-          <div class="party-portrait" role="img" aria-label="Portrait placeholder">[ Portrait ]</div>
-          <div class="party-role">[ Role ]</div>
-          <div class="party-name">[ Name ]</div>
-          <div class="party-note">[ Short note — optional ]</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section id="gallery" aria-labelledby="galleryHeading">
-    <div class="section-inner">
-      <div class="reveal">
-        <div class="section-eyebrow">Gallery</div>
-        <div class="section-rule" aria-hidden="true"></div>
-        <h2 class="section-heading" id="galleryHeading">A visual<br><em>love letter.</em></h2>
-      </div>
-
-      <div class="gallery-strip" role="list">
-        <div class="gallery-item reveal" role="listitem"><div class="gallery-item-inner" aria-label="Gallery placeholder — Before Us"><svg width="24" height="24" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="0.8" aria-hidden="true"><rect x="2" y="6" width="28" height="22" rx="2"/><circle cx="16" cy="17" r="6"/></svg>[ Photo ]</div><span class="gallery-chapter">Before Us</span></div>
-        <div class="gallery-item reveal reveal-delay-1" role="listitem"><div class="gallery-item-inner" aria-label="Gallery placeholder — A Message">[ Photo ]</div><span class="gallery-chapter">A Message</span></div>
-        <div class="gallery-item reveal reveal-delay-2" role="listitem"><div class="gallery-item-inner" aria-label="Gallery placeholder">[ Photo ]</div></div>
-        <div class="gallery-item reveal reveal-delay-1" role="listitem"><div class="gallery-item-inner" aria-label="Gallery placeholder">[ Photo ]</div></div>
-        <div class="gallery-item reveal reveal-delay-2" role="listitem"><div class="gallery-item-inner" aria-label="Gallery placeholder">[ Photo ]</div></div>
-        <div class="gallery-item reveal reveal-delay-1" role="listitem"><div class="gallery-item-inner" aria-label="Gallery placeholder — Adventures">[ Photo ]</div><span class="gallery-chapter">Adventures</span></div>
-        <div class="gallery-item reveal reveal-delay-2" role="listitem"><div class="gallery-item-inner" aria-label="Gallery placeholder — The Days Ahead">[ Photo ]</div><span class="gallery-chapter">The Days Ahead</span></div>
-      </div>
-
-      <p style="text-align:center;color:rgba(247,243,236,0.25);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;margin-top:2rem;">[ Replace placeholders with your photographs — click to preview ]</p>
-    </div>
-  </section>
-
-  <!-- RSVP -->
-  <section id="rsvp" aria-labelledby="rsvpHeading">
-    <div class="section-inner" style="position:relative;z-index:1;">
+  <!-- RSVP (THE GRAND FINALE) -->
+  <section id="rsvp" aria-labelledby="rsvpHeading" style="background: radial-gradient(circle at 50% 30%, #521320 0%, #300a12 60%, #170408 100%); padding: 8rem 1.5rem; position: relative;">
+    <div class="section-inner" style="position:relative; z-index:1; max-width: 680px; margin: 0 auto;">
       <div class="reveal" style="text-align:center;">
-        <div class="section-eyebrow">RSVP</div>
-        <div class="section-rule" style="margin:1rem auto;"></div>
-        <h2 class="section-heading" id="rsvpHeading">Will you join us?</h2>
-        <p class="section-subheading">We hope to celebrate with you among the vines.</p>
-        <p class="rsvp-deadline">Please respond by 24 September 2026</p>
+        <div class="section-eyebrow" style="color: var(--gold-light); letter-spacing: 0.3em;">RSVP</div>
+        <div class="section-rule" style="margin: 0.9rem auto 1.3rem;"></div>
+        <h2 class="section-heading" id="rsvpHeading" style="font-size: clamp(2.8rem, 6vw, 4.5rem); color: var(--ivory);">
+          Will you join us?
+        </h2>
+        <p style="font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--champagne); opacity: 0.9; margin-top: 0.6rem;">
+          We hope to celebrate with you among the vines.
+        </p>
+        <p style="font-family: var(--font-body); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-light); margin-top: 1rem;">
+          Please respond by 24 September 2026
+        </p>
       </div>
 
-      <div class="rsvp-form-wrapper reveal reveal-delay-1">
-        <div class="rsvp-confirmation" id="rsvpConfirmation" aria-live="polite" tabindex="-1">
-          <div class="rsvp-confirmation-icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 id="confirmTitle" style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--ivory);margin-bottom:0.8rem;">Thank you, <span id="confirmName">dear guest</span>.</h3>
-          <p id="confirmMessage" style="font-family:var(--font-display);font-style:italic;color:var(--champagne);font-size:1.05rem;max-width:440px;line-height:1.75;margin:0 auto;"></p>
+      <div class="rsvp-form-wrapper reveal reveal-delay-1" style="margin-top: 3.5rem; background: rgba(247,243,236,0.06); border: 1px solid rgba(184,154,94,0.3); padding: 3rem 2.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-radius: 2px;">
+        <div class="rsvp-confirmation" id="rsvpConfirmation" aria-live="polite" tabindex="-1" style="display:none; text-align:center; padding: 2rem;">
+          <div style="font-size:2.5rem; color:var(--gold-light); margin-bottom:1rem;">🤍</div>
+          <h3 id="confirmTitle" style="font-family:var(--font-display); font-size:clamp(1.8rem, 4vw, 2.3rem); font-weight:300; color:var(--ivory); margin-bottom:1rem; line-height:1.2;"></h3>
+          <p id="confirmMessage" style="font-family:var(--font-display); font-style:italic; color:var(--champagne); font-size:1.1rem; line-height:1.75; max-width:480px; margin:0 auto;"></p>
         </div>
 
         <form id="rsvpForm" novalidate aria-label="RSVP form for Rishen and Lizaan's wedding">
           <!-- Full Name -->
-          <div class="form-row" id="rowName">
-            <label for="guestName">Your Full Name <span aria-label="required field">*</span></label>
-            <input type="text" id="guestName" name="guestName" autocomplete="name" placeholder="Enter your first and last name" aria-required="true" aria-describedby="nameError"/>
-            <span class="form-error-msg" id="nameError" role="alert">Please enter your full name.</span>
+          <div class="form-row" id="rowName" style="margin-bottom: 1.8rem;">
+            <label for="guestName" style="display:block; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-light); margin-bottom:0.6rem;">
+              Your Full Name <span aria-label="required">*</span>
+            </label>
+            <input type="text" id="guestName" name="guestName" autocomplete="name" placeholder="Enter your full name" aria-required="true"
+              style="width:100%; padding:0.95rem 1.1rem; background:rgba(247,243,236,0.08); border:1px solid rgba(184,154,94,0.3); color:var(--ivory); font-family:var(--font-body); font-size:0.95rem; outline:none; transition:border-color 0.3s; border-radius:1px;"/>
+            <span class="form-error-msg" id="nameError" role="alert" style="display:none; font-size:0.75rem; color:#ff9e9e; margin-top:0.4rem;">Please enter your full name.</span>
           </div>
 
-          <!-- Attendance Choice -->
-          <div class="form-row" id="rowAttendance">
-            <label>Attendance <span aria-label="required field">*</span></label>
-            <div class="rsvp-choices" role="radiogroup" aria-required="true" aria-describedby="attendanceError">
-              <div class="rsvp-choice">
-                <input type="radio" id="accepts" name="attendance" value="accepts"/>
-                <label for="accepts">
-                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke-linecap="round"/></svg>
-                  Joyfully Accepts
-                </label>
-              </div>
-              <div class="rsvp-choice">
-                <input type="radio" id="declines" name="attendance" value="declines"/>
-                <label for="declines">
-                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke-linecap="round"/></svg>
-                  Regretfully Declines
-                </label>
-              </div>
+          <!-- Attendance Choice (Accept / Decline) -->
+          <div class="form-row" id="rowAttendance" style="margin-bottom: 2rem;">
+            <label style="display:block; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-light); margin-bottom:0.8rem;">
+              Attendance <span aria-label="required">*</span>
+            </label>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <label style="display:flex; align-items:center; justify-content:center; gap:0.6rem; padding:1.1rem; border:1px solid rgba(184,154,94,0.35); background:rgba(247,243,236,0.05); color:var(--ivory); font-size:0.75rem; letter-spacing:0.18em; text-transform:uppercase; cursor:pointer; transition:all 0.3s;">
+                <input type="radio" id="accepts" name="attendance" value="accepts" style="accent-color:var(--gold); transform:scale(1.2);"/>
+                <span>Accept</span>
+              </label>
+              <label style="display:flex; align-items:center; justify-content:center; gap:0.6rem; padding:1.1rem; border:1px solid rgba(184,154,94,0.35); background:rgba(247,243,236,0.05); color:var(--ivory); font-size:0.75rem; letter-spacing:0.18em; text-transform:uppercase; cursor:pointer; transition:all 0.3s;">
+                <input type="radio" id="declines" name="attendance" value="declines" style="accent-color:var(--gold); transform:scale(1.2);"/>
+                <span>Decline</span>
+              </label>
             </div>
-            <span class="form-error-msg" id="attendanceError" role="alert">Please select your attendance.</span>
+            <span class="form-error-msg" id="attendanceError" role="alert" style="display:none; font-size:0.75rem; color:#ff9e9e; margin-top:0.4rem;">Please select whether you accept or decline.</span>
           </div>
 
-          <!-- Attending-only fields (hidden if Declines) -->
+          <!-- Attending-only fields (hidden if Decline) -->
           <div id="attendingFields">
             <!-- Number of guests (1 to 5) -->
-            <div class="form-row" id="rowGuestCount">
-              <label for="guestCount">Total Number of Guests (including yourself)</label>
-              <select id="guestCount" name="guestCount" aria-label="Total number of guests attending">
+            <div class="form-row" id="rowGuestCount" style="margin-bottom: 1.8rem;">
+              <label for="guestCount" style="display:block; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-light); margin-bottom:0.6rem;">
+                Total Guests Attending (including yourself)
+              </label>
+              <select id="guestCount" name="guestCount" aria-label="Total number of guests attending"
+                style="width:100%; padding:0.95rem 1.1rem; background:#360a13; border:1px solid rgba(184,154,94,0.3); color:var(--ivory); font-family:var(--font-body); font-size:0.95rem; outline:none; border-radius:1px;">
                 <option value="1">1 guest (just me)</option>
                 <option value="2">2 guests</option>
                 <option value="3">3 guests</option>
@@ -1394,102 +1297,43 @@
             </div>
 
             <!-- Primary Guest Dietary -->
-            <div class="form-row" id="rowPrimaryDietary">
-              <label for="primaryDietary">Your Dietary Requirements (Optional)</label>
-              <input type="text" id="primaryDietary" name="primaryDietary" placeholder="e.g. Vegetarian, Vegan, Halal, Nut allergy, None"/>
+            <div class="form-row" id="rowPrimaryDietary" style="margin-bottom: 1.8rem;">
+              <label for="primaryDietary" style="display:block; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-light); margin-bottom:0.6rem;">
+                Your Dietary Requirements (Optional)
+              </label>
+              <input type="text" id="primaryDietary" name="primaryDietary" placeholder="e.g. Vegetarian, Vegan, Halal, Nut allergy, None"
+                style="width:100%; padding:0.95rem 1.1rem; background:rgba(247,243,236,0.08); border:1px solid rgba(184,154,94,0.3); color:var(--ivory); font-family:var(--font-body); font-size:0.95rem; outline:none; border-radius:1px;"/>
             </div>
 
             <!-- Dynamic Additional Guests Container (rendered via JS) -->
-            <div id="additionalGuestsContainer" style="display:none;"></div>
+            <div id="additionalGuestsContainer" style="display:none; margin-bottom: 1.8rem;"></div>
           </div>
 
-          <!-- Optional Message/Notes for both Accepts and Declines -->
-          <div class="form-row" id="rowNotes">
-            <label for="notes" id="notesLabel">A Note or Blessing for Rishen &amp; Lizaan (Optional)</label>
-            <textarea id="notes" name="notes" placeholder="Write a note, warm wishes, or a blessing for the couple..." rows="3"></textarea>
+          <!-- Special message to Rishen and Lizaan -->
+          <div class="form-row" id="rowNotes" style="margin-bottom: 2rem;">
+            <label for="notes" id="notesLabel" style="display:block; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-light); margin-bottom:0.6rem;">
+              A Special Message to Rishen &amp; Lizaan (Optional)
+            </label>
+            <textarea id="notes" name="notes" placeholder="Write a personal note, warm wishes, or a blessing for the couple..." rows="3"
+              style="width:100%; padding:0.95rem 1.1rem; background:rgba(247,243,236,0.08); border:1px solid rgba(184,154,94,0.3); color:var(--ivory); font-family:var(--font-body); font-size:0.95rem; outline:none; border-radius:1px; resize:vertical; min-height:90px;"></textarea>
           </div>
 
-          <button type="submit" class="rsvp-submit" id="rsvpSubmitBtn">Send RSVP</button>
+          <button type="submit" class="rsvp-submit" id="rsvpSubmitBtn">
+            Confirm RSVP
+          </button>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq" class="section" aria-labelledby="faqHeading">
-    <div class="section-inner">
-      <div class="reveal">
-        <div class="section-eyebrow">Questions</div>
-        <div class="section-rule" aria-hidden="true"></div>
-        <h2 class="section-heading" id="faqHeading">Everything you<br><em>need to know.</em></h2>
-      </div>
+</main>
 
-      <div class="faq-grid reveal reveal-delay-1">
-        <div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq1">How do I get to Highberry Vineyards?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq1" role="region"><div class="faq-answer-inner">Highberry Vineyards &amp; Venue is located in Somerset West, approximately 45 minutes from Cape Town International Airport via the N2 highway. <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer">Visit the venue website</a> or tap "Google Maps" above for direct GPS directions.</div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq2">What time should guests arrive?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq2" role="region"><div class="faq-answer-inner">The ceremony commences promptly at 14:30. We kindly ask guests to arrive and be seated by 14:15 so you can settle in comfortably among the vines.</div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq3">Are children welcome?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq3" role="region"><div class="faq-answer-inner">We love your little ones. Please include all family members and children in your RSVP guest count so we can arrange seating accordingly.</div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq4">Can I bring a plus-one?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq4" role="region"><div class="faq-answer-inner">Your invitation envelope will specify the guests invited. If you have any questions regarding your party size, please reach out to us directly.</div></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq5">What is the weather like in October?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq5" role="region"><div class="faq-answer-inner">October brings spring in the Cape Winelands — daytime temperatures are typically warm and pleasant (18–27 °C). As the evening cools down under the stars, a light shawl or jacket is recommended.</div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq6">Photography during the ceremony?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq6" role="region"><div class="faq-answer-inner">We invite you to be truly present with us during our ceremony. Our professional photographer will capture every sacred moment. Once the ceremony concludes, feel free to take as many photos as you wish!</div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq7">Is the venue accessible?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq7" role="region"><div class="faq-answer-inner">Yes, the venue facilities are accessible. Please let us know in your RSVP if you require any specific assistance or mobility arrangements.</div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq8">Who can I contact with questions?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq8" role="region"><div class="faq-answer-inner">Feel free to reach out to Rishen &amp; Lizaan directly via WhatsApp or email. We are here to help make your journey as smooth as possible!</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLOSING -->
-  <section id="closing" aria-labelledby="closingHeading">
-    <svg class="closing-botanical" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M250 300 Q250 250 245 220 Q220 180 190 160 Q155 135 160 100 Q165 65 140 40 Q120 18 130 0" stroke="var(--sage-light)" stroke-width="1.5"/>
-      <path d="M250 300 Q250 250 255 220 Q280 180 310 160 Q345 135 340 100 Q335 65 360 40 Q380 18 370 0" stroke="var(--sage-light)" stroke-width="1.5"/>
-      <path d="M250 260 Q210 240 180 230" stroke="var(--sage-light)" stroke-width="1"/>
-      <path d="M250 220 Q290 200 320 195" stroke="var(--sage-light)" stroke-width="1"/>
-      <ellipse cx="175" cy="228" rx="45" ry="22" stroke="var(--sage-light)" stroke-width="0.8" transform="rotate(-15 175 228)"/>
-      <ellipse cx="320" cy="193" rx="45" ry="22" stroke="var(--sage-light)" stroke-width="0.8" transform="rotate(12 320 193)"/>
-    </svg>
-
-    <div class="section-inner" style="position:relative;z-index:1;">
-      <div class="reveal">
-        <div class="closing-script" id="closingHeading">Until then.</div>
-        <p class="closing-message">
-          Thank you for being part of this story — for the messages, the milestones, the laughter, and the love that surrounds us. We cannot wait to celebrate with you.
-        </p>
-        <p class="closing-message" style="font-family:var(--font-body);font-style:normal;font-size:0.75rem;letter-spacing:0.1em;color:rgba(232,217,184,0.5);margin-top:0.5rem;">With all our love,</p>
-        <p class="closing-message" style="font-family:var(--font-script);font-style:normal;font-size:clamp(1.5rem,5vw,2.5rem);color:var(--champagne);margin:0;opacity:1;">Rishen &amp; Lizaan</p>
-        <div class="closing-rule" aria-hidden="true"></div>
-        <p class="closing-date">24 &middot; October &middot; 2026 &middot; 14:30<br>Highberry Vineyards &amp; Venue &middot; Somerset West &middot; South Africa</p>
-      </div>
-    </div>
-  </section>
+<footer>
+  <div class="footer-monogram" aria-hidden="true">R &amp; L</div>
+  <p class="footer-copy">Rishen &amp; Lizaan &nbsp;&middot;&nbsp; 24 October 2026 &nbsp;&middot;&nbsp; Somerset West, South Africa</p>
+  <p class="footer-note">With all our love — Rishen &amp; Lizaan</p>
+  <p class="footer-secret" aria-hidden="true">"Good morning" — where it all began. ♡</p>
+</footer>
 
 </main>
 
@@ -1624,56 +1468,25 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }
 
 // ——————————————————
-// FAQ
+// BEFORE THE DAY ACCORDION
 // ——————————————————
-document.querySelectorAll('.faq-question').forEach(btn => {
+document.querySelectorAll('.guidance-toggle').forEach(btn => {
   btn.addEventListener('click', () => {
-    const item   = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => {
-      i.classList.remove('open');
-      i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-    });
-    if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    const parent = btn.closest('.guidance-accordion');
+    const body   = parent.querySelector('.guidance-body');
+    const arrow  = btn.querySelector('.guidance-arrow');
+    const isOpen = body.style.display !== 'none';
+
+    if (isOpen) {
+      body.style.display = 'none';
+      if (arrow) arrow.textContent = '▸';
+    } else {
+      body.style.display = 'block';
+      if (arrow) arrow.textContent = '▾';
+    }
   });
 });
 
-// ——————————————————
-// GALLERY LIGHTBOX
-// ——————————————————
-const lightbox      = document.getElementById('lightbox');
-const lightboxClose = document.getElementById('lightboxClose');
-let lastFocusedEl;
-
-document.querySelectorAll('.gallery-item').forEach((item, i) => {
-  item.setAttribute('tabindex', '0');
-  item.setAttribute('role', 'button');
-  item.setAttribute('aria-label', `View gallery image ${i + 1}`);
-
-  const open = () => {
-    lastFocusedEl = item;
-    lightbox.classList.add('open');
-    lightboxClose.focus();
-    document.body.style.overflow = 'hidden';
-  };
-
-  item.addEventListener('click', open);
-  item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
-});
-
-const closeLightbox = () => {
-  lightbox.classList.remove('open');
-  document.body.style.overflow = '';
-  if (lastFocusedEl) lastFocusedEl.focus();
-};
-
-lightboxClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
-
-// ——————————————————
-// RSVP
-// ——————————————————
 // ——————————————————
 // RSVP INTERACTIVITY & DYNAMIC GUEST FIELDS
 // ——————————————————
@@ -1684,17 +1497,17 @@ const guestCountEl           = document.getElementById('guestCount');
 const additionalGuestsContainer = document.getElementById('additionalGuestsContainer');
 const attendanceInputs       = document.querySelectorAll('input[name="attendance"]');
 
-// Toggle attending fields based on Joyfully Accepts vs Regretfully Declines
+// Toggle attending fields based on Accept vs Decline
 attendanceInputs.forEach(radio => {
   radio.addEventListener('change', () => {
     if (radio.value === 'declines') {
       attendingFields.style.display = 'none';
-      document.getElementById('notesLabel').textContent = 'A Note for Rishen & Lizaan (Optional)';
+      document.getElementById('notesLabel').textContent = 'A Special Message to Rishen & Lizaan (Optional)';
       document.getElementById('notes').placeholder = 'Leave a message of love, warm wishes, or a blessing for the couple...';
     } else {
       attendingFields.style.display = 'block';
-      document.getElementById('notesLabel').textContent = 'A Note or Blessing for Rishen & Lizaan (Optional)';
-      document.getElementById('notes').placeholder = 'Write a note, warm wishes, or a blessing for the couple...';
+      document.getElementById('notesLabel').textContent = 'A Special Message to Rishen & Lizaan (Optional)';
+      document.getElementById('notes').placeholder = 'Write a personal note, warm wishes, or a blessing for the couple...';
     }
   });
 });
@@ -1708,18 +1521,18 @@ function updateAdditionalGuestFields() {
     additionalGuestsContainer.style.display = 'block';
     for (let i = 2; i <= count; i++) {
       const guestBox = document.createElement('div');
-      guestBox.style.cssText = 'padding:1.4rem; margin-top:1.2rem; border:1px solid rgba(184,154,94,0.3); background:rgba(247,243,236,0.6);';
+      guestBox.style.cssText = 'padding:1.2rem; margin-top:1.2rem; border:1px solid rgba(184,154,94,0.3); background:rgba(247,243,236,0.05); border-radius:1px;';
       guestBox.innerHTML = `
-        <div style="font-family:var(--font-display); font-size:1.15rem; color:var(--burgundy); margin-bottom:1rem; font-style:italic; font-weight:400;">
+        <div style="font-family:var(--font-display); font-size:1.15rem; color:var(--champagne); margin-bottom:0.8rem; font-style:italic;">
           Guest ${i}
         </div>
         <div class="form-row" style="margin-bottom:1rem;">
-          <label for="guest_${i}_name">Full Name</label>
-          <input type="text" id="guest_${i}_name" name="guest_${i}_name" placeholder="Guest ${i}'s full name" />
+          <label for="guest_${i}_name" style="display:block; font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-light); margin-bottom:0.5rem;">Full Name</label>
+          <input type="text" id="guest_${i}_name" name="guest_${i}_name" placeholder="Guest ${i}'s full name" style="width:100%; padding:0.85rem 1rem; background:rgba(247,243,236,0.08); border:1px solid rgba(184,154,94,0.3); color:var(--ivory); font-family:var(--font-body); font-size:0.9rem; outline:none; border-radius:1px;" />
         </div>
         <div class="form-row" style="margin-bottom:0;">
-          <label for="guest_${i}_dietary">Dietary Requirements (Optional)</label>
-          <input type="text" id="guest_${i}_dietary" name="guest_${i}_dietary" placeholder="e.g. Vegetarian, Halal, Nut allergy, None" />
+          <label for="guest_${i}_dietary" style="display:block; font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-light); margin-bottom:0.5rem;">Dietary Requirements (Optional)</label>
+          <input type="text" id="guest_${i}_dietary" name="guest_${i}_dietary" placeholder="e.g. Vegetarian, Halal, Nut allergy, None" style="width:100%; padding:0.85rem 1rem; background:rgba(247,243,236,0.08); border:1px solid rgba(184,154,94,0.3); color:var(--ivory); font-family:var(--font-body); font-size:0.9rem; outline:none; border-radius:1px;" />
         </div>
       `;
       additionalGuestsContainer.appendChild(guestBox);
@@ -1765,10 +1578,11 @@ rsvpForm.addEventListener('submit', e => {
   }
 
   // Show confirmation overlay
-  rsvpConf.classList.add('show');
-  rsvpConf.focus();
+  rsvpForm.style.display = 'none';
+  rsvpConf.style.display = 'block';
+  rsvpConf.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-  // Log payload for future backend connection (e.g. Formspree/Netlify)
+  // Log payload
   const additionalGuestsData = [];
   const count = parseInt(guestCountEl.value) || 1;
   if (attended.value === 'accepts' && count > 1) {
