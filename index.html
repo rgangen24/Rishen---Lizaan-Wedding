@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta name="description" content="The Official Wedding Celebration of Rishen &amp; Lizaan — Saturday, 24 October 2026 at Highberry Vineyards &amp; Venue, Somerset West, Cape Winelands." />
-  <meta name="theme-color" content="#380F14" />
-  <title>Rishen &amp; Lizaan — We Are Getting Married</title>
+  <meta name="description" content="The Experiential Digital Wedding Invitation of Rishen &amp; Lizaan — Saturday, 24 October 2026 at Highberry Vineyards &amp; Venue, Somerset West." />
+  <meta name="theme-color" content="#2D0B10" />
+  <title>Rishen &amp; Lizaan — The Wedding Celebration</title>
 
-  <!-- Typography Pairing: Fraunces (Couture Optical Display Serif) & Jost (Humanist Sans) & Pinyon Script (Romantic Flourish) -->
+  <!-- Typography: Fraunces (Optical Display Serif) & Jost (Clean Humanist Sans) & Pinyon Script (Romantic Flourish) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..500,0..100&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..700,0..100;1,9..144,200..600,0..100&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" />
 
   <style>
     /* ============================================================
-       1. LUXURY COLOR SYSTEM & TOKENS
+       1. LUXURY COLOR PALETTE & DYNAMIC CSS VARIABLES
     ============================================================ */
     :root {
       --burgundy:         #6E2A31;
@@ -22,6 +22,7 @@
       --burgundy-deep:    #24090D;
       --burgundy-night:   #180507;
       --burgundy-soft:    #8A3943;
+      --burgundy-glow:    rgba(110, 42, 49, 0.25);
 
       --sage:             #7C8B6F;
       --sage-dark:        #4A5840;
@@ -29,28 +30,26 @@
       --sage-wash:        #EBF1E8;
       --sage-soft:        #F4F7F2;
 
-      --ivory:            #FBF7F0;
-      --parchment:        #F3EAD8;
+      --ivory:            #FDFBF7;
+      --parchment:        #F5EDE0;
       --champagne:        #E7D9BE;
-      --champagne-soft:   #FAF6EE;
-      --gold:             #C5A869;
-      --gold-light:       #F3E4BA;
+      --gold:             #D4AF37;
+      --gold-light:       #F7E7C4;
       --gold-deep:        #9B7A38;
 
-      --ink:              #2C2620;
-      --ink-soft:         #594F45;
-      --ink-muted:        #82766A;
+      --ink:              #26201B;
+      --ink-soft:         #544A41;
+      --ink-muted:        #857A70;
       --white:            #FFFFFF;
 
       --font-serif:       'Fraunces', Georgia, serif;
-      --font-sans:        'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-sans:        'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-script:      'Pinyon Script', cursive;
 
       --ease-silk:        cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-float:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --shadow-subtle:    0 10px 30px rgba(44, 38, 32, 0.05);
-      --shadow-luxury:    0 20px 50px rgba(44, 38, 32, 0.09);
-      --shadow-deep:      0 25px 60px rgba(24, 5, 7, 0.4);
+      --ease-spring:      cubic-bezier(0.34, 1.56, 0.64, 1);
+      --shadow-float:     0 20px 50px rgba(0, 0, 0, 0.3);
+      --shadow-card:      0 12px 36px rgba(44, 38, 32, 0.07);
     }
 
     *, *::before, *::after {
@@ -77,9 +76,17 @@
       position: relative;
     }
 
-    /* Fine Paper Grain Texture */
-    body::before {
-      content: '';
+    /* Ambient Canvas Particles */
+    #ambientStardustCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.65;
+    }
+
+    /* Tactile Fine Paper Texture */
+    .fine-paper-overlay {
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -92,144 +99,138 @@
     a { color: inherit; text-decoration: none; }
     button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
-    /* Top Reading Progress Bar */
-    .top-reading-progress-track {
+    /* Top Reading Progress Line */
+    .top-scroll-progress-line {
       position: fixed;
       top: 0; left: 0; right: 0;
       height: 3px;
-      background: rgba(197, 168, 105, 0.15);
-      z-index: 890;
+      background: rgba(212, 175, 55, 0.15);
+      z-index: 910;
     }
-    .top-reading-progress-fill {
+    .top-scroll-progress-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--burgundy), var(--gold));
+      background: linear-gradient(90deg, var(--burgundy), var(--gold), var(--eucalyptus));
       transition: width 0.1s linear;
     }
 
     /* ============================================================
-       2. SEDUCTIVE SILK VEIL OPENING COVER
+       2. 3D VELVET & GOLD FOIL GATEFOLD UNBOXING EXPERIENCE
     ============================================================ */
-    #invitation-cover-screen {
+    #gatefold-unboxing-experience {
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background: radial-gradient(circle at 50% 40%, #521820 0%, #350F14 55%, #180507 100%);
-      color: var(--ivory);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-      transition: opacity 1.3s var(--ease-silk), transform 1.3s var(--ease-silk);
+      perspective: 1600px;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 50%, #2D0B10 0%, #150305 100%);
+      transition: opacity 1.4s var(--ease-silk), visibility 1.4s;
     }
-    #invitation-cover-screen.opened {
+    #gatefold-unboxing-experience.opened {
       opacity: 0;
-      transform: translateY(-100%);
+      visibility: hidden;
       pointer-events: none;
     }
 
-    .cover-content-box {
-      max-width: 540px;
-      margin: 0 auto;
+    .gate-panel-left, .gate-panel-right {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 50%;
+      z-index: 2;
+      transition: transform 1.6s cubic-bezier(0.7, 0, 0.2, 1), opacity 1.3s cubic-bezier(0.7, 0, 0.2, 1);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+    }
+    .gate-panel-left {
+      left: 0;
+      background: linear-gradient(135deg, #4A1A20 0%, #2A0A0E 100%);
+      transform-origin: left center;
+      border-right: 1px solid rgba(231, 217, 190, 0.35);
+    }
+    .gate-panel-right {
+      right: 0;
+      background: linear-gradient(225deg, #3F151B 0%, #200609 100%);
+      transform-origin: right center;
+      border-left: 1px solid rgba(231, 217, 190, 0.35);
+    }
+
+    .gate-panel-left::before, .gate-panel-right::before {
+      content: '';
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(231, 217, 190, 0.18);
+      pointer-events: none;
+    }
+
+    #gatefold-unboxing-experience.opened .gate-panel-left {
+      transform: translateX(-100%) rotateY(-85deg);
+      opacity: 0;
+    }
+    #gatefold-unboxing-experience.opened .gate-panel-right {
+      transform: translateX(100%) rotateY(85deg);
+      opacity: 0;
+    }
+
+    /* 3D Wax Seal Trigger */
+    .wax-seal-center-trigger {
+      position: relative;
+      z-index: 10;
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
-      z-index: 2;
+      cursor: pointer;
+      padding: 1.5rem;
+      border-radius: 50%;
+      transition: transform 0.4s var(--ease-spring);
+    }
+    .wax-seal-center-trigger:hover {
+      transform: scale(1.08);
     }
 
-    .cover-calligraphic-monogram {
-      width: clamp(90px, 20vw, 125px);
-      height: auto;
-      color: var(--champagne);
-      margin-bottom: 2rem;
-      filter: drop-shadow(0 8px 25px rgba(243, 228, 186, 0.35));
-      animation: monogramPulse 3s ease-in-out infinite alternate;
+    .wax-stamp-disc {
+      width: clamp(120px, 28vw, 150px);
+      height: clamp(120px, 28vw, 150px);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #F5E4B8 0%, #D4AF37 40%, #997722 80%, #5E460E 100%);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), inset 0 3px 8px rgba(255, 255, 255, 0.6), inset 0 -4px 10px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      animation: sealPulse 3.5s ease-in-out infinite alternate;
     }
-    @keyframes monogramPulse {
-      from { transform: scale(1); filter: drop-shadow(0 6px 20px rgba(231, 217, 190, 0.25)); }
-      to { transform: scale(1.03); filter: drop-shadow(0 10px 30px rgba(243, 228, 186, 0.5)); }
+    @keyframes sealPulse {
+      from { box-shadow: 0 15px 45px rgba(212, 175, 55, 0.3), inset 0 3px 8px rgba(255, 255, 255, 0.6); }
+      to { box-shadow: 0 20px 60px rgba(212, 175, 55, 0.6), inset 0 3px 12px rgba(255, 255, 255, 0.8); }
     }
 
-    .cover-sub-label {
+    .wax-seal-monogram-svg {
+      width: 70%;
+      height: 70%;
+      color: #3F1419;
+      filter: drop-shadow(0 2px 3px rgba(255, 255, 255, 0.3));
+    }
+
+    .wax-seal-prompt-text {
       font-family: var(--font-sans);
       font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.45em;
-      text-transform: uppercase;
-      color: var(--eucalyptus);
-      margin-bottom: 1.2rem;
-    }
-
-    .cover-names-headline {
-      font-family: var(--font-serif);
-      font-size: clamp(3rem, 8.5vw, 5rem);
-      font-weight: 300;
-      color: var(--ivory);
-      line-height: 1.08;
-      letter-spacing: -0.015em;
-      margin-bottom: 0.8rem;
-    }
-    .cover-names-headline .amp {
-      font-style: italic;
-      color: var(--champagne);
-      margin: 0 0.12em;
-    }
-
-    .cover-date-string {
-      font-family: var(--font-sans);
-      font-size: 0.82rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--champagne);
-      margin-bottom: 2.8rem;
-    }
-
-    .btn-enter-veil {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 1.05rem 3rem;
-      background: rgba(231, 217, 190, 0.14);
-      border: 1px solid var(--champagne);
-      color: var(--ivory);
-      font-family: var(--font-sans);
-      font-size: 0.76rem;
-      font-weight: 500;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      border-radius: 40px;
-      transition: all 0.4s var(--ease-silk);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      color: var(--champagne);
+      margin-top: 1.4rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .btn-enter-veil:hover {
-      background: var(--ivory);
-      color: var(--oxblood);
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-    }
-
-    .btn-skip-direct {
-      margin-top: 1.5rem;
-      background: none;
-      border: none;
-      color: rgba(251, 247, 240, 0.5);
-      font-family: var(--font-sans);
-      font-size: 0.68rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      padding: 0.4rem 0.8rem;
-      transition: color 0.3s;
-    }
-    .btn-skip-direct:hover { color: var(--ivory); }
 
     /* ============================================================
-       3. FLOATING COUTURE HEADER & VINYL MUSIC CONTROL
+       3. FLOATING COUTURE HEADER & VINYL TURNTABLE PLAYER
     ============================================================ */
-    #site-header {
+    #couture-header {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 800;
@@ -239,33 +240,33 @@
       justify-content: space-between;
       transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s, box-shadow 0.4s;
     }
-    #site-header.scrolled {
-      background: rgba(251, 247, 240, 0.94);
+    #couture-header.scrolled {
+      background: rgba(253, 251, 247, 0.94);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       padding: 0.9rem clamp(1.5rem, 5vw, 4.5rem);
-      box-shadow: var(--shadow-subtle);
+      box-shadow: 0 6px 25px rgba(44, 38, 32, 0.06);
     }
 
-    .header-logo-monogram {
+    .header-logo-badge {
       display: flex;
       align-items: center;
       gap: 0.6rem;
     }
-    .header-logo-monogram svg {
+    .header-logo-badge svg {
       width: 34px;
       height: 34px;
       color: var(--burgundy);
       transition: transform 0.3s;
     }
-    .header-logo-monogram:hover svg { transform: scale(1.08); }
+    .header-logo-badge:hover svg { transform: scale(1.08); }
 
-    .header-nav-menu {
+    .header-nav-links-list {
       display: flex;
       gap: 2.8rem;
       list-style: none;
     }
-    .header-nav-menu a {
+    .header-nav-links-list a {
       font-family: var(--font-sans);
       font-size: 0.72rem;
       font-weight: 500;
@@ -276,7 +277,7 @@
       padding: 0.3rem 0;
       transition: color 0.3s;
     }
-    .header-nav-menu a::after {
+    .header-nav-links-list a::after {
       content: '';
       position: absolute;
       bottom: 0; left: 50%;
@@ -285,16 +286,16 @@
       transform: translateX(-50%);
       transition: width 0.3s var(--ease-silk);
     }
-    .header-nav-menu a:hover { color: var(--burgundy); }
-    .header-nav-menu a:hover::after { width: 100%; }
+    .header-nav-links-list a:hover { color: var(--burgundy); }
+    .header-nav-links-list a:hover::after { width: 100%; }
 
-    .header-controls-wrap {
+    .header-right-controls {
       display: flex;
       align-items: center;
       gap: 1.2rem;
     }
 
-    .vinyl-audio-toggle-btn {
+    .vinyl-turntable-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
@@ -310,43 +311,43 @@
       transition: all 0.3s;
       cursor: pointer;
     }
-    .vinyl-audio-toggle-btn:hover {
+    .vinyl-turntable-btn:hover {
       background: var(--burgundy);
       color: var(--ivory);
     }
-    .vinyl-disc-mini {
+    .turntable-disc {
       width: 22px;
       height: 22px;
       border-radius: 50%;
       background: radial-gradient(circle at center, #E7D9BE 25%, #6E2A31 26%, #6E2A31 70%, #C5A869 71%, #6E2A31 75%);
     }
-    .vinyl-audio-toggle-btn.playing .vinyl-disc-mini {
-      animation: spinDiscTrack 3.5s linear infinite;
+    .vinyl-turntable-btn.playing .turntable-disc {
+      animation: spinVinyl 3.5s linear infinite;
     }
-    @keyframes spinDiscTrack {
+    @keyframes spinVinyl {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
 
-    .mobile-menu-trigger-btn {
+    .mobile-menu-hamburger {
       display: none;
       flex-direction: column;
       gap: 6px;
       padding: 6px;
       cursor: pointer;
     }
-    .mobile-menu-trigger-btn span {
+    .mobile-menu-hamburger span {
       display: block;
       width: 26px;
       height: 1.5px;
       background: var(--burgundy);
       transition: transform 0.3s, opacity 0.3s;
     }
-    .mobile-menu-trigger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-    .mobile-menu-trigger-btn.active span:nth-child(2) { opacity: 0; }
-    .mobile-menu-trigger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+    .mobile-menu-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .mobile-menu-hamburger.active span:nth-child(2) { opacity: 0; }
+    .mobile-menu-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
-    .mobile-curtain-nav-sheet {
+    .mobile-full-nav-curtain {
       position: fixed;
       inset: 0;
       background: var(--ivory);
@@ -360,29 +361,29 @@
       pointer-events: none;
       transition: opacity 0.4s var(--ease-silk);
     }
-    .mobile-curtain-nav-sheet.open {
+    .mobile-full-nav-curtain.open {
       opacity: 1;
       pointer-events: auto;
     }
-    .mobile-curtain-nav-sheet a {
+    .mobile-full-nav-curtain a {
       font-family: var(--font-serif);
       font-size: clamp(1.9rem, 6.5vw, 2.7rem);
       font-weight: 300;
       color: var(--burgundy);
       transition: color 0.3s, transform 0.3s;
     }
-    .mobile-curtain-nav-sheet a:hover {
+    .mobile-full-nav-curtain a:hover {
       color: var(--sage-dark);
       transform: scale(1.04);
     }
 
     @media (max-width: 920px) {
-      .header-nav-menu { display: none; }
-      .mobile-menu-trigger-btn { display: flex; }
+      .header-nav-links-list { display: none; }
+      .mobile-menu-hamburger { display: flex; }
     }
 
     /* ============================================================
-       4. OVERSIZED ASYMMETRICAL EDITORIAL HERO SPREAD
+       4. MONUMENTAL EDITORIAL HERO SPREAD
     ============================================================ */
     #hero {
       min-height: 100vh;
@@ -390,11 +391,11 @@
       align-items: center;
       position: relative;
       padding: clamp(7.5rem, 15vw, 10rem) clamp(1.5rem, 5vw, 5rem) clamp(4.5rem, 9vw, 6.5rem);
-      background: linear-gradient(150deg, #FBF7F0 0%, #F5EDE0 60%, #EFE1CF 100%);
+      background: linear-gradient(150deg, #FDFBF7 0%, #F5EDE0 60%, #EFE1CF 100%);
       overflow: hidden;
     }
 
-    .hero-editorial-grid-layout {
+    .hero-editorial-wrapper {
       max-width: 1280px;
       margin: 0 auto;
       width: 100%;
@@ -407,56 +408,56 @@
     }
 
     @media (max-width: 960px) {
-      .hero-editorial-grid-layout {
+      .hero-editorial-wrapper {
         grid-template-columns: 1fr;
         gap: 3.5rem;
       }
     }
 
-    .hero-editorial-text-col {
+    .hero-text-block {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       text-align: left;
     }
 
-    .hero-eyebrow-line {
+    .hero-eyebrow-tag {
       display: inline-flex;
       align-items: center;
       gap: 0.8rem;
       font-family: var(--font-sans);
       font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.35em;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
       color: var(--sage-dark);
       margin-bottom: 1.4rem;
     }
-    .hero-eyebrow-line::before {
+    .hero-eyebrow-tag::before {
       content: '';
       display: block;
-      width: 32px;
+      width: 36px;
       height: 1px;
       background: var(--sage);
     }
 
-    .hero-monumental-names-headline {
+    .hero-giant-names {
       font-family: var(--font-serif);
-      font-size: clamp(3.4rem, 8vw, 6.8rem);
+      font-size: clamp(3.5rem, 8.5vw, 7rem);
       font-weight: 300;
       color: var(--burgundy);
-      line-height: 1.05;
-      letter-spacing: -0.015em;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
       margin-bottom: 1.8rem;
     }
-    .hero-monumental-names-headline .amp {
+    .hero-giant-names .amp {
       font-style: italic;
       color: var(--gold);
       margin: 0 0.12em;
       font-weight: 300;
     }
 
-    .hero-poetic-whisper-text {
+    .hero-poetic-quote {
       font-family: var(--font-serif);
       font-style: italic;
       font-size: clamp(1.2rem, 2.4vw, 1.55rem);
@@ -466,7 +467,7 @@
       max-width: 520px;
     }
 
-    .hero-ceremony-details-stamp {
+    .hero-date-location-stamp {
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
@@ -480,13 +481,13 @@
       border-left: 2px solid var(--sage);
       margin-bottom: 2.8rem;
     }
-    .hero-ceremony-details-stamp span:nth-child(2) {
+    .hero-date-location-stamp span:nth-child(2) {
       color: var(--ink-muted);
       font-size: 0.78rem;
       letter-spacing: 0.14em;
     }
 
-    .hero-scroll-explore-link {
+    .hero-scroll-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.8rem;
@@ -498,20 +499,21 @@
       color: var(--burgundy);
       transition: transform 0.3s;
     }
-    .hero-scroll-explore-link svg {
+    .hero-scroll-btn svg {
       width: 14px;
       height: 14px;
       transition: transform 0.3s;
     }
-    .hero-scroll-explore-link:hover { transform: translateX(4px); }
-    .hero-scroll-explore-link:hover svg { transform: translateY(3px); }
+    .hero-scroll-btn:hover { transform: translateX(4px); }
+    .hero-scroll-btn:hover svg { transform: translateY(3px); }
 
-    .hero-photo-moment-bleed-wrap {
+    /* Asymmetric Polaroid Feature */
+    .hero-photo-moment-container {
       position: relative;
       display: flex;
       justify-content: center;
     }
-    .hero-photo-tilted-frame {
+    .hero-photo-tilted-spread {
       position: relative;
       background: var(--white);
       padding: clamp(10px, 2vw, 16px);
@@ -522,24 +524,25 @@
       transform: rotate(1.8deg);
       transition: transform 0.6s var(--ease-silk), box-shadow 0.6s var(--ease-silk);
     }
-    .hero-photo-tilted-frame:hover {
+    .hero-photo-tilted-spread:hover {
       transform: rotate(0deg) translateY(-4px);
       box-shadow: 0 30px 65px rgba(44, 38, 32, 0.22);
     }
-    .hero-photo-tilted-frame img {
+    .hero-photo-tilted-spread img {
       width: 100%;
       height: auto;
       border-radius: 1px;
     }
-    .hero-photo-script-caption {
+    .hero-photo-handwritten-caption {
       font-family: var(--font-script);
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       color: var(--burgundy);
       text-align: center;
       margin-top: 0.8rem;
     }
 
-    .hero-foliage-vector {
+    /* Ambient Botanical Silhouette */
+    .hero-botanical-silhouette {
       position: absolute;
       top: 0; right: 0;
       width: clamp(220px, 35vw, 480px);
@@ -556,17 +559,17 @@
       background-color: var(--ivory);
       position: relative;
     }
-    .story-layout-container {
+    .story-max-container {
       max-width: 1180px;
       margin: 0 auto;
     }
 
-    .section-editorial-header {
+    .section-editorial-heading-center {
       text-align: center;
       max-width: 780px;
       margin: 0 auto clamp(3.5rem, 7vw, 5.5rem);
     }
-    .section-caps-badge {
+    .section-pill-tag {
       font-family: var(--font-sans);
       font-size: 0.72rem;
       font-weight: 500;
@@ -576,7 +579,7 @@
       margin-bottom: 0.8rem;
       display: inline-block;
     }
-    .section-main-display-title {
+    .section-editorial-title {
       font-family: var(--font-serif);
       font-size: clamp(2.5rem, 5.8vw, 4rem);
       font-weight: 300;
@@ -584,7 +587,7 @@
       line-height: 1.15;
       letter-spacing: -0.01em;
     }
-    .section-poetic-subtitle {
+    .section-editorial-subquote {
       font-family: var(--font-serif);
       font-style: italic;
       font-size: clamp(1.15rem, 2.2vw, 1.45rem);
@@ -593,52 +596,52 @@
       line-height: 1.6;
     }
 
-    .love-letter-spreads-flow {
+    .love-letter-acts-flow {
       display: flex;
       flex-direction: column;
       gap: clamp(4.5rem, 9vw, 8rem);
     }
 
-    .story-letter-act-row {
+    .story-act-spread {
       display: grid;
       grid-template-columns: 0.9fr 1.15fr;
       gap: clamp(2.5rem, 6vw, 6rem);
       align-items: center;
     }
-    .story-letter-act-row.reversed {
+    .story-act-spread.reversed {
       grid-template-columns: 1.15fr 0.9fr;
     }
-    .story-letter-act-row.reversed .story-act-media-side { order: 2; }
-    .story-letter-act-row.reversed .story-act-narrative-side { order: 1; }
+    .story-act-spread.reversed .story-media-column { order: 2; }
+    .story-act-spread.reversed .story-text-column { order: 1; }
 
     @media (max-width: 880px) {
-      .story-letter-act-row, .story-letter-act-row.reversed {
+      .story-act-spread, .story-act-spread.reversed {
         grid-template-columns: 1fr;
         gap: 2.4rem;
       }
-      .story-letter-act-row.reversed .story-act-media-side { order: 1; }
-      .story-letter-act-row.reversed .story-act-narrative-side { order: 2; }
+      .story-act-spread.reversed .story-media-column { order: 1; }
+      .story-act-spread.reversed .story-text-column { order: 2; }
     }
 
-    .story-act-media-side {
+    .story-media-column {
       display: flex;
       justify-content: center;
     }
-    .editorial-polaroid-frame {
+    .story-polaroid-box {
       background: var(--white);
       padding: clamp(10px, 1.8vw, 15px);
       border-radius: 2px;
-      box-shadow: var(--shadow-luxury);
+      box-shadow: 0 14px 40px rgba(44, 38, 32, 0.08);
       max-width: 380px;
       width: 100%;
       transition: transform 0.5s var(--ease-silk);
     }
-    .editorial-polaroid-frame img {
+    .story-polaroid-box img {
       width: 100%;
       height: auto;
       border-radius: 1px;
     }
-    .editorial-polaroid-caption {
+    .story-polaroid-caption {
       font-family: var(--font-serif);
       font-style: italic;
       font-size: 0.94rem;
@@ -648,12 +651,12 @@
       line-height: 1.4;
     }
 
-    .story-act-narrative-side {
+    .story-text-column {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
     }
-    .story-act-number-pill {
+    .story-act-indicator-tag {
       font-family: var(--font-sans);
       font-size: 0.68rem;
       font-weight: 600;
@@ -664,7 +667,7 @@
       padding-bottom: 0.4rem;
       border-bottom: 1px solid var(--champagne);
     }
-    .story-act-title-serif {
+    .story-act-serif-heading {
       font-family: var(--font-serif);
       font-size: clamp(1.65rem, 2.8vw, 2.3rem);
       font-weight: 300;
@@ -672,7 +675,7 @@
       line-height: 1.25;
       margin-bottom: 1rem;
     }
-    .story-act-quote-callout {
+    .story-act-quote-box {
       font-family: var(--font-serif);
       font-style: italic;
       font-size: clamp(1.05rem, 1.8vw, 1.22rem);
@@ -682,16 +685,16 @@
       padding-left: 1.1rem;
       border-left: 2px solid var(--gold);
     }
-    .story-act-body-text {
+    .story-act-paragraph {
       font-family: var(--font-sans);
       font-size: clamp(0.92rem, 1.4vw, 1.02rem);
       color: var(--ink-soft);
       line-height: 1.9;
       margin-bottom: 1rem;
     }
-    .story-act-body-text:last-child { margin-bottom: 0; }
+    .story-act-paragraph:last-child { margin-bottom: 0; }
 
-    .editorial-dropcap-letter {
+    .editorial-large-dropcap {
       float: left;
       font-family: var(--font-serif);
       font-size: clamp(2.8rem, 4.5vw, 3.8rem);
@@ -704,7 +707,7 @@
     }
 
     /* Sacred Scripture Keepsake */
-    .scripture-sacred-spread {
+    .sacred-scripture-container {
       margin-top: clamp(3.5rem, 7vw, 5.5rem);
       padding: clamp(3rem, 6vw, 4.8rem) clamp(1.5rem, 4vw, 3.5rem);
       background: var(--parchment);
@@ -712,7 +715,7 @@
       text-align: center;
       position: relative;
     }
-    .scripture-verse-quote-text {
+    .sacred-scripture-verse-text {
       font-family: var(--font-serif);
       font-style: italic;
       font-size: clamp(1.5rem, 3.4vw, 2.4rem);
@@ -722,7 +725,7 @@
       max-width: 820px;
       margin: 0 auto 1.2rem;
     }
-    .scripture-citation-tag-text {
+    .sacred-scripture-citation {
       font-family: var(--font-sans);
       font-size: 0.82rem;
       font-weight: 600;
@@ -731,7 +734,7 @@
       color: var(--sage-dark);
       margin-bottom: 1.2rem;
     }
-    .scripture-closing-reflection {
+    .sacred-scripture-reflection {
       font-family: var(--font-serif);
       font-style: italic;
       font-size: 1.05rem;
@@ -749,28 +752,28 @@
       position: relative;
     }
 
-    .ceremonial-timeline-track-wrap {
+    .ceremonial-timeline-wrapper {
       max-width: 840px;
       margin: 0 auto 4rem;
       position: relative;
     }
-    .ceremonial-vertical-thread-line {
+    .ceremonial-timeline-guide-thread {
       position: absolute;
       top: 24px; bottom: 24px; left: 35px;
       width: 1px;
       background: rgba(110, 42, 49, 0.2);
     }
 
-    .ceremony-event-card-step {
+    .ceremony-event-row {
       position: relative;
       display: flex;
       align-items: flex-start;
       gap: 1.8rem;
       margin-bottom: 2.4rem;
     }
-    .ceremony-event-card-step:last-child { margin-bottom: 0; }
+    .ceremony-event-row:last-child { margin-bottom: 0; }
 
-    .ceremony-step-icon-bubble {
+    .ceremony-event-icon-circle {
       flex-shrink: 0;
       width: 46px;
       height: 46px;
@@ -782,17 +785,17 @@
       color: var(--burgundy);
       position: relative;
       z-index: 2;
-      box-shadow: var(--shadow-subtle);
+      box-shadow: 0 4px 15px rgba(44, 38, 32, 0.08);
       border: 1px solid rgba(197, 168, 105, 0.4);
     }
-    .ceremony-step-card-text {
+    .ceremony-event-content-box {
       background: var(--white);
       padding: 1.6rem 2rem;
       border-radius: 2px;
       box-shadow: 0 10px 30px rgba(44, 38, 32, 0.06);
       flex: 1;
     }
-    .ceremony-step-timestamp-caps {
+    .ceremony-event-timestamp {
       font-family: var(--font-sans);
       font-size: 0.72rem;
       font-weight: 600;
@@ -802,7 +805,7 @@
       display: inline-block;
       margin-bottom: 0.3rem;
     }
-    .ceremony-step-title-text {
+    .ceremony-event-title {
       font-family: var(--font-serif);
       font-size: clamp(1.35rem, 2.6vw, 1.75rem);
       font-weight: 400;
@@ -810,14 +813,15 @@
       line-height: 1.25;
       margin-bottom: 0.4rem;
     }
-    .ceremony-step-description-text {
+    .ceremony-event-desc {
       font-family: var(--font-sans);
       font-size: 0.94rem;
       color: var(--ink-soft);
       line-height: 1.7;
     }
 
-    .countdown-editorial-panel {
+    /* Fine Printed Numerals Countdown */
+    .countdown-editorial-spread-box {
       background: var(--white);
       padding: clamp(2rem, 4.5vw, 3.2rem);
       border-radius: 2px;
@@ -825,7 +829,7 @@
       box-shadow: 0 14px 40px rgba(44, 38, 32, 0.06);
       margin-bottom: 3.5rem;
     }
-    .countdown-eyebrow-text {
+    .countdown-eyebrow-label {
       font-family: var(--font-sans);
       font-size: 0.72rem;
       font-weight: 600;
@@ -835,26 +839,26 @@
       margin-bottom: 1.6rem;
       display: block;
     }
-    .countdown-grid-row {
+    .countdown-numerals-flex {
       display: flex;
       justify-content: center;
       gap: clamp(1.2rem, 4vw, 3.5rem);
       flex-wrap: wrap;
     }
-    .countdown-number-column {
+    .countdown-col {
       display: flex;
       flex-direction: column;
       align-items: center;
       min-width: 65px;
     }
-    .countdown-digit-display {
+    .countdown-huge-digit {
       font-family: var(--font-serif);
       font-size: clamp(2.5rem, 5.5vw, 3.8rem);
       font-weight: 300;
       color: var(--burgundy);
       line-height: 1;
     }
-    .countdown-unit-caption {
+    .countdown-unit-text {
       font-family: var(--font-sans);
       font-size: 0.65rem;
       font-weight: 500;
@@ -864,13 +868,13 @@
       margin-top: 0.5rem;
     }
 
-    .celebration-action-buttons-wrap {
+    .celebration-action-buttons {
       display: flex;
       justify-content: center;
       gap: 1.2rem;
       flex-wrap: wrap;
     }
-    .btn-action-burgundy-pill {
+    .btn-celebration-burgundy {
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
@@ -886,12 +890,12 @@
       transition: all 0.35s var(--ease-silk);
       box-shadow: 0 8px 20px rgba(110, 42, 49, 0.2);
     }
-    .btn-action-burgundy-pill:hover {
+    .btn-celebration-burgundy:hover {
       background: var(--oxblood);
       transform: translateY(-2px);
       box-shadow: 0 12px 28px rgba(110, 42, 49, 0.3);
     }
-    .btn-action-sage-pill {
+    .btn-celebration-sage {
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
@@ -907,14 +911,14 @@
       transition: all 0.35s var(--ease-silk);
       box-shadow: 0 8px 20px rgba(78, 91, 67, 0.2);
     }
-    .btn-action-sage-pill:hover {
+    .btn-celebration-sage:hover {
       background: var(--sage);
       transform: translateY(-2px);
       box-shadow: 0 12px 28px rgba(78, 91, 67, 0.3);
     }
 
     /* ============================================================
-       7. AMONG THE VINES: ATMOSPHERE & DRESS CODE
+       7. AMONG THE VINES: INTERACTIVE ATMOSPHERE & LIGHTING
     ============================================================ */
     #atmosphere {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -923,10 +927,10 @@
       text-align: center;
       position: relative;
     }
-    #atmosphere .section-main-display-title { color: var(--ivory); }
-    #atmosphere .section-caps-badge { color: var(--eucalyptus); }
+    #atmosphere .section-editorial-title { color: var(--ivory); }
+    #atmosphere .section-pill-tag { color: var(--eucalyptus); }
 
-    .atmosphere-editorial-box {
+    .atmosphere-card-inner {
       max-width: 840px;
       margin: 0 auto;
       padding: clamp(2.8rem, 6vw, 4.8rem) clamp(1.5rem, 4vw, 3.5rem);
@@ -934,7 +938,7 @@
       border-radius: 2px;
       position: relative;
     }
-    .atmosphere-quote-line {
+    .atmosphere-poetic-quote-text {
       font-family: var(--font-serif);
       font-style: italic;
       font-size: clamp(1.35rem, 2.8vw, 2.05rem);
@@ -943,7 +947,7 @@
       line-height: 1.6;
       margin-bottom: 2rem;
     }
-    .atmosphere-body-reflection {
+    .atmosphere-notes-paragraph {
       font-family: var(--font-sans);
       font-size: 0.96rem;
       color: rgba(251, 247, 240, 0.85);
@@ -961,22 +965,22 @@
       position: relative;
     }
 
-    .venue-travel-grid-layout {
+    .venue-editorial-layout-grid {
       display: grid;
       grid-template-columns: 1fr 1.15fr;
       gap: clamp(2.5rem, 5vw, 5rem);
       align-items: start;
     }
     @media (max-width: 900px) {
-      .venue-travel-grid-layout { grid-template-columns: 1fr; }
+      .venue-editorial-layout-grid { grid-template-columns: 1fr; }
     }
 
-    .venue-details-text-col {
+    .venue-text-side {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
     }
-    .venue-title-display {
+    .venue-estate-name {
       font-family: var(--font-serif);
       font-size: clamp(1.8rem, 3.2vw, 2.6rem);
       font-weight: 300;
@@ -984,7 +988,7 @@
       line-height: 1.2;
       margin-bottom: 0.6rem;
     }
-    .venue-location-subheading {
+    .venue-location-tagline {
       font-family: var(--font-sans);
       font-size: 0.85rem;
       letter-spacing: 0.18em;
@@ -992,7 +996,7 @@
       color: var(--sage-dark);
       margin-bottom: 1.4rem;
     }
-    .venue-description-copy {
+    .venue-story-paragraph {
       font-family: var(--font-sans);
       font-size: 0.96rem;
       color: var(--ink-soft);
@@ -1000,13 +1004,13 @@
       margin-bottom: 1.8rem;
     }
 
-    .lodging-links-list-group {
+    .lodging-recommendations-box {
       display: flex;
       flex-direction: column;
       gap: 1.1rem;
       width: 100%;
     }
-    .lodging-link-item-row {
+    .lodging-row-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1019,12 +1023,12 @@
       font-weight: 500;
       transition: all 0.3s var(--ease-silk);
     }
-    .lodging-link-item-row:hover {
+    .lodging-row-link:hover {
       background: var(--champagne);
       color: var(--burgundy);
       transform: translateX(4px);
     }
-    .lodging-link-item-row span:nth-child(2) {
+    .lodging-row-link span:nth-child(2) {
       font-size: 1.1rem;
       color: var(--burgundy);
     }
@@ -1038,20 +1042,20 @@
       position: relative;
     }
 
-    .guidance-faq-accordion-wrap {
+    .guidance-accordion-container {
       max-width: 840px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
     }
-    .guidance-accordion-item {
+    .guidance-qa-box {
       background: var(--white);
       border-radius: 2px;
-      box-shadow: var(--shadow-subtle);
+      box-shadow: 0 4px 18px rgba(44, 38, 32, 0.04);
       overflow: hidden;
     }
-    .guidance-toggle-button {
+    .guidance-qa-trigger {
       width: 100%;
       display: flex;
       align-items: center;
@@ -1062,18 +1066,18 @@
       cursor: pointer;
       text-align: left;
     }
-    .guidance-question-text {
+    .guidance-qa-title {
       font-family: var(--font-serif);
       font-size: clamp(1.2rem, 2.2vw, 1.5rem);
       font-weight: 400;
       color: var(--burgundy);
     }
-    .guidance-icon-arrow {
+    .guidance-qa-arrow {
       font-size: 0.85rem;
       color: var(--burgundy);
       transition: transform 0.3s;
     }
-    .guidance-answer-panel {
+    .guidance-qa-body {
       padding: 0 2rem 1.8rem;
       font-family: var(--font-sans);
       font-size: 0.96rem;
@@ -1090,25 +1094,25 @@
       color: var(--ivory);
       position: relative;
     }
-    #rsvp .section-main-display-title { color: var(--ivory); }
-    #rsvp .section-caps-badge { color: var(--eucalyptus); }
-    #rsvp .section-poetic-subtitle { color: var(--champagne); }
+    #rsvp .section-editorial-title { color: var(--ivory); }
+    #rsvp .section-pill-tag { color: var(--eucalyptus); }
+    #rsvp .section-editorial-subquote { color: var(--champagne); }
 
-    .rsvp-stationery-envelope-card {
+    .rsvp-reply-stationery-envelope {
       max-width: 680px;
       margin: 0 auto;
       background: var(--ivory);
       color: var(--ink);
       padding: clamp(2.4rem, 5.5vw, 3.8rem) clamp(1.5rem, 4vw, 3rem);
       border-radius: 2px;
-      box-shadow: var(--shadow-deep);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
       position: relative;
     }
 
-    .form-input-field-group {
+    .form-row {
       margin-bottom: 1.8rem;
     }
-    .form-field-header-label {
+    .form-label {
       display: block;
       font-family: var(--font-sans);
       font-size: 0.72rem;
@@ -1118,7 +1122,7 @@
       color: var(--burgundy);
       margin-bottom: 0.6rem;
     }
-    .form-text-input-box, .form-select-picker, .form-multiline-textarea {
+    .form-input, .form-select, .form-textarea {
       width: 100%;
       padding: 0.95rem 1.1rem;
       background: var(--white);
@@ -1130,17 +1134,17 @@
       transition: border-color 0.3s, box-shadow 0.3s;
       outline: none;
     }
-    .form-text-input-box:focus, .form-select-picker:focus, .form-multiline-textarea:focus {
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
       border-color: var(--burgundy);
       box-shadow: 0 0 0 3px rgba(110, 42, 49, 0.1);
     }
 
-    .attendance-options-grid {
+    .attendance-radios-flex {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
-    .attendance-option-pill {
+    .attendance-radio-card {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1158,16 +1162,16 @@
       border-radius: 1px;
       transition: all 0.3s;
     }
-    .attendance-option-pill:hover {
+    .attendance-radio-card:hover {
       border-color: var(--burgundy);
       background: var(--champagne-soft);
     }
-    .attendance-option-pill input {
+    .attendance-radio-card input {
       accent-color: var(--burgundy);
       transform: scale(1.15);
     }
 
-    .btn-submit-rsvp-envelope {
+    .btn-submit-rsvp {
       width: 100%;
       padding: 1.15rem 2rem;
       background: var(--burgundy);
@@ -1183,13 +1187,13 @@
       transition: all 0.35s var(--ease-silk);
       box-shadow: 0 8px 24px rgba(110, 42, 49, 0.25);
     }
-    .btn-submit-rsvp-envelope:hover {
+    .btn-submit-rsvp:hover {
       background: var(--oxblood);
       transform: translateY(-2px);
       box-shadow: 0 12px 30px rgba(110, 42, 49, 0.35);
     }
 
-    .rsvp-success-card-feedback {
+    .rsvp-success-feedback {
       display: none;
       text-align: center;
       padding: 2rem 1rem;
@@ -1205,13 +1209,13 @@
       padding: 6rem 1.5rem 5rem;
       position: relative;
     }
-    .keepsake-monogram-emblem {
+    .keepsake-monogram-svg {
       width: 60px;
       height: auto;
       margin: 0 auto 1.5rem;
       color: var(--champagne);
     }
-    .keepsake-names-title {
+    .keepsake-names {
       font-family: var(--font-serif);
       font-size: 2.2rem;
       font-weight: 300;
@@ -1219,7 +1223,7 @@
       letter-spacing: 0.04em;
       margin-bottom: 0.6rem;
     }
-    .keepsake-date-location-tag {
+    .keepsake-meta {
       font-family: var(--font-sans);
       font-size: 0.78rem;
       letter-spacing: 0.24em;
@@ -1227,7 +1231,7 @@
       color: var(--eucalyptus);
       margin-bottom: 1.8rem;
     }
-    .keepsake-closing-quote {
+    .keepsake-quote {
       font-family: var(--font-serif);
       font-style: italic;
       font-size: clamp(1.2rem, 2.5vw, 1.6rem);
@@ -1235,7 +1239,7 @@
       max-width: 540px;
       margin: 0 auto 1.4rem;
     }
-    .keepsake-handwritten-signature {
+    .keepsake-sign {
       font-family: var(--font-script);
       font-size: 2.2rem;
       color: var(--champagne);
@@ -1252,48 +1256,47 @@
 </head>
 <body>
 
-  <!-- Reading Progress Fill -->
-  <div class="top-reading-progress-track">
-    <div class="top-reading-progress-fill" id="topProgressFillBar"></div>
+  <!-- Ambient Golden Stardust Canvas -->
+  <canvas id="ambientStardustCanvas"></canvas>
+  <div class="fine-paper-overlay"></div>
+
+  <!-- Top Reading Progress Fill Bar -->
+  <div class="top-scroll-progress-line">
+    <div class="top-scroll-progress-fill" id="topProgressFill"></div>
   </div>
 
   <!-- ============================================================
-       1. SEDUCTIVE SILK VEIL OPENING COVER
+       1. 3D VELVET & GOLD FOIL GATEFOLD UNBOXING EXPERIENCE
   ============================================================ */ -->
-  <section id="invitation-cover-screen" aria-label="Digital Wedding Invitation Cover">
-    <div class="cover-content-box">
-      <!-- Calligraphic Monogram -->
-      <svg class="cover-calligraphic-monogram" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Rishen and Lizaan Monogram">
-        <path d="M42 32 C42 22, 60 22, 60 38 C60 52, 42 54, 42 66 L42 88" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M42 54 L62 88" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-        <path d="M62 88 C75 88, 88 88, 92 88 C98 88, 100 82, 94 76" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-        <path d="M68 34 C68 28, 78 30, 84 42 C90 56, 78 88, 62 88" stroke="var(--eucalyptus)" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
-        <circle cx="60" cy="60" r="54" stroke="rgba(231, 217, 190, 0.3)" stroke-width="0.8" stroke-dasharray="3 3"/>
-      </svg>
+  <div id="gatefold-unboxing-experience" aria-label="Gatefold Digital Wedding Invitation Unboxing">
+    <div class="gate-panel-left"></div>
+    <div class="gate-panel-right"></div>
 
-      <span class="cover-sub-label">A Celebration of Love</span>
-      <h1 class="cover-names-headline">Rishen <span class="amp">&amp;</span> Lizaan</h1>
-      <p class="cover-date-string">Saturday, 24 October 2026</p>
+    <div class="wax-seal-center-trigger" id="waxSealUnboxingTrigger" title="Tap the wax seal to open your invitation">
+      <div class="wax-stamp-disc">
+        <svg class="wax-seal-monogram-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M36 28 C36 18, 52 18, 52 34 C52 48, 36 49, 36 60 L36 80" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path d="M36 48 L56 80" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path d="M58 80 C70 80, 80 80, 84 80 C90 80, 92 74, 86 68" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="1.8" stroke-dasharray="3 3"/>
+        </svg>
+      </div>
 
-      <button type="button" class="btn-enter-veil" id="btnEnterInvitation">
-        <span>Enter the celebration</span>
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <span class="wax-seal-prompt-text">
+        <span>Tap wax seal to open</span>
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 8h10M9 4l4 4-4 4"/>
         </svg>
-      </button>
-
-      <button type="button" class="btn-skip-direct" id="btnSkipCover">
-        Skip opening
-      </button>
+      </span>
     </div>
-  </section>
+  </div>
 
   <!-- ============================================================
-       2. COUTURE HEADER & VINYL MUSIC CONTROL
+       2. COUTURE HEADER & VINYL TURNTABLE MUSIC CONTROL
   ============================================================ */ -->
   <header>
-    <nav id="site-header" aria-label="Main Navigation">
-      <a href="#hero" class="header-logo-monogram" aria-label="Rishen and Lizaan Home">
+    <nav id="couture-header" aria-label="Main Navigation">
+      <a href="#hero" class="header-logo-badge" aria-label="Rishen and Lizaan Monogram">
         <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M42 32 C42 22, 60 22, 60 38 C60 52, 42 54, 42 66 L42 88" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
           <path d="M42 54 L62 88" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
@@ -1302,7 +1305,7 @@
         </svg>
       </a>
 
-      <ul class="header-nav-menu" role="list">
+      <ul class="header-nav-links-list" role="list">
         <li><a href="#story">Our Story</a></li>
         <li><a href="#celebration">The Day</a></li>
         <li><a href="#atmosphere">Among the Vines</a></li>
@@ -1311,19 +1314,19 @@
         <li><a href="#rsvp">RSVP</a></li>
       </ul>
 
-      <div class="header-controls-wrap">
-        <button type="button" class="vinyl-audio-toggle-btn" id="audioToggleBtn" aria-label="Toggle Romantic Background Music">
-          <div class="vinyl-disc-mini"></div>
+      <div class="header-right-controls">
+        <button type="button" class="vinyl-turntable-btn" id="turntableAudioToggle" aria-label="Toggle Romantic Background Music">
+          <div class="turntable-disc"></div>
           <span>Music</span>
         </button>
 
-        <button class="mobile-menu-trigger-btn" id="mobileMenuToggleBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileCurtainNav">
+        <button class="mobile-menu-hamburger" id="mobileMenuHamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileFullNavCurtain">
           <span></span><span></span><span></span>
         </button>
       </div>
     </nav>
 
-    <div class="mobile-curtain-nav-sheet" id="mobileCurtainNav" aria-label="Mobile navigation curtain" aria-hidden="true">
+    <div class="mobile-full-nav-curtain" id="mobileFullNavCurtain" aria-label="Mobile navigation menu" aria-hidden="true">
       <a href="#story">Our Story</a>
       <a href="#celebration">The Day</a>
       <a href="#atmosphere">Among the Vines</a>
@@ -1333,7 +1336,7 @@
     </div>
   </header>
 
-  <audio id="weddingRomanticAudioTrack" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-acoustic-112191.mp3"></audio>
+  <audio id="weddingRomanticSoundtrack" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-acoustic-112191.mp3"></audio>
 
   <!-- ============================================================
        3. MAIN COUTURE EDITORIAL INVITATION SPREAD
@@ -1342,31 +1345,31 @@
 
     <!-- 1. OVERSIZED TYPOGRAPHIC HERO SPREAD -->
     <section id="hero" aria-labelledby="heroMainTitle">
-      <svg class="hero-foliage-vector" viewBox="0 0 300 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg class="hero-botanical-silhouette" viewBox="0 0 300 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M280 0 Q240 150 200 300 Q160 450 180 600" stroke="currentColor" stroke-width="1.5"/>
         <ellipse cx="210" cy="180" rx="35" ry="18" stroke="currentColor" stroke-width="1" transform="rotate(-25 210 180)"/>
         <ellipse cx="170" cy="340" rx="30" ry="15" stroke="currentColor" stroke-width="1" transform="rotate(20 170 340)"/>
         <ellipse cx="190" cy="480" rx="28" ry="14" stroke="currentColor" stroke-width="1" transform="rotate(-15 190 480)"/>
       </svg>
 
-      <div class="hero-editorial-grid-layout">
-        <div class="hero-editorial-text-col">
-          <span class="hero-eyebrow-line">You are warmly invited</span>
+      <div class="hero-editorial-wrapper">
+        <div class="hero-text-block">
+          <span class="hero-eyebrow-tag">You are warmly invited</span>
           
-          <h1 class="hero-monumental-names-headline" id="heroMainTitle">
+          <h1 class="hero-giant-names" id="heroMainTitle">
             Rishen <span class="amp">&amp;</span> Lizaan
           </h1>
 
-          <p class="hero-poetic-whisper-text">
+          <p class="hero-poetic-quote">
             “What began with a glance, grew through messages, and blossomed into forever.”
           </p>
 
-          <div class="hero-ceremony-details-stamp">
+          <div class="hero-date-location-stamp">
             <span>Saturday, 24 October 2026 &nbsp;&middot;&nbsp; 14:30 SAST</span>
             <span>Highberry Vineyards &amp; Venue &nbsp;&middot;&nbsp; Somerset West, Cape Winelands</span>
           </div>
 
-          <a href="#story" class="hero-scroll-explore-link" aria-label="Begin reading our story">
+          <a href="#story" class="hero-scroll-btn" aria-label="Begin reading our story">
             <span>Begin here</span>
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M8 2v12M3 9l5 5 5-5"/>
@@ -1374,10 +1377,10 @@
           </a>
         </div>
 
-        <div class="hero-photo-moment-bleed-wrap">
-          <div class="hero-photo-tilted-frame">
-            <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan standing together among the lush greenery" />
-            <p class="hero-photo-script-caption">Where paths crossed in the quietest moment</p>
+        <div class="hero-photo-moment-container">
+          <div class="hero-photo-tilted-spread">
+            <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan standing outdoors among the lush greenery" />
+            <p class="hero-photo-handwritten-caption">Where paths crossed in the quietest moment</p>
           </div>
         </div>
       </div>
@@ -1385,82 +1388,82 @@
 
     <!-- 2. OUR STORY: LIVING LOVE LETTER -->
     <section id="story" aria-labelledby="storyHeadingTitle">
-      <div class="story-layout-container">
+      <div class="story-max-container">
         
-        <div class="section-editorial-header">
-          <span class="section-caps-badge">Their Journey</span>
-          <h2 class="section-main-display-title" id="storyHeadingTitle">Our Story</h2>
-          <p class="section-poetic-subtitle">
+        <div class="section-editorial-heading-center">
+          <span class="section-pill-tag">Their Journey</span>
+          <h2 class="section-editorial-title" id="storyHeadingTitle">Our Story</h2>
+          <p class="section-editorial-subquote">
             “Written long before we even realised it.”
           </p>
         </div>
 
-        <div class="love-letter-spreads-flow">
+        <div class="love-letter-acts-flow">
 
           <!-- ACT I: THE GLANCE -->
-          <div class="story-letter-act-row">
-            <div class="story-act-media-side">
-              <div class="editorial-polaroid-frame" style="transform: rotate(-2.2deg);">
+          <div class="story-act-spread">
+            <div class="story-media-column">
+              <div class="story-polaroid-box" style="transform: rotate(-2.2deg);">
                 <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan outdoor photograph" loading="lazy" />
-                <p class="editorial-polaroid-caption">“An instant spark across the room.”</p>
+                <p class="story-polaroid-caption">“An instant spark across the room.”</p>
               </div>
             </div>
-            <div class="story-act-narrative-side">
-              <span class="story-act-number-pill">Chapter One &nbsp;&middot;&nbsp; The Glance</span>
-              <h3 class="story-act-title-serif">Love at first sight — although neither was brave enough to speak.</h3>
-              <div class="story-act-quote-callout">
+            <div class="story-text-column">
+              <span class="story-act-indicator-tag">Chapter One &nbsp;&middot;&nbsp; The Glance</span>
+              <h3 class="story-act-serif-heading">Love at first sight — although neither was brave enough to speak.</h3>
+              <div class="story-act-quote-box">
                 “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
               </div>
-              <p class="story-act-body-text">
-                <span class="editorial-dropcap-letter">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members.
+              <p class="story-act-paragraph">
+                <span class="editorial-large-dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members.
               </p>
-              <p class="story-act-body-text">
+              <p class="story-act-paragraph">
                 There was an immediate spark — that rare moment where everything else in the room gently fades into the background. It was true love at first sight, although neither of them was quite brave enough to actually speak in that moment!
               </p>
             </div>
           </div>
 
           <!-- ACT II: THE CONVERSATION -->
-          <div class="story-letter-act-row reversed">
-            <div class="story-act-media-side">
-              <div class="editorial-polaroid-frame" style="transform: rotate(2.4deg);">
+          <div class="story-act-spread reversed">
+            <div class="story-media-column">
+              <div class="story-polaroid-box" style="transform: rotate(2.4deg);">
                 <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait close-up" loading="lazy" />
-                <p class="editorial-polaroid-caption">“Two people who became each other's favourite hello.”</p>
+                <p class="story-polaroid-caption">“Two people who became each other's favourite hello.”</p>
               </div>
             </div>
-            <div class="story-act-narrative-side">
-              <span class="story-act-number-pill">Chapter Two &nbsp;&middot;&nbsp; The Conversation</span>
-              <h3 class="story-act-title-serif">The conversation that never happened in person began over text.</h3>
-              <div class="story-act-quote-callout">
+            <div class="story-text-column">
+              <span class="story-act-indicator-tag">Chapter Two &nbsp;&middot;&nbsp; The Conversation</span>
+              <h3 class="story-act-serif-heading">The conversation that never happened in person began over text.</h3>
+              <div class="story-act-quote-box">
                 “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
               </div>
-              <p class="story-act-body-text">
-                <span class="editorial-dropcap-letter">A</span> few days later, Rishen still couldn't get Lizaan out of his mind. With a little help from the same family member, he got her number. And just like that, the conversation that was always meant to happen began.
+              <p class="story-act-paragraph">
+                <span class="editorial-large-dropcap">A</span> few days later, Rishen still couldn't get Lizaan out of his mind. With a little help from the same family member, he got her number. And just like that, the conversation that was always meant to happen began.
               </p>
-              <p class="story-act-body-text">
+              <p class="story-act-paragraph">
                 Simple texts quickly grew into hours of talking, good-morning messages, late-night phone calls, inside jokes, and countless memories. Two people who were once too shy to speak became each other's favourite part of every day.
               </p>
             </div>
           </div>
 
           <!-- ACT III: FAITH & FOREVER -->
-          <div class="story-letter-act-row">
-            <div class="story-act-media-side">
-              <div class="editorial-polaroid-frame" style="transform: rotate(-1.6deg);">
+          <div class="story-act-spread">
+            <div class="story-media-column">
+              <div class="story-polaroid-box" style="transform: rotate(-1.6deg);">
                 <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing joyfully in hats" loading="lazy" />
-                <p class="editorial-polaroid-caption">“Inside jokes, laughter &amp; shared milestones.”</p>
+                <p class="story-polaroid-caption">“Inside jokes, laughter &amp; shared milestones.”</p>
               </div>
             </div>
-            <div class="story-act-narrative-side">
-              <span class="story-act-number-pill">Chapter Three &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
-              <h3 class="story-act-title-serif">Like iron sharpens iron — to encourage, strengthen, and love.</h3>
-              <div class="story-act-quote-callout">
+            <div class="story-text-column">
+              <span class="story-act-indicator-tag">Chapter Three &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
+              <h3 class="story-act-serif-heading">Like iron sharpens iron — to encourage, strengthen, and love.</h3>
+              <div class="story-act-quote-box">
                 “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
               </div>
-              <p class="story-act-body-text">
-                <span class="editorial-dropcap-letter">S</span>ince then, their relationship has flourished through deep friendship, faith, unwavering encouragement, and bringing out the very best in one another.
+              <p class="story-act-paragraph">
+                <span class="editorial-large-dropcap">S</span>ince then, their relationship has flourished through deep friendship, faith, unwavering encouragement, and bringing out the very best in one another.
               </p>
-              <p class="story-act-body-text">
+              <p class="story-act-paragraph">
                 Now, as they prepare to exchange lifelong vows and become husband and wife, they are filled with profound gratitude for every step that led here, and anticipation for every chapter God has written ahead.
               </p>
             </div>
@@ -1469,12 +1472,12 @@
         </div>
 
         <!-- Central Scripture Keepsake -->
-        <div class="scripture-sacred-spread">
-          <p class="scripture-verse-quote-text">
+        <div class="sacred-scripture-container">
+          <p class="sacred-scripture-verse-text">
             “Therefore what God has joined together, let no one separate.”
           </p>
-          <p class="scripture-citation-tag-text">Matthew 19 : 6</p>
-          <p class="scripture-closing-reflection">
+          <p class="sacred-scripture-citation">Matthew 19 : 6</p>
+          <p class="sacred-scripture-reflection">
             And so, what began with a glance and grew through messages is becoming forever.
           </p>
         </div>
@@ -1484,127 +1487,127 @@
 
     <!-- 3. THE DAY: CEREMONIAL TIMELINE & COUNTDOWN -->
     <section id="celebration" aria-labelledby="celebrationHeadingTitle">
-      <div class="story-layout-container">
+      <div class="story-max-container">
         
-        <div class="section-editorial-header">
-          <span class="section-caps-badge">The Gathering</span>
-          <h2 class="section-main-display-title" id="celebrationHeadingTitle">The Celebration</h2>
-          <p class="section-poetic-subtitle">
+        <div class="section-editorial-heading-center">
+          <span class="section-pill-tag">The Gathering</span>
+          <h2 class="section-editorial-title" id="celebrationHeadingTitle">The Celebration</h2>
+          <p class="section-editorial-subquote">
             Saturday, 24 October 2026 &nbsp;&middot;&nbsp; Highberry Vineyards &amp; Venue
           </p>
         </div>
 
         <!-- Editorial Timeline Journey -->
-        <div class="ceremonial-timeline-track-wrap">
-          <div class="ceremonial-vertical-thread-line" aria-hidden="true"></div>
+        <div class="ceremonial-timeline-wrapper">
+          <div class="ceremonial-timeline-guide-thread" aria-hidden="true"></div>
 
           <!-- 14:15 Arrival -->
-          <div class="ceremony-event-card-step">
-            <div class="ceremony-step-icon-bubble" aria-hidden="true">
+          <div class="ceremony-event-row">
+            <div class="ceremony-event-icon-circle" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <circle cx="12" cy="12" r="9"/>
                 <polyline points="12 7 12 12 15 15"/>
               </svg>
             </div>
-            <div class="ceremony-step-card-text">
-              <span class="ceremony-step-timestamp-caps">14:15 SAST</span>
-              <h3 class="ceremony-step-title-text">Guest Arrival &amp; Seating</h3>
-              <p class="ceremony-step-description-text">Guests are warmly welcomed and seated among the vines before proceedings begin.</p>
+            <div class="ceremony-event-content-box">
+              <span class="ceremony-event-timestamp">14:15 SAST</span>
+              <h3 class="ceremony-event-title">Guest Arrival &amp; Seating</h3>
+              <p class="ceremony-event-desc">Guests are warmly welcomed and seated among the vines before proceedings begin.</p>
             </div>
           </div>
 
           <!-- 14:30 Ceremony -->
-          <div class="ceremony-event-card-step">
-            <div class="ceremony-step-icon-bubble" aria-hidden="true">
+          <div class="ceremony-event-row">
+            <div class="ceremony-event-icon-circle" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
             </div>
-            <div class="ceremony-step-card-text">
-              <span class="ceremony-step-timestamp-caps">14:30 SAST</span>
-              <h3 class="ceremony-step-title-text">The Ceremony</h3>
-              <p class="ceremony-step-description-text">At Highberry Vineyards &amp; Venue — Rishen &amp; Lizaan exchange their sacred vows and say &ldquo;I do.&rdquo;</p>
+            <div class="ceremony-event-content-box">
+              <span class="ceremony-event-timestamp">14:30 SAST</span>
+              <h3 class="ceremony-event-title">The Ceremony</h3>
+              <p class="ceremony-event-desc">At Highberry Vineyards &amp; Venue — Rishen &amp; Lizaan exchange their sacred vows and say &ldquo;I do.&rdquo;</p>
             </div>
           </div>
 
           <!-- 16:00 Drinks & Canapés -->
-          <div class="ceremony-event-card-step">
-            <div class="ceremony-step-icon-bubble" aria-hidden="true">
+          <div class="ceremony-event-row">
+            <div class="ceremony-event-icon-circle" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M8 2h8l-4 7v9"/>
                 <path d="M7 22h10"/>
                 <path d="M6 5h12"/>
               </svg>
             </div>
-            <div class="ceremony-step-card-text">
-              <span class="ceremony-step-timestamp-caps">16:00 SAST</span>
-              <h3 class="ceremony-step-title-text">Drinks &amp; Canap&eacute;s</h3>
-              <p class="ceremony-step-description-text">Sunset drinks and delicious bites on the manicured vineyard lawns with wonderful company.</p>
+            <div class="ceremony-event-content-box">
+              <span class="ceremony-event-timestamp">16:00 SAST</span>
+              <h3 class="ceremony-event-title">Drinks &amp; Canap&eacute;s</h3>
+              <p class="ceremony-event-desc">Sunset drinks and delicious bites on the manicured vineyard lawns with wonderful company.</p>
             </div>
           </div>
 
           <!-- 18:00 Reception & Dinner -->
-          <div class="ceremony-event-card-step">
-            <div class="ceremony-step-icon-bubble" aria-hidden="true">
+          <div class="ceremony-event-row">
+            <div class="ceremony-event-icon-circle" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M3 18h18"/>
                 <path d="M4 18a8 8 0 0 1 16 0"/>
                 <path d="M12 6V3"/>
               </svg>
             </div>
-            <div class="ceremony-step-card-text">
-              <span class="ceremony-step-timestamp-caps">18:00 SAST</span>
-              <h3 class="ceremony-step-title-text">Reception &amp; Dinner</h3>
-              <p class="ceremony-step-description-text">Celebratory dinner, heartfelt toasts, and cherished moments with those we love most.</p>
+            <div class="ceremony-event-content-box">
+              <span class="ceremony-event-timestamp">18:00 SAST</span>
+              <h3 class="ceremony-event-title">Reception &amp; Dinner</h3>
+              <p class="ceremony-event-desc">Celebratory dinner, heartfelt toasts, and cherished moments with those we love most.</p>
             </div>
           </div>
 
           <!-- After Dinner -->
-          <div class="ceremony-event-card-step">
-            <div class="ceremony-step-icon-bubble" aria-hidden="true">
+          <div class="ceremony-event-row">
+            <div class="ceremony-event-icon-circle" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M9 18V5l12-2v13"/>
                 <circle cx="6" cy="18" r="3"/>
                 <circle cx="18" cy="16" r="3"/>
               </svg>
             </div>
-            <div class="ceremony-step-card-text">
-              <span class="ceremony-step-timestamp-caps">After Dinner</span>
-              <h3 class="ceremony-step-title-text">Celebration &amp; Dancing</h3>
-              <p class="ceremony-step-description-text">Music, laughter, and dancing under the Cape Winelands stars.</p>
+            <div class="ceremony-event-content-box">
+              <span class="ceremony-event-timestamp">After Dinner</span>
+              <h3 class="ceremony-event-title">Celebration &amp; Dancing</h3>
+              <p class="ceremony-event-desc">Music, laughter, and dancing under the Cape Winelands stars.</p>
             </div>
           </div>
 
         </div>
 
-        <!-- Fine Numerals Real-Time Countdown -->
-        <div class="countdown-editorial-panel">
-          <span class="countdown-eyebrow-text">Counting Down to Forever</span>
-          <div class="countdown-grid-row" id="countdownNumbersBlock" aria-live="polite">
-            <div class="countdown-number-column">
-              <span class="countdown-digit-display" id="cdDays">--</span>
-              <span class="countdown-unit-caption">Days</span>
+        <!-- Real-Time Fine Numeral Countdown -->
+        <div class="countdown-editorial-spread-box">
+          <span class="countdown-eyebrow-label">Counting Down to Forever</span>
+          <div class="countdown-numerals-flex" id="countdownDigitsFlex" aria-live="polite">
+            <div class="countdown-col">
+              <span class="countdown-huge-digit" id="cdDays">--</span>
+              <span class="countdown-unit-text">Days</span>
             </div>
-            <div class="countdown-number-column">
-              <span class="countdown-digit-display" id="cdHours">--</span>
-              <span class="countdown-unit-caption">Hours</span>
+            <div class="countdown-col">
+              <span class="countdown-huge-digit" id="cdHours">--</span>
+              <span class="countdown-unit-text">Hours</span>
             </div>
-            <div class="countdown-number-column">
-              <span class="countdown-digit-display" id="cdMins">--</span>
-              <span class="countdown-unit-caption">Minutes</span>
+            <div class="countdown-col">
+              <span class="countdown-huge-digit" id="cdMins">--</span>
+              <span class="countdown-unit-text">Minutes</span>
             </div>
-            <div class="countdown-number-column">
-              <span class="countdown-digit-display" id="cdSecs">--</span>
-              <span class="countdown-unit-caption">Seconds</span>
+            <div class="countdown-col">
+              <span class="countdown-huge-digit" id="cdSecs">--</span>
+              <span class="countdown-unit-text">Seconds</span>
             </div>
           </div>
         </div>
 
-        <!-- Celebration Actions -->
-        <div class="celebration-action-buttons-wrap">
+        <!-- Celebration Action Buttons -->
+        <div class="celebration-action-buttons">
           <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//Rishen%20%26%20Lizaan//Wedding//EN%0ABEGIN:VEVENT%0ADTSTART:20261024T123000Z%0ADTEND:20261024T220000Z%0ASUMMARY:Rishen%20%26%20Lizaan%27s%20Wedding%0ADESCRIPTION:Wedding%20celebration%20of%20Rishen%20%26%20Lizaan%20at%20Highberry%20Vineyards%2C%20Somerset%20West.%20Ceremony%20at%2014%3A30.%0ALOCATION:Highberry%20Vineyards%20%26%20Venue%2C%20Somerset%20West%2C%20Cape%20Winelands%2C%20South%20Africa%0AURL:https%3A%2F%2Fwww.highberry.co.za%2F%0AEND:VEVENT%0AEND:VCALENDAR"
              download="Rishen-and-Lizaan-Wedding-24-Oct-2026.ics"
-             class="btn-action-burgundy-pill">
+             class="btn-celebration-burgundy">
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <rect x="2" y="3" width="12" height="12" rx="1"/>
               <path d="M5 1v4M11 1v4M2 7h12"/>
@@ -1612,7 +1615,7 @@
             Save Date to Calendar
           </a>
 
-          <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-action-sage-pill">
+          <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-celebration-sage">
             <span>Explore Highberry Venue</span>
             <span aria-hidden="true">↗</span>
           </a>
@@ -1623,17 +1626,17 @@
 
     <!-- 4. AMONG THE VINES: ATMOSPHERE & WELCOME -->
     <section id="atmosphere" aria-labelledby="atmosphereHeadingTitle">
-      <div class="story-layout-container">
-        <div class="section-editorial-header">
-          <span class="section-caps-badge">Cape Winelands Atmosphere</span>
-          <h2 class="section-main-display-title" id="atmosphereHeadingTitle">Among the Vines</h2>
+      <div class="story-max-container">
+        <div class="section-editorial-heading-center">
+          <span class="section-pill-tag">Cape Winelands Atmosphere</span>
+          <h2 class="section-editorial-title" id="atmosphereHeadingTitle">Among the Vines</h2>
         </div>
 
-        <div class="atmosphere-editorial-box">
-          <p class="atmosphere-quote-line">
+        <div class="atmosphere-card-inner">
+          <p class="atmosphere-poetic-quote-text">
             “Come dressed for a beautiful afternoon in the Cape Winelands—where deep burgundy meets soft sage, and every detail is warmed by the light.”
           </p>
-          <p class="atmosphere-body-reflection">
+          <p class="atmosphere-notes-paragraph">
             Surrounded by rolling vineyards and sweeping mountain silhouettes, our celebration is an unhurried gathering of the people who mean the most to us. Guests are invited to dress elegantly, formally, semi-formally, or in beautiful traditional wear.
           </p>
         </div>
@@ -1642,66 +1645,66 @@
 
     <!-- 5. VENUE & LODGING: DESTINATION SPREAD -->
     <section id="venue" aria-labelledby="venueHeadingTitle">
-      <div class="story-layout-container">
+      <div class="story-max-container">
         
-        <div class="section-editorial-header">
-          <span class="section-caps-badge">Destination</span>
-          <h2 class="section-main-display-title" id="venueHeadingTitle">Venue &amp; Lodging</h2>
+        <div class="section-editorial-heading-center">
+          <span class="section-pill-tag">Destination</span>
+          <h2 class="section-editorial-title" id="venueHeadingTitle">Venue &amp; Lodging</h2>
         </div>
 
-        <div class="venue-travel-grid-layout">
+        <div class="venue-editorial-layout-grid">
           
-          <div class="venue-details-text-col">
-            <h3 class="venue-title-display">Highberry Vineyards &amp; Venue</h3>
-            <p class="venue-location-subheading">Somerset West, Cape Winelands, South Africa</p>
+          <div class="venue-text-side">
+            <h3 class="venue-estate-name">Highberry Vineyards &amp; Venue</h3>
+            <p class="venue-location-tagline">Somerset West, Cape Winelands, South Africa</p>
             
-            <p class="venue-description-copy">
+            <p class="venue-story-paragraph">
               Nestled against the Hottentots Holland mountain range, Highberry is a boutique vineyard estate known for its breathtaking vistas, manicured lawns, and timeless Cape architectural elegance.
             </p>
 
             <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;">
-              <a href="https://www.google.com/maps/search/Highberry+Vineyards+Somerset+West+South+Africa" target="_blank" rel="noopener noreferrer" class="btn-action-burgundy-pill" style="padding:0.85rem 1.6rem; font-size:0.72rem;">
+              <a href="https://www.google.com/maps/search/Highberry+Vineyards+Somerset+West+South+Africa" target="_blank" rel="noopener noreferrer" class="btn-celebration-burgundy" style="padding:0.85rem 1.6rem; font-size:0.72rem;">
                 Open in Google Maps ↗
               </a>
-              <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-action-sage-pill" style="padding:0.85rem 1.6rem; font-size:0.72rem;">
+              <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-celebration-sage" style="padding:0.85rem 1.6rem; font-size:0.72rem;">
                 Visit Venue Website ↗
               </a>
             </div>
           </div>
 
           <div>
-            <span class="section-caps-badge" style="margin-bottom:0.8rem;">Recommended Lodging Nearby</span>
+            <span class="section-pill-tag" style="margin-bottom:0.8rem;">Recommended Lodging Nearby</span>
             <p style="font-size:0.92rem; color:var(--ink-muted); margin-bottom:1.4rem;">
               We recommend exploring local guest houses and boutique lodges in Somerset West:
             </p>
 
-            <ul class="lodging-links-list-group" role="list">
+            <ul class="lodging-recommendations-box" role="list">
               <li>
-                <a href="https://www.lalapanzilodge.co.za" target="_blank" rel="noopener noreferrer" class="lodging-link-item-row">
+                <a href="https://www.lalapanzilodge.co.za" target="_blank" rel="noopener noreferrer" class="lodging-row-link">
                   <span>Lalapanzi Lodge</span>
                   <span>↗</span>
                 </a>
               </li>
               <li>
-                <a href="https://www.winelandsvilla.co.za" target="_blank" rel="noopener noreferrer" class="lodging-link-item-row">
+                <a href="https://www.winelandsvilla.co.za" target="_blank" rel="noopener noreferrer" class="lodging-row-link">
                   <span>Winelands Villa Guesthouse</span>
                   <span>↗</span>
                 </a>
               </li>
               <li>
-                <a href="https://www.accommodationsomersetwest.co.za" target="_blank" rel="noopener noreferrer" class="lodging-link-item-row">
+                <a href="https://www.accommodationsomersetwest.co.za" target="_blank" rel="noopener noreferrer" class="lodging-row-link">
                   <span>Accommodation Somerset West</span>
                   <span>↗</span>
                 </a>
               </li>
               <li>
-                <a href="https://www.booking.com/searchresults.html?ss=Somerset+West%2C+South+Africa" target="_blank" rel="noopener noreferrer" class="lodging-link-item-row">
+                <a href="https://www.booking.com/searchresults.html?ss=Somerset+West%2C+South+Africa" target="_blank" rel="noopener noreferrer" class="lodging-row-link">
                   <span>Booking.com Somerset West</span>
                   <span>↗</span>
                 </a>
               </li>
               <li>
-                <a href="https://www.lekkeslaap.co.za/oornag/Somerset-West" target="_blank" rel="noopener noreferrer" class="lodging-link-item-row">
+                <a href="https://www.lekkeslaap.co.za/oornag/Somerset-West" target="_blank" rel="noopener noreferrer" class="lodging-row-link">
                   <span>LekkeSlaap Somerset West</span>
                   <span>↗</span>
                 </a>
@@ -1716,45 +1719,45 @@
 
     <!-- 6. BEFORE THE DAY: ACCORDION GUIDANCE -->
     <section id="guidance" aria-labelledby="guidanceHeadingTitle">
-      <div class="story-layout-container">
+      <div class="story-max-container">
         
-        <div class="section-editorial-header">
-          <span class="section-caps-badge">Guest Information</span>
-          <h2 class="section-main-display-title" id="guidanceHeadingTitle">Before the Day</h2>
-          <p class="section-poetic-subtitle">Everything you need for an effortless celebration.</p>
+        <div class="section-editorial-heading-center">
+          <span class="section-pill-tag">Guest Information</span>
+          <h2 class="section-editorial-title" id="guidanceHeadingTitle">Before the Day</h2>
+          <p class="section-editorial-subquote">Everything you need for an effortless celebration.</p>
         </div>
 
-        <div class="guidance-faq-accordion-wrap">
+        <div class="guidance-accordion-container">
 
           <!-- Q1: Attire -->
-          <div class="guidance-accordion-item">
-            <button type="button" class="guidance-toggle-button" aria-expanded="true" id="btnFaqWear">
-              <span class="guidance-question-text">What should I wear?</span>
-              <span class="guidance-icon-arrow" aria-hidden="true">▾</span>
+          <div class="guidance-qa-box">
+            <button type="button" class="guidance-qa-trigger" aria-expanded="true" id="btnFaqWear">
+              <span class="guidance-qa-title">What should I wear?</span>
+              <span class="guidance-qa-arrow" aria-hidden="true">▾</span>
             </button>
-            <div class="guidance-answer-panel" id="panelFaqWear">
+            <div class="guidance-qa-body" id="panelFaqWear">
               <p>Think <strong>elegant</strong>, <strong>formal</strong>, <strong>semi-formal</strong>, or traditional wear — beautifully comfortable for vineyard celebration!</p>
             </div>
           </div>
 
           <!-- Q2: Arrival -->
-          <div class="guidance-accordion-item">
-            <button type="button" class="guidance-toggle-button" aria-expanded="false" id="btnFaqArrival">
-              <span class="guidance-question-text">When should I arrive?</span>
-              <span class="guidance-icon-arrow" aria-hidden="true">▸</span>
+          <div class="guidance-qa-box">
+            <button type="button" class="guidance-qa-trigger" aria-expanded="false" id="btnFaqArrival">
+              <span class="guidance-qa-title">When should I arrive?</span>
+              <span class="guidance-qa-arrow" aria-hidden="true">▸</span>
             </button>
-            <div class="guidance-answer-panel" id="panelFaqArrival" style="display:none;">
+            <div class="guidance-qa-body" id="panelFaqArrival" style="display:none;">
               <p>The ceremony commences promptly at <strong>14:30 SAST</strong>. We kindly ask all guests to arrive and be seated by <strong>14:15</strong>.</p>
             </div>
           </div>
 
           <!-- Q3: RSVP Deadline -->
-          <div class="guidance-accordion-item">
-            <button type="button" class="guidance-toggle-button" aria-expanded="false" id="btnFaqRsvp">
-              <span class="guidance-question-text">When is the RSVP deadline?</span>
-              <span class="guidance-icon-arrow" aria-hidden="true">▸</span>
+          <div class="guidance-qa-box">
+            <button type="button" class="guidance-qa-trigger" aria-expanded="false" id="btnFaqRsvp">
+              <span class="guidance-qa-title">When is the RSVP deadline?</span>
+              <span class="guidance-qa-arrow" aria-hidden="true">▸</span>
             </button>
-            <div class="guidance-answer-panel" id="panelFaqRsvp" style="display:none;">
+            <div class="guidance-qa-body" id="panelFaqRsvp" style="display:none;">
               <p>Please kindly submit your response by <strong>24 September 2026</strong> so we can finalize arrangements with Highberry.</p>
             </div>
           </div>
@@ -1766,12 +1769,12 @@
 
     <!-- 7. RSVP: STATIONERY REPLY CARD ON RICH BURGUNDY -->
     <section id="rsvp" aria-labelledby="rsvpHeadingTitle">
-      <div class="story-layout-container">
+      <div class="story-max-container">
         
-        <div class="section-editorial-header">
-          <span class="section-caps-badge">Your Response</span>
-          <h2 class="section-main-display-title" id="rsvpHeadingTitle">Will you join us among the vines?</h2>
-          <p class="section-poetic-subtitle">
+        <div class="section-editorial-heading-center">
+          <span class="section-pill-tag">Your Response</span>
+          <h2 class="section-editorial-title" id="rsvpHeadingTitle">Will you join us among the vines?</h2>
+          <p class="section-editorial-subquote">
             We’d be so grateful to celebrate this beginning with you.
           </p>
           <p style="font-family:var(--font-sans); font-size:0.75rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--eucalyptus); margin-top:1rem;">
@@ -1779,9 +1782,9 @@
           </p>
         </div>
 
-        <div class="rsvp-stationery-envelope-card">
+        <div class="rsvp-reply-stationery-envelope">
           
-          <div class="rsvp-success-card-feedback" id="rsvpFeedbackSuccess" aria-live="polite">
+          <div class="rsvp-success-feedback" id="rsvpFeedbackSuccess" aria-live="polite">
             <div style="font-size:2.6rem; color:var(--burgundy); margin-bottom:0.8rem;">🤍</div>
             <h3 id="feedbackPersonName" style="font-family:var(--font-serif); font-size:clamp(1.6rem, 3.5vw, 2.2rem); color:var(--burgundy); font-weight:300; margin-bottom:0.8rem;"></h3>
             <p id="feedbackPersonalMessage" style="font-family:var(--font-serif); font-style:italic; font-size:1.15rem; color:var(--ink-soft); line-height:1.75;"></p>
@@ -1789,20 +1792,20 @@
 
           <form id="rsvpFormElement" novalidate aria-label="Wedding RSVP Form">
             
-            <div class="form-input-field-group">
-              <label for="guestFullNameField" class="form-field-header-label">Your Full Name <span aria-label="required">*</span></label>
-              <input type="text" id="guestFullNameField" name="guestFullNameField" class="form-text-input-box" placeholder="e.g. Eleanor Vance" autocomplete="name" required />
+            <div class="form-row">
+              <label for="guestFullNameField" class="form-label">Your Full Name <span aria-label="required">*</span></label>
+              <input type="text" id="guestFullNameField" name="guestFullNameField" class="form-input" placeholder="e.g. Eleanor Vance" autocomplete="name" required />
               <span id="nameErrorAlert" style="display:none; font-size:0.78rem; color:#b01d2e; margin-top:0.4rem;">Please enter your full name.</span>
             </div>
 
-            <div class="form-input-field-group">
-              <label class="form-field-header-label">Attendance <span aria-label="required">*</span></label>
-              <div class="attendance-options-grid">
-                <label class="attendance-option-pill">
+            <div class="form-row">
+              <label class="form-label">Attendance <span aria-label="required">*</span></label>
+              <div class="attendance-radios-flex">
+                <label class="attendance-radio-card">
                   <input type="radio" name="attendanceStatusRadio" value="joyfully" required />
                   <span>Joyfully Accepts</span>
                 </label>
-                <label class="attendance-option-pill">
+                <label class="attendance-radio-card">
                   <input type="radio" name="attendanceStatusRadio" value="regretfully" required />
                   <span>Regretfully Declines</span>
                 </label>
@@ -1811,9 +1814,9 @@
             </div>
 
             <div id="attendingGuestsDetailsGroup">
-              <div class="form-input-field-group">
-                <label for="guestQuantitySelect" class="form-field-header-label">Total Guests Attending (Including Yourself)</label>
-                <select id="guestQuantitySelect" name="guestQuantitySelect" class="form-select-picker">
+              <div class="form-row">
+                <label for="guestQuantitySelect" class="form-label">Total Guests Attending (Including Yourself)</label>
+                <select id="guestQuantitySelect" name="guestQuantitySelect" class="form-select">
                   <option value="1">1 Guest (Just me)</option>
                   <option value="2">2 Guests</option>
                   <option value="3">3 Guests</option>
@@ -1821,20 +1824,20 @@
                 </select>
               </div>
 
-              <div class="form-input-field-group">
-                <label for="guestDietaryNotesInput" class="form-field-header-label">Dietary Requirements (Optional)</label>
-                <input type="text" id="guestDietaryNotesInput" name="guestDietaryNotesInput" class="form-text-input-box" placeholder="e.g. Vegetarian, Vegan, Halal, Nut Allergy, None" />
+              <div class="form-row">
+                <label for="guestDietaryNotesInput" class="form-label">Dietary Requirements (Optional)</label>
+                <input type="text" id="guestDietaryNotesInput" name="guestDietaryNotesInput" class="form-input" placeholder="e.g. Vegetarian, Vegan, Halal, Nut Allergy, None" />
               </div>
 
               <div id="additionalGuestInputRows" style="display:none; margin-bottom:1.8rem;"></div>
             </div>
 
-            <div class="form-input-field-group">
-              <label for="guestWishesTextarea" class="form-field-header-label">A Special Message for Rishen &amp; Lizaan (Optional)</label>
-              <textarea id="guestWishesTextarea" name="guestWishesTextarea" rows="3" class="form-multiline-textarea" placeholder="Share warm wishes, blessings, or a personal note..."></textarea>
+            <div class="form-row">
+              <label for="guestWishesTextarea" class="form-label">A Special Message for Rishen &amp; Lizaan (Optional)</label>
+              <textarea id="guestWishesTextarea" name="guestWishesTextarea" rows="3" class="form-textarea" placeholder="Share warm wishes, blessings, or a personal note..."></textarea>
             </div>
 
-            <button type="submit" class="btn-submit-rsvp-envelope">
+            <button type="submit" class="btn-submit-rsvp">
               Send Response
             </button>
             
@@ -1852,93 +1855,150 @@
   ============================================================ */ -->
   <footer id="closing-keepsake" aria-label="Closing Keepsake">
     <!-- Monogram Symbol -->
-    <svg class="keepsake-monogram-emblem" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg class="keepsake-monogram-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M42 32 C42 22, 60 22, 60 38 C60 52, 42 54, 42 66 L42 88" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
       <path d="M42 54 L62 88" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
       <path d="M62 88 C75 88, 88 88, 92 88" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
       <circle cx="60" cy="60" r="52" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity="0.6"/>
     </svg>
 
-    <div class="keepsake-names-title">Rishen &amp; Lizaan</div>
-    <div class="keepsake-date-location-tag">24 &middot; 10 &middot; 2026 &nbsp;&middot;&nbsp; Highberry Vineyards &nbsp;&middot;&nbsp; Somerset West</div>
-    <p class="keepsake-closing-quote">“Our greatest adventure is just beginning.”</p>
-    <p class="keepsake-handwritten-signature">With all our love ♡</p>
+    <div class="keepsake-names">Rishen &amp; Lizaan</div>
+    <div class="keepsake-meta">24 &middot; 10 &middot; 2026 &nbsp;&middot;&nbsp; Highberry Vineyards &nbsp;&middot;&nbsp; Somerset West</div>
+    <p class="keepsake-quote">“Our greatest adventure is just beginning.”</p>
+    <p class="keepsake-sign">With all our love ♡</p>
   </footer>
 
   <!-- ============================================================
-       SCRIPTS: COVER, AUDIO, PROGRESS, COUNTDOWN, ACCORDION & RSVP
+       SCRIPTS: CANVAS, GATEFOLD, AUDIO, PROGRESS, COUNTDOWN & RSVP
   ============================================================ */ -->
   <script>
   'use strict';
 
-  // 1. Seductive Opening Veil Experience
-  const coverScreen     = document.getElementById('invitation-cover-screen');
-  const enterInviteBtn  = document.getElementById('btnEnterInvitation');
-  const skipCoverBtn    = document.getElementById('btnSkipCover');
-  const audioTrack      = document.getElementById('weddingRomanticAudioTrack');
-  const audioToggleBtn  = document.getElementById('audioToggleBtn');
+  // 1. Ambient Stardust Canvas Particles
+  const canvas = document.getElementById('ambientStardustCanvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let width, height, particles = [];
 
-  function openCelebrationVeil() {
-    if (!coverScreen) return;
-    coverScreen.classList.add('opened');
-    sessionStorage.setItem('rl_invitation_opened_awwwards', 'true');
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedY = -(Math.random() * 0.4 + 0.1);
+        this.speedX = (Math.random() - 0.5) * 0.2;
+        this.opacity = Math.random() * 0.7 + 0.2;
+        this.fadeSpeed = Math.random() * 0.008 + 0.002;
+      }
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+        this.opacity -= this.fadeSpeed;
+        if (this.opacity <= 0 || this.y < 0) this.reset();
+      }
+      draw() {
+        ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 40; i++) particles.push(new Particle());
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
   }
 
-  if (enterInviteBtn) enterInviteBtn.addEventListener('click', openCelebrationVeil);
-  if (skipCoverBtn)   skipCoverBtn.addEventListener('click', openCelebrationVeil);
+  // 2. 3D Gatefold Wax Seal Unboxing
+  const gatefoldOverlay = document.getElementById('gatefold-unboxing-experience');
+  const waxSealBtn      = document.getElementById('waxSealUnboxingTrigger');
+  const romanticAudio   = document.getElementById('weddingRomanticSoundtrack');
+  const turntableBtn    = document.getElementById('turntableAudioToggle');
 
-  if (sessionStorage.getItem('rl_invitation_opened_awwwards') === 'true') {
-    if (coverScreen) coverScreen.classList.add('opened');
+  function openGatefoldInvitation() {
+    if (!gatefoldOverlay) return;
+    gatefoldOverlay.classList.add('opened');
+    sessionStorage.setItem('rl_invitation_unboxed_soty', 'true');
+
+    if (romanticAudio) {
+      romanticAudio.play().then(() => {
+        if (turntableBtn) turntableBtn.classList.add('playing');
+      }).catch(() => {});
+    }
   }
 
-  // 2. Vinyl Music Player Control
-  if (audioToggleBtn && audioTrack) {
-    audioToggleBtn.addEventListener('click', () => {
-      if (audioTrack.paused) {
-        audioTrack.play().then(() => {
-          audioToggleBtn.classList.add('playing');
+  if (waxSealBtn) waxSealBtn.addEventListener('click', openGatefoldInvitation);
+
+  if (sessionStorage.getItem('rl_invitation_unboxed_soty') === 'true') {
+    if (gatefoldOverlay) gatefoldOverlay.classList.add('opened');
+  }
+
+  // 3. Vinyl Turntable Music Player
+  if (turntableBtn && romanticAudio) {
+    turntableBtn.addEventListener('click', () => {
+      if (romanticAudio.paused) {
+        romanticAudio.play().then(() => {
+          turntableBtn.classList.add('playing');
         }).catch(() => {});
       } else {
-        audioTrack.pause();
-        audioToggleBtn.classList.remove('playing');
+        romanticAudio.pause();
+        turntableBtn.classList.remove('playing');
       }
     });
   }
 
-  // 3. Top Reading Progress Fill Bar & Header Elevation
-  const progressBar   = document.getElementById('topProgressFillBar');
-  const mainSiteHeader = document.getElementById('site-header');
+  // 4. Top Reading Progress Fill Bar & Header Scroll Elevation
+  const progressBar = document.getElementById('topProgressFill');
+  const mainHeader  = document.getElementById('couture-header');
 
   window.addEventListener('scroll', () => {
     const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = (window.scrollY / totalHeight) * 100;
     if (progressBar) progressBar.style.width = progress + '%';
-    if (mainSiteHeader) mainSiteHeader.classList.toggle('scrolled', window.scrollY > 40);
+    if (mainHeader) mainHeader.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
-  // 4. Mobile Menu Navigation Sheet
-  const mobileNavBtn = document.getElementById('mobileMenuToggleBtn');
-  const mobileCurtain = document.getElementById('mobileCurtainNav');
+  // 5. Mobile Full Nav Curtain
+  const mobileMenuBtn = document.getElementById('mobileMenuHamburgerBtn');
+  const mobileCurtain = document.getElementById('mobileFullNavCurtain');
 
-  if (mobileNavBtn && mobileCurtain) {
-    mobileNavBtn.addEventListener('click', () => {
+  if (mobileMenuBtn && mobileCurtain) {
+    mobileMenuBtn.addEventListener('click', () => {
       const isOpen = mobileCurtain.classList.toggle('open');
-      mobileNavBtn.classList.toggle('active', isOpen);
-      mobileNavBtn.setAttribute('aria-expanded', isOpen);
+      mobileMenuBtn.classList.toggle('active', isOpen);
+      mobileMenuBtn.setAttribute('aria-expanded', isOpen);
       mobileCurtain.setAttribute('aria-hidden', !isOpen);
     });
 
     mobileCurtain.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         mobileCurtain.classList.remove('open');
-        mobileNavBtn.classList.remove('active');
-        mobileNavBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
         mobileCurtain.setAttribute('aria-hidden', 'true');
       });
     });
   }
 
-  // 5. Smooth Anchor Scroll
+  // 6. Smooth Anchor Scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       const target = document.querySelector(anchor.getAttribute('href'));
@@ -1949,11 +2009,11 @@
     });
   });
 
-  // 6. Real-Time Fine Numeral Countdown
+  // 7. Real-Time Fine Numeral Countdown
   const TARGET_DATE = new Date('2026-10-24T14:30:00+02:00');
 
   function updateCountdown() {
-    const cdContainer = document.getElementById('countdownNumbersBlock');
+    const cdContainer = document.getElementById('countdownDigitsFlex');
     if (!cdContainer) return;
 
     const diff = TARGET_DATE - new Date();
@@ -1979,14 +2039,14 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 7. Before the Day Accordion
+  // 8. Before the Day Accordion
   ['Wear', 'Arrival', 'Rsvp'].forEach(k => {
     const btn   = document.getElementById('btnFaq' + k);
     const panel = document.getElementById('panelFaq' + k);
     if (btn && panel) {
       btn.addEventListener('click', () => {
         const isClosed = panel.style.display === 'none' || panel.style.display === '';
-        const arrow = btn.querySelector('.guidance-icon-arrow');
+        const arrow = btn.querySelector('.guidance-qa-arrow');
         if (isClosed) {
           panel.style.display = 'block';
           if (arrow) arrow.textContent = '▾';
@@ -2000,7 +2060,7 @@
     }
   });
 
-  // 8. Dynamic RSVP Form Handler
+  // 9. Dynamic RSVP Form Handler
   const rsvpFormNode    = document.getElementById('rsvpFormElement');
   const rsvpFeedbackBox = document.getElementById('rsvpFeedbackSuccess');
   const guestSelectEl   = document.getElementById('guestQuantitySelect');
@@ -2032,13 +2092,13 @@
         row.style.cssText = 'padding:1.1rem; margin-top:1.1rem; background:var(--parchment); border-radius:1px;';
         row.innerHTML = `
           <div style="font-family:var(--font-serif); font-size:1.1rem; color:var(--burgundy); margin-bottom:0.7rem;">Guest ${i}</div>
-          <div class="form-input-field-group" style="margin-bottom:0.8rem;">
-            <label class="form-field-header-label">Full Name</label>
-            <input type="text" class="form-text-input-box" name="guest_${i}_name" placeholder="Guest ${i}'s full name" style="padding:0.75rem 0.9rem;" />
+          <div class="form-row" style="margin-bottom:0.8rem;">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" name="guest_${i}_name" placeholder="Guest ${i}'s full name" style="padding:0.75rem 0.9rem;" />
           </div>
-          <div class="form-input-field-group" style="margin-bottom:0;">
-            <label class="form-field-header-label">Dietary Requirements (Optional)</label>
-            <input type="text" class="form-text-input-box" name="guest_${i}_dietary" placeholder="e.g. Vegetarian, Halal, None" style="padding:0.75rem 0.9rem;" />
+          <div class="form-row" style="margin-bottom:0;">
+            <label class="form-label">Dietary Requirements (Optional)</label>
+            <input type="text" class="form-input" name="guest_${i}_dietary" placeholder="e.g. Vegetarian, Halal, None" style="padding:0.75rem 0.9rem;" />
           </div>
         `;
         extraRowsBox.appendChild(row);
