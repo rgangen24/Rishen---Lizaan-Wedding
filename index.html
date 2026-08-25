@@ -1021,7 +1021,7 @@
     }
 
     /* ============================================================
-       7. AMONG THE VINES: ATMOSPHERE & ATTIRE
+       7. ATMOSPHERE & ATTIRE
     ============================================================ */
     #atmosphere {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -1465,7 +1465,7 @@
       <ul class="header-nav-links-list" role="list">
         <li><a href="#story">Our Story</a></li>
         <li><a href="#celebration">The Day</a></li>
-        <li><a href="#atmosphere">Among the Vines</a></li>
+        <li><a href="#atmosphere">Atmosphere</a></li>
         <li><a href="#venue">Venue &amp; Lodging</a></li>
         <li><a href="#rsvp">RSVP</a></li>
       </ul>
@@ -1485,7 +1485,7 @@
     <div class="mobile-full-nav-curtain" id="mobileFullNavCurtain" aria-label="Mobile navigation menu" aria-hidden="true">
       <a href="#story">Our Story</a>
       <a href="#celebration">The Day</a>
-      <a href="#atmosphere">Among the Vines</a>
+      <a href="#atmosphere">Atmosphere</a>
       <a href="#venue">Venue &amp; Lodging</a>
       <a href="#rsvp">RSVP</a>
     </div>
@@ -1647,7 +1647,7 @@
       </div>
     </section>
 
-    <!-- 3. THE GATHERING (MUTED SAGE VINEYARD BACKGROUND) -->
+    <!-- 3. THE GATHERING -->
     <section id="celebration" aria-labelledby="celebrationHeadingTitle">
       <div class="story-max-container">
         
@@ -1673,7 +1673,7 @@
             <div class="ceremony-event-content-box">
               <span class="ceremony-event-timestamp">14:15</span>
               <h3 class="ceremony-event-title">Guest Arrival &amp; Seating</h3>
-              <p class="ceremony-event-desc">Guests are warmly welcomed and seated among the vines before proceedings begin.</p>
+              <p class="ceremony-event-desc">Guests are warmly welcomed and seated before proceedings begin.</p>
             </div>
           </div>
 
@@ -1785,17 +1785,17 @@
       </div>
     </section>
 
-    <!-- 4. AMONG THE VINES: ATMOSPHERE & ATTIRE -->
+    <!-- 4. ATMOSPHERE & ATTIRE -->
     <section id="atmosphere" aria-labelledby="atmosphereHeadingTitle">
       <div class="story-max-container">
-        <h2 class="atmosphere-title-serif" id="atmosphereHeadingTitle">Among the Vines</h2>
+        <h2 class="atmosphere-title-serif" id="atmosphereHeadingTitle">Atmosphere &amp; Attire</h2>
 
         <div class="atmosphere-card-inner">
           <p class="atmosphere-poetic-quote-text">
-            “Come dressed for a beautiful afternoon in the Cape Winelands—where deep burgundy meets soft sage, and every detail is warmed by the light.”
+            “Come dressed for a beautiful celebration—where deep burgundy meets soft sage, and every moment is filled with warmth and joy.”
           </p>
           <p class="atmosphere-notes-paragraph">
-            Surrounded by rolling vineyards and sweeping mountain silhouettes, our celebration is an unhurried gathering of the people who mean the most to us. Guests are invited to dress elegantly, formally, semi-formally, or in beautiful traditional wear.
+            Our wedding is an unhurried, joyous gathering of the people who mean the most to us. Guests are warmly invited to dress elegantly, formally, semi-formally, or in beautiful traditional wear.
           </p>
         </div>
       </div>
@@ -1873,9 +1873,9 @@
       <div class="story-max-container">
         
         <div class="rsvp-header-center">
-          <h2 class="rsvp-title-serif" id="rsvpHeadingTitle">Will you join us among the vines?</h2>
+          <h2 class="rsvp-title-serif" id="rsvpHeadingTitle">Will you celebrate with us?</h2>
           <p class="rsvp-subquote">
-            We’d be so grateful to celebrate this beginning with you.
+            We’d be so grateful to share this special beginning with you.
           </p>
           <span class="rsvp-deadline-badge">
             Please respond by 24 September 2026
@@ -2043,13 +2043,13 @@
 
     setTimeout(() => {
       gatefoldOverlay.classList.add('opened');
-      sessionStorage.setItem('rl_invitation_butterfly_v5', 'true');
+      sessionStorage.setItem('rl_invitation_butterfly_v6', 'true');
     }, 750);
   }
 
   if (butterflyTrigger) butterflyTrigger.addEventListener('click', launchButterflyUnboxing);
 
-  if (sessionStorage.getItem('rl_invitation_butterfly_v5') === 'true') {
+  if (sessionStorage.getItem('rl_invitation_butterfly_v6') === 'true') {
     if (gatefoldOverlay) gatefoldOverlay.classList.add('opened');
   }
 
@@ -2141,7 +2141,7 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 8. Dynamic RSVP Form Handler with Sincere & Loving Confirmation
+  // 8. Dynamic RSVP Form Handler with Short, Heartfelt & Sincere Confirmation
   const rsvpFormNode    = document.getElementById('rsvpFormElement');
   const rsvpFeedbackBox = document.getElementById('rsvpFeedbackSuccess');
   const guestSelectEl   = document.getElementById('guestQuantitySelect');
@@ -2224,13 +2224,13 @@
       const feedbackSign  = document.getElementById('feedbackSignOff');
 
       if (attendInput.value === 'joyfully') {
-        if (feedbackTitle) feedbackTitle.textContent = `We cannot wait to celebrate with you, ${firstName}!`;
-        if (feedbackMsg) feedbackMsg.textContent = 'Thank you from the bottom of our hearts for your response. Having you join us among the vines at Highberry as we exchange our lifelong vows means more to us than words can say. We look forward to sharing this magical day, raising a glass, and creating memories with you that we will treasure forever.';
+        if (feedbackTitle) feedbackTitle.textContent = `We can’t wait to celebrate with you, ${firstName}!`;
+        if (feedbackMsg) feedbackMsg.textContent = 'Thank you from the bottom of our hearts. Having you with us as we exchange our vows means the absolute world to us. We look forward to sharing this unforgettable day and making beautiful memories together.';
         if (feedbackSign) feedbackSign.textContent = 'With all our love, Rishen & Lizaan';
       } else {
-        if (feedbackTitle) feedbackTitle.textContent = `Sending you all our love, ${firstName}.`;
-        if (feedbackMsg) feedbackMsg.textContent = 'Thank you so much for letting us know. While we will dearly miss your presence among the vines on our wedding day, we feel your love and blessings from afar. You hold a special place in our hearts as we begin this new chapter together.';
-        if (feedbackSign) feedbackSign.textContent = 'With warmest love and gratitude, Rishen & Lizaan';
+        if (feedbackTitle) feedbackTitle.textContent = `Sending you so much love, ${firstName}.`;
+        if (feedbackMsg) feedbackMsg.textContent = 'Thank you so much for letting us know. You will be dearly missed on our special day, but we carry your love, prayers, and warm blessings with us into this new chapter.';
+        if (feedbackSign) feedbackSign.textContent = 'With all our love, Rishen & Lizaan';
       }
 
       rsvpFormNode.style.display = 'none';
