@@ -68,7 +68,7 @@
       color: var(--text-main);
       font-family: var(--font-body);
       font-weight: 400;
-      line-height: 1.8;
+      line-height: 1.85;
       overflow-x: hidden;
     }
 
@@ -314,10 +314,10 @@
     .dropcap {
       float: left;
       font-family: var(--font-luxury);
-      font-size: clamp(2.6rem, 3.8vw, 3.4rem);
+      font-size: clamp(3rem, 4.5vw, 3.8rem);
       line-height: 0.8;
       padding-top: 4px;
-      padding-right: 10px;
+      padding-right: 12px;
       padding-bottom: 2px;
       color: var(--burgundy);
       font-weight: 600;
@@ -329,68 +329,68 @@
     .reveal-delay-1 { transition-delay: 0.15s; }
 
     /* ============================================================
-       OUR STORY: EXACT MAGAZINE SPREAD (PHOTOS LEFT, STORY RIGHT ACROSS ALL SCREENS)
+       OUR STORY: BORDERLESS HAUTE-COUTURE MAGAZINE EDITORIAL
     ============================================================ */
     #story {
       background: var(--ivory);
-      padding: clamp(3.5rem, 6vw, 6.5rem) 1.2rem;
+      padding: clamp(4rem, 7vw, 6.5rem) 1.5rem;
     }
 
-    /* Preserves Side-by-Side on desktop and mobile */
-    .magazine-story-spread {
-      margin-top: 3rem;
-      display: grid;
-      grid-template-columns: 0.95fr 1.25fr;
-      gap: clamp(1.2rem, 3.5vw, 4.5rem);
-      align-items: start;
+    /* Story Section Header */
+    .story-header {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 3.5rem;
     }
 
-    @media (max-width: 768px) {
-      .magazine-story-spread {
-        grid-template-columns: minmax(115px, 36%) 1fr;
-        gap: 0.85rem;
-      }
-    }
-
-    /* Left Column: Mixed & Unique Funky Photo Stack */
-    .magazine-photo-column {
+    /* Editorial Story Chapter Flow (Free-flowing, no box borders, no cards) */
+    .story-magazine-flow {
       display: flex;
       flex-direction: column;
-      gap: clamp(1.4rem, 3vw, 2.8rem);
-      position: sticky;
-      top: 5rem;
+      gap: clamp(3.5rem, 6.5vw, 5.5rem);
     }
 
-    @media (max-width: 768px) {
-      .magazine-photo-column {
-        position: static;
-        gap: 1.2rem;
+    /* Chapter Row: Photo on Left, Story on Right */
+    .magazine-chapter-row {
+      display: grid;
+      grid-template-columns: 0.9fr 1.25fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+    }
+
+    @media (max-width: 820px) {
+      .magazine-chapter-row {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
       }
     }
 
-    /* Unique Polaroid / Editorial Matting Cards (No Stickers) */
+    .chapter-photo-col {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* Funky Polaroid / Editorial Matting (No Tape Stickers, Soft Ambient Glow) */
     .chic-photo-card {
       position: relative;
       background: var(--white);
-      padding: clamp(6px, 1.2vw, 14px);
+      padding: clamp(10px, 1.8vw, 14px);
       border-radius: 3px;
-      box-shadow: 0 12px 30px rgba(56, 10, 19, 0.08);
+      box-shadow: 0 14px 35px rgba(56, 10, 19, 0.08);
+      max-width: 360px;
+      width: 100%;
       transition: transform 0.4s var(--ease-luxury), box-shadow 0.4s var(--ease-luxury);
     }
     .chic-photo-card:hover {
       transform: translateY(-4px) scale(1.02) !important;
-      box-shadow: 0 18px 40px rgba(56, 10, 19, 0.14);
-      z-index: 5;
+      box-shadow: 0 20px 45px rgba(56, 10, 19, 0.14);
     }
 
-    /* Signature Funky Tilts */
+    /* Organic Signature Tilts */
     .chic-photo-card--1 { transform: rotate(-2.5deg); }
     .chic-photo-card--2 { transform: rotate(2deg); }
-    .chic-photo-card--3 { transform: rotate(-1.5deg); }
-
-    @media (min-width: 769px) {
-      .chic-photo-card--2 { margin-left: clamp(1rem, 2.5vw, 2.2rem); }
-    }
+    .chic-photo-card--3 { transform: rotate(-1.8deg); }
 
     .chic-photo-card img {
       width: 100%;
@@ -400,74 +400,72 @@
     }
     .chic-photo-caption {
       font-family: var(--font-serif); font-style: italic;
-      font-size: clamp(0.72rem, 1.2vw, 1rem);
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
       color: var(--burgundy);
       text-align: center;
-      margin-top: 0.5rem;
-      line-height: 1.3;
+      margin-top: 0.75rem;
+      line-height: 1.4;
     }
 
-    /* Right Column: Flowing Story Magazine Articles */
-    .magazine-story-column {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(1.2rem, 2.5vw, 2.6rem);
+    /* Chapter Narrative: Completely Borderless & Free-Flowing */
+    .chapter-story-col {
+      width: 100%;
     }
 
-    .magazine-chapter-card {
-      background: var(--white);
-      padding: clamp(1.1rem, 2.5vw, 2.4rem);
-      border-radius: 4px;
-      box-shadow: 0 6px 24px rgba(56, 10, 19, 0.04);
-      transition: transform 0.3s;
+    .chapter-story-article {
+      background: transparent;
+      padding: 0;
+      border: none;
+      box-shadow: none;
     }
 
-    .magazine-chapter-card h3 {
+    .chapter-story-article h3 {
       font-family: var(--font-luxury);
-      font-size: clamp(1.18rem, 2.2vw, 2.05rem);
+      font-size: clamp(1.6rem, 2.8vw, 2.3rem);
       font-weight: 400; color: var(--burgundy);
-      line-height: 1.25; margin: 0.5rem 0 0.8rem;
+      line-height: 1.25; margin: 0.7rem 0 1rem;
     }
-    .magazine-pull-quote {
+    .chapter-pull-quote {
       font-family: var(--font-serif); font-style: italic;
-      font-size: clamp(0.85rem, 1.4vw, 1.15rem);
+      font-size: clamp(1.05rem, 1.8vw, 1.22rem);
       color: var(--burgundy-soft);
-      line-height: 1.55; margin-bottom: 0.8rem;
-      padding-left: 0.75rem; border-left: 2.5px solid var(--gold);
+      line-height: 1.6; margin-bottom: 1.1rem;
+      padding-left: 1rem; border-left: 2.5px solid var(--gold);
     }
-    .magazine-chapter-card p {
+    .chapter-story-article p {
       font-family: var(--font-body);
-      font-size: clamp(0.82rem, 1.2vw, 0.98rem);
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
       font-weight: 400;
       color: var(--text-main);
-      line-height: 1.8; margin-bottom: 0.8rem;
+      line-height: 1.9; margin-bottom: 1rem;
     }
-    .magazine-chapter-card p:last-child { margin-bottom: 0; }
+    .chapter-story-article p:last-child { margin-bottom: 0; }
 
-    /* Scripture Emblem */
+    /* Free-Flowing Scripture Emblem */
     .scripture-magazine-card {
-      margin-top: 0.8rem;
-      background: linear-gradient(145deg, #EFF5EE 0%, #E2EBE0 100%);
-      padding: clamp(1.4rem, 2.8vw, 2.5rem) 1.2rem;
-      border-radius: 4px;
+      margin-top: 4.5rem;
+      background: transparent;
+      border: none;
+      padding: 2rem 1rem;
       text-align: center;
-      box-shadow: 0 8px 25px rgba(77, 102, 69, 0.08);
+      box-shadow: none;
     }
     .scripture-text {
       font-family: var(--font-serif); font-style: italic;
-      font-size: clamp(1.2rem, 2.2vw, 1.95rem);
+      font-size: clamp(1.5rem, 3.2vw, 2.3rem);
       color: var(--burgundy); font-weight: 400; line-height: 1.5;
     }
     .scripture-verse-ref {
-      font-family: var(--font-caps); font-size: 0.75rem; font-weight: 600;
+      font-family: var(--font-caps); font-size: 0.82rem; font-weight: 600;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--sage-dark); margin-top: 0.7rem;
+      color: var(--sage-dark); margin-top: 0.9rem;
     }
     .scripture-footnote {
-      margin-top: 0.9rem;
+      margin-top: 1.3rem;
       font-family: var(--font-serif); font-style: italic;
-      font-size: clamp(0.88rem, 1.4vw, 1.12rem);
-      color: var(--text-main); line-height: 1.65;
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      color: var(--text-main); line-height: 1.75;
+      max-width: 680px; margin-left: auto; margin-right: auto;
     }
 
     /* ============================================================
@@ -828,11 +826,11 @@
       </div>
     </section>
 
-    <!-- OUR STORY: EXACT MAGAZINE SPREAD (PHOTOS LEFT, STORY RIGHT ACROSS ALL SCREENS) -->
+    <!-- OUR STORY: BORDERLESS HAUTE-COUTURE MAGAZINE EDITORIAL -->
     <section id="story" class="section" aria-labelledby="storyHeading">
       <div class="section-inner">
         
-        <div class="reveal" style="text-align: center; max-width: 820px; margin: 0 auto;">
+        <div class="story-header reveal">
           <span class="badge-pill badge-pill--sage">A Celebration of True Love</span>
           <h2 class="section-heading" id="storyHeading" style="margin-top: 1.2rem;">Our Story 🤍</h2>
           <p style="font-family: var(--font-serif); font-style: italic; font-size: clamp(1.25rem, 2.8vw, 1.6rem); color: var(--burgundy); margin-top: 0.8rem; font-weight: 500;">
@@ -843,85 +841,87 @@
           </p>
         </div>
 
-        <div class="magazine-story-spread">
+        <div class="story-magazine-flow">
 
-          <!-- LEFT COLUMN: MIXED & UNIQUE FUNKY PHOTO STACK (NO TOP STICKERS) -->
-          <div class="magazine-photo-column reveal">
-            
-            <!-- Photo 1 -->
-            <div class="chic-photo-card chic-photo-card--1">
-              <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan standing outdoors" loading="lazy" />
-              <p class="chic-photo-caption">“Where paths crossed in the quietest moment.”</p>
+          <!-- CHAPTER 1: THE GLANCE -->
+          <div class="magazine-chapter-row reveal">
+            <div class="chapter-photo-col">
+              <div class="chic-photo-card chic-photo-card--1">
+                <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan standing together outdoors" loading="lazy" />
+                <p class="chic-photo-caption">“Where paths crossed in the quietest moment.”</p>
+              </div>
             </div>
-
-            <!-- Photo 2 -->
-            <div class="chic-photo-card chic-photo-card--2">
-              <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan close-up portrait" loading="lazy" />
-              <p class="chic-photo-caption">“Two people who became each other's favourite hello.”</p>
+            <div class="chapter-story-col">
+              <div class="chapter-story-article">
+                <span class="badge-pill badge-pill--burgundy">Chapter 01 &nbsp;&middot;&nbsp; The Glance</span>
+                <h3>Love at first sight — although neither was brave enough to speak!</h3>
+                <div class="chapter-pull-quote">
+                  “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
+                </div>
+                <p><span class="dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members.</p>
+                <p>There was an instant spark — that rare feeling where the rest of the room fades away. It was true love at first sight — although neither of them was quite brave enough to actually say a word to the other in that moment 😂!</p>
+              </div>
             </div>
-
-            <!-- Photo 3 -->
-            <div class="chic-photo-card chic-photo-card--3">
-              <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing together in hats" loading="lazy" />
-              <p class="chic-photo-caption">“Late-night conversations, inside jokes &amp; laughter.”</p>
-            </div>
-
           </div>
 
-          <!-- RIGHT COLUMN: FLOWING STORY NARRATIVE MAGAZINE ARTICLES -->
-          <div class="magazine-story-column reveal reveal-delay-1">
-
-            <!-- Chapter 1 -->
-            <div class="magazine-chapter-card">
-              <span class="badge-pill badge-pill--burgundy">Chapter 01 &nbsp;&middot;&nbsp; The Glance</span>
-              <h3>Love at first sight — although neither was brave enough to speak!</h3>
-              <div class="magazine-pull-quote">
-                “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
-              </div>
-              <p><span class="dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members.</p>
-              <p>There was an instant spark — that rare feeling where the rest of the room fades away. It was true love at first sight — although neither of them was quite brave enough to actually say a word to the other in that moment 😂!</p>
-            </div>
-
-            <!-- Chapter 2 -->
-            <div class="magazine-chapter-card">
-              <span class="badge-pill badge-pill--sage">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
-              <h3>The conversation that never happened in person began over text.</h3>
-              <div class="magazine-pull-quote">
-                “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
-              </div>
-              <p><span class="dropcap">A</span> few days later, Rishen still couldn't get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that was meant to be began.</p>
-              <p>Messages turned into late-night phone calls, inside jokes, and countless memories. Two people who were once too shy to speak became each other's favourite good morning and favourite good night.</p>
-            </div>
-
-            <!-- Chapter 3 -->
-            <div class="magazine-chapter-card">
-              <span class="badge-pill badge-pill--burgundy">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
-              <h3>Like iron sharpens iron — to encourage, strengthen and love.</h3>
-              <div class="magazine-pull-quote">
-                “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
-              </div>
-              <p><span class="dropcap">S</span>ince then, we've shared so many unforgettable moments together — adventures, laughter, milestones, and quiet days made special simply by being with each other.</p>
-              <p><strong>Like iron sharpens iron.</strong> We are committed to encouraging, strengthening, and bringing out the very best in one another.</p>
-              <p>Now, as we prepare to become husband and wife, we're filled with gratitude for everything that brought us here, and excitement for every chapter God has planned for us.</p>
-            </div>
-
-            <!-- Scripture Emblem -->
-            <div class="scripture-magazine-card">
-              <div style="color:var(--sage-mid); font-size:1.8rem; margin-bottom:0.4rem;">❦</div>
-              <p class="scripture-text">
-                “Therefore what God has joined together,<br>let no one separate.”
-              </p>
-              <p class="scripture-verse-ref">Matthew 19 : 6</p>
-              <p class="scripture-footnote">
-                And so, what began with a glance, grew through messages, and blossomed into a love we never expected, is becoming forever 🤍.
-              </p>
-              <div style="margin-top:1.2rem;">
-                <span class="badge-pill badge-pill--burgundy" style="font-size:0.72rem;">Our Greatest Adventure is Just Beginning</span>
+          <!-- CHAPTER 2: THE CONVERSATION -->
+          <div class="magazine-chapter-row reveal reveal-delay-1">
+            <div class="chapter-photo-col">
+              <div class="chic-photo-card chic-photo-card--2">
+                <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan close-up portrait" loading="lazy" />
+                <p class="chic-photo-caption">“Two people who became each other's favourite hello.”</p>
               </div>
             </div>
-
+            <div class="chapter-story-col">
+              <div class="chapter-story-article">
+                <span class="badge-pill badge-pill--sage">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
+                <h3>The conversation that never happened in person began over text.</h3>
+                <div class="chapter-pull-quote">
+                  “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
+                </div>
+                <p><span class="dropcap">A</span> few days later, Rishen still couldn't get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that was meant to be began.</p>
+                <p>Messages turned into late-night phone calls, inside jokes, and countless memories. Two people who were once too shy to speak became each other's favourite good morning and favourite good night.</p>
+              </div>
+            </div>
           </div>
 
+          <!-- CHAPTER 3: FAITH & FOREVER -->
+          <div class="magazine-chapter-row reveal">
+            <div class="chapter-photo-col">
+              <div class="chic-photo-card chic-photo-card--3">
+                <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing together in hats" loading="lazy" />
+                <p class="chic-photo-caption">“Late-night conversations, inside jokes &amp; laughter.”</p>
+              </div>
+            </div>
+            <div class="chapter-story-col">
+              <div class="chapter-story-article">
+                <span class="badge-pill badge-pill--burgundy">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
+                <h3>Like iron sharpens iron — to encourage, strengthen and love.</h3>
+                <div class="chapter-pull-quote">
+                  “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
+                </div>
+                <p><span class="dropcap">S</span>ince then, we've shared so many unforgettable moments together — adventures, laughter, milestones, and quiet days made special simply by being with each other.</p>
+                <p><strong>Like iron sharpens iron.</strong> We are committed to encouraging, strengthening, and bringing out the very best in one another.</p>
+                <p>Now, as we prepare to become husband and wife, we're filled with gratitude for everything that brought us here, and excitement for every chapter God has planned for us.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Scripture Emblem -->
+        <div class="scripture-magazine-card reveal">
+          <div style="color:var(--sage-mid); font-size:1.8rem; margin-bottom:0.4rem;">❦</div>
+          <p class="scripture-text">
+            “Therefore what God has joined together,<br>let no one separate.”
+          </p>
+          <p class="scripture-verse-ref">Matthew 19 : 6</p>
+          <p class="scripture-footnote">
+            And so, what began with a glance, grew through messages, and blossomed into a love we never expected, is becoming forever 🤍.
+          </p>
+          <div style="margin-top:1.4rem;">
+            <span class="badge-pill badge-pill--burgundy" style="font-size:0.72rem;">Our Greatest Adventure is Just Beginning</span>
+          </div>
         </div>
 
       </div>
