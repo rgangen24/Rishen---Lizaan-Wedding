@@ -301,10 +301,10 @@
        SECTION BASE & SAGE/BURGUNDY UTILITIES
     ============================================================ */
     .section {
-      padding: clamp(5rem, 8vw, 7.5rem) 1.5rem;
+      padding: clamp(4.5rem, 7vw, 6.5rem) 1.5rem;
       position: relative;
     }
-    .section-inner { max-width: 1160px; margin: 0 auto; position: relative; z-index: 2; }
+    .section-inner { max-width: 1180px; margin: 0 auto; position: relative; z-index: 2; }
     
     .badge-pill {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -328,7 +328,7 @@
       margin: 1rem auto 1.4rem;
     }
     .section-heading {
-      font-family: var(--font-luxury); font-size: clamp(2.5rem, 5.5vw, 4.4rem);
+      font-family: var(--font-luxury); font-size: clamp(2.5rem, 5vw, 4.2rem);
       font-weight: 400; color: var(--burgundy); line-height: 1.15; letter-spacing: 0.02em;
     }
 
@@ -336,7 +336,7 @@
     .dropcap {
       float: left;
       font-family: var(--font-luxury);
-      font-size: 3.4rem;
+      font-size: 3.2rem;
       line-height: 0.8;
       padding-top: 4px;
       padding-right: 10px;
@@ -351,7 +351,7 @@
     .reveal-delay-1 { transition-delay: 0.15s; }
 
     /* ============================================================
-       OUR STORY: UNIQUE FUNKY-CHIC MAGAZINE SPREAD WITH PAGE SWITCHER
+       OUR STORY: COMPLETE 1-PAGE EDITORIAL MAGAZINE SPREAD
     ============================================================ */
     #story {
       background: var(--ivory);
@@ -359,186 +359,111 @@
       border-bottom: 1px solid var(--sage-pale);
     }
 
-    /* Chapter Navigation Tabs (Clean page-like switcher on mobile & desktop) */
-    .chapter-tab-nav {
-      display: flex; justify-content: center; gap: 0.8rem;
-      margin: 2.8rem auto 0; max-width: 680px; flex-wrap: wrap;
-    }
-    .chapter-tab-btn {
-      padding: 0.75rem 1.4rem;
-      border-radius: 50px;
-      background: var(--white);
-      border: 1.5px solid var(--sage-pale);
-      color: var(--text-muted);
-      font-family: var(--font-caps); font-size: 0.7rem; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s var(--ease-luxury);
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      box-shadow: 0 2px 10px rgba(56, 10, 19, 0.04);
-    }
-    .chapter-tab-btn:hover {
-      border-color: var(--sage-light); color: var(--burgundy);
-      transform: translateY(-2px);
-    }
-    .chapter-tab-btn.active {
-      background: var(--burgundy);
-      border-color: var(--burgundy);
-      color: var(--white);
-      box-shadow: 0 6px 20px rgba(88, 18, 32, 0.25);
-    }
-    .chapter-tab-btn.active .tab-dot {
-      background: var(--gold-light);
-    }
-    .tab-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--sage); transition: background 0.3s;
-    }
-
-    /* Chapter Pages Container */
-    .chapter-slider {
-      margin-top: 2.5rem;
-      position: relative;
-    }
-
-    .chapter-page {
-      display: none;
-      animation: pageFadeIn 0.5s var(--ease-reveal) forwards;
-    }
-    .chapter-page.active {
-      display: block;
-    }
-
-    @keyframes pageFadeIn {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .chapter-page-grid {
+    .story-spread {
       display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      gap: clamp(2rem, 4.5vw, 4.5rem);
-      align-items: center;
-      background: var(--white);
-      padding: clamp(1.8rem, 4vw, 3.5rem);
-      border-radius: 6px;
-      border: 1px solid var(--sage-pale);
-      box-shadow: 0 16px 45px rgba(56, 10, 19, 0.06);
-      position: relative;
+      grid-template-columns: 0.95fr 1.2fr;
+      gap: clamp(2.5rem, 5vw, 4.5rem);
+      align-items: start;
+      margin-top: 3.5rem;
     }
-    @media (max-width: 860px) {
-      .chapter-page-grid {
+    @media (max-width: 900px) {
+      .story-spread {
         grid-template-columns: 1fr;
-        gap: 2.2rem;
-        padding: 1.5rem 1.2rem;
+        gap: 3rem;
       }
     }
 
-    /* Unique Funky-Chic Photo Frame Styling */
-    .funky-photo-wrap {
+    /* Left: Unique Funky-Chic Photo Collage (No Top Stickers) */
+    .story-collage-wrap {
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+
+    .chic-photo-card {
       position: relative;
-      max-width: 440px;
-      margin: 0 auto;
-      width: 100%;
-    }
-    .funky-photo-backdrop {
-      position: absolute; inset: -10px -10px 10px 10px;
-      background: linear-gradient(135deg, var(--sage-pale) 0%, var(--sage-mist) 100%);
-      border: 1.5px dashed var(--sage-light);
-      border-radius: 4px;
-      transform: rotate(-3deg);
-      z-index: 1;
-      transition: transform 0.4s var(--ease-luxury);
-    }
-    .chapter-page-grid:hover .funky-photo-backdrop {
-      transform: rotate(-1deg) scale(1.02);
-    }
-    .funky-photo-card {
-      position: relative; z-index: 2;
       background: var(--white);
       padding: 12px 12px 16px;
       border-radius: 3px;
       border: 1px solid rgba(196, 164, 98, 0.4);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
-      transform: rotate(1.5deg);
-      transition: transform 0.4s var(--ease-luxury);
+      box-shadow: 0 12px 35px rgba(56, 10, 19, 0.08);
+      transition: transform 0.35s var(--ease-luxury), box-shadow 0.35s var(--ease-luxury);
     }
-    .chapter-page-grid:hover .funky-photo-card {
-      transform: rotate(0deg);
+    .chic-photo-card:hover {
+      transform: translateY(-4px) scale(1.01) !important;
+      box-shadow: 0 18px 45px rgba(56, 10, 19, 0.14);
+      z-index: 5;
     }
-    .funky-photo-card img {
+
+    /* Organic stylish tilts */
+    .chic-photo-card--1 { transform: rotate(-2deg); }
+    .chic-photo-card--2 { transform: rotate(1.8deg); margin-left: clamp(1rem, 3vw, 2.5rem); margin-top: -0.8rem; }
+    .chic-photo-card--3 { transform: rotate(-1.5deg); margin-top: -0.8rem; }
+
+    @media (max-width: 900px) {
+      .chic-photo-card--1, .chic-photo-card--2, .chic-photo-card--3 {
+        transform: none; margin-left: 0; margin-top: 0;
+      }
+    }
+
+    .chic-photo-card img {
       width: 100%; height: auto;
       border-radius: 2px;
     }
-    .funky-caption {
-      font-family: var(--font-script);
-      font-size: 1.45rem;
-      color: var(--burgundy);
-      text-align: center;
-      margin-top: 0.6rem;
-      line-height: 1.3;
+    .chic-photo-caption {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 0.94rem; color: var(--burgundy);
+      text-align: center; margin-top: 0.7rem; line-height: 1.4;
     }
 
-    /* Editorial Story Styling */
-    .chapter-text-content {
-      display: flex; flex-direction: column;
+    /* Right: Rich Flowing Story Chapters (All on 1 Page) */
+    .story-chapters-flow {
+      display: flex; flex-direction: column; gap: 2rem;
     }
-    .chapter-meta-tag {
-      font-family: var(--font-caps); font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.26em; text-transform: uppercase;
-      color: var(--sage); margin-bottom: 0.6rem;
+
+    .story-chapter-box {
+      background: var(--white);
+      padding: 2.2rem 2rem;
+      border-radius: 4px;
+      border: 1px solid var(--sage-pale);
+      border-left: 4px solid var(--sage);
+      box-shadow: 0 6px 22px rgba(56, 10, 19, 0.04);
     }
-    .chapter-title {
+    @media (max-width: 600px) {
+      .story-chapter-box { padding: 1.6rem 1.3rem; }
+    }
+
+    .story-chapter-box h3 {
       font-family: var(--font-luxury);
-      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-size: clamp(1.45rem, 2.6vw, 1.95rem);
       font-weight: 400; color: var(--burgundy);
-      line-height: 1.25; margin-bottom: 1.2rem;
+      line-height: 1.3; margin: 0.6rem 0 1rem;
     }
-    .chapter-lead-quote {
+    .story-chapter-quote {
       font-family: var(--font-serif); font-style: italic;
-      font-size: 1.15rem; color: var(--burgundy-soft);
-      line-height: 1.6; margin-bottom: 1.2rem;
-      padding-left: 1rem; border-left: 2.5px solid var(--gold);
+      font-size: 1.08rem; color: var(--burgundy-soft);
+      line-height: 1.6; margin-bottom: 1rem;
+      padding-left: 0.9rem; border-left: 2px solid var(--gold);
     }
-    .chapter-body p {
+    .story-chapter-box p {
       font-family: var(--font-body);
       font-size: 0.95rem; font-weight: 400;
       color: var(--text-main);
-      line-height: 1.9; margin-bottom: 1rem;
+      line-height: 1.85; margin-bottom: 0.9rem;
     }
-    .chapter-body p:last-child { margin-bottom: 0; }
-
-    /* Chapter Switcher Controls (Next / Prev) */
-    .chapter-controls {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-top: 2rem; padding-top: 1.5rem;
-      border-top: 1px solid var(--sage-pale);
-    }
-    .btn-chapter-nav {
-      font-family: var(--font-caps); font-size: 0.68rem; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--burgundy); display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.5rem 1rem; border-radius: 30px; background: var(--sage-mist);
-      transition: all 0.25s; cursor: pointer;
-    }
-    .btn-chapter-nav:hover {
-      background: var(--sage-pale); color: var(--burgundy-deep);
-      transform: translateY(-1px);
-    }
+    .story-chapter-box p:last-child { margin-bottom: 0; }
 
     /* Scripture Feature Card */
     .scripture-luxury-card {
-      margin-top: 3.5rem;
+      margin-top: 2.5rem;
       background: linear-gradient(145deg, #EFF5EE 0%, #E2EBE0 100%);
       border: 1.5px solid var(--sage-light);
       border-radius: 4px;
-      padding: 2.8rem 2rem;
+      padding: 2.5rem 2rem;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(77, 102, 69, 0.1);
+      box-shadow: 0 10px 30px rgba(77, 102, 69, 0.08);
     }
     .scripture-text {
       font-family: var(--font-serif); font-style: italic;
-      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      font-size: clamp(1.4rem, 2.8vw, 1.95rem);
       color: var(--burgundy); font-weight: 400; line-height: 1.5;
     }
     .scripture-verse-ref {
@@ -547,9 +472,9 @@
       color: var(--sage-dark); margin-top: 0.9rem;
     }
     .scripture-footnote {
-      margin-top: 1.4rem;
+      margin-top: 1.3rem;
       font-family: var(--font-serif); font-style: italic;
-      font-size: 1.15rem; color: var(--text-main); line-height: 1.7;
+      font-size: 1.12rem; color: var(--text-main); line-height: 1.7;
     }
 
     /* ============================================================
@@ -919,7 +844,7 @@
       </div>
     </section>
 
-    <!-- OUR STORY: BEAUTIFUL CHAPTER BOOKLET WITH FUNKY-CHIC PICS -->
+    <!-- OUR STORY: BEAUTIFUL 1-PAGE EDITORIAL SPREAD (NO TABS, NO CLICKING) -->
     <section id="story" class="section" aria-labelledby="storyHeading">
       <div class="section-inner">
         
@@ -935,150 +860,85 @@
           </p>
         </div>
 
-        <!-- Interactive Chapter Tabs: Easy 1-Tap Switching (Eliminates Endless Mobile Scrolling) -->
-        <div class="chapter-tab-nav reveal" role="tablist" aria-label="Story Chapters">
-          <button class="chapter-tab-btn active" data-chapter="1" role="tab" aria-selected="true" aria-controls="chapterPage1">
-            <span class="tab-dot"></span> 01 &middot; The Glance
-          </button>
-          <button class="chapter-tab-btn" data-chapter="2" role="tab" aria-selected="false" aria-controls="chapterPage2">
-            <span class="tab-dot"></span> 02 &middot; The Text
-          </button>
-          <button class="chapter-tab-btn" data-chapter="3" role="tab" aria-selected="false" aria-controls="chapterPage3">
-            <span class="tab-dot"></span> 03 &middot; Faith &amp; Forever
-          </button>
-        </div>
+        <div class="story-spread">
 
-        <!-- Chapter Pages Slider -->
-        <div class="chapter-slider reveal reveal-delay-1">
-
-          <!-- PAGE 1: THE GLANCE -->
-          <div class="chapter-page active" id="chapterPage1" role="tabpanel">
-            <div class="chapter-page-grid">
-              
-              <!-- Funky Chic Photo Display -->
-              <div class="funky-photo-wrap">
-                <div class="funky-photo-backdrop" aria-hidden="true"></div>
-                <div class="funky-photo-card">
-                  <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan standing together outdoors" loading="lazy" />
-                  <p class="funky-caption">“Where paths crossed in the quietest moment.”</p>
-                </div>
-              </div>
-
-              <!-- Editorial Story Narrative -->
-              <div class="chapter-text-content">
-                <span class="chapter-meta-tag">Chapter 01 &nbsp;&middot;&nbsp; The First Glance</span>
-                <h3 class="chapter-title">Love at first sight — although neither was brave enough to speak!</h3>
-                <div class="chapter-lead-quote">
-                  “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
-                </div>
-                <div class="chapter-body">
-                  <p><span class="dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members.</p>
-                  <p>There was an instant spark — that rare, unforgettable feeling where the rest of the room fades away.</p>
-                  <p>It was true love at first sight — although neither of them was quite brave enough to actually say a word to the other in that moment 😂!</p>
-                </div>
-                
-                <div class="chapter-controls">
-                  <span style="font-family:var(--font-caps); font-size:0.68rem; color:var(--text-soft); letter-spacing:0.15em;">Page 1 of 3</span>
-                  <button class="btn-chapter-nav" onclick="switchChapter(2)">
-                    Next: The Text ⟶
-                  </button>
-                </div>
-              </div>
-
+          <!-- LEFT COLUMN: FUNKY-CHIC PHOTO STACK (ALL 3 UNIQUE PICS, NO TAPE CLIPS) -->
+          <div class="story-collage-wrap reveal">
+            
+            <!-- Photo 1 -->
+            <div class="chic-photo-card chic-photo-card--1">
+              <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan standing together outdoors" loading="lazy" />
+              <p class="chic-photo-caption">“Where paths crossed in the quietest moment.”</p>
             </div>
-          </div>
 
-          <!-- PAGE 2: THE CONVERSATION -->
-          <div class="chapter-page" id="chapterPage2" role="tabpanel">
-            <div class="chapter-page-grid">
-              
-              <!-- Funky Chic Photo Display -->
-              <div class="funky-photo-wrap">
-                <div class="funky-photo-backdrop" style="transform: rotate(3deg);" aria-hidden="true"></div>
-                <div class="funky-photo-card" style="transform: rotate(-1.5deg);">
-                  <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan close-up portrait" loading="lazy" />
-                  <p class="funky-caption">“Two people who became each other's favourite hello.”</p>
-                </div>
-              </div>
-
-              <!-- Editorial Story Narrative -->
-              <div class="chapter-text-content">
-                <span class="chapter-meta-tag">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
-                <h3 class="chapter-title">The conversation that never happened in person began over text.</h3>
-                <div class="chapter-lead-quote">
-                  “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
-                </div>
-                <div class="chapter-body">
-                  <p><span class="dropcap">A</span> few days later, Rishen still couldn't get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that was meant to be began.</p>
-                  <p>Messages turned into late-night phone calls, inside jokes, and hours of talking about everything under the sun.</p>
-                  <p>Somewhere between the good morning texts and counting down the hours to speak again, two people who were once too shy to speak became each other's favourite good morning and favourite good night.</p>
-                </div>
-
-                <div class="chapter-controls">
-                  <button class="btn-chapter-nav" onclick="switchChapter(1)">
-                    ⟵ Prev: The Glance
-                  </button>
-                  <button class="btn-chapter-nav" onclick="switchChapter(3)">
-                    Next: Faith &amp; Forever ⟶
-                  </button>
-                </div>
-              </div>
-
+            <!-- Photo 2 -->
+            <div class="chic-photo-card chic-photo-card--2">
+              <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan close-up portrait" loading="lazy" />
+              <p class="chic-photo-caption">“Two people who became each other's favourite hello.”</p>
             </div>
-          </div>
 
-          <!-- PAGE 3: FAITH & FOREVER -->
-          <div class="chapter-page" id="chapterPage3" role="tabpanel">
-            <div class="chapter-page-grid">
-              
-              <!-- Funky Chic Photo Display -->
-              <div class="funky-photo-wrap">
-                <div class="funky-photo-backdrop" style="transform: rotate(-2.5deg);" aria-hidden="true"></div>
-                <div class="funky-photo-card" style="transform: rotate(2deg);">
-                  <img src="images/couple-fun.jpg" alt="Rishen and Lizaan smiling together" loading="lazy" />
-                  <p class="funky-caption">“Inside jokes, laughter &amp; building a lifetime together.”</p>
-                </div>
-              </div>
-
-              <!-- Editorial Story Narrative -->
-              <div class="chapter-text-content">
-                <span class="chapter-meta-tag">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
-                <h3 class="chapter-title">Like iron sharpens iron — to encourage, strengthen and love.</h3>
-                <div class="chapter-lead-quote">
-                  “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
-                </div>
-                <div class="chapter-body">
-                  <p><span class="dropcap">S</span>ince then, we've shared so many unforgettable moments — adventures, deep laughter, milestones, and quiet days made special simply by having each other near.</p>
-                  <p><strong>Like iron sharpens iron.</strong> We are committed to encouraging, strengthening, and bringing out the very best in one another.</p>
-                  <p>Now, as we prepare to stand before God and our loved ones to become husband and wife, we are filled with overflowing gratitude and joy for every chapter to come.</p>
-                </div>
-
-                <div class="chapter-controls">
-                  <button class="btn-chapter-nav" onclick="switchChapter(2)">
-                    ⟵ Prev: The Text
-                  </button>
-                  <span style="font-family:var(--font-caps); font-size:0.68rem; color:var(--sage-dark); font-weight:700;">♡ Forever &amp; Always</span>
-                </div>
-              </div>
-
+            <!-- Photo 3 -->
+            <div class="chic-photo-card chic-photo-card--3">
+              <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing together" loading="lazy" />
+              <p class="chic-photo-caption">“Late-night conversations, inside jokes &amp; laughter.”</p>
             </div>
+
           </div>
 
-        </div>
+          <!-- RIGHT COLUMN: SEAMLESS 1-PAGE STORY NARRATIVE -->
+          <div class="story-chapters-flow reveal reveal-delay-1">
 
-        <!-- Scripture Badge -->
-        <div class="scripture-luxury-card reveal">
-          <div style="color:var(--sage-mid); font-size:1.8rem; margin-bottom:0.5rem;">❦</div>
-          <p class="scripture-text">
-            “Therefore what God has joined together,<br>let no one separate.”
-          </p>
-          <p class="scripture-verse-ref">Matthew 19 : 6</p>
-          <p class="scripture-footnote">
-            And so, what began with a glance, grew through messages, and blossomed into a love we never expected, is becoming forever 🤍.
-          </p>
-          <div style="margin-top:1.4rem;">
-            <span class="badge-pill badge-pill--burgundy" style="font-size:0.72rem;">Our Greatest Adventure is Just Beginning</span>
+            <!-- Chapter 1 -->
+            <div class="story-chapter-box">
+              <span class="badge-pill badge-pill--burgundy">Chapter 01 &nbsp;&middot;&nbsp; The Glance</span>
+              <h3>Love at first sight — although neither was brave enough to speak!</h3>
+              <div class="story-chapter-quote">
+                “There was an instant connection, a quiet, undeniable feeling that something about this person was different.”
+              </div>
+              <p><span class="dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan's family members.</p>
+              <p>There was an instant spark — that rare feeling where the rest of the room fades away. It was true love at first sight — although neither of them was quite brave enough to actually say a word to the other in that moment 😂!</p>
+            </div>
+
+            <!-- Chapter 2 -->
+            <div class="story-chapter-box">
+              <span class="badge-pill badge-pill--sage">Chapter 02 &nbsp;&middot;&nbsp; The Conversation</span>
+              <h3>The conversation that never happened in person began over text.</h3>
+              <div class="story-chapter-quote">
+                “What started as simple messages quickly became hours of laughing, sharing dreams, and falling completely in love.”
+              </div>
+              <p><span class="dropcap">A</span> few days later, Rishen still couldn't get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that was meant to be began.</p>
+              <p>Messages turned into late-night phone calls, inside jokes, and countless memories. Two people who were once too shy to speak became each other's favourite good morning and favourite good night.</p>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="story-chapter-box">
+              <span class="badge-pill badge-pill--burgundy">Chapter 03 &nbsp;&middot;&nbsp; Faith &amp; Forever</span>
+              <h3>Like iron sharpens iron — to encourage, strengthen and love.</h3>
+              <div class="story-chapter-quote">
+                “We believe God brought our paths together at exactly the right time, writing our story long before we even realised it.”
+              </div>
+              <p><span class="dropcap">S</span>ince then, we've shared so many unforgettable moments together — adventures, laughter, milestones, and quiet days made special simply by being with each other.</p>
+              <p><strong>Like iron sharpens iron.</strong> We are committed to encouraging, strengthening, and bringing out the very best in one another.</p>
+              <p>Now, as we prepare to become husband and wife, we're filled with gratitude for everything that brought us here, and excitement for every chapter God has planned for us.</p>
+            </div>
+
+            <!-- Scripture Badge -->
+            <div class="scripture-luxury-card">
+              <div style="color:var(--sage-mid); font-size:1.8rem; margin-bottom:0.4rem;">❦</div>
+              <p class="scripture-text">
+                “Therefore what God has joined together,<br>let no one separate.”
+              </p>
+              <p class="scripture-verse-ref">Matthew 19 : 6</p>
+              <p class="scripture-footnote">
+                And so, what began with a glance, grew through messages, and blossomed into a love we never expected, is becoming forever 🤍.
+              </p>
+              <div style="margin-top:1.2rem;">
+                <span class="badge-pill badge-pill--burgundy" style="font-size:0.72rem;">Our Greatest Adventure is Just Beginning</span>
+              </div>
+            </div>
+
           </div>
+
         </div>
 
       </div>
@@ -1455,36 +1315,6 @@
   } else {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
   }
-
-  // Chapter Switcher logic
-  function switchChapter(num) {
-    const tabButtons = document.querySelectorAll('.chapter-tab-btn');
-    const pages      = document.querySelectorAll('.chapter-page');
-
-    tabButtons.forEach(btn => {
-      const active = btn.getAttribute('data-chapter') === String(num);
-      btn.classList.toggle('active', active);
-      btn.setAttribute('aria-selected', active);
-    });
-
-    pages.forEach((p, idx) => {
-      const active = (idx + 1) === num;
-      p.classList.toggle('active', active);
-    });
-
-    const storyEl = document.getElementById('story');
-    if (storyEl) {
-      const topOffset = storyEl.getBoundingClientRect().top + window.pageYOffset - 80;
-      window.scrollTo({ top: topOffset, behavior: 'smooth' });
-    }
-  }
-
-  document.querySelectorAll('.chapter-tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const num = parseInt(btn.getAttribute('data-chapter'), 10);
-      switchChapter(num);
-    });
-  });
 
   // Guidance Accordion
   ['Wear', 'Stay'].forEach(key => {
