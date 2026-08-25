@@ -874,10 +874,11 @@
   <ul class="nav-links" role="list">
     <li><a href="#story">Our Story</a></li>
     <li><a href="#celebration">The Day</a></li>
-    <li><a href="#venue">Venue</a></li>
+    <li><a href="#guidance">Before the Day</a></li>
+    <li><a href="#party">Wedding Party</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#rsvp">RSVP</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#faq">Questions</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navDrawer">
     <span></span><span></span><span></span>
@@ -887,12 +888,11 @@
 <nav class="nav-drawer" id="navDrawer" aria-label="Mobile navigation" aria-hidden="true">
   <a href="#story">Our Story</a>
   <a href="#celebration">The Day</a>
-  <a href="#venue">Venue</a>
-  <a href="#dresscode">Dress Code</a>
+  <a href="#guidance">Before the Day</a>
   <a href="#party">Wedding Party</a>
   <a href="#gallery">Gallery</a>
   <a href="#rsvp">RSVP</a>
-  <a href="#faq">FAQ</a>
+  <a href="#faq">Questions</a>
 </nav>
 
 <!-- Lightbox -->
@@ -1067,46 +1067,24 @@
           </div>
         </div>
 
-        <!-- Scripture — elegant editorial centerpiece -->
-        <div class="story-scripture reveal" style="grid-column: 1 / -1; border:none; padding: 4rem 2rem 2rem;">
-          <div style="max-width: 620px; margin: 0 auto; text-align:center;">
-            <div style="display:flex;align-items:center;gap:1.5rem;justify-content:center;margin-bottom:2.5rem;">
-              <div style="flex:1;height:1px;background:linear-gradient(to right, transparent, var(--gold));"></div>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <circle cx="8" cy="8" r="3" fill="var(--gold)" opacity="0.6"/>
-                <circle cx="8" cy="8" r="6.5" stroke="var(--gold)" stroke-width="0.5" opacity="0.3"/>
-              </svg>
-              <div style="flex:1;height:1px;background:linear-gradient(to left, transparent, var(--gold));"></div>
-            </div>
+        <!-- Scripture & Closing Chapter -->
+        <div class="reveal" style="grid-column: 1 / -1; margin: 3rem auto 0; max-width: 660px; text-align: center;">
+          <div style="width: 50px; height: 1px; background: var(--gold); margin: 0 auto 2.5rem; opacity: 0.6;"></div>
 
-            <blockquote>
-              <p style="font-family:var(--font-display);font-style:italic;font-size:clamp(1.4rem,3.5vw,2.2rem);color:var(--burgundy);line-height:1.6;font-weight:300;letter-spacing:0.01em;">
-                “Therefore what God has joined together,<br>let no one separate.”
-              </p>
-              <footer style="margin-top:1.8rem;">
-                <div style="display:flex;align-items:center;gap:1rem;justify-content:center;">
-                  <div style="width:24px;height:1px;background:var(--gold);opacity:0.6;"></div>
-                  <cite style="font-family:var(--font-body);font-size:0.68rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--sage);font-style:normal;font-weight:500;">Matthew 19 : 6</cite>
-                  <div style="width:24px;height:1px;background:var(--gold);opacity:0.6;"></div>
-                </div>
-              </footer>
-            </blockquote>
+          <p style="font-family: var(--font-display); font-style: italic; font-size: clamp(1.5rem, 3.5vw, 2.3rem); color: var(--burgundy); line-height: 1.5; font-weight: 300;">
+            “Therefore what God has joined together,<br>let no one separate.”
+          </p>
+          <p style="font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--sage); margin-top: 1rem; font-weight: 500;">
+            Matthew 19 : 6
+          </p>
 
-            <p style="margin-top:2.5rem;font-family:var(--font-display);font-style:italic;color:var(--text-dark);font-size:1.05rem;line-height:1.7;">
+          <div style="margin-top: 3.5rem; padding: 2.5rem 2rem; border: 1px solid rgba(184,154,94,0.3); background: rgba(247,243,236,0.5); position: relative; border-radius: 2px;">
+            <p style="font-family: var(--font-display); font-style: italic; font-size: clamp(1.1rem, 2.4vw, 1.35rem); color: var(--text-dark); line-height: 1.8;">
               And so, what began with a glance, grew through messages, and blossomed into a love we never expected, is becoming forever 🤍.
             </p>
-            <p style="margin-top:0.6rem;font-family:var(--font-display);font-style:italic;color:var(--burgundy-mid);font-size:1rem;">
+            <p style="margin-top: 1.2rem; font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--burgundy-mid); font-weight: 500;">
               Our greatest adventure is just beginning.
             </p>
-
-            <div style="display:flex;align-items:center;gap:1.5rem;justify-content:center;margin-top:2.5rem;">
-              <div style="flex:1;height:1px;background:linear-gradient(to right, transparent, var(--gold));"></div>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <circle cx="8" cy="8" r="3" fill="var(--gold)" opacity="0.6"/>
-                <circle cx="8" cy="8" r="6.5" stroke="var(--gold)" stroke-width="0.5" opacity="0.3"/>
-              </svg>
-              <div style="flex:1;height:1px;background:linear-gradient(to left, transparent, var(--gold));"></div>
-            </div>
           </div>
         </div>
 
@@ -1234,90 +1212,58 @@
     </div>
   </section>
 
-  <!-- VENUE -->
-  <section id="venue" aria-labelledby="venueHeading">
-    <div class="section-inner" style="padding: 8rem 1.5rem; position:relative; z-index:1;">
+  <!-- BEFORE THE DAY / GUIDANCE -->
+  <section id="guidance" class="section" aria-labelledby="guidanceHeading" style="background: var(--parchment); padding: 7.5rem 1.5rem;">
+    <div class="section-inner" style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 4.5rem; align-items: start;">
+      
       <div class="reveal">
-        <div class="section-eyebrow">Venue &amp; Destination</div>
-        <div class="section-rule" aria-hidden="true"></div>
-        <h2 class="section-heading" id="venueHeading" style="color:var(--eucalyptus);">Among the <em>vines</em> of the<br>Cape Winelands.</h2>
-      </div>
-
-      <div class="venue-layout">
-        <div class="venue-image reveal reveal-delay-1" role="img" aria-label="Photograph placeholder for Highberry Vineyards">
-          <svg class="story-image-icon" viewBox="0 0 32 32" aria-hidden="true" style="stroke:var(--gold);"><rect x="2" y="6" width="28" height="22" rx="2"/><path d="M2 20l8-8 6 6 4-4 10 8"/></svg>
-          <span>[ Highberry Vineyards ]</span>
-          <span class="story-image-caption">Replace with a photograph of the venue.</span>
-        </div>
-
-        <div class="venue-content reveal reveal-delay-2">
-          <h2><em>Highberry Vineyards</em> &amp; Venue</h2>
-          <p class="venue-desc">Set against the dramatic contours of the Helderberg Mountain and surrounded by working vineyards, Highberry is one of the Cape Winelands' most beautifully considered event spaces. It is a place of natural grandeur softened by warmth — exactly the kind of setting where a love story like Rishen and Lizaan's deserves to be celebrated.</p>
-          <p class="venue-desc">Somerset West sits in the heart of the Cape Winelands, less than an hour from Cape Town International Airport. The region offers world-class wine estates, mountain scenery, and some of the most generous hospitality the Cape has to give.</p>
-          <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="venue-link">Visit Highberry Vineyards →</a>
-
-          <ul class="accommodation-list" aria-label="Accommodation options">
-            <li><h3>Where to Stay</h3></li>
-            <li><a href="https://www.lalapanzilodge.co.za" target="_blank" rel="noopener noreferrer"><span>Lalapanzi Lodge</span><span class="accom-arrow">→</span></a></li>
-            <li><a href="https://www.winelandsvilla.co.za" target="_blank" rel="noopener noreferrer"><span>Winelands Villa</span><span class="accom-arrow">→</span></a></li>
-            <li><a href="https://www.accommodationsomersetwest.co.za" target="_blank" rel="noopener noreferrer"><span>Accommodation Somerset West</span><span class="accom-arrow">→</span></a></li>
-            <li><a href="https://www.booking.com/searchresults.html?ss=Somerset+West%2C+South+Africa" target="_blank" rel="noopener noreferrer"><span>Booking.com — Guest Houses</span><span class="accom-arrow">→</span></a></li>
-            <li><a href="https://www.lekkeslaap.co.za/oornag/Somerset-West" target="_blank" rel="noopener noreferrer"><span>LekkeSlaap Somerset West</span><span class="accom-arrow">→</span></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DRESS CODE -->
-  <section id="dresscode" class="section" aria-labelledby="dresscodeHeading">
-    <div class="dresscode-inner">
-      <div class="reveal">
-        <div class="section-eyebrow" style="text-align:center;margin:0 auto;">Dress Code</div>
-        <div class="section-rule" style="margin:1rem auto;"></div>
-        <h2 class="section-heading" id="dresscodeHeading" style="text-align:center;">Dress beautifully.<br>Be comfortable.</h2>
-      </div>
-
-      <div class="dresscode-palette reveal reveal-delay-1" role="list" aria-label="Wedding colour palette">
-        <div class="palette-swatch" role="listitem">
-          <div class="palette-dot" style="background:var(--burgundy);"></div>
-          <span class="palette-name">Burgundy</span>
-        </div>
-        <div class="palette-swatch" role="listitem">
-          <div class="palette-dot" style="background:var(--oxblood);"></div>
-          <span class="palette-name">Oxblood</span>
-        </div>
-        <div class="palette-swatch" role="listitem">
-          <div class="palette-dot" style="background:var(--sage);"></div>
-          <span class="palette-name">Sage</span>
-        </div>
-        <div class="palette-swatch" role="listitem">
-          <div class="palette-dot" style="background:var(--eucalyptus);"></div>
-          <span class="palette-name">Eucalyptus</span>
-        </div>
-        <div class="palette-swatch" role="listitem">
-          <div class="palette-dot" style="background:var(--ivory);border:1px solid rgba(0,0,0,0.1);"></div>
-          <span class="palette-name">Ivory</span>
-        </div>
-        <div class="palette-swatch" role="listitem">
-          <div class="palette-dot" style="background:var(--champagne);"></div>
-          <span class="palette-name">Champagne</span>
-        </div>
-        <div class="palette-swatch" role="listitem">
-          <div class="palette-dot" style="background:var(--gold);"></div>
-          <span class="palette-name">Antique Gold</span>
-        </div>
-      </div>
-
-      <div class="reveal reveal-delay-2">
-        <div class="dresscode-tag">Formal &nbsp;&middot;&nbsp; Details to Follow</div>
-        <p class="dresscode-note" style="margin-top:2rem;">
-          Full dress code guidance will be shared closer to the date. In the meantime, the palette above can inspire your choices. Tones of burgundy, sage, ivory, and champagne would sit beautifully in the vineyard setting.
-        </p>
-        <p class="dresscode-note" style="margin-top:1rem;font-size:0.88rem;font-style:normal;color:var(--text-light);">
-          A gentle note: the ceremony is set among the vines. Stiletto heels may struggle on the estate — block heels, wedges, or elegant flats are worth considering. Please do not wear white or ivory, which is reserved for the bride.
+        <div class="section-eyebrow" style="letter-spacing: 0.22em;">A Little Guidance</div>
+        <div class="section-rule" style="margin: 0.8rem 0 1.2rem;"></div>
+        <h2 class="section-heading" id="guidanceHeading" style="font-size: clamp(2.4rem, 4.5vw, 3.6rem); line-height: 1.15;">
+          Before the day
+        </h2>
+        <p style="font-family: var(--font-display); font-style: italic; font-size: 1.15rem; color: var(--text-mid); margin-top: 1rem; line-height: 1.6;">
+          Everything we know so far, gathered in one quiet place.
         </p>
       </div>
+
+      <div class="reveal reveal-delay-1" style="display: flex; flex-direction: column;">
+        <!-- Item 1: What should I wear? -->
+        <div class="guidance-item" style="border-top: 1px solid rgba(107,26,42,0.14); border-bottom: 1px solid rgba(107,26,42,0.14);">
+          <div style="padding: 1.4rem 0;">
+            <h3 style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; font-style: italic; color: var(--text-dark); margin-bottom: 0.8rem;">
+              What should I wear?
+            </h3>
+            <p style="font-family: var(--font-body); font-size: 0.95rem; color: var(--text-mid); line-height: 1.85;">
+              Think elegant, think formal, semi formal and beautifully comfortable — even traditional wear. However you choose to dress, come ready for an evening of celebration.
+            </p>
+            <p style="margin-top: 0.8rem; font-family: var(--font-body); font-size: 0.85rem; color: var(--text-light); font-style: italic; line-height: 1.7;">
+              A gentle note: the ceremony is held among the vines and grass lawns. Block heels, wedges, or elegant flats are recommended. Kindly avoid white or ivory, which is reserved for the bride.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 2: Where should I stay? -->
+        <div class="guidance-item" style="border-bottom: 1px solid rgba(107,26,42,0.14);">
+          <div style="padding: 1.4rem 0;">
+            <h3 style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; font-style: italic; color: var(--text-dark); margin-bottom: 0.8rem;">
+              Where should I stay?
+            </h3>
+            <p style="font-family: var(--font-body); font-size: 0.95rem; color: var(--text-mid); line-height: 1.85;">
+              Somerset West and the surrounding Cape Winelands offer wonderful guest houses and lodges. We recommend exploring and booking early:
+            </p>
+            <ul style="list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+              <li><a href="https://www.lalapanzilodge.co.za" target="_blank" rel="noopener noreferrer" style="color: var(--burgundy); text-decoration: underline; text-underline-offset: 3px; font-size: 0.92rem; font-weight: 400;">Lalapanzi Lodge ↗</a></li>
+              <li><a href="https://www.winelandsvilla.co.za" target="_blank" rel="noopener noreferrer" style="color: var(--burgundy); text-decoration: underline; text-underline-offset: 3px; font-size: 0.92rem; font-weight: 400;">Winelands Villa ↗</a></li>
+              <li><a href="https://www.accommodationsomersetwest.co.za" target="_blank" rel="noopener noreferrer" style="color: var(--burgundy); text-decoration: underline; text-underline-offset: 3px; font-size: 0.92rem; font-weight: 400;">Accommodation Somerset West ↗</a></li>
+              <li><a href="https://www.booking.com/searchresults.html?ss=Somerset+West%2C+South+Africa" target="_blank" rel="noopener noreferrer" style="color: var(--burgundy); text-decoration: underline; text-underline-offset: 3px; font-size: 0.92rem; font-weight: 400;">Booking.com — Guest Houses in Somerset West ↗</a></li>
+              <li><a href="https://www.lekkeslaap.co.za/oornag/Somerset-West" target="_blank" rel="noopener noreferrer" style="color: var(--burgundy); text-decoration: underline; text-underline-offset: 3px; font-size: 0.92rem; font-weight: 400;">LekkeSlaap Somerset West ↗</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -1399,18 +1345,19 @@
           <div class="rsvp-confirmation-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--ivory);margin-bottom:0.5rem;">Thank you, <span id="confirmName">dear guest</span>.</h3>
-          <p style="font-family:var(--font-display);font-style:italic;color:var(--champagne);font-size:1rem;max-width:360px;line-height:1.7;">Your response has been noted. We look forward to celebrating this day with you.</p>
-          <p class="rsvp-note">⚠ This form is not yet connected to a live backend. Please also confirm via the contact details in the FAQ below.</p>
+          <h3 id="confirmTitle" style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--ivory);margin-bottom:0.8rem;">Thank you, <span id="confirmName">dear guest</span>.</h3>
+          <p id="confirmMessage" style="font-family:var(--font-display);font-style:italic;color:var(--champagne);font-size:1.05rem;max-width:440px;line-height:1.75;margin:0 auto;"></p>
         </div>
 
         <form id="rsvpForm" novalidate aria-label="RSVP form for Rishen and Lizaan's wedding">
+          <!-- Full Name -->
           <div class="form-row" id="rowName">
-            <label for="guestName">Full Name <span aria-label="required field">*</span></label>
-            <input type="text" id="guestName" name="guestName" autocomplete="name" placeholder="Your full name" aria-required="true" aria-describedby="nameError"/>
+            <label for="guestName">Your Full Name <span aria-label="required field">*</span></label>
+            <input type="text" id="guestName" name="guestName" autocomplete="name" placeholder="Enter your first and last name" aria-required="true" aria-describedby="nameError"/>
             <span class="form-error-msg" id="nameError" role="alert">Please enter your full name.</span>
           </div>
 
+          <!-- Attendance Choice -->
           <div class="form-row" id="rowAttendance">
             <label>Attendance <span aria-label="required field">*</span></label>
             <div class="rsvp-choices" role="radiogroup" aria-required="true" aria-describedby="attendanceError">
@@ -1429,36 +1376,40 @@
                 </label>
               </div>
             </div>
-            <span class="form-error-msg" id="attendanceError" role="alert">Please select an option.</span>
+            <span class="form-error-msg" id="attendanceError" role="alert">Please select your attendance.</span>
           </div>
 
-          <div class="form-row">
-            <label for="guestCount">Number of Guests (including yourself)</label>
-            <select id="guestCount" name="guestCount" aria-label="Number of guests attending">
-              <option value="1">1 guest</option>
-              <option value="2">2 guests</option>
-              <option value="3">3 guests</option>
-              <option value="4">4 guests</option>
-            </select>
+          <!-- Attending-only fields (hidden if Declines) -->
+          <div id="attendingFields">
+            <!-- Number of guests (1 to 5) -->
+            <div class="form-row" id="rowGuestCount">
+              <label for="guestCount">Total Number of Guests (including yourself)</label>
+              <select id="guestCount" name="guestCount" aria-label="Total number of guests attending">
+                <option value="1">1 guest (just me)</option>
+                <option value="2">2 guests</option>
+                <option value="3">3 guests</option>
+                <option value="4">4 guests</option>
+                <option value="5">5 guests</option>
+              </select>
+            </div>
+
+            <!-- Primary Guest Dietary -->
+            <div class="form-row" id="rowPrimaryDietary">
+              <label for="primaryDietary">Your Dietary Requirements (Optional)</label>
+              <input type="text" id="primaryDietary" name="primaryDietary" placeholder="e.g. Vegetarian, Vegan, Halal, Nut allergy, None"/>
+            </div>
+
+            <!-- Dynamic Additional Guests Container (rendered via JS) -->
+            <div id="additionalGuestsContainer" style="display:none;"></div>
           </div>
 
-          <div class="form-row" id="rowGuestNames" style="display:none;">
-            <label for="additionalGuests">Additional Guest Names</label>
-            <input type="text" id="additionalGuests" name="additionalGuests" placeholder="Names of additional guests, separated by commas"/>
+          <!-- Optional Message/Notes for both Accepts and Declines -->
+          <div class="form-row" id="rowNotes">
+            <label for="notes" id="notesLabel">A Note or Blessing for Rishen &amp; Lizaan (Optional)</label>
+            <textarea id="notes" name="notes" placeholder="Write a note, warm wishes, or a blessing for the couple..." rows="3"></textarea>
           </div>
 
-          <div class="form-row">
-            <label for="dietary">Dietary Requirements</label>
-            <textarea id="dietary" name="dietary" placeholder="Allergies, dietary restrictions, or needs." rows="3"></textarea>
-          </div>
-
-          <div class="form-row">
-            <label for="notes">Anything else you'd like to share?</label>
-            <textarea id="notes" name="notes" placeholder="A message for Rishen and Lizaan, or anything at all." rows="3"></textarea>
-          </div>
-
-          <button type="submit" class="rsvp-submit">Send RSVP</button>
-          <p class="rsvp-note" style="text-align:center;margin-top:1rem;">⚠ Connect this form to Formspree, Netlify Forms, or your preferred backend before launch.</p>
+          <button type="submit" class="rsvp-submit" id="rsvpSubmitBtn">Send RSVP</button>
         </form>
       </div>
     </div>
@@ -1477,46 +1428,38 @@
         <div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq1">How do I get to Highberry Vineyards?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq1" role="region"><div class="faq-answer-inner">Highberry Vineyards &amp; Venue is in Somerset West, approximately 45 minutes from Cape Town International Airport via the N2 highway. <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer">Visit the venue website</a> for directions. Detailed travel guidance will be shared closer to the date.</div></div>
+            <div class="faq-answer" id="faq1" role="region"><div class="faq-answer-inner">Highberry Vineyards &amp; Venue is located in Somerset West, approximately 45 minutes from Cape Town International Airport via the N2 highway. <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer">Visit the venue website</a> or tap "Google Maps" above for direct GPS directions.</div></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq2">Where should we stay?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq2" role="region"><div class="faq-answer-inner">We recommend Lalapanzi Lodge, Winelands Villa, and guest houses listed on Booking.com and LekkeSlaap Somerset West — all linked in the Venue section. October is peak Cape season, so we suggest booking early.</div></div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq2">What time should guests arrive?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer" id="faq2" role="region"><div class="faq-answer-inner">The ceremony commences promptly at 14:30. We kindly ask guests to arrive and be seated by 14:15 so you can settle in comfortably among the vines.</div></div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq3">Are children welcome?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq3" role="region"><div class="faq-answer-inner">We love your little ones. Please indicate the full number of guests (including children) in your RSVP. Further guidance will follow closer to the celebration.</div></div>
+            <div class="faq-answer" id="faq3" role="region"><div class="faq-answer-inner">We love your little ones. Please include all family members and children in your RSVP guest count so we can arrange seating accordingly.</div></div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq4">Can I bring a plus-one?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq4" role="region"><div class="faq-answer-inner">Your invitation will indicate whether a plus-one has been included. If you have any questions about your invitation, please contact us using the details below.</div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq5">What should I wear?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq5" role="region"><div class="faq-answer-inner">Full dress code details will follow. The celebration is formal and set among the vines — think elegant, vineyard-appropriate attire in the wedding palette of burgundy, sage, ivory, or champagne. Please avoid white or ivory, which is reserved for the bride.</div></div>
+            <div class="faq-answer" id="faq4" role="region"><div class="faq-answer-inner">Your invitation envelope will specify the guests invited. If you have any questions regarding your party size, please reach out to us directly.</div></div>
           </div>
         </div>
 
         <div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq6">What is the weather like in October?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq6" role="region"><div class="faq-answer-inner">October is spring in the Cape Winelands — typically warm and dry, 18–27 °C. The Cape weather can be variable, so a light wrap for the evening is wise. The vineyard grass may be soft, so consider your footwear carefully.</div></div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq5">What is the weather like in October?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer" id="faq5" role="region"><div class="faq-answer-inner">October brings spring in the Cape Winelands — daytime temperatures are typically warm and pleasant (18–27 °C). As the evening cools down under the stars, a light shawl or jacket is recommended.</div></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq7">What time should guests arrive?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq7" role="region"><div class="faq-answer-inner">The ceremony begins at 14:30. Please be seated by 14:15 so you can settle in before the ceremony begins. Parking guidance will be shared closer to the date.</div></div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq6">Photography during the ceremony?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer" id="faq6" role="region"><div class="faq-answer-inner">We invite you to be truly present with us during our ceremony. Our professional photographer will capture every sacred moment. Once the ceremony concludes, feel free to take as many photos as you wish!</div></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq8">Photography during the ceremony?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq8" role="region"><div class="faq-answer-inner">Rishen and Lizaan are working with a professional photographer. We kindly ask guests to keep phones and cameras away during the ceremony and to be fully present. A professional gallery will be shared after the celebration.</div></div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq7">Is the venue accessible?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer" id="faq7" role="region"><div class="faq-answer-inner">Yes, the venue facilities are accessible. Please let us know in your RSVP if you require any specific assistance or mobility arrangements.</div></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq9">Is the venue accessible?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq9" role="region"><div class="faq-answer-inner">We want every guest to feel comfortable. Please contact us with any accessibility requirements and we will do our best to make suitable arrangements. Details will be confirmed closer to the date.</div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq10">Who can I contact with questions?<span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer" id="faq10" role="region"><div class="faq-answer-inner">Please reach out at <strong>[ your-email@example.com ]</strong> or via WhatsApp at <strong>[ +27 XX XXX XXXX ]</strong>. Replace these placeholders with your actual contact details before launch.</div></div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq8">Who can I contact with questions?<span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer" id="faq8" role="region"><div class="faq-answer-inner">Feel free to reach out to Rishen &amp; Lizaan directly via WhatsApp or email. We are here to help make your journey as smooth as possible!</div></div>
           </div>
         </div>
       </div>
@@ -1731,15 +1674,64 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.c
 // ——————————————————
 // RSVP
 // ——————————————————
-const rsvpForm = document.getElementById('rsvpForm');
-const rsvpConf = document.getElementById('rsvpConfirmation');
-const guestCountEl  = document.getElementById('guestCount');
-const rowGuestNames = document.getElementById('rowGuestNames');
+// ——————————————————
+// RSVP INTERACTIVITY & DYNAMIC GUEST FIELDS
+// ——————————————————
+const rsvpForm               = document.getElementById('rsvpForm');
+const rsvpConf               = document.getElementById('rsvpConfirmation');
+const attendingFields        = document.getElementById('attendingFields');
+const guestCountEl           = document.getElementById('guestCount');
+const additionalGuestsContainer = document.getElementById('additionalGuestsContainer');
+const attendanceInputs       = document.querySelectorAll('input[name="attendance"]');
 
-guestCountEl.addEventListener('change', () => {
-  rowGuestNames.style.display = parseInt(guestCountEl.value) > 1 ? 'block' : 'none';
+// Toggle attending fields based on Joyfully Accepts vs Regretfully Declines
+attendanceInputs.forEach(radio => {
+  radio.addEventListener('change', () => {
+    if (radio.value === 'declines') {
+      attendingFields.style.display = 'none';
+      document.getElementById('notesLabel').textContent = 'A Note for Rishen & Lizaan (Optional)';
+      document.getElementById('notes').placeholder = 'Leave a message of love, warm wishes, or a blessing for the couple...';
+    } else {
+      attendingFields.style.display = 'block';
+      document.getElementById('notesLabel').textContent = 'A Note or Blessing for Rishen & Lizaan (Optional)';
+      document.getElementById('notes').placeholder = 'Write a note, warm wishes, or a blessing for the couple...';
+    }
+  });
 });
 
+// Generate dynamic guest fields for guests 2 through 5
+function updateAdditionalGuestFields() {
+  const count = parseInt(guestCountEl.value) || 1;
+  additionalGuestsContainer.innerHTML = '';
+
+  if (count > 1) {
+    additionalGuestsContainer.style.display = 'block';
+    for (let i = 2; i <= count; i++) {
+      const guestBox = document.createElement('div');
+      guestBox.style.cssText = 'padding:1.4rem; margin-top:1.2rem; border:1px solid rgba(184,154,94,0.3); background:rgba(247,243,236,0.6);';
+      guestBox.innerHTML = `
+        <div style="font-family:var(--font-display); font-size:1.15rem; color:var(--burgundy); margin-bottom:1rem; font-style:italic; font-weight:400;">
+          Guest ${i}
+        </div>
+        <div class="form-row" style="margin-bottom:1rem;">
+          <label for="guest_${i}_name">Full Name</label>
+          <input type="text" id="guest_${i}_name" name="guest_${i}_name" placeholder="Guest ${i}'s full name" />
+        </div>
+        <div class="form-row" style="margin-bottom:0;">
+          <label for="guest_${i}_dietary">Dietary Requirements (Optional)</label>
+          <input type="text" id="guest_${i}_dietary" name="guest_${i}_dietary" placeholder="e.g. Vegetarian, Halal, Nut allergy, None" />
+        </div>
+      `;
+      additionalGuestsContainer.appendChild(guestBox);
+    }
+  } else {
+    additionalGuestsContainer.style.display = 'none';
+  }
+}
+
+guestCountEl.addEventListener('change', updateAdditionalGuestFields);
+
+// Form submission handler
 rsvpForm.addEventListener('submit', e => {
   e.preventDefault();
   let valid = true;
@@ -1760,19 +1752,40 @@ rsvpForm.addEventListener('submit', e => {
     return;
   }
 
-  // Show confirmation
-  document.getElementById('confirmName').textContent = nameInput.value.trim().split(' ')[0] || 'dear guest';
+  const firstName = nameInput.value.trim().split(' ')[0] || 'dear friend';
+  const confirmTitle   = document.getElementById('confirmTitle');
+  const confirmMessage = document.getElementById('confirmMessage');
+
+  if (attended.value === 'accepts') {
+    confirmTitle.innerHTML = `We can't wait to celebrate with you, ${firstName}! 🤍`;
+    confirmMessage.textContent = 'Your RSVP has been lovingly received. Having you with us at Highberry Vineyards means everything as we begin this new chapter together. We look forward to sharing an unforgettable day of joy, love, and laughter with you!';
+  } else {
+    confirmTitle.innerHTML = `With so much love, ${firstName} 🤍`;
+    confirmMessage.textContent = 'Thank you so much for letting us know. You will be dearly missed on our special day, but you will be in our hearts and thoughts. We are so grateful for your love, prayers, and presence in our lives!';
+  }
+
+  // Show confirmation overlay
   rsvpConf.classList.add('show');
   rsvpConf.focus();
 
-  // TODO: Replace console.info with a fetch() POST to your chosen backend.
-  console.info('[RSVP — front-end only, not submitted to server]', {
+  // Log payload for future backend connection (e.g. Formspree/Netlify)
+  const additionalGuestsData = [];
+  const count = parseInt(guestCountEl.value) || 1;
+  if (attended.value === 'accepts' && count > 1) {
+    for (let i = 2; i <= count; i++) {
+      const gName = document.getElementById(`guest_${i}_name`)?.value || '';
+      const gDiet = document.getElementById(`guest_${i}_dietary`)?.value || '';
+      additionalGuestsData.push({ name: gName, dietary: gDiet });
+    }
+  }
+
+  console.info('[RSVP Submission]', {
     name: nameInput.value,
     attendance: attended.value,
-    guests: guestCountEl.value,
-    additionalGuests: document.getElementById('additionalGuests').value,
-    dietary: document.getElementById('dietary').value,
-    notes: document.getElementById('notes').value,
+    guestCount: attended.value === 'accepts' ? count : 0,
+    primaryDietary: document.getElementById('primaryDietary')?.value || '',
+    additionalGuests: additionalGuestsData,
+    message: document.getElementById('notes').value,
   });
 });
 
