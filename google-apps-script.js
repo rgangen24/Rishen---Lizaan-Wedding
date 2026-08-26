@@ -3,28 +3,72 @@
  * RISHEN & LIZAAN WEDDING INVITATION — GOOGLE APPS SCRIPT WEB BACKEND
  * =========================================================================
  * 
- * RECIPIENT EMAILS:
- * - rgangen24@gmail.com / rgangen@gmail.com
- * - lizaan.tait2@gmail.com
+ * INSTRUCTIONS TO DEPLOY:
+ * 1. Open your Google Sheet: https://docs.google.com/spreadsheets/d/1b0m89-RZq79QvfhU3DkczC4Y262kbVvcO9WUVlQcCL4/edit
+ * 2. In the top menu, click: Extensions -> Apps Script
+ * 3. Delete any existing code in the editor, and paste this entire code.
+ * 4. Click the "Save" (disk icon) button.
+ * 5. Click: Deploy -> New deployment
+ * 6. Select type: "Web app"
+ * 7. Set:
+ *    - Description: "Wedding RSVP Backend"
+ *    - Execute as: "Me"
+ *    - Who has access: "Anyone"
+ * 8. Click "Deploy" and authorize access.
+ * 9. Copy the generated "Web App URL" (ends in /exec).
  * =========================================================================
  */
 
-// NOTIFICATION EMAILS (Both Rishen & Lizaan will receive alerts)
-var NOTIFICATION_EMAILS = "rgangen24@gmail.com, rgangen@gmail.com, lizaan.tait2@gmail.com";
+var NOTIFICATION_EMAILS = "lizaan.tait2@gmail.com, rgangen@gmail.com";
 
 function doPost(e) {
+  return handleSubmission(e);
+}
+
+function doGet(e) {
+  if (e && e.parameter && (e.parameter.primaryName || e.parameter.guestFullNameField || e.parameter.name)) {
+    return handleSubmission(e);
+  }
+
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var rows = sheet.getDataRange().getValues();
+  var headers = rows[0];
+  var data = [];
+
+  for (var i = 1; i < rows.length; i++) {
+    var row = rows[i];
+    var entry = {};
+    for (var j = 0; j < headers.length; j++) {
+      entry[headers[j]] = row[j];
+    }
+    data.push(entry);
+  }
+
+  return ContentService
+    .createTextOutput(JSON.stringify({
+      result: "success",
+      total: data.length,
+      data: data
+    }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function handleSubmission(e) {
   var lock = LockService.getScriptLock();
-  lock.tryLock(10000);
+  lock.tryLock(15000);
 
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var raw = e.postData ? e.postData.contents : "{}";
     var data = {};
-    
-    try {
-      data = JSON.parse(raw);
-    } catch (err) {
-      data = e.parameter || {};
+
+    if (e && e.postData && e.postData.contents) {
+      try {
+        data = JSON.parse(e.postData.contents);
+      } catch (err) {
+        data = e.parameter || {};
+      }
+    } else if (e && e.parameter) {
+      data = e.parameter;
     }
 
     var now = new Date();
@@ -40,7 +84,6 @@ function doPost(e) {
     var message = data.message || data.guestWishesTextarea || "";
     var generalDietary = data.dietary || data.guestDietaryNotesInput || "";
 
-    // Parse guest list (Up to 5 guests)
     var guests = [];
     if (data.guests && Array.isArray(data.guests)) {
       guests = data.guests;
@@ -61,8 +104,6 @@ function doPost(e) {
       }
     }
 
-    // Build Row matching exact Google Sheet schema:
-    // Timestamp | Submission ID | Primary guest name | Attendance | Number of guests | Guest 1 name | Guest 1 dietary | Guest 1 dietary detail | Guest 2... | Guest 3... | Guest 4... | Guest 5... | Message
     var row = [
       formattedDate,
       submissionId,
@@ -87,7 +128,6 @@ function doPost(e) {
 
     sheet.appendRow(row);
 
-    // Send Instant Email Notification to both Rishen & Lizaan
     sendEmailNotification(primaryName, attendanceStatus, guestCount, guests, message, formattedDate);
 
     return ContentService
@@ -110,49 +150,15 @@ function doPost(e) {
   }
 }
 
-function doGet(e) {
-  try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var rows = sheet.getDataRange().getValues();
-    var headers = rows[0];
-    var data = [];
-
-    for (var i = 1; i < rows.length; i++) {
-      var row = rows[i];
-      var entry = {};
-      for (var j = 0; j < headers.length; j++) {
-        entry[headers[j]] = row[j];
-      }
-      data.push(entry);
-    }
-
-    return ContentService
-      .createTextOutput(JSON.stringify({
-        result: "success",
-        total: data.length,
-        data: data
-      }))
-      .setMimeType(ContentService.MimeType.JSON);
-
-  } catch (error) {
-    return ContentService
-      .createTextOutput(JSON.stringify({
-        result: "error",
-        error: error.toString()
-      }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}
-
 function sendEmailNotification(primaryName, attendanceStatus, guestCount, guests, message, dateStr) {
   var isAttending = (attendanceStatus.indexOf("Yes") !== -1);
   var subject = (isAttending ? "💍 RSVP ACCEPTED: " : "💌 RSVP DECLINED: ") + primaryName;
 
   var guestListHtml = "";
   if (isAttending && guests.length > 0) {
-    guestListHtml = "<h3 style='color:#4D161D; margin-top:16px; margin-bottom:8px;'>Guest Details:</h3><ul style='margin:0; padding-left:20px;'>";
+    guestListHtml = "<h3 style='color:#4D161D;'>Guest Details:</h3><ul>";
     for (var i = 0; i < guests.length; i++) {
-      guestListHtml += "<li style='margin-bottom:4px;'><strong>" + (guests[i].name || ("Guest " + (i + 1))) + "</strong> &mdash; Dietary: " + (guests[i].dietary || "None") + "</li>";
+      guestListHtml += "<li><strong>" + (guests[i].name || ("Guest " + (i + 1))) + "</strong> &mdash; Dietary: " + (guests[i].dietary || "None") + "</li>";
     }
     guestListHtml += "</ul>";
   }

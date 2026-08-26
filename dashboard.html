@@ -25,7 +25,6 @@
       --ink:              #26201B;
       --ink-soft:         #544A41;
       --ink-muted:        #857A70;
-      --gold:             #D4AF37;
       --green-attending:  #2E7D32;
       --red-declined:     #8C2630;
       
@@ -50,7 +49,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Top Burgundy Header */
     .dashboard-top-nav {
       background: var(--oxblood);
       color: var(--ivory);
@@ -93,14 +91,12 @@
       transform: translateX(-3px);
     }
 
-    /* Main Container */
     .dashboard-wrapper {
       max-width: 960px;
       margin: 0 auto;
       padding: clamp(2rem, 5vw, 3.5rem) clamp(1.2rem, 4vw, 2.5rem);
     }
 
-    /* Editorial Headline */
     .dashboard-eyebrow {
       font-family: var(--font-sans);
       font-size: 0.75rem;
@@ -132,7 +128,6 @@
       margin-bottom: 1.8rem;
     }
 
-    /* Action Controls */
     .dashboard-actions-bar {
       display: flex;
       align-items: center;
@@ -196,7 +191,6 @@
       color: var(--ink-muted);
     }
 
-    /* Metric Summary Grid */
     .metric-summary-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -237,7 +231,6 @@
       color: var(--ink-muted);
     }
 
-    /* Search & Filter Bar */
     .search-filter-box {
       display: flex;
       gap: 1rem;
@@ -272,7 +265,6 @@
       cursor: pointer;
     }
 
-    /* Guest Responses List Cards */
     .guest-responses-stack {
       display: flex;
       flex-direction: column;
@@ -356,6 +348,7 @@
       line-height: 1.75;
       padding-left: 0.85rem;
       border-left: 2px solid var(--champagne);
+      white-space: pre-line;
     }
 
     .loading-state-banner {
@@ -370,7 +363,6 @@
 </head>
 <body>
 
-  <!-- Top Burgundy Nav Bar -->
   <header>
     <nav class="dashboard-top-nav" aria-label="Dashboard Top Navigation">
       <a href="index.html" class="brand-monogram">
@@ -387,9 +379,9 @@
 
   <main class="dashboard-wrapper">
     
-    <span class="dashboard-eyebrow">Google Sheets Overview</span>
-    <h1 class="dashboard-title-serif">Every response, <em>in one place.</em></h1>
-    <p class="dashboard-subtitle">Live totals and guest details from the wedding RSVP sheet.</p>
+    <span class="dashboard-eyebrow">Google Sheets Live Sync</span>
+    <h1 class="dashboard-title-serif">Every response, <em>in real time.</em></h1>
+    <p class="dashboard-subtitle">Live totals, guest breakdown, dietary notes, and personal messages from the official sheet.</p>
 
     <!-- Actions Bar -->
     <div class="dashboard-actions-bar">
@@ -402,17 +394,17 @@
       </button>
 
       <a href="https://docs.google.com/spreadsheets/d/1b0m89-RZq79QvfhU3DkczC4Y262kbVvcO9WUVlQcCL4/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-google-sheet-link">
-        <span>Open in Google Sheets ↗</span>
+        <span>Open Google Sheet ↗</span>
       </a>
 
       <span class="sync-time-stamp" id="lastSyncTimeLabel">Synced just now</span>
     </div>
 
-    <!-- Live Metric Summary Cards (Clear & Unambiguous Totals) -->
+    <!-- Live Metric Summary Cards -->
     <div class="metric-summary-grid" id="metricsGrid">
-      <div class="metric-cell-card" style="background:#F4EFE6; border-bottom:2px solid var(--burgundy);">
-        <span class="metric-big-numeral" id="statTotalGuests" style="font-weight:600; color:var(--oxblood);">--</span>
-        <span class="metric-label-caps" style="color:var(--oxblood); font-weight:700;">Attending Guests</span>
+      <div class="metric-cell-card">
+        <span class="metric-big-numeral" id="statTotalRsvps">--</span>
+        <span class="metric-label-caps">Total Submissions</span>
       </div>
       <div class="metric-cell-card">
         <span class="metric-big-numeral" id="statAttending">--</span>
@@ -423,30 +415,14 @@
         <span class="metric-label-caps">Declined RSVPs</span>
       </div>
       <div class="metric-cell-card">
-        <span class="metric-big-numeral" id="statTotalRsvps">--</span>
-        <span class="metric-label-caps">Total Submissions</span>
-      </div>
-      <div class="metric-cell-card">
-        <span class="metric-big-numeral" id="statVegetarian">0</span>
-        <span class="metric-label-caps">Vegetarian</span>
-      </div>
-      <div class="metric-cell-card">
-        <span class="metric-big-numeral" id="statVegan">0</span>
-        <span class="metric-label-caps">Vegan</span>
-      </div>
-      <div class="metric-cell-card">
-        <span class="metric-big-numeral" id="statOtherDietary">0</span>
-        <span class="metric-label-caps">Other Dietary</span>
-      </div>
-      <div class="metric-cell-card">
-        <span class="metric-big-numeral" id="statAwaiting">0</span>
-        <span class="metric-label-caps">Pending</span>
+        <span class="metric-big-numeral" id="statTotalGuests">--</span>
+        <span class="metric-label-caps">Total Attending Guests</span>
       </div>
     </div>
 
     <!-- Search & Filters -->
     <div class="search-filter-box">
-      <input type="text" id="guestSearchInput" class="search-input-field" placeholder="Search by guest name or message..." />
+      <input type="text" id="guestSearchInput" class="search-input-field" placeholder="Search by guest name, dietary requirement, or message..." />
       <select id="statusFilterSelect" class="filter-select-field">
         <option value="all">All Statuses</option>
         <option value="attending">Attending Only</option>
@@ -520,37 +496,61 @@
         if (rows.length < 2) return;
 
         var headers = rows[0];
+        
+        // Find Message Column Index dynamically
+        var msgColIdx = -1;
+        for (var h = 0; h < headers.length; h++) {
+          if (/message/i.test(headers[h])) {
+            msgColIdx = h;
+            break;
+          }
+        }
+        if (msgColIdx === -1) msgColIdx = 20;
+
         allResponses = [];
 
         for (var i = 1; i < rows.length; i++) {
           var r = rows[i];
-          if (!r || r.length < 3 || !r[2]) continue;
+          if (!r || r.length < 3 || !r[2] || !r[2].trim()) continue;
+
+          var attendanceRaw = r[3] || '';
+          var isAttending = (attendanceRaw.toLowerCase().indexOf("yes") !== -1 || attendanceRaw.toLowerCase().indexOf("joyful") !== -1 || attendanceRaw.toLowerCase().indexOf("there") !== -1);
+          
+          var count = 0;
+          if (isAttending) {
+            count = parseInt(r[4], 10);
+            if (isNaN(count) || count < 1) count = 1;
+          }
+
+          var msgVal = (msgColIdx < r.length) ? r[msgColIdx] : '';
 
           var item = {
             timestamp: r[0] || '',
             submissionId: r[1] || '',
-            name: r[2] || 'Guest',
-            attendance: r[3] || '',
-            guestCount: parseInt(r[4], 10) || 0,
+            name: r[2].trim(),
+            attendance: isAttending ? "Yes, I'll be there" : "No, unfortunately I can't attend",
+            isAttending: isAttending,
+            guestCount: count,
             guests: [],
             dietarySummary: [],
-            message: r[r.length - 1] || ''
+            message: msgVal.trim()
           };
 
-          // Parse individual guests
-          for (var g = 0; g < 5; g++) {
-            var colIdx = 5 + (g * 3);
-            if (colIdx < r.length && r[colIdx]) {
-              var gName = r[colIdx];
-              var gDiet = r[colIdx + 1] || '';
-              var gDietDetail = r[colIdx + 2] || '';
-              item.guests.push(gName);
-              if (gDiet && gDiet !== 'No special requirements' && gDiet !== 'None' && gDiet !== '') {
-                var isCommonDiet = /veg|vegan|halal|kosher|nut|peanut|allergy|allergies|gluten|dairy|lactose|diabetic|pork|beef/i.test(gDiet);
-                if (!isCommonDiet && (!item.message || !item.message.trim())) {
-                  item.message = gDiet;
-                } else {
-                  item.dietarySummary.push(gDiet + (gDietDetail ? ' (' + gDietDetail + ')' : ''));
+          if (isAttending) {
+            for (var g = 0; g < 5; g++) {
+              var nameIdx = 5 + (g * 3);
+              var dietIdx = 6 + (g * 3);
+              var detailIdx = 7 + (g * 3);
+
+              if (nameIdx < r.length && r[nameIdx] && r[nameIdx].trim()) {
+                var gName = r[nameIdx].trim();
+                var gDiet = (dietIdx < r.length) ? r[dietIdx].trim() : '';
+                var gDetail = (detailIdx < r.length) ? r[detailIdx].trim() : '';
+
+                item.guests.push(gName);
+
+                if (gDiet && gDiet.toLowerCase() !== 'no special requirements' && gDiet.toLowerCase() !== 'none' && gDiet.toLowerCase() !== 'no' && gDiet.toLowerCase() !== 'n/a' && gDiet.toLowerCase() !== 'nil') {
+                  item.dietarySummary.push(gName + ': ' + gDiet + (gDetail ? ' (' + gDetail + ')' : ''));
                 }
               }
             }
@@ -580,34 +580,20 @@
     var attending = 0;
     var declined = 0;
     var totalGuests = 0;
-    var vegCount = 0;
-    var veganCount = 0;
-    var otherDietCount = 0;
 
     allResponses.forEach(function(r) {
-      var isYes = (r.attendance.indexOf("Yes") !== -1 || r.attendance.toLowerCase().indexOf("joyful") !== -1);
-      if (isYes) {
+      if (r.isAttending) {
         attending++;
-        totalGuests += (r.guestCount > 0 ? r.guestCount : 1);
+        totalGuests += r.guestCount;
       } else {
         declined++;
       }
-
-      r.dietarySummary.forEach(function(d) {
-        var low = d.toLowerCase();
-        if (low.indexOf('vegetarian') !== -1) vegCount++;
-        else if (low.indexOf('vegan') !== -1) veganCount++;
-        else otherDietCount++;
-      });
     });
 
     document.getElementById('statTotalRsvps').textContent = totalRsvps;
     document.getElementById('statAttending').textContent = attending;
     document.getElementById('statDeclined').textContent = declined;
     document.getElementById('statTotalGuests').textContent = totalGuests;
-    document.getElementById('statVegetarian').textContent = vegCount;
-    document.getElementById('statVegan').textContent = veganCount;
-    document.getElementById('statOtherDietary').textContent = otherDietCount;
 
     filterAndRenderCards();
   }
@@ -620,16 +606,15 @@
     var filterVal = document.getElementById('statusFilterSelect').value;
 
     var filtered = allResponses.filter(function(r) {
-      var isYes = (r.attendance.indexOf("Yes") !== -1 || r.attendance.toLowerCase().indexOf("joyful") !== -1);
-      
-      if (filterVal === 'attending' && !isYes) return false;
-      if (filterVal === 'declined' && isYes) return false;
+      if (filterVal === 'attending' && !r.isAttending) return false;
+      if (filterVal === 'declined' && r.isAttending) return false;
 
       if (searchVal) {
         var matchName = r.name.toLowerCase().indexOf(searchVal) !== -1;
         var matchMsg = r.message.toLowerCase().indexOf(searchVal) !== -1;
         var matchGuests = r.guests.some(function(g) { return g.toLowerCase().indexOf(searchVal) !== -1; });
-        return matchName || matchMsg || matchGuests;
+        var matchDiet = r.dietarySummary.some(function(d) { return d.toLowerCase().indexOf(searchVal) !== -1; });
+        return matchName || matchMsg || matchGuests || matchDiet;
       }
       return true;
     });
@@ -641,16 +626,15 @@
 
     var html = '';
     filtered.forEach(function(r) {
-      var isYes = (r.attendance.indexOf("Yes") !== -1 || r.attendance.toLowerCase().indexOf("joyful") !== -1);
-      var statusBadgeClass = isYes ? 'attending' : 'declined';
-      var statusText = isYes ? "YES, I'LL BE THERE" : "NO, UNFORTUNATELY I CAN'T ATTEND";
-      var guestNamesFormatted = (r.guests.length > 0 && isYes) ? r.guests.join(', ') : '—';
+      var statusBadgeClass = r.isAttending ? 'attending' : 'declined';
+      var statusText = r.isAttending ? "YES, I'LL BE THERE" : "NO, UNFORTUNATELY I CAN'T ATTEND";
+      var guestNamesFormatted = (r.guests.length > 0 && r.isAttending) ? r.guests.join(', ') : '—';
       var dateFormatted = r.timestamp ? r.timestamp.split(' ')[0] : '—';
 
       html += '<div class="guest-card-editorial">';
       
-      // Name
-      html += '<span class="card-meta-label">NAME</span>';
+      // Primary Guest Name
+      html += '<span class="card-meta-label">PRIMARY GUEST</span>';
       html += '<h2 class="guest-name-heading">' + r.name + '</h2>';
 
       // Status
@@ -658,8 +642,8 @@
       html += '<div><span class="status-badge-outline ' + statusBadgeClass + '">' + statusText + '</span></div>';
 
       // Guests count
-      html += '<span class="card-meta-label">GUESTS</span>';
-      html += '<span class="card-val-text">' + (isYes ? r.guestCount : 0) + '</span>';
+      html += '<span class="card-meta-label">GUEST COUNT</span>';
+      html += '<span class="card-val-text">' + (r.isAttending ? r.guestCount : 0) + '</span>';
 
       // Guest Names
       html += '<span class="card-meta-label">GUEST NAMES</span>';
@@ -667,10 +651,10 @@
 
       // Dietary Requirements
       if (r.dietarySummary && r.dietarySummary.length > 0) {
-        html += '<span class="card-meta-label">DIETARY REQUIREMENTS</span>';
-        html += '<div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.6rem;">';
+        html += '<span class="card-meta-label">DIETARY NOTES</span>';
+        html += '<div style="display:flex; flex-direction:column; gap:0.3rem;">';
         r.dietarySummary.forEach(function(d) {
-          html += '<span style="display:inline-block; padding:0.25rem 0.65rem; background:rgba(124, 139, 111, 0.18); border:1px solid rgba(124, 139, 111, 0.4); border-radius:2px; font-family:var(--font-sans); font-size:0.75rem; font-weight:600; color:var(--burgundy); letter-spacing:0.04em;">' + d + '</span>';
+          html += '<span style="display:inline-block; padding:0.25rem 0.65rem; background:rgba(124, 139, 111, 0.15); border:1px solid rgba(124, 139, 111, 0.35); border-radius:2px; font-family:var(--font-sans); font-size:0.82rem; font-weight:500; color:var(--burgundy);">' + d + '</span>';
         });
         html += '</div>';
       }
@@ -695,7 +679,6 @@
   document.getElementById('guestSearchInput').addEventListener('input', filterAndRenderCards);
   document.getElementById('statusFilterSelect').addEventListener('change', filterAndRenderCards);
 
-  // Initial fetch on page load
   fetchSheetData();
   </script>
 </body>
