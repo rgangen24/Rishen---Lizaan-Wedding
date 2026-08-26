@@ -356,7 +356,7 @@
     }
 
     /* ============================================================
-       4. OUR STORY SECTION (EXACT ATTACHMENT 1 PHOTO COLLAGE LAYOUT)
+       4. OUR STORY SECTION (FULLY VISIBLE PHOTOS & FACES)
     ============================================================ */
     #story {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -420,10 +420,10 @@
       line-height: 1.6;
     }
 
-    /* Overlapping Photo Collage (Exact Match to Attachment 1 on All Devices) */
+    /* Photo Collage Layout (Every photo and face 100% visible) */
     .story-collage-attachment-spread {
       position: relative;
-      max-width: 580px;
+      max-width: 540px;
       margin: 0 auto clamp(4rem, 8vw, 6rem);
       display: flex;
       flex-direction: column;
@@ -432,10 +432,10 @@
       padding: 0 10px;
     }
     .collage-photo-frame {
-      box-shadow: 0 20px 50px rgba(20, 15, 10, 0.22);
+      box-shadow: 0 18px 45px rgba(20, 15, 10, 0.18);
       border-radius: 2px;
-      width: 84%;
-      max-width: 440px;
+      width: 78%;
+      max-width: 380px;
       position: relative;
       transition: transform 0.4s var(--ease-silk);
     }
@@ -446,44 +446,44 @@
       display: block;
     }
 
-    /* Top Photo: Cream Polaroid Frame */
+    /* Top Photo: Cream Polaroid Frame (Shifted Left) */
     .collage-frame-top {
       background: #EFEADF;
-      padding: 14px 14px 32px 14px;
-      transform: rotate(-3.5deg) translateX(-28px);
+      padding: 12px 12px 28px 12px;
+      transform: rotate(-3deg) translateX(-32px);
       z-index: 1;
-      margin-bottom: -125px;
+      margin-bottom: -35px;
     }
 
-    /* Middle Photo: BLACK Polaroid Frame with Round Badge (Matching Attachment 1) */
+    /* Middle Photo: BLACK Polaroid Frame with Round Badge (Shifted Right) */
     .collage-frame-middle {
       background: #050505;
-      padding: 12px 12px 24px 12px;
+      padding: 10px 10px 22px 10px;
       border: 1px solid #111111;
-      transform: rotate(4.5deg) translateX(35px);
+      transform: rotate(4deg) translateX(36px);
       z-index: 5;
-      margin-bottom: -105px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      margin-bottom: -35px;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.35);
     }
     .collage-frame-middle img {
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    /* Bottom Photo: Cream Polaroid Frame */
+    /* Bottom Photo: Cream Polaroid Frame (Shifted Left) */
     .collage-frame-bottom {
       background: #EFEADF;
-      padding: 14px 14px 32px 14px;
-      transform: rotate(-2.5deg) translateX(-20px);
+      padding: 12px 12px 28px 12px;
+      transform: rotate(-2.5deg) translateX(-24px);
       z-index: 2;
     }
 
     /* Round R ♥ L Emblem Badge (Top Right Corner of Middle Frame) */
     .collage-round-rl-badge {
       position: absolute;
-      top: -24px;
-      right: -24px;
-      width: 76px;
-      height: 76px;
+      top: -20px;
+      right: -20px;
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
       background: #EBF1E8;
       border: 1.5px solid rgba(124, 139, 111, 0.45);
@@ -494,9 +494,9 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
       z-index: 12;
     }
-    .collage-round-rl-badge .b-r { font-family: var(--font-serif); font-size: 1.15rem; color: var(--burgundy); line-height: 1; }
-    .collage-round-rl-badge .b-h { font-size: 0.65rem; color: var(--sage); margin: 2px 0; }
-    .collage-round-rl-badge .b-l { font-family: var(--font-serif); font-size: 1.15rem; color: var(--burgundy); line-height: 1; }
+    .collage-round-rl-badge .b-r { font-family: var(--font-serif); font-size: 1.05rem; color: var(--burgundy); line-height: 1; }
+    .collage-round-rl-badge .b-h { font-size: 0.6rem; color: var(--sage); margin: 2px 0; }
+    .collage-round-rl-badge .b-l { font-family: var(--font-serif); font-size: 1.05rem; color: var(--burgundy); line-height: 1; }
 
     /* Narrative Text Flow */
     .story-text-narrative-flow {
@@ -1064,13 +1064,13 @@
   </header>
 
   <!-- ============================================================
-       2. HERO SECTION (SWOOSH VECTOR LINES MATCHING ATTACHMENT 3)
+       2. HERO SECTION
   ============================================================ */ -->
   <main id="main-content">
 
     <section id="hero" aria-labelledby="heroHeadlineNames">
       
-      <!-- Vector Swoosh Background Lines (Attachment 3 Exact Match) -->
+      <!-- Vector Swoosh Background Lines -->
       <svg class="hero-swoosh-bg-vector" viewBox="0 0 1000 1000" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M-150,150 C200,450 600,50 1150,250" stroke="rgba(231,217,190,0.28)" stroke-width="1.2" />
         <path d="M-100,550 C300,150 700,750 1100,450" stroke="rgba(231,217,190,0.24)" stroke-width="1.2" />
@@ -1097,7 +1097,7 @@
     </section>
 
     <!-- ============================================================
-         3. OUR STORY (ATTACHMENT 1 EXACT MATCH ON ALL DEVICES)
+         3. OUR STORY (PHOTOS FULLY VISIBLE & UNCOVERED)
     ============================================================ */ -->
     <section id="story" aria-labelledby="storyHeadingTitle">
       <div class="story-max-container">
@@ -1117,14 +1117,14 @@
           </p>
         </div>
 
-        <!-- Overlapping Photo Collage Layout (Attachment 1 Exact Match) -->
+        <!-- Photo Collage Spread (Every Photo & Face 100% Fully Visible) -->
         <div class="story-collage-attachment-spread">
-          <!-- Top Photo: Cream Polaroid Frame -->
+          <!-- Top Photo: Cream Polaroid Frame (Shifted Left) -->
           <div class="collage-photo-frame collage-frame-top">
             <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait" loading="lazy" />
           </div>
 
-          <!-- Middle Photo: BLACK Polaroid Frame with Round R ♥ L Badge -->
+          <!-- Middle Photo: BLACK Polaroid Frame with Round R ♥ L Badge (Shifted Right) -->
           <div class="collage-photo-frame collage-frame-middle">
             <div class="collage-round-rl-badge">
               <span class="b-r">R</span>
@@ -1134,7 +1134,7 @@
             <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan on green lawn" loading="lazy" />
           </div>
 
-          <!-- Bottom Photo: Cream Polaroid Frame -->
+          <!-- Bottom Photo: Cream Polaroid Frame (Shifted Left) -->
           <div class="collage-photo-frame collage-frame-bottom">
             <img src="images/couple-fun.jpg" alt="Rishen and Lizaan in fun hats" loading="lazy" />
           </div>
