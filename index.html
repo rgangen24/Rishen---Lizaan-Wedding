@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta name="description" content="The Official Wedding Celebration of Rishen &amp; Lizaan — Saturday, 24 October 2026 at Highberry Vineyards &amp; Venue, Somerset West." />
+  <meta name="description" content="The Official Wedding Celebration of Rishen &amp; Lizaan — Saturday, 24 October 2026 at Highberry Vineyards &amp; Venue." />
   <meta name="theme-color" content="#380F14" />
   <title>Rishen &amp; Lizaan — We're Getting Married</title>
 
@@ -14,17 +14,20 @@
 
   <style>
     /* ============================================================
-       1. LUXURY COLOR PALETTE & TOKENS (BURGUNDY & SAGE)
+       1. COLOR PALETTE & TOKENS
     ============================================================ */
     :root {
       --burgundy:         #6E2A31;
+      --burgundy-hero:    #5C1A23;
       --oxblood:          #431A1F;
       --burgundy-rich:    #4D161D;
       --burgundy-deep:    #24090D;
       --burgundy-night:   #150305;
       --burgundy-soft:    #8A3943;
+      --burgundy-card:    #54161E;
 
       --sage:             #7C8B6F;
+      --sage-active:      #9CB08F;
       --sage-dark:        #3D4A36;
       --sage-deep:        #232D20;
       --eucalyptus:       #AAB89C;
@@ -74,16 +77,7 @@
       position: relative;
     }
 
-    /* Ambient Stardust Canvas */
-    #ambientStardustCanvas {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 100;
-      opacity: 0.6;
-    }
-
-    /* Fine Paper Texture */
+    /* Fine Paper Texture Overlay */
     .fine-paper-overlay {
       position: fixed;
       inset: 0;
@@ -113,310 +107,7 @@
     }
 
     /* ============================================================
-       2. ROYAL STATIONERY ENVELOPE & CINEMATIC GATEFOLD DOORS
-    ============================================================ */
-    #envelope-unboxing-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: radial-gradient(circle at 50% 45%, #4C131B 0%, #29080E 45%, #140205 85%, #080002 100%);
-      cursor: pointer;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-      transition: opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 2.2s;
-    }
-
-    /* Grand French Gatefold Doors */
-    .gate-door-left, .gate-door-right {
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 50%;
-      z-index: 2;
-      transition: transform 2.8s cubic-bezier(0.65, 0, 0.15, 1), opacity 2.2s;
-      box-shadow: 0 0 90px rgba(0, 0, 0, 0.98);
-    }
-    .gate-door-left {
-      left: 0;
-      background: 
-        linear-gradient(135deg, rgba(80, 20, 28, 0.99) 0%, rgba(32, 6, 10, 1) 100%),
-        radial-gradient(ellipse at 85% 50%, rgba(170, 184, 156, 0.18), transparent 65%);
-      transform-origin: left center;
-      border-right: 1px solid rgba(231, 217, 190, 0.5);
-    }
-    .gate-door-right {
-      right: 0;
-      background: 
-        linear-gradient(225deg, rgba(72, 16, 24, 0.99) 0%, rgba(26, 4, 8, 1) 100%),
-        radial-gradient(ellipse at 15% 50%, rgba(170, 184, 156, 0.18), transparent 65%);
-      transform-origin: right center;
-      border-left: 1px solid rgba(231, 217, 190, 0.5);
-    }
-
-    .gate-door-left::before, .gate-door-right::before {
-      content: '';
-      position: absolute;
-      inset: clamp(16px, 3.5vw, 32px);
-      border: 1px solid rgba(170, 184, 156, 0.3);
-      box-shadow: inset 0 0 45px rgba(0, 0, 0, 0.6);
-      pointer-events: none;
-    }
-
-    /* Center Ribbon Band */
-    .gate-center-ribbon {
-      position: absolute;
-      top: 0; bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: clamp(55px, 12vw, 85px);
-      background: linear-gradient(90deg, 
-        rgba(26, 5, 8, 0.8) 0%, 
-        rgba(124, 139, 111, 0.3) 30%, 
-        rgba(231, 217, 190, 0.55) 50%, 
-        rgba(124, 139, 111, 0.3) 70%, 
-        rgba(26, 5, 8, 0.8) 100%
-      );
-      border-left: 1px dashed rgba(170, 184, 156, 0.45);
-      border-right: 1px dashed rgba(170, 184, 156, 0.45);
-      z-index: 3;
-      pointer-events: none;
-      box-shadow: 0 0 35px rgba(0,0,0,0.7);
-      transition: opacity 1.2s, transform 1.2s;
-    }
-
-    /* When doors open */
-    #envelope-unboxing-overlay.opened {
-      opacity: 0 !important;
-      visibility: hidden !important;
-      pointer-events: none !important;
-    }
-    #envelope-unboxing-overlay.opened .gate-door-left {
-      transform: translateX(-105%) rotateY(-25deg);
-      opacity: 0;
-    }
-    #envelope-unboxing-overlay.opened .gate-door-right {
-      transform: translateX(105%) rotateY(25deg);
-      opacity: 0;
-    }
-    #envelope-unboxing-overlay.opened .gate-center-ribbon {
-      opacity: 0;
-      transform: translateX(-50%) scaleY(0);
-    }
-    #envelope-unboxing-overlay.opened .luxury-envelope-container {
-      transform: scale(1.18) translateY(-40px);
-      opacity: 0;
-    }
-
-    /* Luxury Envelope Container */
-    .luxury-envelope-container {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s;
-      padding: 1.5rem;
-    }
-    .luxury-envelope-container:hover {
-      transform: scale(1.03);
-    }
-
-    /* Ambient Soft Glow Behind Envelope */
-    .envelope-backlight-glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: clamp(320px, 65vw, 460px);
-      height: clamp(260px, 52vw, 360px);
-      background: radial-gradient(circle, rgba(231, 217, 190, 0.45) 0%, rgba(124, 139, 111, 0.3) 40%, rgba(110, 42, 49, 0.2) 65%, transparent 75%);
-      filter: blur(32px);
-      pointer-events: none;
-      z-index: 1;
-      animation: envelopeGlowPulse 4s ease-in-out infinite alternate;
-    }
-    @keyframes envelopeGlowPulse {
-      0%   { opacity: 0.65; transform: translate(-50%, -50%) scale(0.95); }
-      100% { opacity: 1;    transform: translate(-50%, -50%) scale(1.08); }
-    }
-
-    /* Two-Tone Royal Stationery Envelope Body (Luminous Parchment with Burgundy Flap) */
-    .velvet-envelope-card {
-      position: relative;
-      z-index: 5;
-      width: clamp(290px, 66vw, 400px);
-      height: clamp(190px, 44vw, 255px);
-      background: linear-gradient(180deg, #FAF7F2 0%, #F5EDE0 100%);
-      border-radius: 4px;
-      box-shadow: 
-        0 25px 65px rgba(0, 0, 0, 0.85),
-        0 10px 30px rgba(124, 139, 111, 0.35),
-        inset 0 1px 2px rgba(255, 255, 255, 0.9),
-        inset 0 -2px 6px rgba(0, 0, 0, 0.15);
-      border: 1px solid rgba(231, 217, 190, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: visible;
-    }
-
-    /* Inner Sage Deckled Border Trim */
-    .velvet-envelope-card::before {
-      content: '';
-      position: absolute;
-      inset: 8px;
-      border: 1px solid rgba(124, 139, 111, 0.45);
-      border-radius: 2px;
-      pointer-events: none;
-    }
-
-    /* Botanical Corner Flourishes on Envelope */
-    .envelope-corner-accent-tl, .envelope-corner-accent-br {
-      position: absolute;
-      width: 28px;
-      height: 28px;
-      pointer-events: none;
-      z-index: 6;
-      color: var(--sage);
-      opacity: 0.75;
-    }
-    .envelope-corner-accent-tl { top: 12px; left: 12px; }
-    .envelope-corner-accent-br { bottom: 12px; right: 12px; transform: rotate(180deg); }
-
-    /* Triangular Envelope Flap (Rich Velvet Burgundy with Gold Piping) */
-    .envelope-top-flap-svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      height: 54%;
-      filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.65));
-      transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
-      transform-origin: top center;
-      z-index: 8;
-    }
-    .luxury-envelope-container.opening .envelope-top-flap-svg {
-      transform: rotateX(180deg);
-    }
-
-    /* Emerging Gold-Crested Letter Card Inside */
-    .envelope-inner-letter-card {
-      position: absolute;
-      inset: 12px;
-      background: #FFFFFF;
-      border: 1px solid rgba(231, 217, 190, 0.6);
-      border-radius: 2px;
-      z-index: 4;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    .luxury-envelope-container.opening .envelope-inner-letter-card {
-      transform: translateY(-45px);
-    }
-    .inner-letter-names {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      color: var(--burgundy);
-      font-weight: 400;
-      letter-spacing: 0.05em;
-    }
-    .inner-letter-names span {
-      font-style: italic;
-      color: var(--sage);
-      margin: 0 0.1em;
-    }
-    .inner-letter-date {
-      font-family: var(--font-sans);
-      font-size: 0.62rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-top: 0.25rem;
-    }
-
-    /* Center Embossed R & L Monogram Wax Seal */
-    .envelope-rl-wax-seal {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: clamp(68px, 15vw, 84px);
-      height: clamp(68px, 15vw, 84px);
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #F5EDE0 0%, #E7D9BE 30%, #7C8B6F 65%, #4D161D 100%);
-      box-shadow: 
-        0 8px 30px rgba(0, 0, 0, 0.75),
-        0 0 25px rgba(170, 184, 156, 0.65),
-        inset 0 2px 5px rgba(255, 255, 255, 0.95),
-        inset 0 -3px 8px rgba(36, 9, 13, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid rgba(255, 255, 255, 0.95);
-      z-index: 12;
-      transition: transform 0.6s var(--ease-spring);
-    }
-    .luxury-envelope-container:hover .envelope-rl-wax-seal {
-      transform: translate(-50%, -50%) scale(1.08);
-    }
-    .envelope-rl-wax-seal::after {
-      content: '';
-      position: absolute;
-      inset: 3px;
-      border-radius: 50%;
-      border: 1px dashed rgba(67, 26, 31, 0.45);
-      pointer-events: none;
-    }
-
-    .seal-monogram-text {
-      font-family: var(--font-serif);
-      font-size: clamp(1.25rem, 2.8vw, 1.55rem);
-      font-weight: 600;
-      color: #380F14;
-      letter-spacing: 0.04em;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
-      display: flex;
-      align-items: center;
-    }
-    .seal-monogram-text span {
-      font-family: var(--font-script);
-      font-size: clamp(1.6rem, 3.4vw, 2rem);
-      color: #6E2A31;
-      margin: 0 0.08em;
-    }
-
-    .envelope-invitation-subtag {
-      font-family: var(--font-sans);
-      font-size: clamp(0.72rem, 1.6vw, 0.84rem);
-      font-weight: 600;
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: var(--champagne);
-      margin-top: 2.2rem;
-      text-shadow: 0 3px 15px rgba(0, 0, 0, 0.95);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      transition: all 0.35s;
-    }
-    .luxury-envelope-container:hover .envelope-invitation-subtag {
-      color: var(--silver-pearl);
-      transform: translateY(-2px);
-      letter-spacing: 0.38em;
-    }
-
-    /* ============================================================
-       3. FLOATING COUTURE HEADER & VINYL TURNTABLE PLAYER
+       2. HEADER NAVIGATION & FLOATING CONTROLS
     ============================================================ */
     #couture-header {
       position: fixed;
@@ -429,33 +120,34 @@
       transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s, box-shadow 0.4s;
     }
     #couture-header.scrolled {
-      background: rgba(36, 9, 13, 0.92);
+      background: rgba(36, 9, 13, 0.94);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       padding: 0.9rem clamp(1.5rem, 5vw, 4.5rem);
       box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(231, 217, 190, 0.15);
     }
 
     .header-monogram-brand {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.2rem;
       font-family: var(--font-serif);
-      font-size: 1.45rem;
+      font-size: 1.6rem;
       font-weight: 300;
-      color: var(--champagne);
-      letter-spacing: 0.08em;
+      color: var(--ivory);
+      letter-spacing: 0.05em;
       transition: transform 0.3s, color 0.3s;
     }
     .header-monogram-brand span {
       font-family: var(--font-script);
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       color: var(--eucalyptus);
-      margin: 0 0.1em;
+      margin: 0 0.05em;
     }
     .header-monogram-brand:hover {
-      transform: scale(1.05);
-      color: var(--silver-pearl);
+      transform: scale(1.04);
+      color: var(--champagne);
     }
 
     .header-nav-links-list {
@@ -485,46 +177,6 @@
     }
     .header-nav-links-list a:hover { color: var(--champagne); }
     .header-nav-links-list a:hover::after { width: 100%; }
-
-    .header-right-controls {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-    }
-
-    .vinyl-turntable-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.4rem 0.95rem 0.4rem 0.5rem;
-      background: rgba(231, 217, 190, 0.12);
-      border: 1px solid rgba(231, 217, 190, 0.3);
-      border-radius: 30px;
-      color: var(--champagne);
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-    .vinyl-turntable-btn:hover {
-      background: var(--champagne);
-      color: var(--oxblood);
-    }
-    .turntable-disc {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, #E7D9BE 25%, #6E2A31 26%, #6E2A31 70%, #AAB89C 71%, #6E2A31 75%);
-    }
-    .vinyl-turntable-btn.playing .turntable-disc {
-      animation: spinVinyl 3.5s linear infinite;
-    }
-    @keyframes spinVinyl {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
 
     .mobile-menu-hamburger {
       display: none;
@@ -579,8 +231,50 @@
       .mobile-menu-hamburger { display: flex; }
     }
 
+    /* Floating Play Our Song Button (Attachment 2) */
+    .floating-music-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 1.5rem;
+      z-index: 850;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.2rem;
+      background: rgba(84, 22, 30, 0.88);
+      border: 1px solid rgba(231, 217, 190, 0.4);
+      border-radius: 2px;
+      color: var(--champagne-pearl);
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      transition: all 0.35s var(--ease-silk);
+      cursor: pointer;
+    }
+    .floating-music-btn:hover {
+      background: var(--burgundy);
+      color: var(--white);
+      border-color: var(--champagne);
+      transform: translateY(-2px);
+    }
+    .music-note-icon {
+      font-size: 0.95rem;
+    }
+    .floating-music-btn.playing .music-note-icon {
+      animation: notePulse 1.8s ease-in-out infinite alternate;
+    }
+    @keyframes notePulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(1.25); opacity: 1; }
+    }
+
     /* ============================================================
-       4. RICH BURGUNDY CINEMATIC HERO PAGE (AIRY & BALANCED)
+       3. HERO SECTION (MATCHING ATTACHMENT 2 EXACTLY)
     ============================================================ */
     #hero {
       min-height: 100vh;
@@ -589,31 +283,25 @@
       justify-content: center;
       position: relative;
       padding: clamp(6.5rem, 12vh, 9rem) clamp(1.5rem, 5vw, 5rem) clamp(4rem, 8vh, 6rem);
-      background: radial-gradient(circle at 50% 38%, #5E1A22 0%, #431218 45%, #24080B 85%, #150305 100%);
+      background: radial-gradient(circle at 50% 40%, #5C1A23 0%, #3B0D13 50%, #20060A 85%, #120204 100%);
       color: var(--ivory);
       text-align: center;
       overflow: hidden;
     }
 
-    .hero-cinematic-glow {
+    /* Elegant Fine Line Swoosh Background Vector (Attachment 2) */
+    .hero-swoosh-bg-vector {
       position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: clamp(300px, 70vw, 900px);
-      height: clamp(300px, 70vw, 900px);
-      background: radial-gradient(circle, rgba(170, 184, 156, 0.15) 0%, rgba(110, 42, 49, 0) 70%);
+      inset: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
-      filter: blur(50px);
-      animation: ambientWarmthPulse 6s ease-in-out infinite alternate;
-    }
-    @keyframes ambientWarmthPulse {
-      0% { opacity: 0.6; transform: translateX(-50%) scale(0.95); }
-      100% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+      opacity: 0.35;
+      z-index: 1;
     }
 
     .hero-centered-content {
-      max-width: 920px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -623,86 +311,72 @@
       z-index: 2;
     }
 
-    .hero-we-are-getting-married-caps {
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
+    .hero-invite-eyebrow {
       font-family: var(--font-sans);
-      font-size: clamp(0.78rem, 1.8vw, 0.95rem);
+      font-size: clamp(0.72rem, 1.6vw, 0.85rem);
       font-weight: 500;
-      letter-spacing: 0.44em;
+      letter-spacing: 0.36em;
       text-transform: uppercase;
-      color: var(--eucalyptus);
+      color: rgba(251, 247, 240, 0.85);
       margin-bottom: clamp(1.8rem, 4vh, 2.6rem);
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-    }
-    .hero-we-are-getting-married-caps::before,
-    .hero-we-are-getting-married-caps::after {
-      content: '';
-      display: block;
-      width: clamp(20px, 4vw, 36px);
-      height: 1px;
-      background: var(--eucalyptus);
-      opacity: 0.7;
     }
 
-    .hero-monumental-names-headline {
+    .hero-rl-monogram-emblem {
       font-family: var(--font-serif);
-      font-size: clamp(4.2rem, 12vw, 8.2rem);
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
       font-weight: 300;
       color: var(--ivory);
-      line-height: 0.98;
+      letter-spacing: 0.04em;
+      margin-bottom: clamp(1.2rem, 3vh, 2rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-rl-monogram-emblem span {
+      font-family: var(--font-script);
+      font-size: clamp(2.8rem, 6vw, 3.8rem);
+      color: var(--eucalyptus);
+      margin: 0 0.1em;
+    }
+
+    .hero-headline-names {
+      font-family: var(--font-serif);
+      font-size: clamp(3.8rem, 11vw, 7.5rem);
+      font-weight: 300;
+      color: var(--ivory);
+      line-height: 0.95;
       letter-spacing: -0.02em;
       margin-bottom: clamp(2rem, 4.5vh, 3.2rem);
-      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
     }
-    .hero-monumental-names-headline .amp {
-      font-style: italic;
-      color: var(--eucalyptus);
-      margin: 0 0.12em;
+    .hero-headline-names .amp {
+      font-family: var(--font-script);
+      font-size: 0.85em;
+      color: var(--ivory);
       font-weight: 300;
-      text-shadow: 0 0 25px rgba(170, 184, 156, 0.5);
+      margin: 0 0.1em;
     }
 
-    .hero-date-free-flowing {
+    .hero-date-line {
       font-family: var(--font-sans);
-      font-size: clamp(0.9rem, 2.2vw, 1.12rem);
+      font-size: clamp(0.82rem, 1.9vw, 1.02rem);
       font-weight: 500;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--champagne-pearl);
-      margin-bottom: clamp(2.5rem, 5.5vh, 3.8rem);
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      color: rgba(251, 247, 240, 0.9);
+      margin-bottom: 0.6rem;
     }
 
-    .hero-cinematic-scroll-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
+    .hero-venue-line {
       font-family: var(--font-sans);
-      font-size: 0.76rem;
+      font-size: clamp(0.72rem, 1.6vw, 0.88rem);
       font-weight: 500;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--champagne);
-      transition: transform 0.3s, color 0.3s;
-    }
-    .hero-cinematic-scroll-link svg {
-      width: 15px;
-      height: 15px;
-      animation: bounceDown 2s ease-in-out infinite;
-    }
-    .hero-cinematic-scroll-link:hover {
-      color: var(--silver-pearl);
-      transform: translateY(3px);
-    }
-    @keyframes bounceDown {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(5px); }
+      color: rgba(231, 217, 190, 0.75);
     }
 
     /* ============================================================
-       5. OUR STORY: COUTURE EDITORIAL CHAPTER SPREAD
+       4. OUR STORY SECTION (PHOTO COLLAGE MATCHING ATTACHMENT 5)
     ============================================================ */
     #story {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -718,10 +392,6 @@
       text-align: center;
       max-width: 840px;
       margin: 0 auto clamp(3.5rem, 7vw, 5rem);
-      padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
-      background: linear-gradient(180deg, rgba(235, 241, 232, 0.6) 0%, rgba(253, 251, 247, 0) 100%);
-      border-top: 1px solid rgba(124, 139, 111, 0.35);
-      position: relative;
     }
 
     .story-chapter-eyebrow {
@@ -770,80 +440,82 @@
       line-height: 1.6;
     }
 
-    .love-story-flowing-sequence {
+    /* Photo Collage Layout Matching Attachment 5 */
+    .story-collage-attachment-spread {
+      position: relative;
+      max-width: 580px;
+      margin: 0 auto clamp(4rem, 8vw, 6rem);
       display: flex;
       flex-direction: column;
-      gap: clamp(4.5rem, 9vw, 7.5rem);
-      margin-top: clamp(2rem, 4vw, 3rem);
-    }
-
-    .story-moment-row {
-      display: grid;
-      grid-template-columns: 0.95fr 1.1fr;
-      gap: clamp(2.5rem, 6vw, 5.5rem);
       align-items: center;
     }
-    .story-moment-row.reversed {
-      grid-template-columns: 1.1fr 0.95fr;
-    }
-    .story-moment-row.reversed .story-media-side { order: 2; }
-    .story-moment-row.reversed .story-text-side { order: 1; }
-
-    @media (max-width: 880px) {
-      .story-moment-row, .story-moment-row.reversed {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .story-moment-row.reversed .story-media-side { order: 1; }
-      .story-moment-row.reversed .story-text-side { order: 2; }
-    }
-
-    .story-media-side {
-      display: flex;
-      justify-content: center;
-    }
-    .story-polaroid-frame {
-      background: var(--white);
-      padding: clamp(10px, 1.8vw, 15px);
+    .collage-photo-frame {
+      background: #F8F5EF;
+      padding: 14px 14px 28px 14px;
+      box-shadow: 0 18px 45px rgba(40, 30, 20, 0.12);
       border-radius: 2px;
-      box-shadow: 0 16px 45px rgba(44, 38, 32, 0.1);
-      max-width: 400px;
-      width: 100%;
-      transition: transform 0.5s var(--ease-silk);
+      width: 82%;
+      max-width: 440px;
+      position: relative;
+      transition: transform 0.4s var(--ease-silk);
     }
-    .story-polaroid-frame img {
+    .collage-photo-frame img {
       width: 100%;
       height: auto;
       border-radius: 1px;
     }
-    .story-polaroid-script-caption {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 0.96rem;
-      color: var(--burgundy);
-      text-align: center;
-      margin-top: 0.85rem;
-      line-height: 1.4;
+
+    .collage-frame-top {
+      transform: rotate(-3.5deg) translateX(-25px);
+      z-index: 1;
+      margin-bottom: -110px;
+    }
+    .collage-frame-middle {
+      transform: rotate(4deg) translateX(35px);
+      z-index: 3;
+      margin-bottom: -90px;
+    }
+    .collage-frame-bottom {
+      transform: rotate(-2deg) translateX(-20px);
+      z-index: 2;
     }
 
-    .story-text-side {
+    /* Round R ♥ L Emblem Badge (Attachment 5) */
+    .collage-round-rl-badge {
+      position: absolute;
+      top: -22px;
+      right: -22px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #EBF1E8;
+      border: 1px solid rgba(124, 139, 111, 0.4);
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      z-index: 10;
     }
-    .story-moment-body {
+    .collage-round-rl-badge .b-r { font-family: var(--font-serif); font-size: 1.1rem; color: var(--burgundy); line-height: 1; }
+    .collage-round-rl-badge .b-h { font-size: 0.65rem; color: var(--sage); margin: 1px 0; }
+    .collage-round-rl-badge .b-l { font-family: var(--font-serif); font-size: 1.1rem; color: var(--burgundy); line-height: 1; }
+
+    .story-text-narrative-flow {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+    .story-moment-paragraph {
       font-family: var(--font-sans);
-      font-size: clamp(0.96rem, 1.5vw, 1.06rem);
+      font-size: clamp(0.98rem, 1.5vw, 1.08rem);
       color: var(--ink-soft);
       line-height: 1.95;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.8rem;
     }
-    .story-moment-body:last-child { margin-bottom: 0; }
-
     .story-editorial-dropcap {
       float: left;
       font-family: var(--font-serif);
-      font-size: clamp(3rem, 5vw, 4rem);
+      font-size: clamp(3.2rem, 5vw, 4.2rem);
       line-height: 0.8;
       padding-top: 4px;
       padding-right: 12px;
@@ -852,21 +524,7 @@
       font-weight: 400;
     }
 
-    /* Literary Faith Reflection Spread */
-    .story-faith-spread {
-      max-width: 860px;
-      margin: clamp(4rem, 8vw, 6rem) auto 0;
-      text-align: center;
-    }
-    .story-faith-spread p {
-      font-family: var(--font-sans);
-      font-size: clamp(0.96rem, 1.5vw, 1.06rem);
-      color: var(--ink-soft);
-      line-height: 1.95;
-      margin-bottom: 1.6rem;
-    }
-
-    /* SCRIPTURE CLIMAX WITH GENTLE FLOATING MOTION */
+    /* Scripture Climax */
     .sacred-scripture-climax {
       margin-top: clamp(4rem, 8vw, 6rem);
       text-align: center;
@@ -905,29 +563,6 @@
       align-items: center;
       gap: 1.4rem;
     }
-
-    .burgundy-sage-heart-emblem {
-      width: clamp(44px, 8vw, 54px);
-      height: auto;
-      filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.25));
-      animation: gentleHeartFloat 4s ease-in-out infinite alternate;
-      transform-origin: center center;
-    }
-    @keyframes gentleHeartFloat {
-      0% {
-        transform: translateY(0px) rotate(0deg) scale(1);
-        filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.25));
-      }
-      50% {
-        transform: translateY(-6px) rotate(2deg) scale(1.04);
-        filter: drop-shadow(0 8px 18px rgba(170, 184, 156, 0.4));
-      }
-      100% {
-        transform: translateY(0px) rotate(-2deg) scale(1);
-        filter: drop-shadow(0 4px 12px rgba(110, 42, 49, 0.25));
-      }
-    }
-
     .story-adventure-whisper {
       font-family: var(--font-serif);
       font-style: italic;
@@ -937,7 +572,7 @@
     }
 
     /* ============================================================
-       6. THE GATHERING
+       5. ORDER OF THE DAY (REPLACING THE GATHERING)
     ============================================================ */
     #celebration {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -960,12 +595,12 @@
       letter-spacing: -0.01em;
     }
     .celebration-subdate {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      font-family: var(--font-sans);
+      font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
       color: var(--eucalyptus);
-      margin-top: 0.6rem;
-      line-height: 1.6;
+      margin-top: 0.8rem;
     }
 
     .ceremonial-timeline-wrapper {
@@ -1014,7 +649,7 @@
     }
     .ceremony-event-timestamp {
       font-family: var(--font-sans);
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
@@ -1032,66 +667,11 @@
     }
     .ceremony-event-desc {
       font-family: var(--font-sans);
-      font-size: 0.94rem;
+      font-size: 0.96rem;
       color: var(--ink-soft);
       line-height: 1.7;
     }
 
-    /* Countdown on Sage */
-    .countdown-editorial-spread-box {
-      background: rgba(253, 251, 247, 0.96);
-      color: var(--ink);
-      padding: clamp(2rem, 4.5vw, 3.2rem);
-      border-radius: 2px;
-      text-align: center;
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
-      margin-bottom: 3.5rem;
-    }
-    .countdown-eyebrow-label {
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--sage-dark);
-      margin-bottom: 1.6rem;
-      display: block;
-    }
-    .countdown-numerals-flex {
-      display: flex;
-      justify-content: center;
-      gap: clamp(1.2rem, 4vw, 3.5rem);
-      flex-wrap: wrap;
-    }
-    .countdown-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 65px;
-    }
-    .countdown-huge-digit {
-      font-family: var(--font-serif);
-      font-size: clamp(2.5rem, 5.5vw, 3.8rem);
-      font-weight: 300;
-      color: var(--burgundy);
-      line-height: 1;
-    }
-    .countdown-unit-text {
-      font-family: var(--font-sans);
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-top: 0.5rem;
-    }
-
-    .celebration-action-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
     .btn-celebration-burgundy {
       display: inline-flex;
       align-items: center;
@@ -1113,78 +693,9 @@
       transform: translateY(-2px);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     }
-    .btn-celebration-champagne {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 2.4rem;
-      background: rgba(231, 217, 190, 0.15);
-      border: 1px solid var(--champagne);
-      color: var(--ivory);
-      font-family: var(--font-sans);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      transition: all 0.35s var(--ease-silk);
-    }
-    .btn-celebration-champagne:hover {
-      background: var(--champagne);
-      color: var(--oxblood);
-      transform: translateY(-2px);
-    }
 
     /* ============================================================
-       7. ATMOSPHERE & ATTIRE
-    ============================================================ */
-    #atmosphere {
-      padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
-      background: radial-gradient(circle at 50% 50%, #4D161D 0%, #2D090E 70%, #150305 100%);
-      color: var(--ivory);
-      text-align: center;
-      position: relative;
-    }
-    .atmosphere-title-serif {
-      font-family: var(--font-serif);
-      font-size: clamp(2.6rem, 6vw, 4.2rem);
-      font-weight: 300;
-      color: var(--champagne);
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      margin-bottom: 2.5rem;
-    }
-
-    .atmosphere-card-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: clamp(2.8rem, 6vw, 4.8rem) clamp(1.5rem, 4vw, 3.5rem);
-      border: 1px solid rgba(231, 217, 190, 0.25);
-      border-radius: 2px;
-      background: rgba(251, 247, 240, 0.03);
-      backdrop-filter: blur(8px);
-      position: relative;
-    }
-    .atmosphere-poetic-quote-text {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(1.35rem, 2.8vw, 2.05rem);
-      font-weight: 300;
-      color: var(--champagne);
-      line-height: 1.65;
-      margin-bottom: 2rem;
-    }
-    .atmosphere-notes-paragraph {
-      font-family: var(--font-sans);
-      font-size: 0.98rem;
-      color: rgba(251, 247, 240, 0.88);
-      max-width: 660px;
-      margin: 0 auto;
-      line-height: 1.95;
-    }
-
-    /* ============================================================
-       8. VENUE & LODGING: DESTINATION SPREAD
+       6. VENUE & LODGING
     ============================================================ */
     #venue {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -1264,7 +775,7 @@
     }
 
     /* ============================================================
-       9. RSVP: STATIONERY REPLY CARD ON RICH BURGUNDY
+       7. RSVP SECTION (MATCHING ATTACHMENTS 1, 3, 4 EXACTLY)
     ============================================================ */
     #rsvp {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -1276,132 +787,181 @@
       text-align: center;
       margin-bottom: 3.5rem;
     }
-    .rsvp-title-serif {
-      font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+    .rsvp-gratitude-title {
+      font-family: var(--font-sans);
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
       font-weight: 300;
       color: var(--ivory);
-      line-height: 1.2;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.04em;
     }
-    .rsvp-subquote {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 1.2rem;
-      color: var(--champagne);
-      margin-top: 0.8rem;
-    }
-    .rsvp-deadline-badge {
+    .rsvp-deadline-caps {
       font-family: var(--font-sans);
       font-size: 0.75rem;
-      letter-spacing: 0.25em;
+      font-weight: 500;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
+      color: rgba(231, 217, 190, 0.75);
+      margin-bottom: 2.8rem;
+    }
+
+    /* Countdown Timer (Attachment 1) */
+    .rsvp-countdown-bar {
+      display: flex;
+      justify-content: center;
+      gap: clamp(1.5rem, 5vw, 4rem);
+      margin-bottom: 3.5rem;
+    }
+    .rsvp-cd-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .rsvp-cd-num {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      font-weight: 300;
       color: var(--eucalyptus);
-      margin-top: 1rem;
-      display: inline-block;
+      line-height: 1;
+    }
+    .rsvp-cd-lbl {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(251, 247, 240, 0.65);
+      margin-top: 0.6rem;
     }
 
-    .rsvp-reply-stationery-envelope {
-      max-width: 680px;
+    /* Dark Burgundy Card Container (Attachment 3 & 4) */
+    .rsvp-card-box {
+      max-width: 660px;
       margin: 0 auto;
-      background: var(--ivory);
-      color: var(--ink);
-      padding: clamp(2.4rem, 5.5vw, 3.8rem) clamp(1.5rem, 4vw, 3rem);
+      background: var(--burgundy-card);
+      border: 1px solid rgba(231, 217, 190, 0.15);
+      padding: clamp(2.2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
       border-radius: 2px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
-      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
     }
 
-    .form-row {
+    .card-eyebrow-caps {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(231, 217, 190, 0.65);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .card-main-question-serif {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 300;
+      color: var(--ivory);
+      line-height: 1.15;
+      margin-bottom: 2.2rem;
+    }
+
+    .form-group {
       margin-bottom: 1.8rem;
     }
-    .form-label {
+    .field-label-caps {
       display: block;
       font-family: var(--font-sans);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--burgundy);
-      margin-bottom: 0.6rem;
-    }
-    .form-input, .form-select, .form-textarea {
-      width: 100%;
-      padding: 0.95rem 1.1rem;
-      background: var(--white);
-      border: 1px solid var(--champagne);
-      border-radius: 1px;
-      font-family: var(--font-sans);
-      font-size: 0.95rem;
-      color: var(--ink);
-      transition: border-color 0.3s, box-shadow 0.3s;
-      outline: none;
-    }
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: var(--burgundy);
-      box-shadow: 0 0 0 3px rgba(110, 42, 49, 0.1);
+      color: rgba(251, 247, 240, 0.75);
+      margin-bottom: 0.7rem;
     }
 
-    .attendance-radios-flex {
+    .form-line-input, .form-line-select, .form-line-textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(231, 217, 190, 0.35);
+      padding: 0.75rem 0;
+      font-family: var(--font-sans);
+      font-size: 0.98rem;
+      color: var(--ivory);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-line-input::placeholder, .form-line-textarea::placeholder {
+      color: rgba(251, 247, 240, 0.4);
+    }
+    .form-line-input:focus, .form-line-select:focus, .form-line-textarea:focus {
+      border-bottom-color: var(--champagne);
+    }
+    .form-line-select option {
+      background: #3B0D13;
+      color: var(--ivory);
+    }
+
+    /* Yes / No Toggle Button Cards (Attachment 3 & 4) */
+    .attendance-toggle-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
-    .attendance-radio-card {
+    @media (max-width: 580px) {
+      .attendance-toggle-grid { grid-template-columns: 1fr; }
+    }
+
+    .attendance-btn-option {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
-      padding: 1.1rem 1rem;
-      border: 1px solid var(--champagne);
-      background: var(--white);
-      color: var(--ink);
+      padding: 1.1rem 0.8rem;
+      border: 1px solid rgba(231, 217, 190, 0.3);
+      background: transparent;
+      color: var(--ivory);
       font-family: var(--font-sans);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       cursor: pointer;
       border-radius: 1px;
       transition: all 0.3s;
     }
-    .attendance-radio-card:hover {
-      border-color: var(--burgundy);
-      background: var(--champagne-soft);
+    .attendance-btn-option:hover {
+      border-color: var(--champagne);
+      background: rgba(231, 217, 190, 0.08);
     }
-    .attendance-radio-card input {
-      accent-color: var(--burgundy);
-      transform: scale(1.15);
+    .attendance-btn-option.selected {
+      background: var(--sage-active) !important;
+      color: #1A2516 !important;
+      border-color: var(--sage-active) !important;
     }
 
-    .btn-submit-rsvp {
-      width: 100%;
-      padding: 1.15rem 2rem;
-      background: var(--burgundy);
-      color: var(--ivory);
-      font-family: var(--font-sans);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      border-radius: 1px;
-      margin-top: 1.2rem;
-      cursor: pointer;
-      transition: all 0.35s var(--ease-silk);
-      box-shadow: 0 8px 24px rgba(110, 42, 49, 0.25);
-      display: flex;
+    .btn-send-rsvp-white {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.6rem;
+      padding: 1.1rem 2.4rem;
+      background: var(--ivory);
+      color: var(--oxblood);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      border-radius: 1px;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      transition: all 0.35s var(--ease-silk);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
-    .btn-submit-rsvp:hover {
-      background: var(--oxblood);
+    .btn-send-rsvp-white:hover {
+      background: var(--champagne);
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(110, 42, 49, 0.35);
-    }
-    .btn-submit-rsvp:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
     }
 
     .rsvp-success-feedback {
@@ -1411,18 +971,18 @@
     }
 
     /* ============================================================
-       10. CLOSING KEEPSAKE & SIGNATURE
+       8. CLOSING KEEPSAKE & SIGNATURE
     ============================================================ */
     #closing-keepsake {
       background: var(--oxblood);
       color: rgba(251, 247, 240, 0.75);
       text-align: center;
-      padding: 6rem 1.5rem 4rem;
+      padding: 6rem 1.5rem 5rem;
       position: relative;
     }
     .keepsake-names {
       font-family: var(--font-serif);
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       font-weight: 300;
       color: var(--ivory);
       letter-spacing: 0.04em;
@@ -1438,21 +998,7 @@
     }
     .keepsake-sign {
       font-family: var(--font-script);
-      font-size: 2.2rem;
-      color: var(--champagne);
-      margin-bottom: 2rem;
-    }
-
-    .dashboard-link-footer {
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(231, 217, 190, 0.45);
-      transition: color 0.3s;
-      text-decoration: none;
-    }
-    .dashboard-link-footer:hover {
+      font-size: 2.4rem;
       color: var(--champagne);
     }
 
@@ -1464,131 +1010,31 @@
       }
     }
   </style>
-
-  <!-- Immediate Unboxing Engine Script in Head for Zero-Delay Interaction -->
-  <script>
-    var isUnboxingLaunched = false;
-
-    function openWeddingInvitation(e) {
-      if (isUnboxingLaunched) return;
-      isUnboxingLaunched = true;
-
-      var overlay     = document.getElementById('envelope-unboxing-overlay');
-      var container   = document.getElementById('luxuryEnvelopeContainer');
-      var audio       = document.getElementById('weddingRomanticSoundtrack');
-      var turntable   = document.getElementById('turntableAudioToggle');
-
-      // 1. Slow, majestic envelope opening sequence
-      if (container) {
-        container.classList.add('opening');
-      }
-
-      // 2. Play romantic soundtrack
-      if (audio) {
-        try {
-          var p = audio.play();
-          if (p !== undefined) {
-            p.then(function() {
-              if (turntable) turntable.classList.add('playing');
-            }).catch(function() {});
-          }
-        } catch(err) {}
-      }
-
-      // 3. Open grand French doors majestically after envelope unfolds
-      setTimeout(function() {
-        if (overlay) {
-          overlay.classList.add('opened');
-        }
-      }, 650);
-
-      // 4. Complete cleanup
-      setTimeout(function() {
-        if (overlay) {
-          overlay.style.display = 'none';
-        }
-      }, 2900);
-    }
-    window.openWeddingInvitation = openWeddingInvitation;
-  </script>
 </head>
 <body>
 
-  <!-- Ambient Stardust Canvas -->
-  <canvas id="ambientStardustCanvas"></canvas>
+  <!-- Fine Paper Overlay -->
   <div class="fine-paper-overlay"></div>
 
-  <!-- Top Reading Progress Fill Bar -->
+  <!-- Top Reading Progress Line -->
   <div class="top-scroll-progress-line">
     <div class="top-scroll-progress-fill" id="topProgressFill"></div>
   </div>
 
-  <!-- ============================================================
-       1. ROYAL STATIONERY ENVELOPE & CINEMATIC GATEFOLD DOORS
-  ============================================================ */ -->
-  <div id="envelope-unboxing-overlay" onclick="openWeddingInvitation(event)" ontouchend="openWeddingInvitation(event)" aria-label="Wedding Invitation Envelope Unboxing">
-    
-    <!-- Grand French Gatefold Doors with Antique Sage Trim -->
-    <div class="gate-door-left"></div>
-    <div class="gate-door-right"></div>
-    <div class="gate-center-ribbon"></div>
+  <!-- Floating Music Toggle Button (Matching Attachment 2) -->
+  <button type="button" class="floating-music-btn" id="turntableAudioToggle" aria-label="Toggle Background Music">
+    <span class="music-note-icon">🎵</span>
+    <span>Play Our Song</span>
+  </button>
 
-    <!-- Central Couture Royal Stationery Envelope -->
-    <div class="luxury-envelope-container" id="luxuryEnvelopeContainer" title="Click to open your wedding invitation">
-      
-      <div class="envelope-backlight-glow" aria-hidden="true"></div>
-
-      <div class="velvet-envelope-card">
-        
-        <!-- Corner Botanical Flourishes -->
-        <svg class="envelope-corner-accent-tl" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M2 26 C2 10, 10 2, 26 2 M2 2 C8 8, 8 8, 14 2 M2 14 C8 8, 8 8, 2 14"/>
-        </svg>
-        <svg class="envelope-corner-accent-br" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M2 26 C2 10, 10 2, 26 2 M2 2 C8 8, 8 8, 14 2 M2 14 C8 8, 8 8, 2 14"/>
-        </svg>
-
-        <!-- Inner Gold-Crested Letter Card that glides up -->
-        <div class="envelope-inner-letter-card">
-          <div class="inner-letter-names">Rishen <span>&amp;</span> Lizaan</div>
-          <div class="inner-letter-date">24 &middot; 10 &middot; 2026</div>
-        </div>
-
-        <!-- Flap Geometry (Deep Velvet Burgundy with Gold Border) -->
-        <svg class="envelope-top-flap-svg" viewBox="0 0 400 135" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0 L200 130 L400 0 Z" fill="url(#envelopeFlapGrad)" stroke="rgba(231, 217, 190, 0.6)" stroke-width="1.8"/>
-          <defs>
-            <linearGradient id="envelopeFlapGrad" x1="200" y1="0" x2="200" y2="135" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#73252E"/>
-              <stop offset="0.5" stop-color="#551921"/>
-              <stop offset="1" stop-color="#3A0D14"/>
-            </linearGradient>
-          </defs>
-        </svg>
-
-        <!-- Center Embossed R & L Monogram Wax Seal -->
-        <div class="envelope-rl-wax-seal">
-          <div class="seal-monogram-text">
-            R<span>&amp;</span>L
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Tap to Open Call to Action -->
-      <span class="envelope-invitation-subtag">
-        <span>Tap to open invitation</span>
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2">
-          <path d="M3 8h10M9 4l4 4-4 4"/>
-        </svg>
-      </span>
-
-    </div>
-
-  </div>
+  <!-- Sixpence None the Richer - Kiss Me Audio -->
+  <audio id="weddingRomanticSoundtrack" loop preload="auto">
+    <source src="audio/kiss-me.m4a" type="audio/mp4" />
+    <source src="audio/kiss-me.webm" type="audio/webm" />
+  </audio>
 
   <!-- ============================================================
-       2. COUTURE HEADER & VINYL TURNTABLE MUSIC CONTROL
+       1. HEADER NAVIGATION
   ============================================================ */ -->
   <header>
     <nav id="couture-header" aria-label="Main Navigation">
@@ -1598,74 +1044,65 @@
 
       <ul class="header-nav-links-list" role="list">
         <li><a href="#story">Our Story</a></li>
-        <li><a href="#celebration">The Day</a></li>
-        <li><a href="#atmosphere">Atmosphere</a></li>
+        <li><a href="#celebration">Order of the Day</a></li>
         <li><a href="#venue">Venue &amp; Lodging</a></li>
         <li><a href="#rsvp">RSVP</a></li>
       </ul>
 
-      <div class="header-right-controls">
-        <button type="button" class="vinyl-turntable-btn" id="turntableAudioToggle" aria-label="Toggle Background Music">
-          <div class="turntable-disc"></div>
-          <span>Music</span>
-        </button>
-
-        <button class="mobile-menu-hamburger" id="mobileMenuHamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileFullNavCurtain">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <button class="mobile-menu-hamburger" id="mobileMenuHamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileFullNavCurtain">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
 
     <div class="mobile-full-nav-curtain" id="mobileFullNavCurtain" aria-label="Mobile navigation menu" aria-hidden="true">
       <a href="#story">Our Story</a>
-      <a href="#celebration">The Day</a>
-      <a href="#atmosphere">Atmosphere</a>
+      <a href="#celebration">Order of the Day</a>
       <a href="#venue">Venue &amp; Lodging</a>
       <a href="#rsvp">RSVP</a>
     </div>
   </header>
 
-  <!-- Sixpence None the Richer - Kiss Me Audio -->
-  <audio id="weddingRomanticSoundtrack" loop preload="auto">
-    <source src="audio/kiss-me.m4a" type="audio/mp4" />
-    <source src="audio/kiss-me.webm" type="audio/webm" />
-  </audio>
-
   <!-- ============================================================
-       3. MAIN COUTURE EDITORIAL INVITATION SPREAD
+       2. HERO SECTION (EXACT MATCH TO ATTACHMENT 2)
   ============================================================ */ -->
   <main id="main-content">
 
-    <!-- 1. RICH BURGUNDY CINEMATIC HERO PAGE (AIRY, BALANCED, SPACIOUS) -->
-    <section id="hero" aria-labelledby="heroMainTitle">
-      <div class="hero-cinematic-glow" aria-hidden="true"></div>
+    <section id="hero" aria-labelledby="heroHeadlineNames">
+      
+      <!-- Vector Swoosh Background Lines (Attachment 2) -->
+      <svg class="hero-swoosh-bg-vector" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-100,200 Q300,500 900,100" stroke="rgba(231,217,190,0.18)" stroke-width="1.2" />
+        <path d="M-50,650 Q400,200 850,750" stroke="rgba(170,184,156,0.18)" stroke-width="1.2" />
+        <circle cx="400" cy="400" r="320" stroke="rgba(231,217,190,0.06)" stroke-width="1" />
+      </svg>
 
       <div class="hero-centered-content">
-        <span class="hero-we-are-getting-married-caps">We're getting married</span>
+        <span class="hero-invite-eyebrow">WITH ALL OUR LOVE, WE INVITE YOU.</span>
 
-        <h1 class="hero-monumental-names-headline" id="heroMainTitle">
-          Rishen <span class="amp">&amp;</span> Lizaan
+        <div class="hero-rl-monogram-emblem">
+          R<span>&amp;</span>L
+        </div>
+
+        <h1 class="hero-headline-names" id="heroHeadlineNames">
+          Rishen <span class="amp">&amp;</span><br />Lizaan
         </h1>
 
-        <!-- Free & Borderless Date & Time -->
-        <p class="hero-date-free-flowing">
-          Saturday, 24 October 2026 &nbsp;&middot;&nbsp; 14:30
+        <p class="hero-date-line">
+          24 OCTOBER 2026 &nbsp;&nbsp; 2:30 PM
         </p>
 
-        <a href="#story" class="hero-cinematic-scroll-link" aria-label="Begin exploring the wedding invitation">
-          <span>Begin here</span>
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <path d="M8 2v12M3 9l5 5 5-5"/>
-          </svg>
-        </a>
+        <p class="hero-venue-line">
+          HIGHBERRY VINEYARDS &amp; VENUE
+        </p>
       </div>
     </section>
 
-    <!-- 2. OUR STORY: COUTURE EDITORIAL CHAPTER SPREAD -->
+    <!-- ============================================================
+         3. OUR STORY (PHOTO COLLAGE ATTACHMENT 5 MATCH)
+    ============================================================ */ -->
     <section id="story" aria-labelledby="storyHeadingTitle">
       <div class="story-max-container">
         
-        <!-- Elevated Chapter Title Box with Botanical Accents -->
         <div class="story-editorial-header-spread">
           <span class="story-chapter-eyebrow">A Lifelong Chapter</span>
           <h2 class="story-main-heading-serif" id="storyHeadingTitle">
@@ -1681,75 +1118,58 @@
           </p>
         </div>
 
-        <div class="love-story-flowing-sequence">
-
-          <!-- MOMENT 1: THE GLANCE -->
-          <div class="story-moment-row">
-            <div class="story-media-side">
-              <div class="story-polaroid-frame" style="transform: rotate(-2.2deg);">
-                <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan outdoor photograph" loading="lazy" />
-                <p class="story-polaroid-script-caption">“An instant connection across the room.”</p>
-              </div>
-            </div>
-            <div class="story-text-side">
-              <p class="story-moment-body">
-                <span class="story-editorial-dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan’s family members. There was an instant connection, a quiet, undeniable feeling that something about this person was different. It was love at first sight - although neither of them was brave enough to actually say a word to the other 😂!
-              </p>
-            </div>
+        <!-- Overlapping Photo Collage Layout (Matching Attachment 5) -->
+        <div class="story-collage-attachment-spread">
+          <!-- Top Photo -->
+          <div class="collage-photo-frame collage-frame-top">
+            <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait" loading="lazy" />
           </div>
 
-          <!-- MOMENT 2: THE CONVERSATION -->
-          <div class="story-moment-row reversed">
-            <div class="story-media-side">
-              <div class="story-polaroid-frame" style="transform: rotate(2.4deg);">
-                <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait close-up" loading="lazy" />
-                <p class="story-polaroid-script-caption">“Favourite good morning &amp; favourite good night.”</p>
-              </div>
+          <!-- Middle Photo with Round R ♥ L Badge -->
+          <div class="collage-photo-frame collage-frame-middle">
+            <div class="collage-round-rl-badge">
+              <span class="b-r">R</span>
+              <span class="b-h">♥</span>
+              <span class="b-l">L</span>
             </div>
-            <div class="story-text-side">
-              <p class="story-moment-body">
-                <span class="story-editorial-dropcap">A</span> few days later, Rishen still couldn’t get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that never happened in person began over text.
-              </p>
-              <p class="story-moment-body">
-                What started as simple messages quickly became hours of talking, learning about one another, laughing, sharing dreams, and slowly falling completely in love. Somewhere between the good morning messages, late night conversations, inside jokes and countless memories, two people who were once too shy to speak became each other’s favourite good morning and favourite good night.
-              </p>
-            </div>
+            <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan on green lawn" loading="lazy" />
           </div>
 
-          <!-- MOMENT 3: LIKE IRON SHARPENS IRON -->
-          <div class="story-moment-row">
-            <div class="story-media-side">
-              <div class="story-polaroid-frame" style="transform: rotate(-1.6deg);">
-                <img src="images/couple-fun.jpg" alt="Rishen and Lizaan laughing joyfully in hats" loading="lazy" />
-                <p class="story-polaroid-script-caption">“Shared laughter, adventures &amp; milestones.”</p>
-              </div>
-            </div>
-            <div class="story-text-side">
-              <p class="story-moment-body">
-                <span class="story-editorial-dropcap">S</span>ince then, we’ve shared so many beautiful moments together, from ordinary days that became special simply because we were together, to adventures, laughter, memories and milestones that we’ll treasure forever. Through it all, our love has continued to grow, and we’ve come to realise that the best part of life is having someone beside you to share it all with.
-              </p>
-              <p class="story-moment-body">
-                Like iron sharpens iron. We believe we are meant to encourage, strengthen and bring out the best in one another.
-              </p>
-            </div>
+          <!-- Bottom Photo -->
+          <div class="collage-photo-frame collage-frame-bottom">
+            <img src="images/couple-fun.jpg" alt="Rishen and Lizaan in fun hats" loading="lazy" />
           </div>
-
         </div>
 
-        <!-- LITERARY FAITH REFLECTION SPREAD -->
-        <div class="story-faith-spread">
-          <p>
+        <!-- Verbatim Story Narrative Text -->
+        <div class="story-text-narrative-flow">
+          <p class="story-moment-paragraph">
+            <span class="story-editorial-dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan’s family members. There was an instant connection, a quiet, undeniable feeling that something about this person was different. It was love at first sight - although neither of them was brave enough to actually say a word to the other 😂!
+          </p>
+          <p class="story-moment-paragraph">
+            A few days later, Rishen still couldn’t get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that never happened in person began over text.
+          </p>
+          <p class="story-moment-paragraph">
+            What started as simple messages quickly became hours of talking, learning about one another, laughing, sharing dreams, and slowly falling completely in love. Somewhere between the good morning messages, late night conversations, inside jokes and countless memories, two people who were once too shy to speak became each other’s favourite good morning and favourite good night.
+          </p>
+          <p class="story-moment-paragraph">
+            Since then, we’ve shared so many beautiful moments together, from ordinary days that became special simply because we were together, to adventures, laughter, memories and milestones that we’ll treasure forever. Through it all, our love has continued to grow, and we’ve come to realise that the best part of life is having someone beside you to share it all with.
+          </p>
+          <p class="story-moment-paragraph">
+            Like iron sharpens iron. We believe we are meant to encourage, strengthen and bring out the best in one another.
+          </p>
+          <p class="story-moment-paragraph">
             We believe our story was never simply a coincidence. We believe God brought our paths together at exactly the right time and has been writing our story long before we even realised it. He has blessed us with a love that has grown through friendship, faith, laughter and the promise of a lifetime together.
           </p>
-          <p>
+          <p class="story-moment-paragraph">
             Now, as we prepare to become husband and wife, we’re filled with gratitude for everything that brought us here, and excitement for everything that is still to come.
           </p>
-          <p>
+          <p class="story-moment-paragraph">
             We can’t wait to spend the rest of our lives choosing each other, building our home, creating beautiful memories, growing in faith, and walking hand in hand through every chapter God has planned for us.
           </p>
         </div>
 
-        <!-- SCRIPTURE CLIMAX WITH GENTLE FLOATING MOTION -->
+        <!-- Scripture Climax -->
         <div class="sacred-scripture-climax">
           <p class="sacred-scripture-main-verse">
             “Therefore what God has joined together, let no one separate.”
@@ -1758,25 +1178,6 @@
           
           <div class="story-climax-becoming-forever">
             <p>And so, what began with a glance, grew through messages, and blossomed into a love we never expected, is becoming forever.</p>
-            
-            <!-- Intertwined Burgundy & Sage Heart Emblem with Gentle Floating Motion -->
-            <svg class="burgundy-sage-heart-emblem" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Burgundy and Sage Heart Monogram">
-              <path d="M50 82 C50 82, 12 55, 12 30 C12 16, 23 8, 35 8 C43 8, 48 13, 50 18 C52 13, 57 8, 65 8 C77 8, 88 16, 88 30 C88 55, 50 82, 50 82 Z" fill="url(#burgundyHeartGrad)" stroke="var(--eucalyptus)" stroke-width="1.8"/>
-              <path d="M50 82 Q30 50 48 24" stroke="var(--sage-dark)" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M48 24 Q60 38 42 56" stroke="var(--eucalyptus)" stroke-width="2" stroke-linecap="round"/>
-              <ellipse cx="38" cy="42" rx="6" ry="3" fill="var(--sage)" transform="rotate(-35 38 42)"/>
-              <ellipse cx="54" cy="34" rx="5" ry="2.5" fill="var(--eucalyptus)" transform="rotate(30 54 34)"/>
-              <ellipse cx="44" cy="62" rx="5" ry="2.5" fill="var(--sage)" transform="rotate(-20 44 62)"/>
-
-              <defs>
-                <linearGradient id="burgundyHeartGrad" x1="20" y1="10" x2="80" y2="80" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#9E3B46"/>
-                  <stop offset="0.6" stop-color="#6E2A31"/>
-                  <stop offset="1" stop-color="#3D1217"/>
-                </linearGradient>
-              </defs>
-            </svg>
-
             <p class="story-adventure-whisper">Our greatest adventure is just beginning.</p>
           </div>
         </div>
@@ -1784,35 +1185,22 @@
       </div>
     </section>
 
-    <!-- 3. THE GATHERING -->
+    <!-- ============================================================
+         4. ORDER OF THE DAY (REPLACING THE GATHERING)
+    ============================================================ */ -->
     <section id="celebration" aria-labelledby="celebrationHeadingTitle">
       <div class="story-max-container">
         
         <div class="celebration-editorial-header">
-          <h2 class="celebration-title-serif" id="celebrationHeadingTitle">The Gathering</h2>
+          <h2 class="celebration-title-serif" id="celebrationHeadingTitle">Order of the Day</h2>
           <p class="celebration-subdate">
-            Saturday, 24 October 2026 &nbsp;&middot;&nbsp; Highberry Vineyards &amp; Venue
+            Saturday, 24 October 2026
           </p>
         </div>
 
-        <!-- Editorial Timeline Journey -->
+        <!-- Editorial Timeline -->
         <div class="ceremonial-timeline-wrapper">
           <div class="ceremonial-timeline-guide-thread" aria-hidden="true"></div>
-
-          <!-- 14:15 Arrival -->
-          <div class="ceremony-event-row">
-            <div class="ceremony-event-icon-circle" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <circle cx="12" cy="12" r="9"/>
-                <polyline points="12 7 12 12 15 15"/>
-              </svg>
-            </div>
-            <div class="ceremony-event-content-box">
-              <span class="ceremony-event-timestamp">14:15</span>
-              <h3 class="ceremony-event-title">Guest Arrival &amp; Seating</h3>
-              <p class="ceremony-event-desc">Guests are warmly welcomed and seated before proceedings begin.</p>
-            </div>
-          </div>
 
           <!-- 14:30 Ceremony -->
           <div class="ceremony-event-row">
@@ -1824,7 +1212,7 @@
             <div class="ceremony-event-content-box">
               <span class="ceremony-event-timestamp">14:30</span>
               <h3 class="ceremony-event-title">The Ceremony</h3>
-              <p class="ceremony-event-desc">At Highberry Vineyards &amp; Venue — Rishen &amp; Lizaan exchange their vows and say “I do.”</p>
+              <p class="ceremony-event-desc">Rishen and Lizaan exchange their vows and say I do.</p>
             </div>
           </div>
 
@@ -1840,11 +1228,11 @@
             <div class="ceremony-event-content-box">
               <span class="ceremony-event-timestamp">16:00</span>
               <h3 class="ceremony-event-title">Drinks &amp; Canap&eacute;s</h3>
-              <p class="ceremony-event-desc">Sunset drinks and delicious bites on the lawns with wonderful company.</p>
+              <p class="ceremony-event-desc">Sunset drinks and delicious bites on the lawns.</p>
             </div>
           </div>
 
-          <!-- 18:00 Reception & Dinner -->
+          <!-- 18:00 Celebration & Dancing -->
           <div class="ceremony-event-row">
             <div class="ceremony-event-icon-circle" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -1855,54 +1243,15 @@
             </div>
             <div class="ceremony-event-content-box">
               <span class="ceremony-event-timestamp">18:00</span>
-              <h3 class="ceremony-event-title">Reception &amp; Dinner</h3>
-              <p class="ceremony-event-desc">Celebratory dinner, heartfelt toasts, and cherished moments with those we love most.</p>
-            </div>
-          </div>
-
-          <!-- After Dinner -->
-          <div class="ceremony-event-row">
-            <div class="ceremony-event-icon-circle" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M9 18V5l12-2v13"/>
-                <circle cx="6" cy="18" r="3"/>
-                <circle cx="18" cy="16" r="3"/>
-              </svg>
-            </div>
-            <div class="ceremony-event-content-box">
-              <span class="ceremony-event-timestamp">After Dinner</span>
               <h3 class="ceremony-event-title">Celebration &amp; Dancing</h3>
-              <p class="ceremony-event-desc">Music, laughter, and dancing under the stars.</p>
+              <p class="ceremony-event-desc">Dinner, heartfelt toasts, and cherished moments with those we love most, followed by music, laughter, and dancing under the stars.</p>
             </div>
           </div>
 
         </div>
 
-        <!-- Real-Time Fine Numeral Countdown -->
-        <div class="countdown-editorial-spread-box">
-          <span class="countdown-eyebrow-label">Counting Down to Forever</span>
-          <div class="countdown-numerals-flex" id="countdownDigitsFlex" aria-live="polite">
-            <div class="countdown-col">
-              <span class="countdown-huge-digit" id="cdDays">--</span>
-              <span class="countdown-unit-text">Days</span>
-            </div>
-            <div class="countdown-col">
-              <span class="countdown-huge-digit" id="cdHours">--</span>
-              <span class="countdown-unit-text">Hours</span>
-            </div>
-            <div class="countdown-col">
-              <span class="countdown-huge-digit" id="cdMins">--</span>
-              <span class="countdown-unit-text">Minutes</span>
-            </div>
-            <div class="countdown-col">
-              <span class="countdown-huge-digit" id="cdSecs">--</span>
-              <span class="countdown-unit-text">Seconds</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Celebration Action Buttons (Centered) -->
-        <div class="celebration-action-buttons" style="display:flex; justify-content:center; margin-top:2rem;">
+        <!-- Centered Save Date Button -->
+        <div style="display:flex; justify-content:center; margin-top:2.5rem;">
           <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//Rishen%20%26%20Lizaan//Wedding//EN%0ABEGIN:VEVENT%0ADTSTART:20261024T123000Z%0ADTEND:20261024T220000Z%0ASUMMARY:Rishen%20%26%20Lizaan%27s%20Wedding%0ADESCRIPTION:Wedding%20celebration%20of%20Rishen%20%26%20Lizaan%20at%20Highberry%20Vineyards%2C%20Somerset%20West.%20Ceremony%20at%2014%3A30.%0ALOCATION:Highberry%20Vineyards%20%26%20Venue%2C%20Somerset%20West%2C%20Cape%20Winelands%2C%20South%20Africa%0AURL:https%3A%2F%2Fwww.highberry.co.za%2F%0AEND:VEVENT%0AEND:VCALENDAR"
              download="Rishen-and-Lizaan-Wedding-24-Oct-2026.ics"
              class="btn-celebration-burgundy">
@@ -1917,23 +1266,9 @@
       </div>
     </section>
 
-    <!-- 4. ATMOSPHERE & ATTIRE -->
-    <section id="atmosphere" aria-labelledby="atmosphereHeadingTitle">
-      <div class="story-max-container">
-        <h2 class="atmosphere-title-serif" id="atmosphereHeadingTitle">Atmosphere &amp; Attire</h2>
-
-        <div class="atmosphere-card-inner">
-          <p class="atmosphere-poetic-quote-text">
-            “Come dressed for a beautiful celebration—where deep burgundy meets soft sage, and every moment is filled with warmth and joy.”
-          </p>
-          <p class="atmosphere-notes-paragraph">
-            Our wedding is an unhurried, joyous gathering of the people who mean the most to us. Guests are warmly invited to dress elegantly, formally, semi-formally, or in beautiful traditional wear.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. VENUE & LODGING: DESTINATION SPREAD -->
+    <!-- ============================================================
+         5. VENUE & LODGING
+    ============================================================ */ -->
     <section id="venue" aria-labelledby="venueHeadingTitle">
       <div class="story-max-container">
         
@@ -2000,79 +1335,115 @@
       </div>
     </section>
 
-    <!-- 6. RSVP: STATIONERY REPLY CARD ON RICH BURGUNDY -->
+    <!-- ============================================================
+         6. RSVP SECTION (MATCHING ATTACHMENTS 1, 3, 4 EXACTLY)
+    ============================================================ */ -->
     <section id="rsvp" aria-labelledby="rsvpHeadingTitle">
       <div class="story-max-container">
         
         <div class="rsvp-header-center">
-          <h2 class="rsvp-title-serif" id="rsvpHeadingTitle">Will you celebrate with us?</h2>
-          <p class="rsvp-subquote">
-            We’d be so grateful to share this special beginning with you.
-          </p>
-          <span class="rsvp-deadline-badge">
-            Please respond by 24 September 2026
-          </span>
+          <h2 class="rsvp-gratitude-title">We’d be so grateful to hear from you.</h2>
+          <p class="rsvp-deadline-caps">RSVP BY 24 SEPTEMBER 2026 &nbsp;&middot;&nbsp; CLOSES AT MIDNIGHT.</p>
+
+          <!-- Countdown Timer (Attachment 1) -->
+          <div class="rsvp-countdown-bar" id="countdownDigitsFlex">
+            <div class="rsvp-cd-item">
+              <span class="rsvp-cd-num" id="cdDays">--</span>
+              <span class="rsvp-cd-lbl">DAYS</span>
+            </div>
+            <div class="rsvp-cd-item">
+              <span class="rsvp-cd-num" id="cdHours">--</span>
+              <span class="rsvp-cd-lbl">HOURS</span>
+            </div>
+            <div class="rsvp-cd-item">
+              <span class="rsvp-cd-num" id="cdMins">--</span>
+              <span class="rsvp-cd-lbl">MINUTES</span>
+            </div>
+            <div class="rsvp-cd-item">
+              <span class="rsvp-cd-num" id="cdSecs">--</span>
+              <span class="rsvp-cd-lbl">SECONDS</span>
+            </div>
+          </div>
         </div>
 
-        <div class="rsvp-reply-stationery-envelope">
+        <!-- Dark Burgundy RSVP Card Box (Attachments 3 & 4) -->
+        <div class="rsvp-card-box">
           
           <div class="rsvp-success-feedback" id="rsvpFeedbackSuccess" aria-live="polite">
-            <h3 id="feedbackPersonName" style="font-family:var(--font-serif); font-size:clamp(1.7rem, 3.8vw, 2.4rem); color:var(--burgundy); font-weight:300; margin-bottom:1.2rem; line-height:1.25;"></h3>
-            <p id="feedbackPersonalMessage" style="font-family:var(--font-serif); font-style:italic; font-size:clamp(1.08rem, 2.2vw, 1.25rem); color:var(--ink-soft); line-height:1.85; margin-bottom:1.4rem;"></p>
-            <p id="feedbackSignOff" style="font-family:var(--font-script); font-size:1.85rem; color:var(--burgundy);"></p>
+            <h3 id="feedbackPersonName" style="font-family:var(--font-serif); font-size:clamp(1.7rem, 3.8vw, 2.4rem); color:var(--champagne); font-weight:300; margin-bottom:1.2rem; line-height:1.25;"></h3>
+            <p id="feedbackPersonalMessage" style="font-family:var(--font-serif); font-style:italic; font-size:clamp(1.08rem, 2.2vw, 1.25rem); color:rgba(251, 247, 240, 0.88); line-height:1.85; margin-bottom:1.4rem;"></p>
+            <p id="feedbackSignOff" style="font-family:var(--font-script); font-size:2rem; color:var(--eucalyptus);"></p>
           </div>
 
           <form id="rsvpFormElement" novalidate aria-label="Wedding RSVP Form">
             
-            <div class="form-row">
-              <label for="guestFullNameField" class="form-label">Your Full Name <span aria-label="required">*</span></label>
-              <input type="text" id="guestFullNameField" name="guestFullNameField" class="form-input" placeholder="Enter your full name" autocomplete="name" required />
-              <span id="nameErrorAlert" style="display:none; font-size:0.78rem; color:#b01d2e; margin-top:0.4rem;">Please enter your full name.</span>
+            <span class="card-eyebrow-caps">YOUR RESPONSE</span>
+            <h3 class="card-main-question-serif" id="rsvpHeadingTitle">Will you be joining us?</h3>
+
+            <!-- Full Name Line -->
+            <div class="form-group">
+              <label for="guestFullNameField" class="field-label-caps">FULL NAME</label>
+              <input type="text" id="guestFullNameField" name="guestFullNameField" class="form-line-input" placeholder="Your name" autocomplete="name" required />
+              <span id="nameErrorAlert" style="display:none; font-size:0.78rem; color:#f87171; margin-top:0.4rem;">Please fill in this field.</span>
             </div>
 
-            <div class="form-row">
-              <label class="form-label">Attendance <span aria-label="required">*</span></label>
-              <div class="attendance-radios-flex">
-                <label class="attendance-radio-card">
-                  <input type="radio" name="attendanceStatusRadio" value="joyfully" required />
-                  <span>Joyfully Accept</span>
-                </label>
-                <label class="attendance-radio-card">
-                  <input type="radio" name="attendanceStatusRadio" value="regretfully" required />
-                  <span>Regretfully Decline</span>
-                </label>
+            <!-- Attendance Toggle Buttons (Attachments 3 & 4) -->
+            <div class="form-group">
+              <label class="field-label-caps">WILL YOU BE JOINING US?</label>
+              <div class="attendance-toggle-grid">
+                <button type="button" class="attendance-btn-option selected" id="btnAcceptJoyfully" data-val="joyfully">
+                  YES, I'LL BE THERE
+                </button>
+                <button type="button" class="attendance-btn-option" id="btnDeclineRegretfully" data-val="regretfully">
+                  NO, UNFORTUNATELY I CAN'T ATTEND
+                </button>
               </div>
-              <span id="attendErrorAlert" style="display:none; font-size:0.78rem; color:#b01d2e; margin-top:0.4rem;">Please indicate whether you accept or decline.</span>
+              <input type="hidden" id="attendanceStatusRadio" name="attendanceStatusRadio" value="joyfully" />
             </div>
 
+            <!-- Attending Guests Detail Group -->
             <div id="attendingGuestsDetailsGroup">
-              <div class="form-row">
-                <label for="guestQuantitySelect" class="form-label">Total Guests Attending (Including Yourself)</label>
-                <select id="guestQuantitySelect" name="guestQuantitySelect" class="form-select">
-                  <option value="1">1 Guest (Just me)</option>
-                  <option value="2">2 Guests</option>
-                  <option value="3">3 Guests</option>
-                  <option value="4">4 Guests</option>
-                  <option value="5">5 Guests</option>
+              
+              <div class="form-group">
+                <label for="guestQuantitySelect" class="field-label-caps">HOW MANY GUESTS WILL BE ATTENDING?</label>
+                <select id="guestQuantitySelect" name="guestQuantitySelect" class="form-line-select">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
               </div>
 
-              <div class="form-row">
-                <label for="guestDietaryNotesInput" class="form-label">Dietary Requirements (Optional)</label>
-                <input type="text" id="guestDietaryNotesInput" name="guestDietaryNotesInput" class="form-input" placeholder="e.g. Vegetarian, Vegan, Halal, Nut Allergy, None" />
+              <!-- Guest 1 Header & Name Field (Attachment 4 Auto-Sync) -->
+              <div style="margin-top:1.8rem; margin-bottom:1.4rem;">
+                <div style="font-family:var(--font-serif); font-size:1.35rem; color:var(--champagne); margin-bottom:0.8rem;">Guest 1</div>
+                <div class="form-group">
+                  <label for="guest1NameInput" class="field-label-caps">GUEST 1 NAME</label>
+                  <input type="text" id="guest1NameInput" name="guest1NameInput" class="form-line-input" placeholder="Guest 1 name" />
+                </div>
               </div>
 
-              <div id="additionalGuestInputRows" style="display:none; margin-bottom:1.8rem;"></div>
+              <!-- Additional Guest Dynamic Fields -->
+              <div id="additionalGuestInputRows"></div>
+
+              <!-- Dietary Requirement Dropdown / Line -->
+              <div class="form-group">
+                <label for="guestDietaryNotesInput" class="field-label-caps">DIETARY REQUIREMENT</label>
+                <input type="text" id="guestDietaryNotesInput" name="guestDietaryNotesInput" class="form-line-input" placeholder="No special requirements (e.g. Vegetarian, Halal, Nut Allergy)" />
+              </div>
+
             </div>
 
-            <div class="form-row">
-              <label for="guestWishesTextarea" class="form-label">A Special Message for Rishen &amp; Lizaan (Optional)</label>
-              <textarea id="guestWishesTextarea" name="guestWishesTextarea" rows="3" class="form-textarea" placeholder="Share warm wishes, blessings, or a personal note..."></textarea>
+            <!-- Special Message Textarea -->
+            <div class="form-group">
+              <label for="guestWishesTextarea" class="field-label-caps">A MESSAGE FOR US</label>
+              <textarea id="guestWishesTextarea" name="guestWishesTextarea" rows="3" class="form-line-textarea" placeholder="This is a beautiful invitation and I am very excited to be able to witness this union and experience the joy and celebration of this special day!"></textarea>
             </div>
 
-            <button type="submit" class="btn-submit-rsvp" id="rsvpSubmitBtn">
-              <span id="rsvpBtnText">Send Response</span>
-              <span id="rsvpBtnSpinner" style="display:none;">Sending...</span>
+            <button type="submit" class="btn-send-rsvp-white" id="rsvpSubmitBtn">
+              <span id="rsvpBtnText">SEND RSVP &nearr;</span>
+              <span id="rsvpBtnSpinner" style="display:none;">SENDING...</span>
             </button>
             
           </form>
@@ -2094,7 +1465,7 @@
   </footer>
 
   <!-- ============================================================
-       SCRIPTS: CANVAS, MUSIC, PROGRESS, COUNTDOWN & RSVP
+       SCRIPTS: MUSIC, PROGRESS, COUNTDOWN, AUTO-SYNC & RSVP
   ============================================================ */ -->
   <script>
   'use strict';
@@ -2102,101 +1473,48 @@
   // ACTIVE DEPLOYED GOOGLE APPS SCRIPT WEB APP BACKEND URL
   var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoqQWpnXmvYe6A41-grgSd8-iKYdRQY8GKAJiwfVmEy4dl67L0T3qWKml6yNuZwNzl9w/exec';
 
-  // 1. Ambient Stardust Canvas Particles
-  const canvas = document.getElementById('ambientStardustCanvas');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    let width, height, particles = [];
+  // 1. Music Player Toggle
+  var musicBtn = document.getElementById('turntableAudioToggle');
+  var romanticAudio = document.getElementById('weddingRomanticSoundtrack');
 
-    function resizeCanvas() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    class Particle {
-      constructor() {
-        this.reset();
-      }
-      reset() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedY = -(Math.random() * 0.4 + 0.1);
-        this.speedX = (Math.random() - 0.5) * 0.2;
-        this.opacity = Math.random() * 0.75 + 0.25;
-        this.fadeSpeed = Math.random() * 0.008 + 0.002;
-      }
-      update() {
-        this.y += this.speedY;
-        this.x += this.speedX;
-        this.opacity -= this.fadeSpeed;
-        if (this.opacity <= 0 || this.y < 0) this.reset();
-      }
-      draw() {
-        ctx.fillStyle = `rgba(170, 184, 156, ${this.opacity})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < 45; i++) particles.push(new Particle());
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-  }
-
-  // 2. Vinyl Turntable Music Player
-  const turntableBtn  = document.getElementById('turntableAudioToggle');
-  const romanticAudio = document.getElementById('weddingRomanticSoundtrack');
-
-  if (turntableBtn && romanticAudio) {
-    turntableBtn.addEventListener('click', () => {
+  if (musicBtn && romanticAudio) {
+    musicBtn.addEventListener('click', function() {
       if (romanticAudio.paused) {
-        romanticAudio.play().then(() => {
-          turntableBtn.classList.add('playing');
-        }).catch(() => {});
+        romanticAudio.play().then(function() {
+          musicBtn.classList.add('playing');
+        }).catch(function() {});
       } else {
         romanticAudio.pause();
-        turntableBtn.classList.remove('playing');
+        musicBtn.classList.remove('playing');
       }
     });
   }
 
-  // 3. Top Reading Progress Fill Bar & Header Scroll Elevation
-  const progressBar = document.getElementById('topProgressFill');
-  const mainHeader  = document.getElementById('couture-header');
+  // 2. Top Scroll Progress Line & Header Background
+  var progressBar = document.getElementById('topProgressFill');
+  var mainHeader  = document.getElementById('couture-header');
 
-  window.addEventListener('scroll', () => {
-    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = (window.scrollY / totalHeight) * 100;
+  window.addEventListener('scroll', function() {
+    var totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = (window.scrollY / totalHeight) * 100;
     if (progressBar) progressBar.style.width = progress + '%';
     if (mainHeader) mainHeader.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
-  // 4. Mobile Full Nav Curtain
-  const mobileMenuBtn = document.getElementById('mobileMenuHamburgerBtn');
-  const mobileCurtain = document.getElementById('mobileFullNavCurtain');
+  // 3. Mobile Full Nav Curtain
+  var mobileMenuBtn = document.getElementById('mobileMenuHamburgerBtn');
+  var mobileCurtain = document.getElementById('mobileFullNavCurtain');
 
   if (mobileMenuBtn && mobileCurtain) {
-    mobileMenuBtn.addEventListener('click', () => {
-      const isOpen = mobileCurtain.classList.toggle('open');
+    mobileMenuBtn.addEventListener('click', function() {
+      var isOpen = mobileCurtain.classList.toggle('open');
       mobileMenuBtn.classList.toggle('active', isOpen);
       mobileMenuBtn.setAttribute('aria-expanded', isOpen);
       mobileCurtain.setAttribute('aria-hidden', !isOpen);
     });
 
-    mobileCurtain.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+    mobileCurtain.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
         mobileCurtain.classList.remove('open');
         mobileMenuBtn.classList.remove('active');
         mobileMenuBtn.setAttribute('aria-expanded', 'false');
@@ -2205,10 +1523,10 @@
     });
   }
 
-  // 5. Smooth Anchor Scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      const target = document.querySelector(anchor.getAttribute('href'));
+  // 4. Smooth Anchor Scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var target = document.querySelector(anchor.getAttribute('href'));
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth' });
@@ -2216,149 +1534,137 @@
     });
   });
 
-  // 6. Real-Time Fine Numeral Countdown
-  const TARGET_DATE = new Date('2026-10-24T14:30:00+02:00');
+  // 5. Countdown Timer
+  var TARGET_DATE = new Date('2026-10-24T14:30:00+02:00');
 
   function updateCountdown() {
-    const cdContainer = document.getElementById('countdownDigitsFlex');
-    if (!cdContainer) return;
+    var diff = TARGET_DATE - new Date();
+    if (diff <= 0) return;
 
-    const diff = TARGET_DATE - new Date();
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
 
-    if (diff <= 0) {
-      cdContainer.innerHTML = '<p style="font-family:var(--font-serif); font-size:1.5rem; color:var(--burgundy); font-style:italic;">Today is the day. With full hearts, thank you for being here.</p>';
-      return;
-    }
-
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-
-    const set = (id, val) => {
-      const el = document.getElementById(id);
+    var setVal = function(id, val) {
+      var el = document.getElementById(id);
       if (el) el.textContent = String(val).padStart(2, '0');
     };
 
-    set('cdDays', d); set('cdHours', h); set('cdMins', m); set('cdSecs', s);
+    setVal('cdDays', d); setVal('cdHours', h); setVal('cdMins', m); setVal('cdSecs', s);
   }
-
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 7. Dynamic RSVP Form Handler with Up to 5 Guests & Multi-Channel Posting
-  const rsvpFormNode    = document.getElementById('rsvpFormElement');
-  const rsvpFeedbackBox = document.getElementById('rsvpFeedbackSuccess');
-  const guestSelectEl   = document.getElementById('guestQuantitySelect');
-  const extraRowsBox    = document.getElementById('additionalGuestInputRows');
-  const acceptGroupEl   = document.getElementById('attendingGuestsDetailsGroup');
-  const attendRadios    = document.querySelectorAll('input[name="attendanceStatusRadio"]');
-  const submitBtn       = document.getElementById('rsvpSubmitBtn');
-  const btnTextEl       = document.getElementById('rsvpBtnText');
-  const btnSpinnerEl    = document.getElementById('rsvpBtnSpinner');
+  // 6. RSVP Auto-Sync & Attendance Buttons (Attachments 3 & 4)
+  var fullNameInput = document.getElementById('guestFullNameField');
+  var guest1Input    = document.getElementById('guest1NameInput');
+  var btnAccept     = document.getElementById('btnAcceptJoyfully');
+  var btnDecline    = document.getElementById('btnDeclineRegretfully');
+  var attendValHold = document.getElementById('attendanceStatusRadio');
+  var acceptGroup   = document.getElementById('attendingGuestsDetailsGroup');
+  var guestSelect   = document.getElementById('guestQuantitySelect');
+  var extraGuestBox = document.getElementById('additionalGuestInputRows');
 
-  if (attendRadios) {
-    attendRadios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        if (radio.value === 'regretfully') {
-          if (acceptGroupEl) acceptGroupEl.style.display = 'none';
-        } else {
-          if (acceptGroupEl) acceptGroupEl.style.display = 'block';
-        }
-      });
+  // Sync FULL NAME to Guest 1 Name in real time (Attachment 4)
+  if (fullNameInput && guest1Input) {
+    fullNameInput.addEventListener('input', function() {
+      guest1Input.value = fullNameInput.value;
     });
   }
 
-  function renderExtraGuestFields() {
-    if (!guestSelectEl || !extraRowsBox) return;
-    const count = parseInt(guestSelectEl.value, 10) || 1;
-    extraRowsBox.innerHTML = '';
+  // Attendance Toggle
+  if (btnAccept && btnDecline && attendValHold) {
+    btnAccept.addEventListener('click', function() {
+      btnAccept.classList.add('selected');
+      btnDecline.classList.remove('selected');
+      attendValHold.value = 'joyfully';
+      if (acceptGroup) acceptGroup.style.display = 'block';
+    });
+
+    btnDecline.addEventListener('click', function() {
+      btnDecline.classList.add('selected');
+      btnAccept.classList.remove('selected');
+      attendValHold.value = 'regretfully';
+      if (acceptGroup) acceptGroup.style.display = 'none';
+    });
+  }
+
+  // Dynamic Extra Guests (for guest 2 through 5)
+  function renderExtraGuests() {
+    if (!guestSelect || !extraGuestBox) return;
+    var count = parseInt(guestSelect.value, 10) || 1;
+    extraGuestBox.innerHTML = '';
 
     if (count > 1) {
-      extraRowsBox.style.display = 'block';
-      for (let i = 2; i <= count; i++) {
-        const row = document.createElement('div');
-        row.style.cssText = 'padding:1.1rem; margin-top:1.1rem; background:var(--parchment); border-radius:1px; border-left:3px solid var(--sage);';
-        row.innerHTML = `
-          <div style="font-family:var(--font-serif); font-size:1.1rem; color:var(--burgundy); margin-bottom:0.7rem;">Guest ${i}</div>
-          <div class="form-row" style="margin-bottom:0.8rem;">
-            <label class="form-label">Full Name</label>
-            <input type="text" class="form-input" name="guest_${i}_name" placeholder="Guest ${i}'s full name" style="padding:0.75rem 0.9rem;" />
+      for (var i = 2; i <= count; i++) {
+        var div = document.createElement('div');
+        div.style.cssText = 'margin-top:1.6rem; margin-bottom:1.2rem; padding-left:0.8rem; border-left:2px solid var(--sage);';
+        div.innerHTML = `
+          <div style="font-family:var(--font-serif); font-size:1.25rem; color:var(--champagne); margin-bottom:0.6rem;">Guest ${i}</div>
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label class="field-label-caps">GUEST ${i} NAME</label>
+            <input type="text" class="form-line-input" name="guest_${i}_name" placeholder="Guest ${i} name" />
           </div>
-          <div class="form-row" style="margin-bottom:0;">
-            <label class="form-label">Dietary Requirements (Optional)</label>
-            <input type="text" class="form-input" name="guest_${i}_dietary" placeholder="e.g. Vegetarian, Halal, None" style="padding:0.75rem 0.9rem;" />
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="field-label-caps">DIETARY REQUIREMENT</label>
+            <input type="text" class="form-line-input" name="guest_${i}_dietary" placeholder="No special requirements" />
           </div>
         `;
-        extraRowsBox.appendChild(row);
+        extraGuestBox.appendChild(div);
       }
-    } else {
-      extraRowsBox.style.display = 'none';
     }
   }
 
-  if (guestSelectEl) guestSelectEl.addEventListener('change', renderExtraGuestFields);
+  if (guestSelect) guestSelect.addEventListener('change', renderExtraGuests);
 
-  if (rsvpFormNode) {
-    rsvpFormNode.addEventListener('submit', function(e) {
+  // Form Submit Handler
+  var rsvpForm = document.getElementById('rsvpFormElement');
+  var rsvpSuccessBox = document.getElementById('rsvpFeedbackSuccess');
+  var submitBtn = document.getElementById('rsvpSubmitBtn');
+
+  if (rsvpForm) {
+    rsvpForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      let isValid = true;
+      var nameVal = fullNameInput ? fullNameInput.value.trim() : '';
+      var nameErr = document.getElementById('nameErrorAlert');
 
-      const nameInput   = document.getElementById('guestFullNameField');
-      const nameError   = document.getElementById('nameErrorAlert');
-      const attendInput = document.querySelector('input[name="attendanceStatusRadio"]:checked');
-      const attendError = document.getElementById('attendErrorAlert');
-
-      if (!nameInput || !nameInput.value.trim()) {
-        if (nameError) nameError.style.display = 'block';
-        isValid = false;
+      if (!nameVal) {
+        if (nameErr) nameErr.style.display = 'block';
+        return;
       } else {
-        if (nameError) nameError.style.display = 'none';
+        if (nameErr) nameErr.style.display = 'none';
       }
 
-      if (!attendInput) {
-        if (attendError) attendError.style.display = 'block';
-        isValid = false;
-      } else {
-        if (attendError) attendError.style.display = 'none';
-      }
+      var isAttending = (attendValHold ? attendValHold.value : 'joyfully') === 'joyfully';
+      var count = isAttending ? (parseInt(guestSelect.value, 10) || 1) : 0;
+      var dietary = document.getElementById('guestDietaryNotesInput') ? document.getElementById('guestDietaryNotesInput').value.trim() : '';
+      var message = document.getElementById('guestWishesTextarea') ? document.getElementById('guestWishesTextarea').value.trim() : '';
 
-      if (!isValid) return;
-
-      const fullName      = nameInput.value.trim();
-      const firstName     = fullName.split(' ')[0] || fullName;
-      const feedbackTitle = document.getElementById('feedbackPersonName');
-      const feedbackMsg   = document.getElementById('feedbackPersonalMessage');
-      const feedbackSign  = document.getElementById('feedbackSignOff');
-      const isAttending   = attendInput.value === 'joyfully';
-      const count         = isAttending ? (parseInt(guestSelectEl.value, 10) || 1) : 0;
-      const dietaryNotes  = document.getElementById('guestDietaryNotesInput') ? document.getElementById('guestDietaryNotesInput').value.trim() : '';
-      const wishesMsg     = document.getElementById('guestWishesTextarea') ? document.getElementById('guestWishesTextarea').value.trim() : '';
-
-      // Prepare URLSearchParams payload
       var formParams = new URLSearchParams();
-      formParams.append('primaryName', fullName);
+      formParams.append('primaryName', nameVal);
       formParams.append('attendance', isAttending ? "Yes, I'll be there" : "No, unfortunately I can't attend");
       formParams.append('guestCount', count.toString());
-      formParams.append('dietary', dietaryNotes);
-      formParams.append('message', wishesMsg);
+      formParams.append('dietary', dietary);
+      formParams.append('message', message);
+
+      // Primary Guest Name
+      formParams.append('guest_1_name', (guest1Input && guest1Input.value.trim()) ? guest1Input.value.trim() : nameVal);
+      formParams.append('guest_1_dietary', dietary || 'No special requirements');
 
       if (isAttending && count > 1) {
         for (var i = 2; i <= count; i++) {
-          var gNameInput = document.querySelector('input[name="guest_' + i + '_name"]');
-          var gDietInput = document.querySelector('input[name="guest_' + i + '_dietary"]');
-          formParams.append('guest_' + i + '_name', gNameInput ? gNameInput.value.trim() : ('Guest ' + i));
-          formParams.append('guest_' + i + '_dietary', gDietInput ? gDietInput.value.trim() : 'No special requirements');
+          var gName = document.querySelector('input[name="guest_' + i + '_name"]');
+          var gDiet = document.querySelector('input[name="guest_' + i + '_dietary"]');
+          formParams.append('guest_' + i + '_name', gName ? gName.value.trim() : ('Guest ' + i));
+          formParams.append('guest_' + i + '_dietary', gDiet ? gDiet.value.trim() : 'No special requirements');
         }
       }
 
-      // UI Submitting state
       if (submitBtn) submitBtn.disabled = true;
-      if (btnTextEl) btnTextEl.style.display = 'none';
-      if (btnSpinnerEl) btnSpinnerEl.style.display = 'inline';
 
-      // 1. Post to Google Apps Script Web App
-      if (GOOGLE_APPS_SCRIPT_URL && GOOGLE_APPS_SCRIPT_URL.indexOf('placeholder') === -1) {
+      // Submit to Google Apps Script
+      if (GOOGLE_APPS_SCRIPT_URL) {
         try {
           fetch(GOOGLE_APPS_SCRIPT_URL, {
             method: 'POST',
@@ -2366,34 +1672,31 @@
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: formParams.toString()
           }).catch(function() {});
-        } catch(err) {}
-
-        // 2. Secondary redundant GET ping
-        try {
-          var getPingUrl = GOOGLE_APPS_SCRIPT_URL + '?' + formParams.toString() + '&_t=' + Date.now();
-          var pingImg = new Image();
-          pingImg.src = getPingUrl;
         } catch(e) {}
       }
 
+      var firstName = nameVal.split(' ')[0] || nameVal;
       setTimeout(function() {
+        var fName = document.getElementById('feedbackPersonName');
+        var fMsg  = document.getElementById('feedbackPersonalMessage');
+        var fSign = document.getElementById('feedbackSignOff');
+
         if (isAttending) {
-          if (feedbackTitle) feedbackTitle.textContent = `We can’t wait to celebrate with you, ${firstName}!`;
-          if (feedbackMsg) feedbackMsg.textContent = 'Thank you from the bottom of our hearts. Having you with us as we exchange our vows means the absolute world to us. We look forward to sharing this unforgettable day and making beautiful memories together.';
-          if (feedbackSign) feedbackSign.textContent = 'With all our love, Rishen & Lizaan';
+          if (fName) fName.textContent = `We can’t wait to celebrate with you, ${firstName}!`;
+          if (fMsg) fMsg.textContent = 'Thank you from the bottom of our hearts. Having you with us as we exchange our vows means the absolute world to us. We look forward to sharing this unforgettable day and making beautiful memories together.';
+          if (fSign) fSign.textContent = 'With all our love, Rishen & Lizaan';
         } else {
-          if (feedbackTitle) feedbackTitle.textContent = `Sending you so much love, ${firstName}.`;
-          if (feedbackMsg) feedbackMsg.textContent = 'Thank you so much for letting us know. You will be dearly missed on our special day, but we carry your love, prayers, and warm blessings with us into this new chapter.';
-          if (feedbackSign) feedbackSign.textContent = 'With all our love, Rishen & Lizaan';
+          if (fName) fName.textContent = `Sending you so much love, ${firstName}.`;
+          if (fMsg) fMsg.textContent = 'Thank you so much for letting us know. You will be dearly missed on our special day, but we carry your love, prayers, and warm blessings with us into this new chapter.';
+          if (fSign) fSign.textContent = 'With all our love, Rishen & Lizaan';
         }
 
-        rsvpFormNode.style.display = 'none';
-        if (rsvpFeedbackBox) {
-          rsvpFeedbackBox.style.display = 'block';
-          rsvpFeedbackBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        rsvpForm.style.display = 'none';
+        if (rsvpSuccessBox) {
+          rsvpSuccessBox.style.display = 'block';
+          rsvpSuccessBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-      }, 500);
-
+      }, 400);
     });
   }
   </script>
