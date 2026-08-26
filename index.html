@@ -113,7 +113,7 @@
     }
 
     /* ============================================================
-       2. COUTURE ENVELOPE GATEFOLD DOORS UNBOXING EXPERIENCE
+       2. ROYAL STATIONERY ENVELOPE & CINEMATIC GATEFOLD DOORS
     ============================================================ */
     #envelope-unboxing-overlay {
       position: fixed;
@@ -128,64 +128,64 @@
       user-select: none;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
-      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.2s;
+      transition: opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 2.2s;
     }
 
-    /* Left and Right Grand Doors */
+    /* Grand French Gatefold Doors */
     .gate-door-left, .gate-door-right {
       position: absolute;
       top: 0; bottom: 0;
       width: 50%;
       z-index: 2;
-      transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.2s;
-      box-shadow: 0 0 80px rgba(0, 0, 0, 0.95);
+      transition: transform 2.8s cubic-bezier(0.65, 0, 0.15, 1), opacity 2.2s;
+      box-shadow: 0 0 90px rgba(0, 0, 0, 0.98);
     }
     .gate-door-left {
       left: 0;
       background: 
-        linear-gradient(135deg, rgba(92, 26, 35, 0.98) 0%, rgba(38, 9, 14, 0.99) 100%),
-        radial-gradient(ellipse at 85% 50%, rgba(170, 184, 156, 0.15), transparent 65%);
+        linear-gradient(135deg, rgba(80, 20, 28, 0.99) 0%, rgba(32, 6, 10, 1) 100%),
+        radial-gradient(ellipse at 85% 50%, rgba(170, 184, 156, 0.18), transparent 65%);
       transform-origin: left center;
-      border-right: 1px solid rgba(231, 217, 190, 0.4);
+      border-right: 1px solid rgba(231, 217, 190, 0.5);
     }
     .gate-door-right {
       right: 0;
       background: 
-        linear-gradient(225deg, rgba(82, 22, 30, 0.98) 0%, rgba(30, 6, 11, 0.99) 100%),
-        radial-gradient(ellipse at 15% 50%, rgba(170, 184, 156, 0.15), transparent 65%);
+        linear-gradient(225deg, rgba(72, 16, 24, 0.99) 0%, rgba(26, 4, 8, 1) 100%),
+        radial-gradient(ellipse at 15% 50%, rgba(170, 184, 156, 0.18), transparent 65%);
       transform-origin: right center;
-      border-left: 1px solid rgba(231, 217, 190, 0.4);
+      border-left: 1px solid rgba(231, 217, 190, 0.5);
     }
 
     .gate-door-left::before, .gate-door-right::before {
       content: '';
       position: absolute;
       inset: clamp(16px, 3.5vw, 32px);
-      border: 1px solid rgba(170, 184, 156, 0.28);
-      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(170, 184, 156, 0.3);
+      box-shadow: inset 0 0 45px rgba(0, 0, 0, 0.6);
       pointer-events: none;
     }
 
-    /* Vertical Center Ribbon */
+    /* Center Ribbon Band */
     .gate-center-ribbon {
       position: absolute;
       top: 0; bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: clamp(55px, 12vw, 80px);
+      width: clamp(55px, 12vw, 85px);
       background: linear-gradient(90deg, 
-        rgba(30, 7, 11, 0.7) 0%, 
-        rgba(124, 139, 111, 0.25) 30%, 
-        rgba(231, 217, 190, 0.45) 50%, 
-        rgba(124, 139, 111, 0.25) 70%, 
-        rgba(30, 7, 11, 0.7) 100%
+        rgba(26, 5, 8, 0.8) 0%, 
+        rgba(124, 139, 111, 0.3) 30%, 
+        rgba(231, 217, 190, 0.55) 50%, 
+        rgba(124, 139, 111, 0.3) 70%, 
+        rgba(26, 5, 8, 0.8) 100%
       );
-      border-left: 1px dashed rgba(170, 184, 156, 0.4);
-      border-right: 1px dashed rgba(170, 184, 156, 0.4);
+      border-left: 1px dashed rgba(170, 184, 156, 0.45);
+      border-right: 1px dashed rgba(170, 184, 156, 0.45);
       z-index: 3;
       pointer-events: none;
-      box-shadow: 0 0 30px rgba(0,0,0,0.6);
-      transition: opacity 0.8s, transform 0.8s;
+      box-shadow: 0 0 35px rgba(0,0,0,0.7);
+      transition: opacity 1.2s, transform 1.2s;
     }
 
     /* When doors open */
@@ -195,11 +195,11 @@
       pointer-events: none !important;
     }
     #envelope-unboxing-overlay.opened .gate-door-left {
-      transform: translateX(-102%) rotateY(-20deg);
+      transform: translateX(-105%) rotateY(-25deg);
       opacity: 0;
     }
     #envelope-unboxing-overlay.opened .gate-door-right {
-      transform: translateX(102%) rotateY(20deg);
+      transform: translateX(105%) rotateY(25deg);
       opacity: 0;
     }
     #envelope-unboxing-overlay.opened .gate-center-ribbon {
@@ -207,7 +207,7 @@
       transform: translateX(-50%) scaleY(0);
     }
     #envelope-unboxing-overlay.opened .luxury-envelope-container {
-      transform: scale(1.15) translateY(-30px);
+      transform: scale(1.18) translateY(-40px);
       opacity: 0;
     }
 
@@ -219,7 +219,7 @@
       flex-direction: column;
       align-items: center;
       cursor: pointer;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s;
       padding: 1.5rem;
     }
     .luxury-envelope-container:hover {
@@ -232,63 +232,116 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: clamp(300px, 60vw, 420px);
-      height: clamp(240px, 50vw, 340px);
-      background: radial-gradient(circle, rgba(170, 184, 156, 0.4) 0%, rgba(110, 42, 49, 0.3) 45%, rgba(21, 3, 5, 0) 70%);
-      filter: blur(28px);
+      width: clamp(320px, 65vw, 460px);
+      height: clamp(260px, 52vw, 360px);
+      background: radial-gradient(circle, rgba(231, 217, 190, 0.45) 0%, rgba(124, 139, 111, 0.3) 40%, rgba(110, 42, 49, 0.2) 65%, transparent 75%);
+      filter: blur(32px);
       pointer-events: none;
       z-index: 1;
       animation: envelopeGlowPulse 4s ease-in-out infinite alternate;
     }
     @keyframes envelopeGlowPulse {
-      0%   { opacity: 0.6; transform: translate(-50%, -50%) scale(0.95); }
-      100% { opacity: 1;   transform: translate(-50%, -50%) scale(1.08); }
+      0%   { opacity: 0.65; transform: translate(-50%, -50%) scale(0.95); }
+      100% { opacity: 1;    transform: translate(-50%, -50%) scale(1.08); }
     }
 
-    /* 3D Couture Velvet Envelope Body */
+    /* Two-Tone Royal Stationery Envelope Body (Luminous Parchment with Burgundy Flap) */
     .velvet-envelope-card {
       position: relative;
       z-index: 5;
-      width: clamp(290px, 65vw, 390px);
-      height: clamp(190px, 42vw, 250px);
-      background: linear-gradient(145deg, #5B1B23 0%, #431218 50%, #29080E 100%);
+      width: clamp(290px, 66vw, 400px);
+      height: clamp(190px, 44vw, 255px);
+      background: linear-gradient(180deg, #FAF7F2 0%, #F5EDE0 100%);
       border-radius: 4px;
       box-shadow: 
-        0 25px 60px rgba(0, 0, 0, 0.85),
-        0 10px 25px rgba(124, 139, 111, 0.3),
-        inset 0 1px 2px rgba(255, 255, 255, 0.3),
-        inset 0 -2px 6px rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(231, 217, 190, 0.35);
+        0 25px 65px rgba(0, 0, 0, 0.85),
+        0 10px 30px rgba(124, 139, 111, 0.35),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(231, 217, 190, 0.8);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: visible;
     }
 
-    /* Inner Envelope Border Trim */
+    /* Inner Sage Deckled Border Trim */
     .velvet-envelope-card::before {
       content: '';
       position: absolute;
       inset: 8px;
-      border: 1px solid rgba(170, 184, 156, 0.35);
+      border: 1px solid rgba(124, 139, 111, 0.45);
       border-radius: 2px;
       pointer-events: none;
     }
 
-    /* Triangular Envelope Flap */
+    /* Botanical Corner Flourishes on Envelope */
+    .envelope-corner-accent-tl, .envelope-corner-accent-br {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      pointer-events: none;
+      z-index: 6;
+      color: var(--sage);
+      opacity: 0.75;
+    }
+    .envelope-corner-accent-tl { top: 12px; left: 12px; }
+    .envelope-corner-accent-br { bottom: 12px; right: 12px; transform: rotate(180deg); }
+
+    /* Triangular Envelope Flap (Rich Velvet Burgundy with Gold Piping) */
     .envelope-top-flap-svg {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       width: 100%;
-      height: 52%;
-      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
-      transition: transform 0.6s ease;
+      height: 54%;
+      filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.65));
+      transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
       transform-origin: top center;
+      z-index: 8;
     }
     .luxury-envelope-container.opening .envelope-top-flap-svg {
       transform: rotateX(180deg);
+    }
+
+    /* Emerging Gold-Crested Letter Card Inside */
+    .envelope-inner-letter-card {
+      position: absolute;
+      inset: 12px;
+      background: #FFFFFF;
+      border: 1px solid rgba(231, 217, 190, 0.6);
+      border-radius: 2px;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .luxury-envelope-container.opening .envelope-inner-letter-card {
+      transform: translateY(-45px);
+    }
+    .inner-letter-names {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--burgundy);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+    .inner-letter-names span {
+      font-style: italic;
+      color: var(--sage);
+      margin: 0 0.1em;
+    }
+    .inner-letter-date {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-top: 0.25rem;
     }
 
     /* Center Embossed R & L Monogram Wax Seal */
@@ -300,18 +353,18 @@
       width: clamp(68px, 15vw, 84px);
       height: clamp(68px, 15vw, 84px);
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #F5EDE0 0%, #E7D9BE 35%, #7C8B6F 70%, #4D161D 100%);
+      background: radial-gradient(circle at 35% 30%, #F5EDE0 0%, #E7D9BE 30%, #7C8B6F 65%, #4D161D 100%);
       box-shadow: 
-        0 8px 30px rgba(0, 0, 0, 0.7),
-        0 0 25px rgba(170, 184, 156, 0.6),
-        inset 0 2px 5px rgba(255, 255, 255, 0.9),
+        0 8px 30px rgba(0, 0, 0, 0.75),
+        0 0 25px rgba(170, 184, 156, 0.65),
+        inset 0 2px 5px rgba(255, 255, 255, 0.95),
         inset 0 -3px 8px rgba(36, 9, 13, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid rgba(255, 255, 255, 0.9);
-      z-index: 10;
-      transition: transform 0.4s var(--ease-spring);
+      border: 2px solid rgba(255, 255, 255, 0.95);
+      z-index: 12;
+      transition: transform 0.6s var(--ease-spring);
     }
     .luxury-envelope-container:hover .envelope-rl-wax-seal {
       transform: translate(-50%, -50%) scale(1.08);
@@ -349,7 +402,7 @@
       letter-spacing: 0.34em;
       text-transform: uppercase;
       color: var(--champagne);
-      margin-top: 2rem;
+      margin-top: 2.2rem;
       text-shadow: 0 3px 15px rgba(0, 0, 0, 0.95);
       display: flex;
       align-items: center;
@@ -1412,7 +1465,7 @@
     }
   </style>
 
-  <!-- Immediate Unboxing Engine Script in Head -->
+  <!-- Immediate Unboxing Engine Script in Head for Zero-Delay Interaction -->
   <script>
     var isUnboxingLaunched = false;
 
@@ -1425,7 +1478,7 @@
       var audio       = document.getElementById('weddingRomanticSoundtrack');
       var turntable   = document.getElementById('turntableAudioToggle');
 
-      // 1. Trigger envelope opening state
+      // 1. Slow, majestic envelope opening sequence
       if (container) {
         container.classList.add('opening');
       }
@@ -1442,19 +1495,19 @@
         } catch(err) {}
       }
 
-      // 3. Open grand doors smoothly outward
+      // 3. Open grand French doors majestically after envelope unfolds
       setTimeout(function() {
         if (overlay) {
           overlay.classList.add('opened');
         }
-      }, 350);
+      }, 650);
 
-      // 4. Remove overlay completely after doors finish opening
+      // 4. Complete cleanup
       setTimeout(function() {
         if (overlay) {
           overlay.style.display = 'none';
         }
-      }, 1600);
+      }, 2900);
     }
     window.openWeddingInvitation = openWeddingInvitation;
   </script>
@@ -1471,29 +1524,43 @@
   </div>
 
   <!-- ============================================================
-       1. LUXURY ENVELOPE GATEFOLD DOORS UNBOXING EXPERIENCE
+       1. ROYAL STATIONERY ENVELOPE & CINEMATIC GATEFOLD DOORS
   ============================================================ */ -->
   <div id="envelope-unboxing-overlay" onclick="openWeddingInvitation(event)" ontouchend="openWeddingInvitation(event)" aria-label="Wedding Invitation Envelope Unboxing">
     
-    <!-- Grand French Gatefold Doors -->
+    <!-- Grand French Gatefold Doors with Antique Sage Trim -->
     <div class="gate-door-left"></div>
     <div class="gate-door-right"></div>
     <div class="gate-center-ribbon"></div>
 
-    <!-- Central Couture Velvet Envelope -->
+    <!-- Central Couture Royal Stationery Envelope -->
     <div class="luxury-envelope-container" id="luxuryEnvelopeContainer" title="Click to open your wedding invitation">
       
       <div class="envelope-backlight-glow" aria-hidden="true"></div>
 
       <div class="velvet-envelope-card">
         
-        <!-- Flap Geometry -->
-        <svg class="envelope-top-flap-svg" viewBox="0 0 390 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0 L195 125 L390 0 Z" fill="url(#envelopeFlapGrad)" stroke="rgba(231, 217, 190, 0.4)" stroke-width="1.5"/>
+        <!-- Corner Botanical Flourishes -->
+        <svg class="envelope-corner-accent-tl" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M2 26 C2 10, 10 2, 26 2 M2 2 C8 8, 8 8, 14 2 M2 14 C8 8, 8 8, 2 14"/>
+        </svg>
+        <svg class="envelope-corner-accent-br" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M2 26 C2 10, 10 2, 26 2 M2 2 C8 8, 8 8, 14 2 M2 14 C8 8, 8 8, 2 14"/>
+        </svg>
+
+        <!-- Inner Gold-Crested Letter Card that glides up -->
+        <div class="envelope-inner-letter-card">
+          <div class="inner-letter-names">Rishen <span>&amp;</span> Lizaan</div>
+          <div class="inner-letter-date">24 &middot; 10 &middot; 2026</div>
+        </div>
+
+        <!-- Flap Geometry (Deep Velvet Burgundy with Gold Border) -->
+        <svg class="envelope-top-flap-svg" viewBox="0 0 400 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0 L200 130 L400 0 Z" fill="url(#envelopeFlapGrad)" stroke="rgba(231, 217, 190, 0.6)" stroke-width="1.8"/>
           <defs>
-            <linearGradient id="envelopeFlapGrad" x1="195" y1="0" x2="195" y2="130" gradientUnits="userSpaceOnUse">
+            <linearGradient id="envelopeFlapGrad" x1="200" y1="0" x2="200" y2="135" gradientUnits="userSpaceOnUse">
               <stop stop-color="#73252E"/>
-              <stop offset="0.6" stop-color="#551921"/>
+              <stop offset="0.5" stop-color="#551921"/>
               <stop offset="1" stop-color="#3A0D14"/>
             </linearGradient>
           </defs>

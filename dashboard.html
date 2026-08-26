@@ -660,6 +660,16 @@
       html += '<span class="card-meta-label">GUEST NAMES</span>';
       html += '<span class="card-val-text">' + guestNamesFormatted + '</span>';
 
+      // Dietary Requirements
+      if (r.dietarySummary && r.dietarySummary.length > 0) {
+        html += '<span class="card-meta-label">DIETARY REQUIREMENTS</span>';
+        html += '<div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.6rem;">';
+        r.dietarySummary.forEach(function(d) {
+          html += '<span style="display:inline-block; padding:0.25rem 0.65rem; background:rgba(124, 139, 111, 0.18); border:1px solid rgba(124, 139, 111, 0.4); border-radius:2px; font-family:var(--font-sans); font-size:0.75rem; font-weight:600; color:var(--burgundy); letter-spacing:0.04em;">' + d + '</span>';
+        });
+        html += '</div>';
+      }
+
       // Message (if present)
       if (r.message && r.message.trim()) {
         html += '<span class="card-meta-label">A MESSAGE FOR US</span>';
