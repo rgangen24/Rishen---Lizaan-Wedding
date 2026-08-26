@@ -231,7 +231,7 @@
       .mobile-menu-hamburger { display: flex; }
     }
 
-    /* Floating Play Our Song Button (Attachment 2) */
+    /* Floating Play Our Song Button */
     .floating-music-btn {
       position: fixed;
       bottom: 2rem;
@@ -272,7 +272,7 @@
     }
 
     /* ============================================================
-       3. HERO SECTION (REFINED EXACT MATCH TO USER DIRECTIVES)
+       3. HERO SECTION
     ============================================================ */
     #hero {
       min-height: 100vh;
@@ -331,7 +331,7 @@
     .hero-headline-names .amp {
       font-family: var(--font-script);
       font-size: 0.9em;
-      color: var(--eucalyptus); /* SAGE COLOR MATCHING REQUEST */
+      color: var(--eucalyptus);
       font-weight: 300;
       margin: 0 0.1em;
     }
@@ -356,7 +356,7 @@
     }
 
     /* ============================================================
-       4. OUR STORY SECTION (PICS ON LEFT, STORY ON RIGHT)
+       4. OUR STORY SECTION (PHOTO COLLAGE MATCHING USER SCREENSHOT EXACTLY)
     ============================================================ */
     #story {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -364,7 +364,7 @@
       position: relative;
     }
     .story-max-container {
-      max-width: 1200px;
+      max-width: 1180px;
       margin: 0 auto;
     }
 
@@ -420,55 +420,54 @@
       line-height: 1.6;
     }
 
-    /* 2-Column Split: Photos on Left, Story on Right */
-    .story-split-grid-layout {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: clamp(3rem, 6vw, 5.5rem);
-      align-items: start;
-    }
-
-    @media (max-width: 960px) {
-      .story-split-grid-layout {
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
-      }
-    }
-
-    /* Photos Column on Left (Full view, no heavy covering) */
-    .story-left-photos-column {
+    /* Overlapping Photo Collage (Matching User Screenshot 100%) */
+    .story-collage-attachment-spread {
+      position: relative;
+      max-width: 580px;
+      margin: 0 auto clamp(4rem, 8vw, 6rem);
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
-      position: relative;
+      align-items: center;
     }
-
-    .story-full-photo-card {
+    .collage-photo-frame {
       background: #F8F5EF;
-      padding: 12px 12px 24px 12px;
-      box-shadow: 0 16px 40px rgba(40, 30, 20, 0.1);
+      padding: 14px 14px 28px 14px;
+      box-shadow: 0 18px 45px rgba(40, 30, 20, 0.12);
       border-radius: 2px;
+      width: 82%;
+      max-width: 440px;
       position: relative;
       transition: transform 0.4s var(--ease-silk);
     }
-    .story-full-photo-card img {
+    .collage-photo-frame img {
       width: 100%;
       height: auto;
       border-radius: 1px;
       display: block;
     }
 
-    .story-full-photo-card.card-1 { transform: rotate(-2deg); }
-    .story-full-photo-card.card-2 { transform: rotate(2.5deg); }
-    .story-full-photo-card.card-3 { transform: rotate(-1.5deg); }
+    .collage-frame-top {
+      transform: rotate(-3.5deg) translateX(-25px);
+      z-index: 1;
+      margin-bottom: -110px;
+    }
+    .collage-frame-middle {
+      transform: rotate(4deg) translateX(35px);
+      z-index: 3;
+      margin-bottom: -90px;
+    }
+    .collage-frame-bottom {
+      transform: rotate(-2deg) translateX(-20px);
+      z-index: 2;
+    }
 
-    /* Round R ♥ L Badge on Card 2 */
+    /* Round R ♥ L Emblem Badge */
     .collage-round-rl-badge {
       position: absolute;
-      top: -20px;
-      right: -15px;
-      width: 68px;
-      height: 68px;
+      top: -22px;
+      right: -22px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       background: #EBF1E8;
       border: 1px solid rgba(124, 139, 111, 0.4);
@@ -479,14 +478,14 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
       z-index: 10;
     }
-    .collage-round-rl-badge .b-r { font-family: var(--font-serif); font-size: 1.05rem; color: var(--burgundy); line-height: 1; }
-    .collage-round-rl-badge .b-h { font-size: 0.62rem; color: var(--sage); margin: 1px 0; }
-    .collage-round-rl-badge .b-l { font-family: var(--font-serif); font-size: 1.05rem; color: var(--burgundy); line-height: 1; }
+    .collage-round-rl-badge .b-r { font-family: var(--font-serif); font-size: 1.1rem; color: var(--burgundy); line-height: 1; }
+    .collage-round-rl-badge .b-h { font-size: 0.65rem; color: var(--sage); margin: 1px 0; }
+    .collage-round-rl-badge .b-l { font-family: var(--font-serif); font-size: 1.1rem; color: var(--burgundy); line-height: 1; }
 
-    /* Story Narrative Text on Right */
-    .story-right-text-column {
-      display: flex;
-      flex-direction: column;
+    /* Narrative Text Flow */
+    .story-text-narrative-flow {
+      max-width: 840px;
+      margin: 0 auto;
     }
     .story-moment-paragraph {
       font-family: var(--font-sans);
@@ -555,7 +554,7 @@
     }
 
     /* ============================================================
-       5. ORDER OF THE DAY (BURGUNDY BG WITH ELEGANT SAGE & IVORY CARDS)
+       5. ORDER OF THE DAY
     ============================================================ */
     #celebration {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -761,7 +760,7 @@
     }
 
     /* ============================================================
-       7. RSVP SECTION (MATCHING ATTACHMENTS 1, 3, 4 EXACTLY)
+       7. RSVP SECTION
     ============================================================ */
     #rsvp {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -1063,10 +1062,7 @@
       </svg>
 
       <div class="hero-centered-content">
-        <!-- Replaced with WE'RE GETTING MARRIED -->
         <span class="hero-invite-eyebrow">WE'RE GETTING MARRIED</span>
-
-        <!-- Removed R&L monogram here per request -->
 
         <h1 class="hero-headline-names" id="heroHeadlineNames">
           Rishen <span class="amp">&amp;</span><br />Lizaan
@@ -1083,7 +1079,7 @@
     </section>
 
     <!-- ============================================================
-         3. OUR STORY (PICS ON LEFT, TEXT ON RIGHT)
+         3. OUR STORY (EXACT PHOTO COLLAGE SPREAD MATCHING USER SCREENSHOT)
     ============================================================ */ -->
     <section id="story" aria-labelledby="storyHeadingTitle">
       <div class="story-max-container">
@@ -1103,59 +1099,55 @@
           </p>
         </div>
 
-        <!-- 2-Column Grid: Full Photos on Left, Narrative Text on Right -->
-        <div class="story-split-grid-layout">
-          
-          <!-- LEFT COLUMN: FULL PHOTOS -->
-          <div class="story-left-photos-column">
-            
-            <div class="story-full-photo-card card-1">
-              <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait" loading="lazy" />
-            </div>
-
-            <div class="story-full-photo-card card-2">
-              <div class="collage-round-rl-badge">
-                <span class="b-r">R</span>
-                <span class="b-h">♥</span>
-                <span class="b-l">L</span>
-              </div>
-              <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan on green lawn" loading="lazy" />
-            </div>
-
-            <div class="story-full-photo-card card-3">
-              <img src="images/couple-fun.jpg" alt="Rishen and Lizaan in fun hats" loading="lazy" />
-            </div>
-
+        <!-- Overlapping Photo Collage Layout (Matching Attached Screenshot 100%) -->
+        <div class="story-collage-attachment-spread">
+          <!-- Top Photo -->
+          <div class="collage-photo-frame collage-frame-top">
+            <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait" loading="lazy" />
           </div>
 
-          <!-- RIGHT COLUMN: NARRATIVE TEXT -->
-          <div class="story-right-text-column">
-            <p class="story-moment-paragraph">
-              <span class="story-editorial-dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan’s family members. There was an instant connection, a quiet, undeniable feeling that something about this person was different. It was love at first sight - although neither of them was brave enough to actually say a word to the other 😂!
-            </p>
-            <p class="story-moment-paragraph">
-              A few days later, Rishen still couldn’t get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that never happened in person began over text.
-            </p>
-            <p class="story-moment-paragraph">
-              What started as simple messages quickly became hours of talking, learning about one another, laughing, sharing dreams, and slowly falling completely in love. Somewhere between the good morning messages, late night conversations, inside jokes and countless memories, two people who were once too shy to speak became each other’s favourite good morning and favourite good night.
-            </p>
-            <p class="story-moment-paragraph">
-              Since then, we’ve shared so many beautiful moments together, from ordinary days that became special simply because we were together, to adventures, laughter, memories and milestones that we’ll treasure forever. Through it all, our love has continued to grow, and we’ve come to realise that the best part of life is having someone beside you to share it all with.
-            </p>
-            <p class="story-moment-paragraph">
-              Like iron sharpens iron. We believe we are meant to encourage, strengthen and bring out the best in one another.
-            </p>
-            <p class="story-moment-paragraph">
-              We believe our story was never simply a coincidence. We believe God brought our paths together at exactly the right time and has been writing our story long before we even realised it. He has blessed us with a love that has grown through friendship, faith, laughter and the promise of a lifetime together.
-            </p>
-            <p class="story-moment-paragraph">
-              Now, as we prepare to become husband and wife, we’re filled with gratitude for everything that brought us here, and excitement for everything that is still to come.
-            </p>
-            <p class="story-moment-paragraph">
-              We can’t wait to spend the rest of our lives choosing each other, building our home, creating beautiful memories, growing in faith, and walking hand in hand through every chapter God has planned for us.
-            </p>
+          <!-- Middle Photo with Round R ♥ L Badge -->
+          <div class="collage-photo-frame collage-frame-middle">
+            <div class="collage-round-rl-badge">
+              <span class="b-r">R</span>
+              <span class="b-h">♥</span>
+              <span class="b-l">L</span>
+            </div>
+            <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan on green lawn" loading="lazy" />
           </div>
 
+          <!-- Bottom Photo -->
+          <div class="collage-photo-frame collage-frame-bottom">
+            <img src="images/couple-fun.jpg" alt="Rishen and Lizaan in fun hats" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- Narrative Story Text -->
+        <div class="story-text-narrative-flow">
+          <p class="story-moment-paragraph">
+            <span class="story-editorial-dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan’s family members. There was an instant connection, a quiet, undeniable feeling that something about this person was different. It was love at first sight - although neither of them was brave enough to actually say a word to the other 😂!
+          </p>
+          <p class="story-moment-paragraph">
+            A few days later, Rishen still couldn’t get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that never happened in person began over text.
+          </p>
+          <p class="story-moment-paragraph">
+            What started as simple messages quickly became hours of talking, learning about one another, laughing, sharing dreams, and slowly falling completely in love. Somewhere between the good morning messages, late night conversations, inside jokes and countless memories, two people who were once too shy to speak became each other’s favourite good morning and favourite good night.
+          </p>
+          <p class="story-moment-paragraph">
+            Since then, we’ve shared so many beautiful moments together, from ordinary days that became special simply because we were together, to adventures, laughter, memories and milestones that we’ll treasure forever. Through it all, our love has continued to grow, and we’ve come to realise that the best part of life is having someone beside you to share it all with.
+          </p>
+          <p class="story-moment-paragraph">
+            Like iron sharpens iron. We believe we are meant to encourage, strengthen and bring out the best in one another.
+          </p>
+          <p class="story-moment-paragraph">
+            We believe our story was never simply a coincidence. We believe God brought our paths together at exactly the right time and has been writing our story long before we even realised it. He has blessed us with a love that has grown through friendship, faith, laughter and the promise of a lifetime together.
+          </p>
+          <p class="story-moment-paragraph">
+            Now, as we prepare to become husband and wife, we’re filled with gratitude for everything that brought us here, and excitement for everything that is still to come.
+          </p>
+          <p class="story-moment-paragraph">
+            We can’t wait to spend the rest of our lives choosing each other, building our home, creating beautiful memories, growing in faith, and walking hand in hand through every chapter God has planned for us.
+          </p>
         </div>
 
         <!-- Scripture Climax -->
@@ -1175,7 +1167,7 @@
     </section>
 
     <!-- ============================================================
-         4. ORDER OF THE DAY (RICH BURGUNDY WITH ELEGANT SAGE & IVORY CARDS)
+         4. ORDER OF THE DAY
     ============================================================ */ -->
     <section id="celebration" aria-labelledby="celebrationHeadingTitle">
       <div class="story-max-container">
@@ -1460,7 +1452,7 @@
   'use strict';
 
   // ACTIVE DEPLOYED GOOGLE APPS SCRIPT WEB APP BACKEND URL
-  var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoqQWpnXmvYe6A41-grgSd8-iKYdRQY8GKAJiwfVmEy4dl67L0T3qWKml6yNuZwNzl9w/exec';
+  var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoqQWpnXmvEy6A41-grgSd8-iKYdRQY8GKAJiwfVmEy4dl67L0T3qWKml6yNuZwNzl9w/exec';
 
   // 1. Music Player Toggle
   var musicBtn = document.getElementById('turntableAudioToggle');
