@@ -408,27 +408,23 @@
       <span class="sync-time-stamp" id="lastSyncTimeLabel">Synced just now</span>
     </div>
 
-    <!-- Live Metric Summary Cards (Matching Attached Design) -->
+    <!-- Live Metric Summary Cards (Clear & Unambiguous Totals) -->
     <div class="metric-summary-grid" id="metricsGrid">
-      <div class="metric-cell-card">
-        <span class="metric-big-numeral" id="statTotalRsvps">--</span>
-        <span class="metric-label-caps">Total RSVPs</span>
+      <div class="metric-cell-card" style="background:#F4EFE6; border-bottom:2px solid var(--burgundy);">
+        <span class="metric-big-numeral" id="statTotalGuests" style="font-weight:600; color:var(--oxblood);">--</span>
+        <span class="metric-label-caps" style="color:var(--oxblood); font-weight:700;">Attending Guests</span>
       </div>
       <div class="metric-cell-card">
         <span class="metric-big-numeral" id="statAttending">--</span>
-        <span class="metric-label-caps">Attending</span>
+        <span class="metric-label-caps">Attending RSVPs</span>
       </div>
       <div class="metric-cell-card">
         <span class="metric-big-numeral" id="statDeclined">--</span>
-        <span class="metric-label-caps">Declined</span>
+        <span class="metric-label-caps">Declined RSVPs</span>
       </div>
       <div class="metric-cell-card">
-        <span class="metric-big-numeral" id="statAwaiting">0</span>
-        <span class="metric-label-caps">Awaiting RSVP</span>
-      </div>
-      <div class="metric-cell-card">
-        <span class="metric-big-numeral" id="statTotalGuests">--</span>
-        <span class="metric-label-caps">Total Guests</span>
+        <span class="metric-big-numeral" id="statTotalRsvps">--</span>
+        <span class="metric-label-caps">Total Submissions</span>
       </div>
       <div class="metric-cell-card">
         <span class="metric-big-numeral" id="statVegetarian">0</span>
@@ -441,6 +437,10 @@
       <div class="metric-cell-card">
         <span class="metric-big-numeral" id="statOtherDietary">0</span>
         <span class="metric-label-caps">Other Dietary</span>
+      </div>
+      <div class="metric-cell-card">
+        <span class="metric-big-numeral" id="statAwaiting">0</span>
+        <span class="metric-label-caps">Pending</span>
       </div>
     </div>
 
@@ -545,8 +545,13 @@
               var gDiet = r[colIdx + 1] || '';
               var gDietDetail = r[colIdx + 2] || '';
               item.guests.push(gName);
-              if (gDiet && gDiet !== 'No special requirements' && gDiet !== 'None') {
-                item.dietarySummary.push(gDiet + (gDietDetail ? ' (' + gDietDetail + ')' : ''));
+              if (gDiet && gDiet !== 'No special requirements' && gDiet !== 'None' && gDiet !== '') {
+                var isCommonDiet = /veg|vegan|halal|kosher|nut|peanut|allergy|allergies|gluten|dairy|lactose|diabetic|pork|beef/i.test(gDiet);
+                if (!isCommonDiet && (!item.message || !item.message.trim())) {
+                  item.message = gDiet;
+                } else {
+                  item.dietarySummary.push(gDiet + (gDietDetail ? ' (' + gDietDetail + ')' : ''));
+                }
               }
             }
           }
