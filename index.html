@@ -356,7 +356,7 @@
     }
 
     /* ============================================================
-       4. OUR STORY SECTION (STAGGERED COLLAGE MATCHING SCREENSHOT 100%)
+       4. OUR STORY SECTION (EXACT SCREENSHOT LAYOUT — NO BLACK BORDER)
     ============================================================ */
     #story {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -420,82 +420,65 @@
       line-height: 1.6;
     }
 
-    /* Staggered 3-Polaroid Collage Spread (Matching Screenshot 100%) */
+    /* Proportional Layered Container Matching Screenshot 100% */
     .story-collage-attachment-spread {
       position: relative;
       width: 100%;
-      max-width: 520px;
+      max-width: 480px;
+      height: 0;
+      padding-bottom: 152%;
       margin: 0 auto clamp(3.5rem, 7vw, 5.5rem);
-      display: flex;
-      flex-direction: column;
     }
 
-    /* Top Photo: Cream Polaroid Frame (Staggered Left) */
-    .collage-frame-top {
-      background: #EFEADF;
-      padding: 12px 12px 28px 12px;
-      box-shadow: 0 16px 40px rgba(30, 20, 10, 0.15);
+    .collage-photo-frame {
+      position: absolute;
       border-radius: 2px;
-      width: 74%;
-      max-width: 360px;
-      align-self: flex-start;
-      margin-left: 2%;
+      transition: transform 0.4s var(--ease-silk);
+    }
+    .collage-photo-frame img {
+      width: 100%;
+      height: auto;
+      border-radius: 1px;
+      display: block;
+    }
+
+    /* Top Photo: Cream Polaroid Frame (Top Left) */
+    .collage-frame-top {
+      top: 0;
+      left: 0;
+      width: 68%;
+      background: #EFEADF;
+      padding: 12px 12px 32px 12px;
+      box-shadow: 0 16px 40px rgba(30, 20, 10, 0.15);
       transform: rotate(-3.5deg);
       z-index: 1;
-      margin-bottom: -90px;
-    }
-    .collage-frame-top img {
-      width: 100%;
-      height: auto;
-      border-radius: 1px;
-      display: block;
     }
 
-    /* Middle Photo: BLACK Polaroid Frame with Round Badge (Staggered Right) */
+    /* Middle Photo (Lawn): Cream Frame NO BLACK BORDER (Middle Right Overlapping Top & Bottom) */
     .collage-frame-middle {
-      background: #000000;
-      padding: 12px 12px 28px 12px;
-      border: 1px solid #111111;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-      border-radius: 2px;
-      width: 74%;
-      max-width: 360px;
-      align-self: flex-end;
-      margin-right: 2%;
-      transform: rotate(5deg);
-      z-index: 5;
-      margin-bottom: -75px;
-      position: relative;
-    }
-    .collage-frame-middle img {
-      width: 100%;
-      height: auto;
-      border-radius: 1px;
-      display: block;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      top: 27%;
+      right: 0;
+      width: 68%;
+      background: #EFEADF;
+      padding: 12px 12px 32px 12px;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
+      transform: rotate(4.5deg);
+      z-index: 10;
     }
 
-    /* Bottom Photo: Cream Polaroid Frame (Staggered Left) */
+    /* Bottom Photo: Cream Polaroid Frame (Bottom Left Under Middle) */
     .collage-frame-bottom {
+      top: 57%;
+      left: 2%;
+      width: 68%;
       background: #EFEADF;
-      padding: 12px 12px 28px 12px;
+      padding: 12px 12px 32px 12px;
       box-shadow: 0 16px 40px rgba(30, 20, 10, 0.15);
-      border-radius: 2px;
-      width: 74%;
-      max-width: 360px;
-      align-self: flex-start;
-      margin-left: 4%;
       transform: rotate(-2.5deg);
       z-index: 2;
     }
-    .collage-frame-bottom img {
-      width: 100%;
-      height: auto;
-      border-radius: 1px;
-      display: block;
-    }
 
-    /* Round R ♥ L Emblem Badge (Top-Right Corner of Middle Frame) */
+    /* Round R ♥ L Emblem Badge (Top Right Corner of Middle Frame) */
     .collage-round-rl-badge {
       position: absolute;
       top: -24px;
@@ -510,7 +493,7 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      z-index: 10;
+      z-index: 15;
     }
     .collage-round-rl-badge .b-r { font-family: var(--font-serif); font-size: 1.1rem; color: var(--burgundy); line-height: 1; }
     .collage-round-rl-badge .b-h { font-size: 0.62rem; color: var(--sage); margin: 2px 0; }
@@ -1115,7 +1098,7 @@
     </section>
 
     <!-- ============================================================
-         3. OUR STORY (STAGGERED COLLAGE MATCHING SCREENSHOT 100%)
+         3. OUR STORY (PROPORTIONAL LAYERED MATCHING SCREENSHOT EXACTLY)
     ============================================================ */ -->
     <section id="story" aria-labelledby="storyHeadingTitle">
       <div class="story-max-container">
@@ -1135,14 +1118,14 @@
           </p>
         </div>
 
-        <!-- Staggered Photo Collage Layout (Matching Screenshot 100% On Mobile & Desktop) -->
+        <!-- Proportional Layered Photo Collage Layout (Matching Screenshot 100%) -->
         <div class="story-collage-attachment-spread">
-          <!-- Top Photo: Cream Polaroid Frame (Staggered Left) -->
+          <!-- Top Photo: Cream Polaroid Frame (Top Left) -->
           <div class="collage-photo-frame collage-frame-top">
             <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait" loading="lazy" />
           </div>
 
-          <!-- Middle Photo: BLACK Polaroid Frame with Round R ♥ L Badge (Staggered Right) -->
+          <!-- Middle Photo (Lawn): Cream Frame NO BLACK BORDER (Middle Right Overlapping Top & Bottom) -->
           <div class="collage-photo-frame collage-frame-middle">
             <div class="collage-round-rl-badge">
               <span class="b-r">R</span>
@@ -1152,7 +1135,7 @@
             <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan on green lawn" loading="lazy" />
           </div>
 
-          <!-- Bottom Photo: Cream Polaroid Frame (Staggered Left) -->
+          <!-- Bottom Photo: Cream Polaroid Frame (Bottom Left Under Middle) -->
           <div class="collage-photo-frame collage-frame-bottom">
             <img src="images/couple-fun.jpg" alt="Rishen and Lizaan in fun hats" loading="lazy" />
           </div>
@@ -1711,7 +1694,7 @@
         rsvpForm.style.display = 'none';
         if (rsvpSuccessBox) {
           rsvpSuccessBox.style.display = 'block';
-          rsvpSuccessBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          rsvpSuccessBox.scrollIntoView({ behavior: 'smooth' });
         }
       }, 400);
     });
