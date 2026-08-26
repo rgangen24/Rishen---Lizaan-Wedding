@@ -1454,6 +1454,43 @@
       }
     }
   </style>
+
+  <!-- Immediate Unboxing Engine Script in Head for Zero-Delay Interaction -->
+  <script>
+    function launchButterflyUnboxing(e) {
+      if (e) {
+        e.stopPropagation();
+      }
+      var overlay   = document.getElementById('gatefold-unboxing-experience');
+      var butterfly = document.getElementById('butterfly3dEntity');
+      var prompt    = document.getElementById('butterflyPromptTag');
+      var audio     = document.getElementById('weddingRomanticSoundtrack');
+      var turntable = document.getElementById('turntableAudioToggle');
+
+      if (!overlay || overlay.classList.contains('opened')) return;
+
+      if (butterfly) butterfly.classList.add('flying');
+      if (prompt) prompt.style.opacity = '0';
+
+      if (audio) {
+        try {
+          var playPromise = audio.play();
+          if (playPromise !== undefined) {
+            playPromise.then(function() {
+              if (turntable) turntable.classList.add('playing');
+            }).catch(function() {});
+          }
+        } catch(err) {}
+      }
+
+      setTimeout(function() {
+        if (overlay) {
+          overlay.classList.add('opened');
+        }
+      }, 700);
+    }
+    window.launchButterflyUnboxing = launchButterflyUnboxing;
+  </script>
 </head>
 <body>
 
@@ -1469,12 +1506,12 @@
   <!-- ============================================================
        1. REFINED BURGUNDY & SAGE BUTTERFLY UNBOXING
   ============================================================ */ -->
-  <div id="gatefold-unboxing-experience" aria-label="Digital Wedding Invitation Butterfly Unboxing">
-    <div class="gate-panel-left"></div>
-    <div class="gate-panel-right"></div>
-    <div class="gate-ribbon-band"></div>
+  <div id="gatefold-unboxing-experience" onclick="launchButterflyUnboxing(event)" ontouchend="launchButterflyUnboxing(event)" aria-label="Digital Wedding Invitation Butterfly Unboxing">
+    <div class="gate-panel-left" onclick="launchButterflyUnboxing(event)"></div>
+    <div class="gate-panel-right" onclick="launchButterflyUnboxing(event)"></div>
+    <div class="gate-ribbon-band" onclick="launchButterflyUnboxing(event)"></div>
 
-    <div class="butterfly-unboxing-wrapper" id="butterflyUnboxingTrigger" title="Tap the butterfly to begin your journey">
+    <div class="butterfly-unboxing-wrapper" id="butterflyUnboxingTrigger" onclick="launchButterflyUnboxing(event)" ontouchend="launchButterflyUnboxing(event)" title="Tap the butterfly to begin your journey">
       
       <!-- Ambient Halo Glow -->
       <div class="butterfly-backlight-halo" aria-hidden="true"></div>
@@ -2195,56 +2232,14 @@
   // 2. Burgundy & Sage 3D Butterfly Realistic Slow Motion Flight Unboxing
   const gatefoldOverlay  = document.getElementById('gatefold-unboxing-experience');
   const butterflyTrigger = document.getElementById('butterflyUnboxingTrigger');
-  const butterflyEntity  = document.getElementById('butterfly3dEntity');
-  const butterflyPrompt  = document.getElementById('butterflyPromptTag');
-  const romanticAudio    = document.getElementById('weddingRomanticSoundtrack');
   const turntableBtn     = document.getElementById('turntableAudioToggle');
+  const romanticAudio    = document.getElementById('weddingRomanticSoundtrack');
 
-  let isOpening = false;
-
-  function launchButterflyUnboxing(e) {
-    if (e) {
-      if (e.type === 'touchstart') e.preventDefault();
-    }
-    if (isOpening || !gatefoldOverlay) return;
-    isOpening = true;
-
-    if (butterflyEntity) butterflyEntity.classList.add('flying');
-    if (butterflyPrompt) butterflyPrompt.style.opacity = '0';
-
-    if (romanticAudio) {
-      try {
-        var playPromise = romanticAudio.play();
-        if (playPromise !== undefined) {
-          playPromise.then(function() {
-            if (turntableBtn) turntableBtn.classList.add('playing');
-          }).catch(function() {
-            // Audio autoplay blocked by browser policy - user can toggle via top button
-          });
-        }
-      } catch (err) {}
-    }
-
-    setTimeout(function() {
-      if (gatefoldOverlay) gatefoldOverlay.classList.add('opened');
-      try {
-        sessionStorage.setItem('rl_invitation_butterfly_bs_v3', 'true');
-      } catch (err) {}
-    }, 900);
-  }
-
-  // Bind to both specific butterfly trigger and overall gatefold overlay for instant response
   if (butterflyTrigger) {
-    butterflyTrigger.addEventListener('click', launchButterflyUnboxing);
-    butterflyTrigger.addEventListener('touchend', launchButterflyUnboxing, { passive: false });
+    butterflyTrigger.addEventListener('click', window.launchButterflyUnboxing);
   }
   if (gatefoldOverlay) {
-    gatefoldOverlay.addEventListener('click', launchButterflyUnboxing);
-    gatefoldOverlay.addEventListener('touchend', launchButterflyUnboxing, { passive: false });
-  }
-
-  if (sessionStorage.getItem('rl_invitation_butterfly_bs_v3') === 'true') {
-    if (gatefoldOverlay) gatefoldOverlay.classList.add('opened');
+    gatefoldOverlay.addEventListener('click', window.launchButterflyUnboxing);
   }
 
   // 3. Vinyl Turntable Music Player
