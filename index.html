@@ -83,7 +83,7 @@
       opacity: 0.6;
     }
 
-    /* Tactile Fine Paper Texture */
+    /* Fine Paper Texture */
     .fine-paper-overlay {
       position: fixed;
       inset: 0;
@@ -113,294 +113,253 @@
     }
 
     /* ============================================================
-       2. REFINED BURGUNDY & SAGE CINEMATIC BUTTERFLY UNBOXING
+       2. COUTURE ENVELOPE GATEFOLD DOORS UNBOXING EXPERIENCE
     ============================================================ */
-    #gatefold-unboxing-experience {
+    #envelope-unboxing-overlay {
       position: fixed;
       inset: 0;
-      z-index: 9999;
+      z-index: 99999;
       display: flex;
       align-items: center;
       justify-content: center;
-      perspective: 1800px;
       overflow: hidden;
       background: radial-gradient(circle at 50% 45%, #4C131B 0%, #29080E 45%, #140205 85%, #080002 100%);
       cursor: pointer;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
-      transition: opacity 1.8s var(--ease-silk), visibility 1.8s;
-    }
-    #gatefold-unboxing-experience * {
-      cursor: pointer;
-    }
-    #gatefold-unboxing-experience.opened {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.2s;
     }
 
-    .gate-panel-left, .gate-panel-right {
+    /* Left and Right Grand Doors */
+    .gate-door-left, .gate-door-right {
       position: absolute;
       top: 0; bottom: 0;
       width: 50%;
       z-index: 2;
-      transition: transform 2.1s cubic-bezier(0.65, 0, 0.15, 1), opacity 1.7s cubic-bezier(0.65, 0, 0.15, 1);
+      transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.2s;
       box-shadow: 0 0 80px rgba(0, 0, 0, 0.95);
     }
-    .gate-panel-left {
+    .gate-door-left {
       left: 0;
       background: 
-        linear-gradient(135deg, rgba(92, 26, 35, 0.96) 0%, rgba(38, 9, 14, 0.98) 100%),
-        radial-gradient(ellipse at 85% 50%, rgba(170, 184, 156, 0.12), transparent 65%);
+        linear-gradient(135deg, rgba(92, 26, 35, 0.98) 0%, rgba(38, 9, 14, 0.99) 100%),
+        radial-gradient(ellipse at 85% 50%, rgba(170, 184, 156, 0.15), transparent 65%);
       transform-origin: left center;
-      border-right: 1px solid rgba(231, 217, 190, 0.35);
+      border-right: 1px solid rgba(231, 217, 190, 0.4);
     }
-    .gate-panel-right {
+    .gate-door-right {
       right: 0;
       background: 
-        linear-gradient(225deg, rgba(82, 22, 30, 0.96) 0%, rgba(30, 6, 11, 0.98) 100%),
-        radial-gradient(ellipse at 15% 50%, rgba(170, 184, 156, 0.12), transparent 65%);
+        linear-gradient(225deg, rgba(82, 22, 30, 0.98) 0%, rgba(30, 6, 11, 0.99) 100%),
+        radial-gradient(ellipse at 15% 50%, rgba(170, 184, 156, 0.15), transparent 65%);
       transform-origin: right center;
-      border-left: 1px solid rgba(231, 217, 190, 0.35);
+      border-left: 1px solid rgba(231, 217, 190, 0.4);
     }
 
-    .gate-panel-left::before, .gate-panel-right::before {
+    .gate-door-left::before, .gate-door-right::before {
       content: '';
       position: absolute;
-      inset: clamp(14px, 3.2vw, 28px);
-      border: 1px solid rgba(170, 184, 156, 0.22);
-      box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.45);
+      inset: clamp(16px, 3.5vw, 32px);
+      border: 1px solid rgba(170, 184, 156, 0.28);
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
       pointer-events: none;
     }
 
-    .gate-ribbon-band {
+    /* Vertical Center Ribbon */
+    .gate-center-ribbon {
       position: absolute;
       top: 0; bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: clamp(50px, 12vw, 75px);
+      width: clamp(55px, 12vw, 80px);
       background: linear-gradient(90deg, 
-        rgba(30, 7, 11, 0.6) 0%, 
-        rgba(124, 139, 111, 0.2) 30%, 
-        rgba(231, 217, 190, 0.35) 50%, 
-        rgba(124, 139, 111, 0.2) 70%, 
-        rgba(30, 7, 11, 0.6) 100%
+        rgba(30, 7, 11, 0.7) 0%, 
+        rgba(124, 139, 111, 0.25) 30%, 
+        rgba(231, 217, 190, 0.45) 50%, 
+        rgba(124, 139, 111, 0.25) 70%, 
+        rgba(30, 7, 11, 0.7) 100%
       );
-      border-left: 1px dashed rgba(170, 184, 156, 0.35);
-      border-right: 1px dashed rgba(170, 184, 156, 0.35);
+      border-left: 1px dashed rgba(170, 184, 156, 0.4);
+      border-right: 1px dashed rgba(170, 184, 156, 0.4);
       z-index: 3;
       pointer-events: none;
-      box-shadow: 0 0 25px rgba(0,0,0,0.5);
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+      transition: opacity 0.8s, transform 0.8s;
     }
 
-    #gatefold-unboxing-experience.opened .gate-panel-left {
-      transform: translateX(-100%) rotateY(-85deg);
+    /* When doors open */
+    #envelope-unboxing-overlay.opened {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+    #envelope-unboxing-overlay.opened .gate-door-left {
+      transform: translateX(-102%) rotateY(-20deg);
       opacity: 0;
     }
-    #gatefold-unboxing-experience.opened .gate-panel-right {
-      transform: translateX(100%) rotateY(85deg);
+    #envelope-unboxing-overlay.opened .gate-door-right {
+      transform: translateX(102%) rotateY(20deg);
+      opacity: 0;
+    }
+    #envelope-unboxing-overlay.opened .gate-center-ribbon {
+      opacity: 0;
+      transform: translateX(-50%) scaleY(0);
+    }
+    #envelope-unboxing-overlay.opened .luxury-envelope-container {
+      transform: scale(1.15) translateY(-30px);
       opacity: 0;
     }
 
-    /* Butterfly Wrapper */
-    .butterfly-unboxing-wrapper {
+    /* Luxury Envelope Container */
+    .luxury-envelope-container {
       position: relative;
       z-index: 10;
       display: flex;
       flex-direction: column;
       align-items: center;
       cursor: pointer;
-      padding: 2.5rem;
-      perspective: 1400px;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s;
+      padding: 1.5rem;
+    }
+    .luxury-envelope-container:hover {
+      transform: scale(1.03);
     }
 
-    /* Ambient Soft Sage & Burgundy Glow */
-    .butterfly-backlight-halo {
+    /* Ambient Soft Glow Behind Envelope */
+    .envelope-backlight-glow {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: clamp(260px, 55vw, 360px);
-      height: clamp(260px, 55vw, 360px);
-      background: radial-gradient(circle, rgba(170, 184, 156, 0.35) 0%, rgba(110, 42, 49, 0.25) 45%, rgba(21, 3, 5, 0) 70%);
-      filter: blur(26px);
+      width: clamp(300px, 60vw, 420px);
+      height: clamp(240px, 50vw, 340px);
+      background: radial-gradient(circle, rgba(170, 184, 156, 0.4) 0%, rgba(110, 42, 49, 0.3) 45%, rgba(21, 3, 5, 0) 70%);
+      filter: blur(28px);
       pointer-events: none;
       z-index: 1;
-      animation: ambientGlowBreathe 4s ease-in-out infinite alternate;
+      animation: envelopeGlowPulse 4s ease-in-out infinite alternate;
     }
-    @keyframes ambientGlowBreathe {
-      0%   { opacity: 0.6; transform: translate(-50%, -50%) scale(0.92); }
-      100% { opacity: 1;   transform: translate(-50%, -50%) scale(1.1); }
+    @keyframes envelopeGlowPulse {
+      0%   { opacity: 0.6; transform: translate(-50%, -50%) scale(0.95); }
+      100% { opacity: 1;   transform: translate(-50%, -50%) scale(1.08); }
     }
 
-    /* 3D Butterfly Entity */
-    .butterfly-3d-entity {
+    /* 3D Couture Velvet Envelope Body */
+    .velvet-envelope-card {
       position: relative;
-      width: clamp(260px, 56vw, 360px);
-      height: clamp(200px, 44vw, 280px);
-      transform-style: preserve-3d;
-      transition: transform 0.5s var(--ease-spring);
+      z-index: 5;
+      width: clamp(290px, 65vw, 390px);
+      height: clamp(190px, 42vw, 250px);
+      background: linear-gradient(145deg, #5B1B23 0%, #431218 50%, #29080E 100%);
+      border-radius: 4px;
+      box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.85),
+        0 10px 25px rgba(124, 139, 111, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(231, 217, 190, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 5;
-    }
-    .butterfly-unboxing-wrapper:hover .butterfly-3d-entity {
-      transform: scale(1.08) translateZ(35px);
+      overflow: visible;
     }
 
-    .butterfly-wing-left, .butterfly-wing-right {
+    /* Inner Envelope Border Trim */
+    .velvet-envelope-card::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(170, 184, 156, 0.35);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+
+    /* Triangular Envelope Flap */
+    .envelope-top-flap-svg {
       position: absolute;
       top: 0;
-      width: 50%;
-      height: 100%;
-      transform-style: preserve-3d;
-      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.85)) drop-shadow(0 6px 18px rgba(124, 139, 111, 0.4));
-    }
-    .butterfly-wing-left {
       left: 0;
-      transform-origin: 100% 50%;
-      animation: realisticFlutterLeft 4s ease-in-out infinite alternate;
-    }
-    .butterfly-wing-right {
       right: 0;
-      transform-origin: 0% 50%;
-      animation: realisticFlutterRight 4s ease-in-out infinite alternate;
+      width: 100%;
+      height: 52%;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
+      transition: transform 0.6s ease;
+      transform-origin: top center;
+    }
+    .luxury-envelope-container.opening .envelope-top-flap-svg {
+      transform: rotateX(180deg);
     }
 
-    @keyframes realisticFlutterLeft {
-      0%   { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg); }
-      35%  { transform: rotateY(24deg) rotateX(3deg) rotateZ(-2deg); }
-      70%  { transform: rotateY(-8deg) rotateX(-2deg) rotateZ(1deg); }
-      100% { transform: rotateY(32deg) rotateX(4deg) rotateZ(-3deg); }
-    }
-    @keyframes realisticFlutterRight {
-      0%   { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg); }
-      35%  { transform: rotateY(-24deg) rotateX(3deg) rotateZ(2deg); }
-      70%  { transform: rotateY(8deg) rotateX(-2deg) rotateZ(-1deg); }
-      100% { transform: rotateY(-32deg) rotateX(4deg) rotateZ(3deg); }
-    }
-
-    /* Slow-Motion Flight */
-    .butterfly-3d-entity.flying {
-      animation: cinematicSlowMotionFlight 3.4s cubic-bezier(0.22, 0.08, 0.2, 1) forwards;
-    }
-    .butterfly-3d-entity.flying .butterfly-wing-left {
-      animation: activeFlightWingFlapL 0.26s ease-in-out infinite alternate !important;
-    }
-    .butterfly-3d-entity.flying .butterfly-wing-right {
-      animation: activeFlightWingFlapR 0.26s ease-in-out infinite alternate !important;
-    }
-
-    @keyframes activeFlightWingFlapL {
-      0%   { transform: rotateY(65deg) rotateX(8deg) rotateZ(-8deg); }
-      100% { transform: rotateY(-45deg) rotateX(-6deg) rotateZ(6deg); }
-    }
-    @keyframes activeFlightWingFlapR {
-      0%   { transform: rotateY(-65deg) rotateX(8deg) rotateZ(8deg); }
-      100% { transform: rotateY(45deg) rotateX(-6deg) rotateZ(-6deg); }
-    }
-
-    @keyframes cinematicSlowMotionFlight {
-      0% {
-        transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-        opacity: 1;
-      }
-      20% {
-        transform: translate3d(-30px, -70px, 200px) scale(1.4) rotate(-8deg);
-        opacity: 1;
-      }
-      50% {
-        transform: translate3d(80px, -220px, 500px) scale(2.1) rotate(14deg);
-        opacity: 0.95;
-      }
-      75% {
-        transform: translate3d(-60px, -420px, 800px) scale(2.8) rotate(-6deg);
-        opacity: 0.65;
-      }
-      100% {
-        transform: translate3d(140px, -750px, 1200px) scale(3.8) rotate(18deg);
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
-    /* Central Body Core & Monogram */
-    .butterfly-body-core {
+    /* Center Embossed R & L Monogram Wax Seal */
+    .envelope-rl-wax-seal {
       position: absolute;
-      z-index: 8;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .butterfly-antennae-svg {
-      width: clamp(48px, 10vw, 64px);
-      height: clamp(32px, 7vw, 44px);
-      margin-bottom: -10px;
-      filter: drop-shadow(0 2px 6px rgba(124, 139, 111, 0.8));
-    }
-
-    .butterfly-embossed-seal-crest {
-      width: clamp(56px, 12vw, 72px);
-      height: clamp(56px, 12vw, 72px);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(68px, 15vw, 84px);
+      height: clamp(68px, 15vw, 84px);
       border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #F5EDE0 0%, #E7D9BE 35%, #7C8B6F 70%, #4D161D 100%);
       box-shadow: 
-        0 6px 25px rgba(0, 0, 0, 0.6),
-        0 0 20px rgba(170, 184, 156, 0.5),
-        inset 0 2px 4px rgba(255, 255, 255, 0.85),
-        inset 0 -2px 6px rgba(36, 9, 13, 0.8);
+        0 8px 30px rgba(0, 0, 0, 0.7),
+        0 0 25px rgba(170, 184, 156, 0.6),
+        inset 0 2px 5px rgba(255, 255, 255, 0.9),
+        inset 0 -3px 8px rgba(36, 9, 13, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid rgba(255, 255, 255, 0.85);
-      position: relative;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      z-index: 10;
+      transition: transform 0.4s var(--ease-spring);
     }
-    .butterfly-embossed-seal-crest::after {
+    .luxury-envelope-container:hover .envelope-rl-wax-seal {
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+    .envelope-rl-wax-seal::after {
       content: '';
       position: absolute;
       inset: 3px;
       border-radius: 50%;
-      border: 1px dashed rgba(67, 26, 31, 0.4);
+      border: 1px dashed rgba(67, 26, 31, 0.45);
       pointer-events: none;
     }
 
-    .butterfly-monogram-label {
+    .seal-monogram-text {
       font-family: var(--font-serif);
-      font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+      font-size: clamp(1.25rem, 2.8vw, 1.55rem);
       font-weight: 600;
       color: #380F14;
       letter-spacing: 0.04em;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
+      display: flex;
+      align-items: center;
     }
-    .butterfly-monogram-label span {
+    .seal-monogram-text span {
       font-family: var(--font-script);
-      font-size: clamp(1.4rem, 3vw, 1.7rem);
+      font-size: clamp(1.6rem, 3.4vw, 2rem);
       color: #6E2A31;
       margin: 0 0.08em;
     }
 
-    .butterfly-touch-prompt-text {
+    .envelope-invitation-subtag {
       font-family: var(--font-sans);
-      font-size: clamp(0.72rem, 1.6vw, 0.82rem);
+      font-size: clamp(0.72rem, 1.6vw, 0.84rem);
       font-weight: 600;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.34em;
       text-transform: uppercase;
       color: var(--champagne);
-      margin-top: 2.2rem;
+      margin-top: 2rem;
       text-shadow: 0 3px 15px rgba(0, 0, 0, 0.95);
       display: flex;
       align-items: center;
       gap: 0.6rem;
       transition: all 0.35s;
     }
-    .butterfly-unboxing-wrapper:hover .butterfly-touch-prompt-text {
+    .luxury-envelope-container:hover .envelope-invitation-subtag {
       color: var(--silver-pearl);
       transform: translateY(-2px);
-      letter-spacing: 0.36em;
+      letter-spacing: 0.38em;
     }
 
     /* ============================================================
@@ -702,7 +661,6 @@
       margin: 0 auto;
     }
 
-    /* Elevated Editorial Story Header Box */
     .story-editorial-header-spread {
       text-align: center;
       max-width: 840px;
@@ -895,7 +853,6 @@
       gap: 1.4rem;
     }
 
-    /* Gentle Floating Motion for Burgundy & Sage Heart Emblem */
     .burgundy-sage-heart-emblem {
       width: clamp(44px, 8vw, 54px);
       height: auto;
@@ -1455,31 +1412,22 @@
     }
   </style>
 
-  <!-- Immediate Unboxing Engine Script in Head for Zero-Delay Interaction -->
+  <!-- Immediate Unboxing Engine Script in Head -->
   <script>
     var isUnboxingLaunched = false;
 
-    function launchButterflyUnboxing(e) {
+    function openWeddingInvitation(e) {
       if (isUnboxingLaunched) return;
       isUnboxingLaunched = true;
 
-      var overlay     = document.getElementById('gatefold-unboxing-experience');
-      var butterfly   = document.getElementById('butterfly3dEntity');
-      var prompt      = document.getElementById('butterflyPromptTag');
-      var interceptor = document.getElementById('gatefoldTapInterceptor');
+      var overlay     = document.getElementById('envelope-unboxing-overlay');
+      var container   = document.getElementById('luxuryEnvelopeContainer');
       var audio       = document.getElementById('weddingRomanticSoundtrack');
       var turntable   = document.getElementById('turntableAudioToggle');
 
-      if (interceptor) {
-        interceptor.style.pointerEvents = 'none';
-      }
-
-      // 1. Immediately launch butterfly flight animation
-      if (butterfly) {
-        butterfly.classList.add('flying');
-      }
-      if (prompt) {
-        prompt.style.opacity = '0';
+      // 1. Trigger envelope opening state
+      if (container) {
+        container.classList.add('opening');
       }
 
       // 2. Play romantic soundtrack
@@ -1494,21 +1442,21 @@
         } catch(err) {}
       }
 
-      // 3. Open doors smoothly
+      // 3. Open grand doors smoothly outward
       setTimeout(function() {
         if (overlay) {
           overlay.classList.add('opened');
         }
-      }, 400);
+      }, 350);
 
-      // 4. Complete cleanup
+      // 4. Remove overlay completely after doors finish opening
       setTimeout(function() {
         if (overlay) {
           overlay.style.display = 'none';
         }
-      }, 2000);
+      }, 1600);
     }
-    window.launchButterflyUnboxing = launchButterflyUnboxing;
+    window.openWeddingInvitation = openWeddingInvitation;
   </script>
 </head>
 <body>
@@ -1523,155 +1471,53 @@
   </div>
 
   <!-- ============================================================
-       1. REFINED BURGUNDY & SAGE BUTTERFLY UNBOXING
+       1. LUXURY ENVELOPE GATEFOLD DOORS UNBOXING EXPERIENCE
   ============================================================ */ -->
-  <div id="gatefold-unboxing-experience" aria-label="Digital Wedding Invitation Butterfly Unboxing">
+  <div id="envelope-unboxing-overlay" onclick="openWeddingInvitation(event)" ontouchend="openWeddingInvitation(event)" aria-label="Wedding Invitation Envelope Unboxing">
     
-    <!-- Flat 2D Full-Screen Tap Interceptor to bypass any 3D perspective hit-testing issues -->
-    <button type="button" id="gatefoldTapInterceptor" onclick="launchButterflyUnboxing(event)" ontouchend="launchButterflyUnboxing(event)" aria-label="Tap to open wedding invitation" style="position:absolute; inset:0; width:100%; height:100%; z-index:99; background:transparent; border:none; cursor:pointer; touch-action:manipulation; outline:none;"></button>
+    <!-- Grand French Gatefold Doors -->
+    <div class="gate-door-left"></div>
+    <div class="gate-door-right"></div>
+    <div class="gate-center-ribbon"></div>
 
-    <div class="gate-panel-left"></div>
-    <div class="gate-panel-right"></div>
-    <div class="gate-ribbon-band"></div>
-
-    <div class="butterfly-unboxing-wrapper" id="butterflyUnboxingTrigger" title="Tap the butterfly to begin your journey">
+    <!-- Central Couture Velvet Envelope -->
+    <div class="luxury-envelope-container" id="luxuryEnvelopeContainer" title="Click to open your wedding invitation">
       
-      <!-- Ambient Halo Glow -->
-      <div class="butterfly-backlight-halo" aria-hidden="true"></div>
+      <div class="envelope-backlight-glow" aria-hidden="true"></div>
 
-      <div class="butterfly-3d-entity" id="butterfly3dEntity">
+      <div class="velvet-envelope-card">
         
-        <!-- Left Wing -->
-        <div class="butterfly-wing-left">
-          <svg viewBox="0 0 170 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; overflow:visible;">
-            <defs>
-              <linearGradient id="burgundyVelvetL" x1="170" y1="120" x2="0" y2="20" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#8A3943" />
-                <stop offset="0.35" stop-color="#6E2A31" />
-                <stop offset="0.75" stop-color="#431A1F" />
-                <stop offset="1" stop-color="#24090D" />
-              </linearGradient>
+        <!-- Flap Geometry -->
+        <svg class="envelope-top-flap-svg" viewBox="0 0 390 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0 L195 125 L390 0 Z" fill="url(#envelopeFlapGrad)" stroke="rgba(231, 217, 190, 0.4)" stroke-width="1.5"/>
+          <defs>
+            <linearGradient id="envelopeFlapGrad" x1="195" y1="0" x2="195" y2="130" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#73252E"/>
+              <stop offset="0.6" stop-color="#551921"/>
+              <stop offset="1" stop-color="#3A0D14"/>
+            </linearGradient>
+          </defs>
+        </svg>
 
-              <radialGradient id="sageIridescentL" cx="120" cy="110" r="140" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#F4F7F2" stop-opacity="0.95" />
-                <stop offset="35%" stop-color="#AAB89C" stop-opacity="0.85" />
-                <stop offset="70%" stop-color="#7C8B6F" stop-opacity="0.75" />
-                <stop offset="100%" stop-color="#3D4A36" stop-opacity="0.92" />
-              </radialGradient>
-
-              <linearGradient id="pearlVeinL" x1="170" y1="120" x2="20" y2="40" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#FFFFFF" />
-                <stop offset="0.5" stop-color="#E8ECE5" />
-                <stop offset="1" stop-color="#AAB89C" />
-              </linearGradient>
-
-              <radialGradient id="pearlDotGlow" cx="50%" cy="50%" r="50%">
-                <stop stop-color="#FFFFFF" />
-                <stop offset="0.7" stop-color="#EBF1E8" />
-                <stop offset="1" stop-color="#7C8B6F" />
-              </radialGradient>
-            </defs>
-
-            <path d="M170 120 C160 55, 110 5, 38 12 C10 15, -12 52, 12 102 C32 144, 110 135, 170 120 Z" 
-                  fill="url(#burgundyVelvetL)" stroke="#FFFFFF" stroke-width="1.8"/>
-            <path d="M164 118 C154 60, 108 14, 42 20 C18 24, 0 54, 20 95 C38 132, 108 128, 164 118 Z" 
-                  fill="url(#sageIridescentL)"/>
-
-            <path d="M170 125 C135 155, 75 205, 38 225 C14 238, 8 202, 32 170 C58 135, 125 120, 170 125 Z" 
-                  fill="url(#burgundyVelvetL)" stroke="#FFFFFF" stroke-width="1.5"/>
-            <path d="M162 130 C130 156, 78 200, 44 218 C26 226, 20 200, 40 172 C62 140, 122 126, 162 130 Z" 
-                  fill="url(#sageIridescentL)"/>
-
-            <path d="M170 120 Q95 55 42 24" stroke="url(#pearlVeinL)" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M170 120 Q80 82 22 100" stroke="url(#pearlVeinL)" stroke-width="1.8" stroke-linecap="round"/>
-            <path d="M170 125 Q92 165 42 222" stroke="url(#pearlVeinL)" stroke-width="2.0" stroke-linecap="round"/>
-            
-            <path d="M118 78 Q78 44 48 50 M96 98 Q58 76 34 78 M125 145 Q82 170 52 188" 
-                  stroke="#E8ECE5" stroke-width="1.2" stroke-linecap="round" opacity="0.85"/>
-
-            <circle cx="50" cy="38" r="4.2" fill="url(#pearlDotGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
-            <circle cx="28" cy="74" r="3.4" fill="url(#pearlDotGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
-            <circle cx="22" cy="115" r="3.0" fill="url(#pearlDotGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
-            <circle cx="48" cy="195" r="3.6" fill="url(#pearlDotGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
-          </svg>
-        </div>
-
-        <!-- Central Body Core -->
-        <div class="butterfly-body-core">
-          <svg class="butterfly-antennae-svg" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M30 38 C28 22, 18 8, 8 10 C3 12, 6 18, 12 16" stroke="#E8ECE5" stroke-width="1.8" stroke-linecap="round"/>
-            <path d="M30 38 C32 22, 42 8, 52 10 C57 12, 54 18, 48 16" stroke="#E8ECE5" stroke-width="1.8" stroke-linecap="round"/>
-            <circle cx="12" cy="16" r="2.2" fill="#7C8B6F"/>
-            <circle cx="48" cy="16" r="2.2" fill="#7C8B6F"/>
-          </svg>
-
-          <div class="butterfly-embossed-seal-crest">
-            <div class="butterfly-monogram-label">
-              R<span>&amp;</span>L
-            </div>
+        <!-- Center Embossed R & L Monogram Wax Seal -->
+        <div class="envelope-rl-wax-seal">
+          <div class="seal-monogram-text">
+            R<span>&amp;</span>L
           </div>
-        </div>
-
-        <!-- Right Wing -->
-        <div class="butterfly-wing-right">
-          <svg viewBox="0 0 170 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; overflow:visible;">
-            <defs>
-              <linearGradient id="burgundyVelvetR" x1="0" y1="120" x2="170" y2="20" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#8A3943" />
-                <stop offset="0.35" stop-color="#6E2A31" />
-                <stop offset="0.75" stop-color="#431A1F" />
-                <stop offset="1" stop-color="#24090D" />
-              </linearGradient>
-
-              <radialGradient id="sageIridescentR" cx="50" cy="110" r="140" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#F4F7F2" stop-opacity="0.95" />
-                <stop offset="35%" stop-color="#AAB89C" stop-opacity="0.85" />
-                <stop offset="70%" stop-color="#7C8B6F" stop-opacity="0.75" />
-                <stop offset="100%" stop-color="#3D4A36" stop-opacity="0.92" />
-              </radialGradient>
-
-              <linearGradient id="pearlVeinR" x1="0" y1="120" x2="150" y2="40" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#FFFFFF" />
-                <stop offset="0.5" stop-color="#E8ECE5" />
-                <stop offset="1" stop-color="#AAB89C" />
-              </linearGradient>
-            </defs>
-
-            <path d="M0 120 C10 55, 60 5, 132 12 C160 15, 182 52, 158 102 C138 144, 60 135, 0 120 Z" 
-                  fill="url(#burgundyVelvetR)" stroke="#FFFFFF" stroke-width="1.8"/>
-            <path d="M6 118 C16 60, 62 14, 128 20 C152 24, 170 54, 150 95 C132 132, 62 128, 6 118 Z" 
-                  fill="url(#sageIridescentR)"/>
-
-            <path d="M0 125 C35 155, 95 205, 132 225 C156 238, 162 202, 138 170 C112 135, 45 120, 0 125 Z" 
-                  fill="url(#burgundyVelvetR)" stroke="#FFFFFF" stroke-width="1.5"/>
-            <path d="M8 130 C40 156, 92 200, 126 218 C144 226, 150 200, 130 172 C108 140, 48 126, 8 130 Z" 
-                  fill="url(#sageIridescentR)"/>
-
-            <path d="M0 120 Q75 55 128 24" stroke="url(#pearlVeinR)" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M0 120 Q90 82 148 100" stroke="url(#pearlVeinR)" stroke-width="1.8" stroke-linecap="round"/>
-            <path d="M0 125 Q78 165 128 222" stroke="url(#pearlVeinR)" stroke-width="2.0" stroke-linecap="round"/>
-            
-            <path d="M52 78 Q92 44 122 50 M74 98 Q112 76 136 78 M45 145 Q88 170 118 188" 
-                  stroke="#E8ECE5" stroke-width="1.2" stroke-linecap="round" opacity="0.85"/>
-
-            <circle cx="120" cy="38" r="4.2" fill="url(#pearlDotGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
-            <circle cx="142" cy="74" r="3.4" fill="url(#pearlDotGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
-            <circle cx="148" cy="115" r="3.0" fill="url(#pearlDotGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
-            <circle cx="122" cy="195" r="3.6" fill="url(#pearlDotGlow)" stroke="#FFFFFF" stroke-width="0.8"/>
-          </svg>
         </div>
 
       </div>
 
-      <!-- Call to Action -->
-      <span class="butterfly-touch-prompt-text" id="butterflyPromptTag">
+      <!-- Tap to Open Call to Action -->
+      <span class="envelope-invitation-subtag">
         <span>Tap to open invitation</span>
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2">
           <path d="M3 8h10M9 4l4 4-4 4"/>
         </svg>
       </span>
 
     </div>
+
   </div>
 
   <!-- ============================================================
@@ -2191,7 +2037,7 @@
   </footer>
 
   <!-- ============================================================
-       SCRIPTS: CANVAS, BUTTERFLY, AUDIO, PROGRESS, COUNTDOWN & RSVP
+       SCRIPTS: CANVAS, MUSIC, PROGRESS, COUNTDOWN & RSVP
   ============================================================ */ -->
   <script>
   'use strict';
@@ -2252,20 +2098,10 @@
     animateParticles();
   }
 
-  // 2. Burgundy & Sage 3D Butterfly Realistic Slow Motion Flight Unboxing
-  const gatefoldOverlay  = document.getElementById('gatefold-unboxing-experience');
-  const butterflyTrigger = document.getElementById('butterflyUnboxingTrigger');
-  const turntableBtn     = document.getElementById('turntableAudioToggle');
-  const romanticAudio    = document.getElementById('weddingRomanticSoundtrack');
+  // 2. Vinyl Turntable Music Player
+  const turntableBtn  = document.getElementById('turntableAudioToggle');
+  const romanticAudio = document.getElementById('weddingRomanticSoundtrack');
 
-  if (butterflyTrigger) {
-    butterflyTrigger.addEventListener('click', window.launchButterflyUnboxing);
-  }
-  if (gatefoldOverlay) {
-    gatefoldOverlay.addEventListener('click', window.launchButterflyUnboxing);
-  }
-
-  // 3. Vinyl Turntable Music Player
   if (turntableBtn && romanticAudio) {
     turntableBtn.addEventListener('click', () => {
       if (romanticAudio.paused) {
@@ -2279,7 +2115,7 @@
     });
   }
 
-  // 4. Top Reading Progress Fill Bar & Header Scroll Elevation
+  // 3. Top Reading Progress Fill Bar & Header Scroll Elevation
   const progressBar = document.getElementById('topProgressFill');
   const mainHeader  = document.getElementById('couture-header');
 
@@ -2290,7 +2126,7 @@
     if (mainHeader) mainHeader.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
-  // 5. Mobile Full Nav Curtain
+  // 4. Mobile Full Nav Curtain
   const mobileMenuBtn = document.getElementById('mobileMenuHamburgerBtn');
   const mobileCurtain = document.getElementById('mobileFullNavCurtain');
 
@@ -2312,7 +2148,7 @@
     });
   }
 
-  // 6. Smooth Anchor Scroll
+  // 5. Smooth Anchor Scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       const target = document.querySelector(anchor.getAttribute('href'));
@@ -2323,7 +2159,7 @@
     });
   });
 
-  // 7. Real-Time Fine Numeral Countdown
+  // 6. Real-Time Fine Numeral Countdown
   const TARGET_DATE = new Date('2026-10-24T14:30:00+02:00');
 
   function updateCountdown() {
@@ -2353,7 +2189,7 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 8. Dynamic RSVP Form Handler with Up to 5 Guests & Direct Google Sheets Posting
+  // 7. Dynamic RSVP Form Handler with Up to 5 Guests & Multi-Channel Posting
   const rsvpFormNode    = document.getElementById('rsvpFormElement');
   const rsvpFeedbackBox = document.getElementById('rsvpFeedbackSuccess');
   const guestSelectEl   = document.getElementById('guestQuantitySelect');
@@ -2442,42 +2278,7 @@
       const dietaryNotes  = document.getElementById('guestDietaryNotesInput') ? document.getElementById('guestDietaryNotesInput').value.trim() : '';
       const wishesMsg     = document.getElementById('guestWishesTextarea') ? document.getElementById('guestWishesTextarea').value.trim() : '';
 
-      const payload = {
-        primaryName: fullName,
-        attendance: isAttending ? "Yes, I'll be there" : "No, unfortunately I can't attend",
-        guestCount: count,
-        dietary: dietaryNotes,
-        message: wishesMsg,
-        guests: [{
-          name: fullName,
-          dietary: dietaryNotes || "No special requirements"
-        }]
-      };
-
-      if (isAttending && count > 1) {
-        for (let i = 2; i <= count; i++) {
-          const gNameInput = document.querySelector(`input[name="guest_${i}_name"]`);
-          const gDietInput = document.querySelector(`input[name="guest_${i}_dietary"]`);
-          payload.guests.push({
-            name: gNameInput ? gNameInput.value.trim() : `Guest ${i}`,
-            dietary: gDietInput ? gDietInput.value.trim() : "No special requirements"
-          });
-        }
-      }
-
-      // Save locally as reliable backup
-      try {
-        const saved = JSON.parse(localStorage.getItem('rl_saved_rsvps') || '[]');
-        saved.push({ ...payload, timestamp: new Date().toISOString() });
-        localStorage.setItem('rl_saved_rsvps', JSON.stringify(saved));
-      } catch(err) {}
-
-      // UI Submitting state
-      if (submitBtn) submitBtn.disabled = true;
-      if (btnTextEl) btnTextEl.style.display = 'none';
-      if (btnSpinnerEl) btnSpinnerEl.style.display = 'inline';
-
-      // Prepare URL encoded and FormData payload
+      // Prepare URLSearchParams payload
       var formParams = new URLSearchParams();
       formParams.append('primaryName', fullName);
       formParams.append('attendance', isAttending ? "Yes, I'll be there" : "No, unfortunately I can't attend");
@@ -2494,6 +2295,11 @@
         }
       }
 
+      // UI Submitting state
+      if (submitBtn) submitBtn.disabled = true;
+      if (btnTextEl) btnTextEl.style.display = 'none';
+      if (btnSpinnerEl) btnSpinnerEl.style.display = 'inline';
+
       // 1. Post to Google Apps Script Web App
       if (GOOGLE_APPS_SCRIPT_URL && GOOGLE_APPS_SCRIPT_URL.indexOf('placeholder') === -1) {
         try {
@@ -2505,12 +2311,14 @@
           }).catch(function() {});
         } catch(err) {}
 
-        // 2. Secondary redundant GET ping to ensure 100% arrival in all mobile browsers
+        // 2. Secondary redundant GET ping
         try {
           var getPingUrl = GOOGLE_APPS_SCRIPT_URL + '?' + formParams.toString() + '&_t=' + Date.now();
           var pingImg = new Image();
           pingImg.src = getPingUrl;
         } catch(e) {}
+      }
+
       setTimeout(function() {
         if (isAttending) {
           if (feedbackTitle) feedbackTitle.textContent = `We can’t wait to celebrate with you, ${firstName}!`;
