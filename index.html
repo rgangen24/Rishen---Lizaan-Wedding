@@ -262,9 +262,7 @@
       border-color: var(--champagne);
       transform: translateY(-2px);
     }
-    .music-note-icon {
-      font-size: 0.95rem;
-    }
+    .music-note-icon { font-size: 0.95rem; }
     .floating-music-btn.playing .music-note-icon {
       animation: notePulse 1.8s ease-in-out infinite alternate;
     }
@@ -274,7 +272,7 @@
     }
 
     /* ============================================================
-       3. HERO SECTION (MATCHING ATTACHMENT 2 EXACTLY)
+       3. HERO SECTION (REFINED EXACT MATCH TO USER DIRECTIVES)
     ============================================================ */
     #hero {
       min-height: 100vh;
@@ -289,7 +287,7 @@
       overflow: hidden;
     }
 
-    /* Elegant Fine Line Swoosh Background Vector (Attachment 2) */
+    /* Elegant Fine Line Swoosh Background Vector */
     .hero-swoosh-bg-vector {
       position: absolute;
       inset: 0;
@@ -313,30 +311,12 @@
 
     .hero-invite-eyebrow {
       font-family: var(--font-sans);
-      font-size: clamp(0.72rem, 1.6vw, 0.85rem);
+      font-size: clamp(0.75rem, 1.7vw, 0.92rem);
       font-weight: 500;
-      letter-spacing: 0.36em;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
-      color: rgba(251, 247, 240, 0.85);
-      margin-bottom: clamp(1.8rem, 4vh, 2.6rem);
-    }
-
-    .hero-rl-monogram-emblem {
-      font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 5vw, 3.4rem);
-      font-weight: 300;
-      color: var(--ivory);
-      letter-spacing: 0.04em;
-      margin-bottom: clamp(1.2rem, 3vh, 2rem);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-rl-monogram-emblem span {
-      font-family: var(--font-script);
-      font-size: clamp(2.8rem, 6vw, 3.8rem);
-      color: var(--eucalyptus);
-      margin: 0 0.1em;
+      color: rgba(251, 247, 240, 0.9);
+      margin-bottom: clamp(2rem, 5vh, 3.2rem);
     }
 
     .hero-headline-names {
@@ -350,8 +330,8 @@
     }
     .hero-headline-names .amp {
       font-family: var(--font-script);
-      font-size: 0.85em;
-      color: var(--ivory);
+      font-size: 0.9em;
+      color: var(--eucalyptus); /* SAGE COLOR MATCHING REQUEST */
       font-weight: 300;
       margin: 0 0.1em;
     }
@@ -376,7 +356,7 @@
     }
 
     /* ============================================================
-       4. OUR STORY SECTION (PHOTO COLLAGE MATCHING ATTACHMENT 5)
+       4. OUR STORY SECTION (PICS ON LEFT, STORY ON RIGHT)
     ============================================================ */
     #story {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -384,14 +364,14 @@
       position: relative;
     }
     .story-max-container {
-      max-width: 1180px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     .story-editorial-header-spread {
       text-align: center;
       max-width: 840px;
-      margin: 0 auto clamp(3.5rem, 7vw, 5rem);
+      margin: 0 auto clamp(3.5rem, 6vw, 4.5rem);
     }
 
     .story-chapter-eyebrow {
@@ -440,53 +420,55 @@
       line-height: 1.6;
     }
 
-    /* Photo Collage Layout Matching Attachment 5 */
-    .story-collage-attachment-spread {
-      position: relative;
-      max-width: 580px;
-      margin: 0 auto clamp(4rem, 8vw, 6rem);
+    /* 2-Column Split: Photos on Left, Story on Right */
+    .story-split-grid-layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(3rem, 6vw, 5.5rem);
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .story-split-grid-layout {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+    }
+
+    /* Photos Column on Left (Full view, no heavy covering) */
+    .story-left-photos-column {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      gap: 2.5rem;
+      position: relative;
     }
-    .collage-photo-frame {
+
+    .story-full-photo-card {
       background: #F8F5EF;
-      padding: 14px 14px 28px 14px;
-      box-shadow: 0 18px 45px rgba(40, 30, 20, 0.12);
+      padding: 12px 12px 24px 12px;
+      box-shadow: 0 16px 40px rgba(40, 30, 20, 0.1);
       border-radius: 2px;
-      width: 82%;
-      max-width: 440px;
       position: relative;
       transition: transform 0.4s var(--ease-silk);
     }
-    .collage-photo-frame img {
+    .story-full-photo-card img {
       width: 100%;
       height: auto;
       border-radius: 1px;
+      display: block;
     }
 
-    .collage-frame-top {
-      transform: rotate(-3.5deg) translateX(-25px);
-      z-index: 1;
-      margin-bottom: -110px;
-    }
-    .collage-frame-middle {
-      transform: rotate(4deg) translateX(35px);
-      z-index: 3;
-      margin-bottom: -90px;
-    }
-    .collage-frame-bottom {
-      transform: rotate(-2deg) translateX(-20px);
-      z-index: 2;
-    }
+    .story-full-photo-card.card-1 { transform: rotate(-2deg); }
+    .story-full-photo-card.card-2 { transform: rotate(2.5deg); }
+    .story-full-photo-card.card-3 { transform: rotate(-1.5deg); }
 
-    /* Round R ♥ L Emblem Badge (Attachment 5) */
+    /* Round R ♥ L Badge on Card 2 */
     .collage-round-rl-badge {
       position: absolute;
-      top: -22px;
-      right: -22px;
-      width: 72px;
-      height: 72px;
+      top: -20px;
+      right: -15px;
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
       background: #EBF1E8;
       border: 1px solid rgba(124, 139, 111, 0.4);
@@ -497,13 +479,14 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
       z-index: 10;
     }
-    .collage-round-rl-badge .b-r { font-family: var(--font-serif); font-size: 1.1rem; color: var(--burgundy); line-height: 1; }
-    .collage-round-rl-badge .b-h { font-size: 0.65rem; color: var(--sage); margin: 1px 0; }
-    .collage-round-rl-badge .b-l { font-family: var(--font-serif); font-size: 1.1rem; color: var(--burgundy); line-height: 1; }
+    .collage-round-rl-badge .b-r { font-family: var(--font-serif); font-size: 1.05rem; color: var(--burgundy); line-height: 1; }
+    .collage-round-rl-badge .b-h { font-size: 0.62rem; color: var(--sage); margin: 1px 0; }
+    .collage-round-rl-badge .b-l { font-family: var(--font-serif); font-size: 1.05rem; color: var(--burgundy); line-height: 1; }
 
-    .story-text-narrative-flow {
-      max-width: 840px;
-      margin: 0 auto;
+    /* Story Narrative Text on Right */
+    .story-right-text-column {
+      display: flex;
+      flex-direction: column;
     }
     .story-moment-paragraph {
       font-family: var(--font-sans);
@@ -572,11 +555,11 @@
     }
 
     /* ============================================================
-       5. ORDER OF THE DAY (REPLACING THE GATHERING)
+       5. ORDER OF THE DAY (BURGUNDY BG WITH ELEGANT SAGE & IVORY CARDS)
     ============================================================ */
     #celebration {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
-      background: radial-gradient(circle at 50% 30%, #46553F 0%, #2F3B2A 60%, #1D251A 100%);
+      background: radial-gradient(circle at 50% 30%, #521820 0%, #380F14 60%, #1D0609 100%);
       color: var(--ivory);
       position: relative;
     }
@@ -612,7 +595,7 @@
       position: absolute;
       top: 24px; bottom: 24px; left: 35px;
       width: 1px;
-      background: rgba(231, 217, 190, 0.25);
+      background: rgba(170, 184, 156, 0.35);
     }
 
     .ceremony-event-row {
@@ -636,24 +619,25 @@
       color: var(--champagne);
       position: relative;
       z-index: 2;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(231, 217, 190, 0.4);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(170, 184, 156, 0.5);
     }
     .ceremony-event-content-box {
-      background: rgba(253, 251, 247, 0.96);
-      color: var(--ink);
+      background: rgba(45, 12, 17, 0.88);
+      border: 1px solid rgba(170, 184, 156, 0.35);
+      color: var(--ivory);
       padding: 1.6rem 2rem;
       border-radius: 2px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
       flex: 1;
     }
     .ceremony-event-timestamp {
       font-family: var(--font-sans);
       font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--burgundy);
+      color: var(--eucalyptus);
       display: inline-block;
       margin-bottom: 0.3rem;
     }
@@ -661,14 +645,14 @@
       font-family: var(--font-serif);
       font-size: clamp(1.35rem, 2.6vw, 1.75rem);
       font-weight: 400;
-      color: var(--burgundy);
+      color: var(--champagne);
       line-height: 1.25;
       margin-bottom: 0.4rem;
     }
     .ceremony-event-desc {
       font-family: var(--font-sans);
       font-size: 0.96rem;
-      color: var(--ink-soft);
+      color: rgba(251, 247, 240, 0.88);
       line-height: 1.7;
     }
 
@@ -677,7 +661,8 @@
       align-items: center;
       gap: 0.75rem;
       padding: 1rem 2.4rem;
-      background: var(--burgundy);
+      background: rgba(170, 184, 156, 0.16);
+      border: 1px solid var(--eucalyptus);
       color: var(--ivory);
       font-family: var(--font-sans);
       font-size: 0.75rem;
@@ -689,7 +674,8 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
     .btn-celebration-burgundy:hover {
-      background: var(--oxblood);
+      background: var(--eucalyptus);
+      color: var(--burgundy-night);
       transform: translateY(-2px);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     }
@@ -805,7 +791,7 @@
       margin-bottom: 2.8rem;
     }
 
-    /* Countdown Timer (Attachment 1) */
+    /* Countdown Timer */
     .rsvp-countdown-bar {
       display: flex;
       justify-content: center;
@@ -834,7 +820,7 @@
       margin-top: 0.6rem;
     }
 
-    /* Dark Burgundy Card Container (Attachment 3 & 4) */
+    /* Dark Burgundy RSVP Card Box */
     .rsvp-card-box {
       max-width: 660px;
       margin: 0 auto;
@@ -903,7 +889,7 @@
       color: var(--ivory);
     }
 
-    /* Yes / No Toggle Button Cards (Attachment 3 & 4) */
+    /* Yes / No Toggle Button Cards */
     .attendance-toggle-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1021,7 +1007,7 @@
     <div class="top-scroll-progress-fill" id="topProgressFill"></div>
   </div>
 
-  <!-- Floating Music Toggle Button (Matching Attachment 2) -->
+  <!-- Floating Music Toggle Button -->
   <button type="button" class="floating-music-btn" id="turntableAudioToggle" aria-label="Toggle Background Music">
     <span class="music-note-icon">🎵</span>
     <span>Play Our Song</span>
@@ -1063,13 +1049,13 @@
   </header>
 
   <!-- ============================================================
-       2. HERO SECTION (EXACT MATCH TO ATTACHMENT 2)
+       2. HERO SECTION
   ============================================================ */ -->
   <main id="main-content">
 
     <section id="hero" aria-labelledby="heroHeadlineNames">
       
-      <!-- Vector Swoosh Background Lines (Attachment 2) -->
+      <!-- Vector Swoosh Background Lines -->
       <svg class="hero-swoosh-bg-vector" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M-100,200 Q300,500 900,100" stroke="rgba(231,217,190,0.18)" stroke-width="1.2" />
         <path d="M-50,650 Q400,200 850,750" stroke="rgba(170,184,156,0.18)" stroke-width="1.2" />
@@ -1077,11 +1063,10 @@
       </svg>
 
       <div class="hero-centered-content">
-        <span class="hero-invite-eyebrow">WITH ALL OUR LOVE, WE INVITE YOU.</span>
+        <!-- Replaced with WE'RE GETTING MARRIED -->
+        <span class="hero-invite-eyebrow">WE'RE GETTING MARRIED</span>
 
-        <div class="hero-rl-monogram-emblem">
-          R<span>&amp;</span>L
-        </div>
+        <!-- Removed R&L monogram here per request -->
 
         <h1 class="hero-headline-names" id="heroHeadlineNames">
           Rishen <span class="amp">&amp;</span><br />Lizaan
@@ -1098,7 +1083,7 @@
     </section>
 
     <!-- ============================================================
-         3. OUR STORY (PHOTO COLLAGE ATTACHMENT 5 MATCH)
+         3. OUR STORY (PICS ON LEFT, TEXT ON RIGHT)
     ============================================================ */ -->
     <section id="story" aria-labelledby="storyHeadingTitle">
       <div class="story-max-container">
@@ -1118,55 +1103,59 @@
           </p>
         </div>
 
-        <!-- Overlapping Photo Collage Layout (Matching Attachment 5) -->
-        <div class="story-collage-attachment-spread">
-          <!-- Top Photo -->
-          <div class="collage-photo-frame collage-frame-top">
-            <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait" loading="lazy" />
-          </div>
-
-          <!-- Middle Photo with Round R ♥ L Badge -->
-          <div class="collage-photo-frame collage-frame-middle">
-            <div class="collage-round-rl-badge">
-              <span class="b-r">R</span>
-              <span class="b-h">♥</span>
-              <span class="b-l">L</span>
+        <!-- 2-Column Grid: Full Photos on Left, Narrative Text on Right -->
+        <div class="story-split-grid-layout">
+          
+          <!-- LEFT COLUMN: FULL PHOTOS -->
+          <div class="story-left-photos-column">
+            
+            <div class="story-full-photo-card card-1">
+              <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait" loading="lazy" />
             </div>
-            <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan on green lawn" loading="lazy" />
+
+            <div class="story-full-photo-card card-2">
+              <div class="collage-round-rl-badge">
+                <span class="b-r">R</span>
+                <span class="b-h">♥</span>
+                <span class="b-l">L</span>
+              </div>
+              <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan on green lawn" loading="lazy" />
+            </div>
+
+            <div class="story-full-photo-card card-3">
+              <img src="images/couple-fun.jpg" alt="Rishen and Lizaan in fun hats" loading="lazy" />
+            </div>
+
           </div>
 
-          <!-- Bottom Photo -->
-          <div class="collage-photo-frame collage-frame-bottom">
-            <img src="images/couple-fun.jpg" alt="Rishen and Lizaan in fun hats" loading="lazy" />
+          <!-- RIGHT COLUMN: NARRATIVE TEXT -->
+          <div class="story-right-text-column">
+            <p class="story-moment-paragraph">
+              <span class="story-editorial-dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan’s family members. There was an instant connection, a quiet, undeniable feeling that something about this person was different. It was love at first sight - although neither of them was brave enough to actually say a word to the other 😂!
+            </p>
+            <p class="story-moment-paragraph">
+              A few days later, Rishen still couldn’t get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that never happened in person began over text.
+            </p>
+            <p class="story-moment-paragraph">
+              What started as simple messages quickly became hours of talking, learning about one another, laughing, sharing dreams, and slowly falling completely in love. Somewhere between the good morning messages, late night conversations, inside jokes and countless memories, two people who were once too shy to speak became each other’s favourite good morning and favourite good night.
+            </p>
+            <p class="story-moment-paragraph">
+              Since then, we’ve shared so many beautiful moments together, from ordinary days that became special simply because we were together, to adventures, laughter, memories and milestones that we’ll treasure forever. Through it all, our love has continued to grow, and we’ve come to realise that the best part of life is having someone beside you to share it all with.
+            </p>
+            <p class="story-moment-paragraph">
+              Like iron sharpens iron. We believe we are meant to encourage, strengthen and bring out the best in one another.
+            </p>
+            <p class="story-moment-paragraph">
+              We believe our story was never simply a coincidence. We believe God brought our paths together at exactly the right time and has been writing our story long before we even realised it. He has blessed us with a love that has grown through friendship, faith, laughter and the promise of a lifetime together.
+            </p>
+            <p class="story-moment-paragraph">
+              Now, as we prepare to become husband and wife, we’re filled with gratitude for everything that brought us here, and excitement for everything that is still to come.
+            </p>
+            <p class="story-moment-paragraph">
+              We can’t wait to spend the rest of our lives choosing each other, building our home, creating beautiful memories, growing in faith, and walking hand in hand through every chapter God has planned for us.
+            </p>
           </div>
-        </div>
 
-        <!-- Verbatim Story Narrative Text -->
-        <div class="story-text-narrative-flow">
-          <p class="story-moment-paragraph">
-            <span class="story-editorial-dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan’s family members. There was an instant connection, a quiet, undeniable feeling that something about this person was different. It was love at first sight - although neither of them was brave enough to actually say a word to the other 😂!
-          </p>
-          <p class="story-moment-paragraph">
-            A few days later, Rishen still couldn’t get Lizaan out of his mind. So, with a little help from the same family member, he got her number. And just like that, the conversation that never happened in person began over text.
-          </p>
-          <p class="story-moment-paragraph">
-            What started as simple messages quickly became hours of talking, learning about one another, laughing, sharing dreams, and slowly falling completely in love. Somewhere between the good morning messages, late night conversations, inside jokes and countless memories, two people who were once too shy to speak became each other’s favourite good morning and favourite good night.
-          </p>
-          <p class="story-moment-paragraph">
-            Since then, we’ve shared so many beautiful moments together, from ordinary days that became special simply because we were together, to adventures, laughter, memories and milestones that we’ll treasure forever. Through it all, our love has continued to grow, and we’ve come to realise that the best part of life is having someone beside you to share it all with.
-          </p>
-          <p class="story-moment-paragraph">
-            Like iron sharpens iron. We believe we are meant to encourage, strengthen and bring out the best in one another.
-          </p>
-          <p class="story-moment-paragraph">
-            We believe our story was never simply a coincidence. We believe God brought our paths together at exactly the right time and has been writing our story long before we even realised it. He has blessed us with a love that has grown through friendship, faith, laughter and the promise of a lifetime together.
-          </p>
-          <p class="story-moment-paragraph">
-            Now, as we prepare to become husband and wife, we’re filled with gratitude for everything that brought us here, and excitement for everything that is still to come.
-          </p>
-          <p class="story-moment-paragraph">
-            We can’t wait to spend the rest of our lives choosing each other, building our home, creating beautiful memories, growing in faith, and walking hand in hand through every chapter God has planned for us.
-          </p>
         </div>
 
         <!-- Scripture Climax -->
@@ -1186,7 +1175,7 @@
     </section>
 
     <!-- ============================================================
-         4. ORDER OF THE DAY (REPLACING THE GATHERING)
+         4. ORDER OF THE DAY (RICH BURGUNDY WITH ELEGANT SAGE & IVORY CARDS)
     ============================================================ */ -->
     <section id="celebration" aria-labelledby="celebrationHeadingTitle">
       <div class="story-max-container">
@@ -1281,10 +1270,10 @@
             <p class="venue-location-tagline">Somerset West, Cape Winelands, South Africa</p>
 
             <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;">
-              <a href="https://www.google.com/maps/search/Highberry+Vineyards+Somerset+West+South+Africa" target="_blank" rel="noopener noreferrer" class="btn-celebration-burgundy" style="padding:0.85rem 1.6rem; font-size:0.72rem;">
+              <a href="https://www.google.com/maps/search/Highberry+Vineyards+Somerset+West+South+Africa" target="_blank" rel="noopener noreferrer" class="btn-celebration-burgundy" style="background:var(--burgundy); color:var(--ivory); border:none; padding:0.85rem 1.6rem; font-size:0.72rem;">
                 Open in Google Maps ↗
               </a>
-              <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-celebration-burgundy" style="background:var(--sage-dark); padding:0.85rem 1.6rem; font-size:0.72rem;">
+              <a href="https://www.highberry.co.za/" target="_blank" rel="noopener noreferrer" class="btn-celebration-burgundy" style="background:var(--sage-dark); color:var(--ivory); border:none; padding:0.85rem 1.6rem; font-size:0.72rem;">
                 Visit Venue Website ↗
               </a>
             </div>
@@ -1336,7 +1325,7 @@
     </section>
 
     <!-- ============================================================
-         6. RSVP SECTION (MATCHING ATTACHMENTS 1, 3, 4 EXACTLY)
+         6. RSVP SECTION
     ============================================================ */ -->
     <section id="rsvp" aria-labelledby="rsvpHeadingTitle">
       <div class="story-max-container">
@@ -1345,7 +1334,7 @@
           <h2 class="rsvp-gratitude-title">We’d be so grateful to hear from you.</h2>
           <p class="rsvp-deadline-caps">RSVP BY 24 SEPTEMBER 2026 &nbsp;&middot;&nbsp; CLOSES AT MIDNIGHT.</p>
 
-          <!-- Countdown Timer (Attachment 1) -->
+          <!-- Countdown Timer -->
           <div class="rsvp-countdown-bar" id="countdownDigitsFlex">
             <div class="rsvp-cd-item">
               <span class="rsvp-cd-num" id="cdDays">--</span>
@@ -1366,7 +1355,7 @@
           </div>
         </div>
 
-        <!-- Dark Burgundy RSVP Card Box (Attachments 3 & 4) -->
+        <!-- Dark Burgundy RSVP Card Box -->
         <div class="rsvp-card-box">
           
           <div class="rsvp-success-feedback" id="rsvpFeedbackSuccess" aria-live="polite">
@@ -1387,7 +1376,7 @@
               <span id="nameErrorAlert" style="display:none; font-size:0.78rem; color:#f87171; margin-top:0.4rem;">Please fill in this field.</span>
             </div>
 
-            <!-- Attendance Toggle Buttons (Attachments 3 & 4) -->
+            <!-- Attendance Toggle Buttons -->
             <div class="form-group">
               <label class="field-label-caps">WILL YOU BE JOINING US?</label>
               <div class="attendance-toggle-grid">
@@ -1415,7 +1404,7 @@
                 </select>
               </div>
 
-              <!-- Guest 1 Header & Name Field (Attachment 4 Auto-Sync) -->
+              <!-- Guest 1 Header & Name Field -->
               <div style="margin-top:1.8rem; margin-bottom:1.4rem;">
                 <div style="font-family:var(--font-serif); font-size:1.35rem; color:var(--champagne); margin-bottom:0.8rem;">Guest 1</div>
                 <div class="form-group">
@@ -1427,7 +1416,7 @@
               <!-- Additional Guest Dynamic Fields -->
               <div id="additionalGuestInputRows"></div>
 
-              <!-- Dietary Requirement Dropdown / Line -->
+              <!-- Dietary Requirement Field -->
               <div class="form-group">
                 <label for="guestDietaryNotesInput" class="field-label-caps">DIETARY REQUIREMENT</label>
                 <input type="text" id="guestDietaryNotesInput" name="guestDietaryNotesInput" class="form-line-input" placeholder="No special requirements (e.g. Vegetarian, Halal, Nut Allergy)" />
@@ -1435,10 +1424,10 @@
 
             </div>
 
-            <!-- Special Message Textarea -->
+            <!-- Special Message Textarea (Clean empty placeholder per request) -->
             <div class="form-group">
               <label for="guestWishesTextarea" class="field-label-caps">A MESSAGE FOR US</label>
-              <textarea id="guestWishesTextarea" name="guestWishesTextarea" rows="3" class="form-line-textarea" placeholder="This is a beautiful invitation and I am very excited to be able to witness this union and experience the joy and celebration of this special day!"></textarea>
+              <textarea id="guestWishesTextarea" name="guestWishesTextarea" rows="3" class="form-line-textarea" placeholder=""></textarea>
             </div>
 
             <button type="submit" class="btn-send-rsvp-white" id="rsvpSubmitBtn">
@@ -1556,7 +1545,7 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 6. RSVP Auto-Sync & Attendance Buttons (Attachments 3 & 4)
+  // 6. RSVP Auto-Sync & Attendance Buttons
   var fullNameInput = document.getElementById('guestFullNameField');
   var guest1Input    = document.getElementById('guest1NameInput');
   var btnAccept     = document.getElementById('btnAcceptJoyfully');
@@ -1566,7 +1555,7 @@
   var guestSelect   = document.getElementById('guestQuantitySelect');
   var extraGuestBox = document.getElementById('additionalGuestInputRows');
 
-  // Sync FULL NAME to Guest 1 Name in real time (Attachment 4)
+  // Sync FULL NAME to Guest 1 Name in real time
   if (fullNameInput && guest1Input) {
     fullNameInput.addEventListener('input', function() {
       guest1Input.value = fullNameInput.value;
