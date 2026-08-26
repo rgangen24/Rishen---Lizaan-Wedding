@@ -125,7 +125,14 @@
       perspective: 1800px;
       overflow: hidden;
       background: radial-gradient(circle at 50% 45%, #4C131B 0%, #29080E 45%, #140205 85%, #080002 100%);
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
       transition: opacity 1.8s var(--ease-silk), visibility 1.8s;
+    }
+    #gatefold-unboxing-experience * {
+      cursor: pointer;
     }
     #gatefold-unboxing-experience.opened {
       opacity: 0;
@@ -2195,7 +2202,10 @@
 
   let isOpening = false;
 
-  function launchButterflyUnboxing() {
+  function launchButterflyUnboxing(e) {
+    if (e) {
+      if (e.type === 'touchstart') e.preventDefault();
+    }
     if (isOpening || !gatefoldOverlay) return;
     isOpening = true;
 
@@ -2203,20 +2213,37 @@
     if (butterflyPrompt) butterflyPrompt.style.opacity = '0';
 
     if (romanticAudio) {
-      romanticAudio.play().then(() => {
-        if (turntableBtn) turntableBtn.classList.add('playing');
-      }).catch(() => {});
+      try {
+        var playPromise = romanticAudio.play();
+        if (playPromise !== undefined) {
+          playPromise.then(function() {
+            if (turntableBtn) turntableBtn.classList.add('playing');
+          }).catch(function() {
+            // Audio autoplay blocked by browser policy - user can toggle via top button
+          });
+        }
+      } catch (err) {}
     }
 
-    setTimeout(() => {
-      gatefoldOverlay.classList.add('opened');
-      sessionStorage.setItem('rl_invitation_butterfly_bs_v2', 'true');
-    }, 850);
+    setTimeout(function() {
+      if (gatefoldOverlay) gatefoldOverlay.classList.add('opened');
+      try {
+        sessionStorage.setItem('rl_invitation_butterfly_bs_v3', 'true');
+      } catch (err) {}
+    }, 900);
   }
 
-  if (butterflyTrigger) butterflyTrigger.addEventListener('click', launchButterflyUnboxing);
+  // Bind to both specific butterfly trigger and overall gatefold overlay for instant response
+  if (butterflyTrigger) {
+    butterflyTrigger.addEventListener('click', launchButterflyUnboxing);
+    butterflyTrigger.addEventListener('touchend', launchButterflyUnboxing, { passive: false });
+  }
+  if (gatefoldOverlay) {
+    gatefoldOverlay.addEventListener('click', launchButterflyUnboxing);
+    gatefoldOverlay.addEventListener('touchend', launchButterflyUnboxing, { passive: false });
+  }
 
-  if (sessionStorage.getItem('rl_invitation_butterfly_bs_v2') === 'true') {
+  if (sessionStorage.getItem('rl_invitation_butterfly_bs_v3') === 'true') {
     if (gatefoldOverlay) gatefoldOverlay.classList.add('opened');
   }
 
