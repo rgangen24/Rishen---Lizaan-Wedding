@@ -356,7 +356,7 @@
     }
 
     /* ============================================================
-       4. OUR STORY SECTION (EXACT SCREENSHOT LAYOUT — NO BLACK BORDER)
+       4. OUR STORY SECTION (3RD PHOTO ON TOP OF 2ND PHOTO EDGE BELOW FEET)
     ============================================================ */
     #story {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -420,7 +420,7 @@
       line-height: 1.6;
     }
 
-    /* Proportional Layered Container Matching Screenshot 100% */
+    /* Proportional Layered Container */
     .story-collage-attachment-spread {
       position: relative;
       width: 100%;
@@ -454,28 +454,28 @@
       z-index: 1;
     }
 
-    /* Middle Photo (Lawn): Cream Frame NO BLACK BORDER (Middle Right Overlapping Top & Bottom) */
+    /* Middle Photo (Lawn): Cream Frame (Middle Right Overlapping Top) */
     .collage-frame-middle {
-      top: 27%;
+      top: 24%;
       right: 0;
       width: 68%;
       background: #EFEADF;
       padding: 12px 12px 32px 12px;
-      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
       transform: rotate(4.5deg);
-      z-index: 10;
+      z-index: 5;
     }
 
-    /* Bottom Photo: Cream Polaroid Frame (Bottom Left Under Middle) */
+    /* Bottom Photo (Hats): SITS ON TOP OF 2ND PHOTO (Z-INDEX 12) JUST BELOW FEET */
     .collage-frame-bottom {
-      top: 57%;
+      top: 50%;
       left: 2%;
       width: 68%;
       background: #EFEADF;
       padding: 12px 12px 32px 12px;
-      box-shadow: 0 16px 40px rgba(30, 20, 10, 0.15);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
       transform: rotate(-2.5deg);
-      z-index: 2;
+      z-index: 12; /* HIGHER Z-INDEX TO SIT ON TOP OF 2ND PHOTO EDGE */
     }
 
     /* Round R ♥ L Emblem Badge (Top Right Corner of Middle Frame) */
@@ -1098,7 +1098,7 @@
     </section>
 
     <!-- ============================================================
-         3. OUR STORY (PROPORTIONAL LAYERED MATCHING SCREENSHOT EXACTLY)
+         3. OUR STORY (3RD PHOTO ON TOP OF 2ND PHOTO EDGE BELOW FEET)
     ============================================================ */ -->
     <section id="story" aria-labelledby="storyHeadingTitle">
       <div class="story-max-container">
@@ -1118,14 +1118,14 @@
           </p>
         </div>
 
-        <!-- Proportional Layered Photo Collage Layout (Matching Screenshot 100%) -->
+        <!-- Proportional Layered Photo Collage Layout -->
         <div class="story-collage-attachment-spread">
           <!-- Top Photo: Cream Polaroid Frame (Top Left) -->
           <div class="collage-photo-frame collage-frame-top">
             <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait" loading="lazy" />
           </div>
 
-          <!-- Middle Photo (Lawn): Cream Frame NO BLACK BORDER (Middle Right Overlapping Top & Bottom) -->
+          <!-- Middle Photo (Lawn): Cream Frame (Middle Right Overlapping Top) -->
           <div class="collage-photo-frame collage-frame-middle">
             <div class="collage-round-rl-badge">
               <span class="b-r">R</span>
@@ -1135,7 +1135,7 @@
             <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan on green lawn" loading="lazy" />
           </div>
 
-          <!-- Bottom Photo: Cream Polaroid Frame (Bottom Left Under Middle) -->
+          <!-- Bottom Photo (Hats): ON TOP OF 2ND PHOTO EDGE BELOW FEET -->
           <div class="collage-photo-frame collage-frame-bottom">
             <img src="images/couple-fun.jpg" alt="Rishen and Lizaan in fun hats" loading="lazy" />
           </div>
