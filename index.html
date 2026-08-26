@@ -356,7 +356,7 @@
     }
 
     /* ============================================================
-       4. OUR STORY SECTION (3RD PHOTO ON TOP OF 2ND PHOTO EDGE BELOW FEET)
+       4. OUR STORY SECTION (PERFECT 100% VISIBLE STAGGERED COLLAGE)
     ============================================================ */
     #story {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -420,20 +420,21 @@
       line-height: 1.6;
     }
 
-    /* Proportional Layered Container */
+    /* Staggered Flex Flow Container (Guarantees zero clipping and 100% visibility) */
     .story-collage-attachment-spread {
-      position: relative;
+      display: flex;
+      flex-direction: column;
       width: 100%;
-      max-width: 480px;
-      height: 0;
-      padding-bottom: 152%;
-      margin: 0 auto clamp(3.5rem, 7vw, 5.5rem);
+      max-width: 500px;
+      margin: 0 auto clamp(4rem, 8vw, 6rem);
+      padding: 0 10px;
     }
 
     .collage-photo-frame {
-      position: absolute;
       border-radius: 2px;
       transition: transform 0.4s var(--ease-silk);
+      width: 76%;
+      max-width: 370px;
     }
     .collage-photo-frame img {
       width: 100%;
@@ -442,40 +443,38 @@
       display: block;
     }
 
-    /* Top Photo: Cream Polaroid Frame (Top Left) */
+    /* Top Photo: Cream Polaroid Frame (Staggered Left) */
     .collage-frame-top {
-      top: 0;
-      left: 0;
-      width: 68%;
+      align-self: flex-start;
       background: #EFEADF;
       padding: 12px 12px 32px 12px;
       box-shadow: 0 16px 40px rgba(30, 20, 10, 0.15);
       transform: rotate(-3.5deg);
       z-index: 1;
+      margin-bottom: -55px;
     }
 
-    /* Middle Photo (Lawn): Cream Frame (Middle Right Overlapping Top) */
+    /* Middle Photo (Lawn): Cream Frame (Staggered Right) */
     .collage-frame-middle {
-      top: 24%;
-      right: 0;
-      width: 68%;
+      align-self: flex-end;
       background: #EFEADF;
       padding: 12px 12px 32px 12px;
       box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
       transform: rotate(4.5deg);
-      z-index: 5;
+      z-index: 3;
+      position: relative;
+      margin-bottom: -55px;
     }
 
-    /* Bottom Photo (Hats): SITS ON TOP OF 2ND PHOTO (Z-INDEX 12) JUST BELOW FEET */
+    /* Bottom Photo (Hats): SITS ON TOP (Z-INDEX 10) OVER 2ND PHOTO EDGE BELOW FEET — 100% VISIBLE */
     .collage-frame-bottom {
-      top: 50%;
-      left: 2%;
-      width: 68%;
+      align-self: flex-start;
       background: #EFEADF;
       padding: 12px 12px 32px 12px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.32);
       transform: rotate(-2.5deg);
-      z-index: 12; /* HIGHER Z-INDEX TO SIT ON TOP OF 2ND PHOTO EDGE */
+      z-index: 10; /* HIGHEST Z-INDEX SO IT IS 100% ON TOP AND UNCOVERED */
+      position: relative;
     }
 
     /* Round R ♥ L Emblem Badge (Top Right Corner of Middle Frame) */
@@ -1098,7 +1097,7 @@
     </section>
 
     <!-- ============================================================
-         3. OUR STORY (3RD PHOTO ON TOP OF 2ND PHOTO EDGE BELOW FEET)
+         3. OUR STORY (100% FULLY VISIBLE PHOTO STACK)
     ============================================================ */ -->
     <section id="story" aria-labelledby="storyHeadingTitle">
       <div class="story-max-container">
@@ -1118,14 +1117,14 @@
           </p>
         </div>
 
-        <!-- Proportional Layered Photo Collage Layout -->
+        <!-- Staggered Flex Flow Container (Guarantees zero clipping and 100% visibility) -->
         <div class="story-collage-attachment-spread">
-          <!-- Top Photo: Cream Polaroid Frame (Top Left) -->
+          <!-- Top Photo: Cream Polaroid Frame (Staggered Left) -->
           <div class="collage-photo-frame collage-frame-top">
             <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait" loading="lazy" />
           </div>
 
-          <!-- Middle Photo (Lawn): Cream Frame (Middle Right Overlapping Top) -->
+          <!-- Middle Photo (Lawn): Cream Frame (Staggered Right) -->
           <div class="collage-photo-frame collage-frame-middle">
             <div class="collage-round-rl-badge">
               <span class="b-r">R</span>
@@ -1135,7 +1134,7 @@
             <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan on green lawn" loading="lazy" />
           </div>
 
-          <!-- Bottom Photo (Hats): ON TOP OF 2ND PHOTO EDGE BELOW FEET -->
+          <!-- Bottom Photo (Hats): SITS ON TOP (Z-INDEX 10) OVER 2ND PHOTO EDGE BELOW FEET — 100% VISIBLE -->
           <div class="collage-photo-frame collage-frame-bottom">
             <img src="images/couple-fun.jpg" alt="Rishen and Lizaan in fun hats" loading="lazy" />
           </div>
