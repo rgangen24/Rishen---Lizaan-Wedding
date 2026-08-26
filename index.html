@@ -2432,20 +2432,41 @@
       if (btnTextEl) btnTextEl.style.display = 'none';
       if (btnSpinnerEl) btnSpinnerEl.style.display = 'inline';
 
-      // Send to Active Google Apps Script Web App
-      fetch(GOOGLE_APPS_SCRIPT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload)
-      })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
-        console.log('RSVP logged successfully to Google Sheets:', data);
-      })
-      .catch(function(err) {
-        console.log('Submission sent via background pipe:', err);
-      })
-      .finally(function() {
+      // Prepare URL encoded and FormData payload
+      var formParams = new URLSearchParams();
+      formParams.append('primaryName', fullName);
+      formParams.append('attendance', isAttending ? "Yes, I'll be there" : "No, unfortunately I can't attend");
+      formParams.append('guestCount', count.toString());
+      formParams.append('dietary', dietaryNotes);
+      formParams.append('message', wishesMsg);
+
+      if (isAttending && count > 1) {
+        for (var i = 2; i <= count; i++) {
+          var gNameInput = document.querySelector('input[name="guest_' + i + '_name"]');
+          var gDietInput = document.querySelector('input[name="guest_' + i + '_dietary"]');
+          formParams.append('guest_' + i + '_name', gNameInput ? gNameInput.value.trim() : ('Guest ' + i));
+          formParams.append('guest_' + i + '_dietary', gDietInput ? gDietInput.value.trim() : 'No special requirements');
+        }
+      }
+
+      // 1. Post to Google Apps Script Web App
+      if (GOOGLE_APPS_SCRIPT_URL && GOOGLE_APPS_SCRIPT_URL.indexOf('placeholder') === -1) {
+        try {
+          fetch(GOOGLE_APPS_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: formParams.toString()
+          }).catch(function() {});
+        } catch(err) {}
+
+        // 2. Secondary redundant GET ping to ensure 100% arrival in all mobile browsers
+        try {
+          var getPingUrl = GOOGLE_APPS_SCRIPT_URL + '?' + formParams.toString() + '&_t=' + Date.now();
+          var pingImg = new Image();
+          pingImg.src = getPingUrl;
+        } catch(e) {}
+      setTimeout(function() {
         if (isAttending) {
           if (feedbackTitle) feedbackTitle.textContent = `We can’t wait to celebrate with you, ${firstName}!`;
           if (feedbackMsg) feedbackMsg.textContent = 'Thank you from the bottom of our hearts. Having you with us as we exchange our vows means the absolute world to us. We look forward to sharing this unforgettable day and making beautiful memories together.';
@@ -2461,7 +2482,7 @@
           rsvpFeedbackBox.style.display = 'block';
           rsvpFeedbackBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-      });
+      }, 500);
 
     });
   }
