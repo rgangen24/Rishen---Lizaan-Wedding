@@ -1457,37 +1457,56 @@
 
   <!-- Immediate Unboxing Engine Script in Head for Zero-Delay Interaction -->
   <script>
+    var isUnboxingLaunched = false;
+
     function launchButterflyUnboxing(e) {
-      if (e) {
-        e.stopPropagation();
+      if (isUnboxingLaunched) return;
+      isUnboxingLaunched = true;
+
+      var overlay     = document.getElementById('gatefold-unboxing-experience');
+      var butterfly   = document.getElementById('butterfly3dEntity');
+      var prompt      = document.getElementById('butterflyPromptTag');
+      var interceptor = document.getElementById('gatefoldTapInterceptor');
+      var audio       = document.getElementById('weddingRomanticSoundtrack');
+      var turntable   = document.getElementById('turntableAudioToggle');
+
+      if (interceptor) {
+        interceptor.style.pointerEvents = 'none';
       }
-      var overlay   = document.getElementById('gatefold-unboxing-experience');
-      var butterfly = document.getElementById('butterfly3dEntity');
-      var prompt    = document.getElementById('butterflyPromptTag');
-      var audio     = document.getElementById('weddingRomanticSoundtrack');
-      var turntable = document.getElementById('turntableAudioToggle');
 
-      if (!overlay || overlay.classList.contains('opened')) return;
+      // 1. Immediately launch butterfly flight animation
+      if (butterfly) {
+        butterfly.classList.add('flying');
+      }
+      if (prompt) {
+        prompt.style.opacity = '0';
+      }
 
-      if (butterfly) butterfly.classList.add('flying');
-      if (prompt) prompt.style.opacity = '0';
-
+      // 2. Play romantic soundtrack
       if (audio) {
         try {
-          var playPromise = audio.play();
-          if (playPromise !== undefined) {
-            playPromise.then(function() {
+          var p = audio.play();
+          if (p !== undefined) {
+            p.then(function() {
               if (turntable) turntable.classList.add('playing');
             }).catch(function() {});
           }
         } catch(err) {}
       }
 
+      // 3. Open doors smoothly
       setTimeout(function() {
         if (overlay) {
           overlay.classList.add('opened');
         }
-      }, 700);
+      }, 400);
+
+      // 4. Complete cleanup
+      setTimeout(function() {
+        if (overlay) {
+          overlay.style.display = 'none';
+        }
+      }, 2000);
     }
     window.launchButterflyUnboxing = launchButterflyUnboxing;
   </script>
@@ -1506,12 +1525,16 @@
   <!-- ============================================================
        1. REFINED BURGUNDY & SAGE BUTTERFLY UNBOXING
   ============================================================ */ -->
-  <div id="gatefold-unboxing-experience" onclick="launchButterflyUnboxing(event)" ontouchend="launchButterflyUnboxing(event)" aria-label="Digital Wedding Invitation Butterfly Unboxing">
-    <div class="gate-panel-left" onclick="launchButterflyUnboxing(event)"></div>
-    <div class="gate-panel-right" onclick="launchButterflyUnboxing(event)"></div>
-    <div class="gate-ribbon-band" onclick="launchButterflyUnboxing(event)"></div>
+  <div id="gatefold-unboxing-experience" aria-label="Digital Wedding Invitation Butterfly Unboxing">
+    
+    <!-- Flat 2D Full-Screen Tap Interceptor to bypass any 3D perspective hit-testing issues -->
+    <button type="button" id="gatefoldTapInterceptor" onclick="launchButterflyUnboxing(event)" ontouchend="launchButterflyUnboxing(event)" aria-label="Tap to open wedding invitation" style="position:absolute; inset:0; width:100%; height:100%; z-index:99; background:transparent; border:none; cursor:pointer; touch-action:manipulation; outline:none;"></button>
 
-    <div class="butterfly-unboxing-wrapper" id="butterflyUnboxingTrigger" onclick="launchButterflyUnboxing(event)" ontouchend="launchButterflyUnboxing(event)" title="Tap the butterfly to begin your journey">
+    <div class="gate-panel-left"></div>
+    <div class="gate-panel-right"></div>
+    <div class="gate-ribbon-band"></div>
+
+    <div class="butterfly-unboxing-wrapper" id="butterflyUnboxingTrigger" title="Tap the butterfly to begin your journey">
       
       <!-- Ambient Halo Glow -->
       <div class="butterfly-backlight-halo" aria-hidden="true"></div>
