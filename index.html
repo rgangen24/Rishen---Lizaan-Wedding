@@ -7,10 +7,10 @@
   <meta name="theme-color" content="#380F14" />
   <title>Rishen &amp; Lizaan — With All Our Love, We Invite You</title>
 
-  <!-- Typography: Fraunces & Jost & Pinyon Script & Alex Brush -->
+  <!-- Typography: Fraunces & Jost & Pinyon Script & Alex Brush & Great Vibes & Monsieur La Doulaise & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..700,0..100;1,9..144,200..600,0..100&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..700,0..100;1,9..144,200..600,0..100&family=Great+Vibes&family=Italianno&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Monsieur+La+Doulaise&family=Pinyon+Script&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
 
   <style>
     /* ============================================================
@@ -329,14 +329,67 @@
       margin-bottom: clamp(2rem, 4.5vh, 3.2rem);
     }
     
-    /* Calligraphic Ampersand Ultra-Smooth Vector Image (Attachment 1 Exact Match) */
-    .hero-amp-img-vector {
+    /* Native Vector Ampersand Typography (100% Crisp GPU Vector Rendering) */
+    .hero-amp-vector {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 1.15em;
+      color: #FDFBF7;
+      font-weight: 400;
+      font-style: normal;
       display: inline-block;
-      height: clamp(3.4rem, 10vw, 6.5rem);
-      width: auto;
+      margin: 0 0.08em;
+      line-height: 0.8;
       vertical-align: middle;
-      margin: -0.12em 0.18em 0 0.18em;
-      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
+      text-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      transition: all 0.3s var(--ease-silk);
+    }
+    
+    .hero-amp-vector.opt-1 { font-family: 'Pinyon Script', cursive; font-size: 1.12em; }
+    .hero-amp-vector.opt-2 { font-family: 'Alex Brush', cursive; font-size: 1.15em; }
+    .hero-amp-vector.opt-3 { font-family: 'Great Vibes', cursive; font-size: 1.18em; }
+    .hero-amp-vector.opt-4 { font-family: 'Monsieur La Doulaise', cursive; font-size: 1.25em; }
+    .hero-amp-vector.opt-5 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05em; color: var(--champagne); }
+
+    .ampersand-picker-bar {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 0.75rem 1.2rem;
+      border-radius: 2px;
+      border: 1px solid rgba(231, 217, 190, 0.25);
+      backdrop-filter: blur(8px);
+    }
+    .picker-label {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-right: 0.4rem;
+    }
+    .amp-picker-btn {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      padding: 0.4rem 0.8rem;
+      background: transparent;
+      border: 1px solid rgba(231, 217, 190, 0.35);
+      color: var(--ivory);
+      border-radius: 1px;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+    .amp-picker-btn:hover, .amp-picker-btn.active {
+      background: var(--eucalyptus);
+      color: #1A2516;
+      border-color: var(--eucalyptus);
+      font-weight: 600;
     }
 
     .hero-date-line {
@@ -1216,7 +1269,7 @@
         <span class="hero-invite-eyebrow">WITH ALL OUR LOVE, WE INVITE YOU</span>
 
         <h1 class="hero-headline-names" id="heroHeadlineNames">
-          Rishen <img src="images/calligraphic-ampersand-vector.png" alt="&amp;" class="hero-amp-img-vector" /><br />Lizaan
+          Rishen <span class="hero-amp-vector opt-1" id="heroAmpVector">&amp;</span><br />Lizaan
         </h1>
 
         <p class="hero-date-line">
@@ -1226,6 +1279,16 @@
         <p class="hero-venue-line">
           HIGHBERRY VINEYARDS &amp; VENUE
         </p>
+
+        <!-- Interactive Ampersand Style Picker Bar -->
+        <div class="ampersand-picker-bar" aria-label="Ampersand Style Picker">
+          <span class="picker-label">CHOOSE &amp; STYLE:</span>
+          <button type="button" class="amp-picker-btn active" onclick="setAmpStyle(1, this)">1. Classic Pinyon</button>
+          <button type="button" class="amp-picker-btn" onclick="setAmpStyle(2, this)">2. Alex Brush</button>
+          <button type="button" class="amp-picker-btn" onclick="setAmpStyle(3, this)">3. Great Vibes</button>
+          <button type="button" class="amp-picker-btn" onclick="setAmpStyle(4, this)">4. Monsieur La Doulaise</button>
+          <button type="button" class="amp-picker-btn" onclick="setAmpStyle(5, this)">5. Playfair Italic</button>
+        </div>
       </div>
     </section>
 
@@ -1652,6 +1715,15 @@
   'use strict';
 
   var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoqQWpnXmvYe6A41-grgSd8-iKYdRQY8GKAJiwfVmEy4dl67L0T3qWKml6yNuZwNzl9w/exec';
+
+  // Dynamic Ampersand Vector Style Switcher
+  window.setAmpStyle = function(optNum, btn) {
+    var amp = document.getElementById('heroAmpVector');
+    if (!amp) return;
+    amp.className = 'hero-amp-vector opt-' + optNum;
+    document.querySelectorAll('.amp-picker-btn').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+  };
 
   // 1. Music Player & Multi-Platform Autoplay Engine (Mobile, Tablet, PC)
   var musicBtn = document.getElementById('turntableAudioToggle');
