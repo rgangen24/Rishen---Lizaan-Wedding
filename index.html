@@ -10,7 +10,7 @@
   <!-- Typography: Fraunces & Jost & Pinyon Script & Alex Brush & Great Vibes & Monsieur La Doulaise & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,500&family=Cinzel+Decorative:wght@400&family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&family=DM+Serif+Display:ital@1&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..700,0..100;1,9..144,200..600,0..100&family=Italianno&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&family=Playfair+Display:ital,wght@1,400;1,500&family=Prata&family=Sacramento&family=Tangerine:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..700,0..100;1,9..144,200..600,0..100&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" />
 
   <style>
     /* ============================================================
@@ -329,79 +329,28 @@
       margin-bottom: clamp(2rem, 4.5vh, 3.2rem);
     }
     
-    /* Refined Ampersand Variations (10 Smart, Elegant & Simplistic Options) */
+    /* Permanent Elegant Cormorant Garamond Italic Ampersand in Sage */
     .amp {
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
       font-weight: 400;
-      color: var(--champagne);
+      color: var(--eucalyptus); /* Sage Color (#AAB89C) */
       display: inline-block;
       margin: 0 0.08em;
       line-height: 0.85;
+      font-size: 1.05em;
       vertical-align: baseline;
       -webkit-font-smoothing: antialiased;
-      transition: all 0.25s var(--ease-silk);
     }
-    
-    .amp.v1 { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 0.92em; color: var(--ivory); font-weight: 400; }
-    .amp.v2 { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05em; color: var(--champagne); font-weight: 300; }
-    .amp.v3 { font-family: 'Cinzel Decorative', serif; font-style: normal; font-size: 0.85em; color: var(--ivory); font-weight: 400; }
-    .amp.v4 { font-family: 'Prata', serif; font-style: normal; font-size: 0.9em; color: var(--champagne); }
-    .amp.v5 { font-family: 'Tangerine', cursive; font-style: normal; font-size: 1.38em; color: var(--ivory); font-weight: 700; vertical-align: middle; }
-    .amp.v6 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.88em; color: var(--champagne); font-weight: 400; }
-    .amp.v7 { font-family: 'Sacramento', cursive; font-style: normal; font-size: 1.25em; color: var(--ivory); vertical-align: middle; }
-    .amp.v8 { font-family: 'Italianno', cursive; font-style: normal; font-size: 1.35em; color: var(--champagne); vertical-align: middle; }
-    .amp.v9 { font-family: 'Pinyon Script', cursive; font-style: normal; font-size: 1.1em; color: var(--ivory); vertical-align: middle; }
-    .amp.v10 { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 0.88em; color: var(--champagne); }
-
     .hero-headline-names .amp {
+      font-size: 0.98em;
       margin: 0 0.1em;
-      color: var(--ivory);
+      color: var(--eucalyptus);
+      font-weight: 300;
     }
     .header-monogram-brand .amp {
-      font-size: 1.05em;
-      color: var(--champagne);
-    }
-
-    .ampersand-picker-bar {
-      margin-top: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      flex-wrap: wrap;
-      background: rgba(0, 0, 0, 0.38);
-      padding: 0.75rem 1.2rem;
-      border-radius: 2px;
-      border: 1px solid rgba(231, 217, 190, 0.25);
-      backdrop-filter: blur(8px);
-    }
-    .picker-label {
-      font-family: var(--font-sans);
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--champagne);
-      margin-right: 0.4rem;
-    }
-    .amp-picker-btn {
-      font-family: var(--font-sans);
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      padding: 0.35rem 0.7rem;
-      background: transparent;
-      border: 1px solid rgba(231, 217, 190, 0.3);
-      color: var(--ivory);
-      border-radius: 1px;
-      transition: all 0.25s;
-      cursor: pointer;
-    }
-    .amp-picker-btn:hover, .amp-picker-btn.active {
-      background: var(--eucalyptus);
-      color: #1A2516;
-      border-color: var(--eucalyptus);
-      font-weight: 600;
+      font-size: 1.12em;
+      color: var(--eucalyptus);
     }
 
     .hero-date-line {
@@ -1236,7 +1185,7 @@
   <header>
     <nav id="couture-header" aria-label="Main Navigation">
       <a href="#hero" class="header-monogram-brand" aria-label="Rishen and Lizaan Home">
-        R<span class="amp v1">&amp;</span>L
+        R<span class="amp">&amp;</span>L
       </a>
 
       <ul class="header-nav-links-list" role="list">
@@ -1281,7 +1230,7 @@
         <span class="hero-invite-eyebrow">WITH ALL OUR LOVE, WE INVITE YOU</span>
 
         <h1 class="hero-headline-names" id="heroHeadlineNames">
-          Rishen <span class="amp v1">&amp;</span><br />Lizaan
+          Rishen <span class="amp">&amp;</span><br />Lizaan
         </h1>
 
         <p class="hero-date-line">
@@ -1289,22 +1238,8 @@
         </p>
 
         <p class="hero-venue-line">
-          HIGHBERRY VINEYARDS <span class="amp v1">&amp;</span> VENUE
+          HIGHBERRY VINEYARDS <span class="amp">&amp;</span> VENUE
         </p>
-        <!-- 10 Ampersand Variations Interactive Picker Bar -->
-        <div class="ampersand-picker-bar" aria-label="10 Ampersand Style Picker">
-          <span class="picker-label">10 ELEGANT &amp; OPTIONS:</span>
-          <button type="button" class="amp-picker-btn active" onclick="setAmpVariant(1, this)">1. Bodoni Moda</button>
-          <button type="button" class="amp-picker-btn" onclick="setAmpVariant(2, this)">2. Cormorant Garamond</button>
-          <button type="button" class="amp-picker-btn" onclick="setAmpVariant(3, this)">3. Cinzel Decorative</button>
-          <button type="button" class="amp-picker-btn" onclick="setAmpVariant(4, this)">4. Prata Haute</button>
-          <button type="button" class="amp-picker-btn" onclick="setAmpVariant(5, this)">5. Tangerine Fine</button>
-          <button type="button" class="amp-picker-btn" onclick="setAmpVariant(6, this)">6. Playfair Slim</button>
-          <button type="button" class="amp-picker-btn" onclick="setAmpVariant(7, this)">7. Sacramento Clean</button>
-          <button type="button" class="amp-picker-btn" onclick="setAmpVariant(8, this)">8. Italianno Slender</button>
-          <button type="button" class="amp-picker-btn" onclick="setAmpVariant(9, this)">9. Classic Pinyon</button>
-          <button type="button" class="amp-picker-btn" onclick="setAmpVariant(10, this)">10. DM Serif</button>
-        </div>
 
 
       </div>
@@ -1431,7 +1366,7 @@
             </div>
             <div class="ceremony-event-content-box">
               <span class="ceremony-event-timestamp">16:00</span>
-              <h3 class="ceremony-event-title">Drinks <span class="amp v1">&amp;</span> Canap&eacute;s</h3>
+              <h3 class="ceremony-event-title">Drinks <span class="amp">&amp;</span> Canap&eacute;s</h3>
               <p class="ceremony-event-desc">Sunset drinks and delicious bites on the lawns.</p>
             </div>
           </div>
@@ -1446,7 +1381,7 @@
             </div>
             <div class="ceremony-event-content-box">
               <span class="ceremony-event-timestamp">18:00</span>
-              <h3 class="ceremony-event-title">Reception <span class="amp v1">&amp;</span> Dinner</h3>
+              <h3 class="ceremony-event-title">Reception <span class="amp">&amp;</span> Dinner</h3>
               <p class="ceremony-event-desc">Toasts, dinner, and time with those we love most.</p>
             </div>
           </div>
@@ -1503,7 +1438,7 @@
         </div>
 
         <h2 class="attire-title-serif" id="attireHeadingTitle">
-          Burgundy <span class="amp v1">&amp;</span> Sage
+          Burgundy <span class="amp">&amp;</span> Sage
         </h2>
 
         <p class="attire-text-paragraph">
@@ -1523,12 +1458,12 @@
     <section id="venue" aria-labelledby="venueHeadingTitle">
       <div class="story-max-container">
         
-        <h2 class="venue-main-title" id="venueHeadingTitle">Venue <span class="amp v1">&amp;</span> Lodging</h2>
+        <h2 class="venue-main-title" id="venueHeadingTitle">Venue <span class="amp">&amp;</span> Lodging</h2>
 
         <div class="venue-editorial-layout-grid">
           
           <div class="venue-text-side">
-            <h3 class="venue-estate-name">Highberry Vineyards <span class="amp v1">&amp;</span> Venue</h3>
+            <h3 class="venue-estate-name">Highberry Vineyards <span class="amp">&amp;</span> Venue</h3>
             <p class="venue-location-tagline">Somerset West, Cape Winelands, South Africa</p>
 
             <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;">
@@ -1721,7 +1656,7 @@
        8. CLOSING KEEPSAKE & SIGNATURE
   ============================================================ */ -->
   <footer id="closing-keepsake" aria-label="Closing Keepsake">
-    <div class="keepsake-names">Rishen <span class="amp v1">&amp;</span> Lizaan</div>
+    <div class="keepsake-names">Rishen <span class="amp">&amp;</span> Lizaan</div>
     <p class="keepsake-quote">“Our greatest adventure is just beginning.”</p>
     <p class="keepsake-sign">With all our love ♡</p>
   </footer>
@@ -1733,17 +1668,6 @@
   'use strict';
 
   var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoqQWpnXmvYe6A41-grgSd8-iKYdRQY8GKAJiwfVmEy4dl67L0T3qWKml6yNuZwNzl9w/exec';
-
-
-
-  // Dynamic 10-Option Ampersand Style Switcher
-  window.setAmpVariant = function(varNum, btn) {
-    document.querySelectorAll('.amp').forEach(function(el) {
-      el.className = 'amp v' + varNum;
-    });
-    document.querySelectorAll('.amp-picker-btn').forEach(function(b) { b.classList.remove('active'); });
-    if (btn) btn.classList.add('active');
-  };
 
   // 1. Music Player & Multi-Platform Autoplay Engine (Mobile, Tablet, PC)
   var musicBtn = document.getElementById('turntableAudioToggle');
