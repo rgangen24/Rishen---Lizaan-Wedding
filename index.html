@@ -7,10 +7,10 @@
   <meta name="theme-color" content="#380F14" />
   <title>Rishen &amp; Lizaan — With All Our Love, We Invite You</title>
 
-  <!-- Typography: Fraunces & Jost & Pinyon Script -->
+  <!-- Typography: Fraunces & Jost & Pinyon Script & Alex Brush -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..700,0..100;1,9..144,200..600,0..100&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..700,0..100;1,9..144,200..600,0..100&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet" />
 
   <style>
     /* ============================================================
@@ -24,10 +24,10 @@
       --burgundy-deep:    #24090D;
       --burgundy-night:   #150305;
       --burgundy-soft:    #8A3943;
-      --burgundy-card:    #54161E;
+      --burgundy-card:    #4E171F;
 
       --sage:             #7C8B6F;
-      --sage-active:      #9CB08F;
+      --sage-active:      #AAB89C;
       --sage-dark:        #3D4A36;
       --sage-deep:        #232D20;
       --eucalyptus:       #AAB89C;
@@ -48,6 +48,7 @@
       --font-serif:       'Fraunces', Georgia, serif;
       --font-sans:        'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-script:      'Pinyon Script', cursive;
+      --font-calligraphy: 'Alex Brush', 'Pinyon Script', cursive;
 
       --ease-silk:        cubic-bezier(0.16, 1, 0.3, 1);
       --ease-spring:      cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -140,9 +141,9 @@
       transition: transform 0.3s, color 0.3s;
     }
     .header-monogram-brand span {
-      font-family: var(--font-script);
+      font-family: var(--font-calligraphy);
       font-size: 1.9rem;
-      color: var(--eucalyptus);
+      color: var(--ivory);
       margin: 0 0.05em;
     }
     .header-monogram-brand:hover {
@@ -272,7 +273,7 @@
     }
 
     /* ============================================================
-       3. HERO SECTION (WITH ALL OUR LOVE, WE INVITE YOU)
+       3. HERO SECTION (AMPERSAND MATCHING ATTACHMENT 1)
     ============================================================ */
     #hero {
       min-height: 100vh;
@@ -287,7 +288,6 @@
       overflow: hidden;
     }
 
-    /* Elegant Fine Line Swoosh Background Vector (Attachment 3 Exact Match) */
     .hero-swoosh-bg-vector {
       position: absolute;
       inset: 0;
@@ -328,12 +328,19 @@
       letter-spacing: -0.02em;
       margin-bottom: clamp(2rem, 4.5vh, 3.2rem);
     }
+    
+    /* Calligraphic Ampersand Matching Attachment 1 */
     .hero-headline-names .amp {
-      font-family: var(--font-script);
-      font-size: 0.9em;
-      color: var(--eucalyptus);
-      font-weight: 300;
-      margin: 0 0.1em;
+      font-family: 'Alex Brush', 'Pinyon Script', cursive;
+      font-size: 1.12em;
+      color: #FDFBF7;
+      font-weight: 400;
+      font-style: normal;
+      display: inline-block;
+      margin: 0 0.08em;
+      line-height: 0.8;
+      vertical-align: middle;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .hero-date-line {
@@ -356,7 +363,7 @@
     }
 
     /* ============================================================
-       4. OUR STORY SECTION (PERFECT 100% VISIBLE STAGGERED COLLAGE)
+       4. OUR STORY SECTION
     ============================================================ */
     #story {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -420,7 +427,6 @@
       line-height: 1.6;
     }
 
-    /* Staggered Flex Flow Container (Guarantees zero clipping and 100% visibility) */
     .story-collage-attachment-spread {
       display: flex;
       flex-direction: column;
@@ -443,7 +449,6 @@
       display: block;
     }
 
-    /* Top Photo: Cream Polaroid Frame (Staggered Left) */
     .collage-frame-top {
       align-self: flex-start;
       background: #EFEADF;
@@ -454,7 +459,6 @@
       margin-bottom: -55px;
     }
 
-    /* Middle Photo (Lawn): Cream Frame (Staggered Right) */
     .collage-frame-middle {
       align-self: flex-end;
       background: #EFEADF;
@@ -466,7 +470,6 @@
       margin-bottom: -55px;
     }
 
-    /* Bottom Photo (Hats): SITS ON TOP (Z-INDEX 10) OVER 2ND PHOTO EDGE BELOW FEET — 100% VISIBLE */
     .collage-frame-bottom {
       align-self: flex-start;
       background: #EFEADF;
@@ -477,7 +480,6 @@
       position: relative;
     }
 
-    /* Round R ♥ L Emblem Badge (Top Right Corner of Middle Frame) */
     .collage-round-rl-badge {
       position: absolute;
       top: -24px;
@@ -498,7 +500,6 @@
     .collage-round-rl-badge .b-h { font-size: 0.62rem; color: var(--sage); margin: 2px 0; }
     .collage-round-rl-badge .b-l { font-family: var(--font-serif); font-size: 1.1rem; color: var(--burgundy); line-height: 1; }
 
-    /* Narrative Text Flow */
     .story-text-narrative-flow {
       max-width: 840px;
       margin: 0 auto;
@@ -522,7 +523,6 @@
       font-weight: 400;
     }
 
-    /* Scripture Climax */
     .sacred-scripture-climax {
       margin-top: clamp(4rem, 8vw, 6rem);
       text-align: center;
@@ -696,7 +696,7 @@
     }
 
     /* ============================================================
-       6. DRESS THE PART / ATTIRE SECTION (Attachment 2 Exact Match)
+       6. DRESS THE PART / ATTIRE SECTION
     ============================================================ */
     #attire {
       padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
@@ -866,17 +866,17 @@
     }
 
     /* ============================================================
-       8. RSVP SECTION
+       8. RSVP SECTION (EXACT MATCHING ATTACHMENT 2)
     ============================================================ */
     #rsvp {
-      padding: clamp(5.5rem, 11vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
-      background: radial-gradient(circle at 50% 30%, #521820 0%, #350F14 60%, #1C0609 100%);
+      padding: clamp(4.5rem, 9vw, 7.5rem) clamp(1.2rem, 4vw, 4rem);
+      background: #4A171E;
       color: var(--ivory);
       position: relative;
     }
     .rsvp-header-center {
       text-align: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 2.8rem;
     }
     .rsvp-gratitude-title {
       font-family: var(--font-sans);
@@ -893,7 +893,7 @@
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: rgba(231, 217, 190, 0.75);
-      margin-bottom: 2.8rem;
+      margin-bottom: 2.2rem;
     }
 
     /* Countdown Timer */
@@ -901,7 +901,7 @@
       display: flex;
       justify-content: center;
       gap: clamp(1.5rem, 5vw, 4rem);
-      margin-bottom: 3.5rem;
+      margin-bottom: 3.2rem;
     }
     .rsvp-cd-item {
       display: flex;
@@ -925,82 +925,99 @@
       margin-top: 0.6rem;
     }
 
-    /* Dark Burgundy RSVP Card Box */
+    /* Dark Burgundy RSVP Card Box (Attachment 2 Exact Layout) */
     .rsvp-card-box {
-      max-width: 660px;
+      max-width: 620px;
       margin: 0 auto;
-      background: var(--burgundy-card);
-      border: 1px solid rgba(231, 217, 190, 0.15);
-      padding: clamp(2.2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
-      border-radius: 2px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      background: transparent;
+      padding: 0;
     }
 
-    .card-eyebrow-caps {
-      font-family: var(--font-sans);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: rgba(231, 217, 190, 0.65);
-      margin-bottom: 0.6rem;
-      display: block;
-    }
-
-    .card-main-question-serif {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      font-weight: 300;
-      color: var(--ivory);
-      line-height: 1.15;
+    .form-group-clean {
       margin-bottom: 2.2rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.8rem;
     }
     .field-label-caps {
       display: block;
       font-family: var(--font-sans);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(251, 247, 240, 0.75);
-      margin-bottom: 0.7rem;
+      color: rgba(255, 255, 255, 0.68);
+      margin-bottom: 0.6rem;
     }
 
-    .form-line-input, .form-line-select, .form-line-textarea {
+    /* Underline Input Line (Attachment 2 Exact Match) */
+    .form-line-input-clean {
       width: 100%;
       background: transparent;
       border: none;
-      border-bottom: 1px solid rgba(231, 217, 190, 0.35);
-      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 0.6rem 0;
       font-family: var(--font-sans);
-      font-size: 0.98rem;
+      font-size: 0.95rem;
+      font-weight: 300;
       color: var(--ivory);
       outline: none;
       transition: border-color 0.3s;
+      border-radius: 0;
     }
-    .form-line-input::placeholder, .form-line-textarea::placeholder {
-      color: rgba(251, 247, 240, 0.4);
+    .form-line-input-clean::placeholder {
+      color: rgba(255, 255, 255, 0.38);
     }
-    .form-line-input:focus, .form-line-select:focus, .form-line-textarea:focus {
+    .form-line-input-clean:focus {
       border-bottom-color: var(--champagne);
     }
-    .form-line-select option {
+
+    /* Inline Select for Guests Count & Dietary Requirements (Attachment 2 Exact Match) */
+    .inline-select-row-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      padding-bottom: 0.5rem;
+      margin-bottom: 2.2rem;
+    }
+    .inline-select-label {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.68);
+      white-space: nowrap;
+    }
+    .inline-select-control {
+      background: transparent;
+      border: none;
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 400;
+      outline: none;
+      cursor: pointer;
+      padding: 0.3rem 0.6rem 0.3rem 0;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.7)' stroke-width='1.5' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right center;
+      padding-right: 1.4rem;
+    }
+    .inline-select-control option {
       background: #3B0D13;
       color: var(--ivory);
+      padding: 0.5rem;
     }
 
-    /* Yes / No Toggle Button Cards */
+    /* Attendance Toggle Buttons (Attachment 2 Exact Match) */
     .attendance-toggle-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 0.9rem;
     }
-    @media (max-width: 580px) {
+    @media (max-width: 540px) {
       .attendance-toggle-grid { grid-template-columns: 1fr; }
     }
 
@@ -1008,12 +1025,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.1rem 0.8rem;
-      border: 1px solid rgba(231, 217, 190, 0.3);
+      padding: 0.95rem 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.4);
       background: transparent;
       color: var(--ivory);
       font-family: var(--font-sans);
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -1023,12 +1040,41 @@
     }
     .attendance-btn-option:hover {
       border-color: var(--champagne);
-      background: rgba(231, 217, 190, 0.08);
+      background: rgba(255, 255, 255, 0.06);
     }
     .attendance-btn-option.selected {
       background: var(--sage-active) !important;
-      color: #1A2516 !important;
+      color: #202D1D !important;
       border-color: var(--sage-active) !important;
+      font-weight: 600;
+    }
+
+    .guest-section-header-title {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: var(--champagne);
+      font-weight: 300;
+      margin-top: 2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-line-textarea-clean {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 0.6rem 0;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ivory);
+      outline: none;
+      line-height: 1.7;
+      resize: vertical;
+      min-height: 80px;
+    }
+    .form-line-textarea-clean::placeholder {
+      color: rgba(255, 255, 255, 0.38);
     }
 
     .btn-send-rsvp-white {
@@ -1036,19 +1082,20 @@
       align-items: center;
       justify-content: center;
       gap: 0.6rem;
-      padding: 1.1rem 2.4rem;
+      padding: 1.1rem 2.5rem;
       background: var(--ivory);
-      color: var(--oxblood);
+      color: #380F14;
       font-family: var(--font-sans);
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.26em;
       text-transform: uppercase;
       border-radius: 1px;
-      margin-top: 1.5rem;
+      margin-top: 1.8rem;
       cursor: pointer;
       transition: all 0.35s var(--ease-silk);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      width: 100%;
     }
     .btn-send-rsvp-white:hover {
       background: var(--champagne);
@@ -1093,7 +1140,6 @@
       color: var(--champagne);
     }
 
-    /* Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -1118,8 +1164,8 @@
     <span>Play Our Song</span>
   </button>
 
-  <!-- Sixpence None the Richer - Kiss Me Audio -->
-  <audio id="weddingRomanticSoundtrack" loop preload="auto">
+  <!-- Sixpence None the Richer - Kiss Me Audio (Autoplay Enabled) -->
+  <audio id="weddingRomanticSoundtrack" autoplay loop preload="auto">
     <source src="audio/kiss-me.m4a" type="audio/mp4" />
     <source src="audio/kiss-me.webm" type="audio/webm" />
   </audio>
@@ -1162,7 +1208,7 @@
 
     <section id="hero" aria-labelledby="heroHeadlineNames">
       
-      <!-- Vector Swoosh Background Lines (Attachment 3 Exact Match) -->
+      <!-- Vector Swoosh Background Lines -->
       <svg class="hero-swoosh-bg-vector" viewBox="0 0 1000 1000" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M-150,150 C200,450 600,50 1150,250" stroke="rgba(231,217,190,0.28)" stroke-width="1.2" />
         <path d="M-100,550 C300,150 700,750 1100,450" stroke="rgba(231,217,190,0.24)" stroke-width="1.2" />
@@ -1189,7 +1235,7 @@
     </section>
 
     <!-- ============================================================
-         3. OUR STORY (100% FULLY VISIBLE PHOTO STACK)
+         3. OUR STORY SECTION
     ============================================================ */ -->
     <section id="story" aria-labelledby="storyHeadingTitle">
       <div class="story-max-container">
@@ -1209,14 +1255,11 @@
           </p>
         </div>
 
-        <!-- Staggered Flex Flow Container (Guarantees zero clipping and 100% visibility) -->
         <div class="story-collage-attachment-spread">
-          <!-- Top Photo: Cream Polaroid Frame (Staggered Left) -->
           <div class="collage-photo-frame collage-frame-top">
             <img src="images/couple-portrait.jpg" alt="Rishen and Lizaan portrait" loading="lazy" />
           </div>
 
-          <!-- Middle Photo (Lawn): Cream Frame (Staggered Right) -->
           <div class="collage-photo-frame collage-frame-middle">
             <div class="collage-round-rl-badge">
               <span class="b-r">R</span>
@@ -1226,13 +1269,11 @@
             <img src="images/couple-outdoor-clean.jpg" alt="Rishen and Lizaan on green lawn" loading="lazy" />
           </div>
 
-          <!-- Bottom Photo (Hats): SITS ON TOP (Z-INDEX 10) OVER 2ND PHOTO EDGE BELOW FEET — 100% VISIBLE -->
           <div class="collage-photo-frame collage-frame-bottom">
             <img src="images/couple-fun.jpg" alt="Rishen and Lizaan in fun hats" loading="lazy" />
           </div>
         </div>
 
-        <!-- Narrative Story Text -->
         <div class="story-text-narrative-flow">
           <p class="story-moment-paragraph">
             <span class="story-editorial-dropcap">A</span>lmost a year and a half ago, Lizaan and Rishen met for the first time at a funeral, where they were introduced by one of Lizaan’s family members. There was an instant connection, a quiet, undeniable feeling that something about this person was different. It was love at first sight - although neither of them was brave enough to actually say a word to the other 😂!
@@ -1260,7 +1301,6 @@
           </p>
         </div>
 
-        <!-- Scripture Climax -->
         <div class="sacred-scripture-climax">
           <p class="sacred-scripture-main-verse">
             “Therefore what God has joined together, let no one separate.”
@@ -1289,11 +1329,9 @@
           </p>
         </div>
 
-        <!-- Editorial Timeline -->
         <div class="ceremonial-timeline-wrapper">
           <div class="ceremonial-timeline-guide-thread" aria-hidden="true"></div>
 
-          <!-- 14:30 Ceremony -->
           <div class="ceremony-event-row">
             <div class="ceremony-event-icon-circle" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -1307,7 +1345,6 @@
             </div>
           </div>
 
-          <!-- 16:00 Drinks & Canapés -->
           <div class="ceremony-event-row">
             <div class="ceremony-event-icon-circle" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -1323,7 +1360,6 @@
             </div>
           </div>
 
-          <!-- 18:00 Reception & Dinner -->
           <div class="ceremony-event-row">
             <div class="ceremony-event-icon-circle" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -1339,7 +1375,6 @@
             </div>
           </div>
 
-          <!-- AFTER DINNER Dancing (Matching Attachment 1) -->
           <div class="ceremony-event-row">
             <div class="ceremony-event-icon-circle" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -1357,7 +1392,6 @@
 
         </div>
 
-        <!-- Centered Save Date Button -->
         <div style="display:flex; justify-content:center; margin-top:2.5rem;">
           <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//Rishen%20%26%20Lizaan//Wedding//EN%0ABEGIN:VEVENT%0ADTSTART:20261024T123000Z%0ADTEND:20261024T220000Z%0ASUMMARY:Rishen%20%26%20Lizaan%27s%20Wedding%0ADESCRIPTION:Wedding%20celebration%20of%20Rishen%20%26%20Lizaan%20at%20Highberry%20Vineyards%2C%20Somerset%20West.%20Ceremony%20at%2014%3A30.%0ALOCATION:Highberry%20Vineyards%20%26%20Venue%2C%20Somerset%20West%2C%20Cape%20Winelands%2C%20South%20Africa%0AURL:https%3A%2F%2Fwww.highberry.co.za%2F%0AEND:VEVENT%0AEND:VCALENDAR"
              download="Rishen-and-Lizaan-Wedding-24-Oct-2026.ics"
@@ -1374,7 +1408,7 @@
     </section>
 
     <!-- ============================================================
-         5. DRESS THE PART / ATTIRE SECTION (Attachment 2 Exact Match)
+         5. DRESS THE PART / ATTIRE SECTION
     ============================================================ */ -->
     <section id="attire" aria-labelledby="attireHeadingTitle">
       <div class="attire-content-container">
@@ -1383,7 +1417,6 @@
           DRESS THE PART
         </div>
 
-        <!-- Color Palette Swatches (Burgundy & Sage) -->
         <div class="attire-color-swatches-grid" aria-hidden="true">
           <div class="swatch-burgundy">
             <span class="swatch-label">BURGUNDY</span>
@@ -1478,7 +1511,7 @@
     </section>
 
     <!-- ============================================================
-         7. RSVP SECTION
+         7. RSVP SECTION (EXACT MATCHING ATTACHMENT 2 VISUALS)
     ============================================================ */ -->
     <section id="rsvp" aria-labelledby="rsvpHeadingTitle">
       <div class="story-max-container">
@@ -1487,7 +1520,6 @@
           <h2 class="rsvp-gratitude-title">We’d be so grateful to hear from you.</h2>
           <p class="rsvp-deadline-caps">RSVP BY 24 SEPTEMBER 2026 &nbsp;&middot;&nbsp; CLOSES AT MIDNIGHT.</p>
 
-          <!-- Countdown Timer -->
           <div class="rsvp-countdown-bar" id="countdownDigitsFlex">
             <div class="rsvp-cd-item">
               <span class="rsvp-cd-num" id="cdDays">--</span>
@@ -1508,7 +1540,6 @@
           </div>
         </div>
 
-        <!-- Dark Burgundy RSVP Card Box -->
         <div class="rsvp-card-box">
           
           <div class="rsvp-success-feedback" id="rsvpFeedbackSuccess" aria-live="polite">
@@ -1519,18 +1550,15 @@
 
           <form id="rsvpFormElement" novalidate aria-label="Wedding RSVP Form">
             
-            <span class="card-eyebrow-caps">YOUR RESPONSE</span>
-            <h3 class="card-main-question-serif" id="rsvpHeadingTitle">Will you be joining us?</h3>
-
-            <!-- Full Name Line -->
-            <div class="form-group">
+            <!-- Full Name Line (Attachment 2 Exact Match) -->
+            <div class="form-group-clean">
               <label for="guestFullNameField" class="field-label-caps">FULL NAME</label>
-              <input type="text" id="guestFullNameField" name="guestFullNameField" class="form-line-input" placeholder="Your name" autocomplete="name" required />
-              <span id="nameErrorAlert" style="display:none; font-size:0.78rem; color:#f87171; margin-top:0.4rem;">Please fill in this field.</span>
+              <input type="text" id="guestFullNameField" name="guestFullNameField" class="form-line-input-clean" placeholder="" autocomplete="name" required />
+              <span id="nameErrorAlert" style="display:none; font-size:0.78rem; color:#f87171; margin-top:0.4rem;">Please fill in your name.</span>
             </div>
 
-            <!-- Attendance Toggle Buttons -->
-            <div class="form-group">
+            <!-- Attendance Buttons (Attachment 2 Exact Match) -->
+            <div class="form-group-clean">
               <label class="field-label-caps">WILL YOU BE JOINING US?</label>
               <div class="attendance-toggle-grid">
                 <button type="button" class="attendance-btn-option selected" id="btnAcceptJoyfully" data-val="joyfully">
@@ -1543,12 +1571,13 @@
               <input type="hidden" id="attendanceStatusRadio" name="attendanceStatusRadio" value="joyfully" />
             </div>
 
-            <!-- Attending Guests Detail Group -->
+            <!-- Attending Details Group -->
             <div id="attendingGuestsDetailsGroup">
               
-              <div class="form-group">
-                <label for="guestQuantitySelect" class="field-label-caps">HOW MANY GUESTS WILL BE ATTENDING?</label>
-                <select id="guestQuantitySelect" name="guestQuantitySelect" class="form-line-select">
+              <!-- Guests Count Inline Select (Attachment 2 Exact Match) -->
+              <div class="inline-select-row-wrap">
+                <span class="inline-select-label">HOW MANY GUESTS WILL BE ATTENDING?</span>
+                <select id="guestQuantitySelect" name="guestQuantitySelect" class="inline-select-control">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -1557,30 +1586,45 @@
                 </select>
               </div>
 
-              <!-- Guest 1 Header & Name Field -->
-              <div style="margin-top:1.8rem; margin-bottom:1.4rem;">
-                <div style="font-family:var(--font-serif); font-size:1.35rem; color:var(--champagne); margin-bottom:0.8rem;">Guest 1</div>
-                <div class="form-group">
+              <!-- Guest 1 Section (Attachment 2 Exact Match) -->
+              <div style="margin-top:2.2rem; margin-bottom:1.8rem;">
+                <h3 class="guest-section-header-title">Guest 1</h3>
+                <div class="form-group-clean">
                   <label for="guest1NameInput" class="field-label-caps">GUEST 1 NAME</label>
-                  <input type="text" id="guest1NameInput" name="guest1NameInput" class="form-line-input" placeholder="Guest 1 name" />
+                  <input type="text" id="guest1NameInput" name="guest1NameInput" class="form-line-input-clean" placeholder="" />
                 </div>
               </div>
 
-              <!-- Additional Guest Dynamic Fields -->
+              <!-- Additional Guests Rows -->
               <div id="additionalGuestInputRows"></div>
 
-              <!-- Dietary Requirement Field -->
-              <div class="form-group">
-                <label for="guestDietaryNotesInput" class="field-label-caps">DIETARY REQUIREMENTS (OPTIONAL)</label>
-                <input type="text" id="guestDietaryNotesInput" name="guestDietaryNotesInput" class="form-line-input" placeholder="e.g. Vegetarian, Vegan, Halal, Nut Allergy, None" />
+              <!-- Dietary Requirement Inline Select (Attachment 2 Exact Match) -->
+              <div class="inline-select-row-wrap">
+                <span class="inline-select-label">DIETARY REQUIREMENT</span>
+                <select id="guestDietarySelect" name="guestDietarySelect" class="inline-select-control">
+                  <option value="No special requirements">No special requirements</option>
+                  <option value="Vegetarian">Vegetarian</option>
+                  <option value="Vegan">Vegan</option>
+                  <option value="Halal">Halal</option>
+                  <option value="Kosher">Kosher</option>
+                  <option value="Nut Allergy">Nut Allergy</option>
+                  <option value="Gluten Free">Gluten Free</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <!-- Other Dietary Detail Line (if 'Other' is selected) -->
+              <div id="otherDietaryDetailGroup" style="display:none; margin-bottom:2.2rem;">
+                <label for="guestDietaryNotesInput" class="field-label-caps">PLEASE SPECIFY DIETARY DETAIL</label>
+                <input type="text" id="guestDietaryNotesInput" name="guestDietaryNotesInput" class="form-line-input-clean" placeholder="Specify your dietary requirement..." />
               </div>
 
             </div>
 
-            <!-- Special Message Textarea -->
-            <div class="form-group">
-              <label for="guestWishesTextarea" class="field-label-caps">A MESSAGE FOR US (OPTIONAL)</label>
-              <textarea id="guestWishesTextarea" name="guestWishesTextarea" rows="3" class="form-line-textarea" placeholder="Write your personal note, warm wishes, or message for Rishen &amp; Lizaan..."></textarea>
+            <!-- Special Message Line (Attachment 2 Exact Match) -->
+            <div class="form-group-clean">
+              <label for="guestWishesTextarea" class="field-label-caps">A MESSAGE FOR US</label>
+              <textarea id="guestWishesTextarea" name="guestWishesTextarea" class="form-line-textarea-clean" placeholder="Write your personal note, warm wishes, or message for Rishen &amp; Lizaan..."></textarea>
             </div>
 
             <button type="submit" class="btn-send-rsvp-white" id="rsvpSubmitBtn">
@@ -1607,20 +1651,48 @@
   </footer>
 
   <!-- ============================================================
-       SCRIPTS: MUSIC, PROGRESS, COUNTDOWN, AUTO-SYNC & RSVP
+       SCRIPTS: AUTOMATIC MUSIC AUTOPLAY, SYNC & RSVP
   ============================================================ */ -->
   <script>
   'use strict';
 
-  // ACTIVE DEPLOYED GOOGLE APPS SCRIPT WEB APP BACKEND URL
   var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoqQWpnXmvYe6A41-grgSd8-iKYdRQY8GKAJiwfVmEy4dl67L0T3qWKml6yNuZwNzl9w/exec';
 
-  // 1. Music Player Toggle
+  // 1. Music Player & Aggressive Autoplay Engine
   var musicBtn = document.getElementById('turntableAudioToggle');
   var romanticAudio = document.getElementById('weddingRomanticSoundtrack');
 
+  function tryPlayAudio() {
+    if (!romanticAudio) return;
+    if (romanticAudio.paused) {
+      romanticAudio.play().then(function() {
+        if (musicBtn) musicBtn.classList.add('playing');
+      }).catch(function() {
+        // Autoplay blocked by browser policy until interaction
+      });
+    }
+  }
+
+  // Attempt automatic play immediately
+  tryPlayAudio();
+  window.addEventListener('DOMContentLoaded', tryPlayAudio);
+  window.addEventListener('load', tryPlayAudio);
+
+  // Auto-play on first tap, scroll, or click anywhere on the page
+  var autoPlayEvents = ['click', 'touchstart', 'scroll', 'keydown', 'mousemove'];
+  function unlockAudioOnInteraction() {
+    tryPlayAudio();
+    autoPlayEvents.forEach(function(evt) {
+      window.removeEventListener(evt, unlockAudioOnInteraction);
+    });
+  }
+  autoPlayEvents.forEach(function(evt) {
+    window.addEventListener(evt, unlockAudioOnInteraction, { passive: true, once: true });
+  });
+
   if (musicBtn && romanticAudio) {
-    musicBtn.addEventListener('click', function() {
+    musicBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
       if (romanticAudio.paused) {
         romanticAudio.play().then(function() {
           musicBtn.classList.add('playing');
@@ -1698,24 +1770,26 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 6. RSVP Auto-Sync & Attendance Buttons
-  var fullNameInput = document.getElementById('guestFullNameField');
-  var guest1Input    = document.getElementById('guest1NameInput');
-  var btnAccept     = document.getElementById('btnAcceptJoyfully');
-  var btnDecline    = document.getElementById('btnDeclineRegretfully');
-  var attendValHold = document.getElementById('attendanceStatusRadio');
-  var acceptGroup   = document.getElementById('attendingGuestsDetailsGroup');
-  var guestSelect   = document.getElementById('guestQuantitySelect');
-  var extraGuestBox = document.getElementById('additionalGuestInputRows');
+  // 6. RSVP Auto-Sync & Attendance Buttons (Attachment 2 Exact Logic)
+  var fullNameInput   = document.getElementById('guestFullNameField');
+  var guest1Input      = document.getElementById('guest1NameInput');
+  var btnAccept       = document.getElementById('btnAcceptJoyfully');
+  var btnDecline      = document.getElementById('btnDeclineRegretfully');
+  var attendValHold   = document.getElementById('attendanceStatusRadio');
+  var acceptGroup     = document.getElementById('attendingGuestsDetailsGroup');
+  var guestSelect     = document.getElementById('guestQuantitySelect');
+  var extraGuestBox   = document.getElementById('additionalGuestInputRows');
+  var dietarySelect   = document.getElementById('guestDietarySelect');
+  var otherDietGroup  = document.getElementById('otherDietaryDetailGroup');
 
-  // Sync FULL NAME to Guest 1 Name in real time
+  // Real-time auto-sync FULL NAME to Guest 1 Name (Attachment 2 pointer arrows match)
   if (fullNameInput && guest1Input) {
     fullNameInput.addEventListener('input', function() {
       guest1Input.value = fullNameInput.value;
     });
   }
 
-  // Attendance Toggle
+  // Attendance Toggle Buttons
   if (btnAccept && btnDecline && attendValHold) {
     btnAccept.addEventListener('click', function() {
       btnAccept.classList.add('selected');
@@ -1732,7 +1806,18 @@
     });
   }
 
-  // Dynamic Extra Guests (for guest 2 through 5)
+  // Dietary Requirement Select Handler
+  if (dietarySelect && otherDietGroup) {
+    dietarySelect.addEventListener('change', function() {
+      if (dietarySelect.value === 'Other') {
+        otherDietGroup.style.display = 'block';
+      } else {
+        otherDietGroup.style.display = 'none';
+      }
+    });
+  }
+
+  // Dynamic Extra Guests (for Guest 2 through 5)
   function renderExtraGuests() {
     if (!guestSelect || !extraGuestBox) return;
     var count = parseInt(guestSelect.value, 10) || 1;
@@ -1741,16 +1826,25 @@
     if (count > 1) {
       for (var i = 2; i <= count; i++) {
         var div = document.createElement('div');
-        div.style.cssText = 'margin-top:1.6rem; margin-bottom:1.2rem; padding-left:0.8rem; border-left:2px solid var(--sage);';
+        div.style.cssText = 'margin-top:2.2rem; margin-bottom:1.8rem;';
         div.innerHTML = `
-          <div style="font-family:var(--font-serif); font-size:1.25rem; color:var(--champagne); margin-bottom:0.6rem;">Guest ${i}</div>
-          <div class="form-group" style="margin-bottom:1rem;">
+          <h3 class="guest-section-header-title">Guest ${i}</h3>
+          <div class="form-group-clean">
             <label class="field-label-caps">GUEST ${i} NAME</label>
-            <input type="text" class="form-line-input" name="guest_${i}_name" placeholder="Guest ${i} name" />
+            <input type="text" class="form-line-input-clean" name="guest_${i}_name" placeholder="" />
           </div>
-          <div class="form-group" style="margin-bottom:0;">
-            <label class="field-label-caps">DIETARY REQUIREMENT</label>
-            <input type="text" class="form-line-input" name="guest_${i}_dietary" placeholder="No special requirements" />
+          <div class="inline-select-row-wrap" style="margin-top:1.2rem;">
+            <span class="inline-select-label">DIETARY REQUIREMENT</span>
+            <select name="guest_${i}_dietary" class="inline-select-control">
+              <option value="No special requirements">No special requirements</option>
+              <option value="Vegetarian">Vegetarian</option>
+              <option value="Vegan">Vegan</option>
+              <option value="Halal">Halal</option>
+              <option value="Kosher">Kosher</option>
+              <option value="Nut Allergy">Nut Allergy</option>
+              <option value="Gluten Free">Gluten Free</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
         `;
         extraGuestBox.appendChild(div);
@@ -1780,32 +1874,36 @@
 
       var isAttending = (attendValHold ? attendValHold.value : 'joyfully') === 'joyfully';
       var count = isAttending ? (parseInt(guestSelect.value, 10) || 1) : 0;
-      var dietary = document.getElementById('guestDietaryNotesInput') ? document.getElementById('guestDietaryNotesInput').value.trim() : '';
+      
+      var mainDiet = dietarySelect ? dietarySelect.value : 'No special requirements';
+      if (mainDiet === 'Other') {
+        var detailNotes = document.getElementById('guestDietaryNotesInput') ? document.getElementById('guestDietaryNotesInput').value.trim() : '';
+        mainDiet = detailNotes ? ('Other: ' + detailNotes) : 'Other';
+      }
+
       var message = document.getElementById('guestWishesTextarea') ? document.getElementById('guestWishesTextarea').value.trim() : '';
 
       var formParams = new URLSearchParams();
       formParams.append('primaryName', nameVal);
       formParams.append('attendance', isAttending ? "Yes, I'll be there" : "No, unfortunately I can't attend");
       formParams.append('guestCount', count.toString());
-      formParams.append('dietary', dietary);
+      formParams.append('dietary', mainDiet);
       formParams.append('message', message);
 
-      // Primary Guest Name
       formParams.append('guest_1_name', (guest1Input && guest1Input.value.trim()) ? guest1Input.value.trim() : nameVal);
-      formParams.append('guest_1_dietary', dietary || 'No special requirements');
+      formParams.append('guest_1_dietary', mainDiet);
 
       if (isAttending && count > 1) {
         for (var i = 2; i <= count; i++) {
           var gName = document.querySelector('input[name="guest_' + i + '_name"]');
-          var gDiet = document.querySelector('input[name="guest_' + i + '_dietary"]');
+          var gDiet = document.querySelector('select[name="guest_' + i + '_dietary"]');
           formParams.append('guest_' + i + '_name', gName ? gName.value.trim() : ('Guest ' + i));
-          formParams.append('guest_' + i + '_dietary', gDiet ? gDiet.value.trim() : 'No special requirements');
+          formParams.append('guest_' + i + '_dietary', gDiet ? gDiet.value : 'No special requirements');
         }
       }
 
       if (submitBtn) submitBtn.disabled = true;
 
-      // Submit to Google Apps Script
       if (GOOGLE_APPS_SCRIPT_URL) {
         try {
           fetch(GOOGLE_APPS_SCRIPT_URL, {
