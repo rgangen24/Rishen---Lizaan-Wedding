@@ -329,14 +329,14 @@
       margin-bottom: clamp(2rem, 4.5vh, 3.2rem);
     }
     
-    /* Calligraphic Ampersand Image (Attachment 1 Exact Match) */
-    .hero-amp-img {
+    /* Calligraphic Ampersand HD Image (Attachment 1 High Definition Match) */
+    .hero-amp-img-hd {
       display: inline-block;
-      height: clamp(3.2rem, 9.5vw, 6.2rem);
+      height: clamp(3.4rem, 10vw, 6.5rem);
       width: auto;
       vertical-align: middle;
-      margin: -0.15em 0.15em 0 0.15em;
-      filter: drop-shadow(0 4px 15px rgba(0,0,0,0.3));
+      margin: -0.1em 0.2em 0 0.2em;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
     }
 
     .hero-date-line {
@@ -1160,8 +1160,8 @@
     <span>Play Our Song</span>
   </button>
 
-  <!-- Sixpence None the Richer - Kiss Me Audio (Autoplay Enabled) -->
-  <audio id="weddingRomanticSoundtrack" autoplay loop preload="auto">
+  <!-- Sixpence None the Richer - Kiss Me Audio (Autoplay Enabled Across All Mobile & Desktop Platforms) -->
+  <audio id="weddingRomanticSoundtrack" autoplay loop preload="auto" playsinline webkit-playsinline>
     <source src="audio/kiss-me.m4a" type="audio/mp4" />
     <source src="audio/kiss-me.webm" type="audio/webm" />
   </audio>
@@ -1217,7 +1217,7 @@
         <span class="hero-invite-eyebrow">WITH ALL OUR LOVE, WE INVITE YOU</span>
 
         <h1 class="hero-headline-names" id="heroHeadlineNames">
-          Rishen <img src="images/calligraphic-ampersand.png" alt="&amp;" class="hero-amp-img" /><br />Lizaan
+          Rishen <img src="images/calligraphic-ampersand-hd.png" alt="&amp;" class="hero-amp-img-hd" /><br />Lizaan
         </h1>
 
         <p class="hero-date-line">
@@ -1654,36 +1654,42 @@
 
   var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoqQWpnXmvYe6A41-grgSd8-iKYdRQY8GKAJiwfVmEy4dl67L0T3qWKml6yNuZwNzl9w/exec';
 
-  // 1. Music Player & Aggressive Autoplay Engine
+  // 1. Music Player & Multi-Platform Autoplay Engine (Mobile, Tablet, PC)
   var musicBtn = document.getElementById('turntableAudioToggle');
   var romanticAudio = document.getElementById('weddingRomanticSoundtrack');
 
   function tryPlayAudio() {
     if (!romanticAudio) return;
     if (romanticAudio.paused) {
-      romanticAudio.play().then(function() {
-        if (musicBtn) musicBtn.classList.add('playing');
-      }).catch(function() {
-        // Autoplay blocked by browser policy until interaction
-      });
+      var playPromise = romanticAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(function() {
+          if (musicBtn) musicBtn.classList.add('playing');
+        }).catch(function() {
+          // Browser prevented initial unmuted autoplay
+        });
+      }
     }
   }
 
-  // Attempt automatic play immediately
+  // Trigger autoplay immediately on document load
   tryPlayAudio();
   window.addEventListener('DOMContentLoaded', tryPlayAudio);
   window.addEventListener('load', tryPlayAudio);
 
-  // Auto-play on first tap, scroll, or click anywhere on the page
-  var autoPlayEvents = ['click', 'touchstart', 'scroll', 'keydown', 'mousemove'];
-  function unlockAudioOnInteraction() {
+  // Trigger autoplay on ANY user gesture (touch, swipe, scroll, tap, pointer) across mobile & desktop
+  var gestureEvents = ['click', 'touchstart', 'touchend', 'scroll', 'pointerdown', 'keydown', 'mousemove'];
+  function unlockAudioOnGesture() {
     tryPlayAudio();
-    autoPlayEvents.forEach(function(evt) {
-      window.removeEventListener(evt, unlockAudioOnInteraction);
-    });
+    if (romanticAudio && !romanticAudio.paused) {
+      gestureEvents.forEach(function(evt) {
+        window.removeEventListener(evt, unlockAudioOnGesture);
+      });
+    }
   }
-  autoPlayEvents.forEach(function(evt) {
-    window.addEventListener(evt, unlockAudioOnInteraction, { passive: true, once: true });
+
+  gestureEvents.forEach(function(evt) {
+    window.addEventListener(evt, unlockAudioOnGesture, { passive: true });
   });
 
   if (musicBtn && romanticAudio) {
