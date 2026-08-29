@@ -1155,9 +1155,96 @@
         transition-duration: 0.01ms !important;
       }
     }
+  
+    /* Luxury Mobile Invitation Opening Curtain Overlay */
+    .mobile-invitation-curtain {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #3B0D13;
+      background: radial-gradient(circle at center, #5C1A23 0%, #29080C 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--ivory);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+      cursor: pointer;
+    }
+    .mobile-invitation-curtain.opened {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .curtain-card-border {
+      border: 1px solid rgba(231, 217, 190, 0.35);
+      padding: clamp(2.5rem, 8vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+      max-width: 480px;
+      width: 100%;
+      background: rgba(41, 8, 12, 0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 2px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    .curtain-eyebrow {
+      font-family: var(--font-sans);
+      font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .curtain-names {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 8vw, 3.8rem);
+      font-weight: 300;
+      color: var(--ivory);
+      line-height: 1.05;
+      margin-bottom: 2rem;
+    }
+    .curtain-open-btn {
+      font-family: var(--font-sans);
+      font-size: clamp(0.75rem, 2vw, 0.88rem);
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      background: var(--eucalyptus);
+      color: #1A2516;
+      border: 1px solid var(--eucalyptus);
+      border-radius: 1px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .curtain-open-btn:hover {
+      background: var(--ivory);
+      border-color: var(--ivory);
+      transform: translateY(-2px);
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- Luxury Mobile Invitation Envelope Curtain Overlay (Ensures 100% Autoplay Sound on Mobile) -->
+  <div class="mobile-invitation-curtain" id="mobileInvitationCurtain" onclick="openMobileInvitation()">
+    <div class="curtain-card-border">
+      <span class="curtain-eyebrow">WITH ALL OUR LOVE</span>
+      <h1 class="curtain-names">Rishen <span class="amp">&amp;</span> Lizaan</h1>
+      <button type="button" class="curtain-open-btn" id="curtainOpenBtn">
+        <span>✉️ OPEN INVITATION</span>
+      </button>
+    </div>
+  </div>
+
 
   <!-- Fine Paper Overlay -->
   <div class="fine-paper-overlay"></div>
@@ -1668,6 +1755,21 @@
   'use strict';
 
   var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoqQWpnXmvYe6A41-grgSd8-iKYdRQY8GKAJiwfVmEy4dl67L0T3qWKml6yNuZwNzl9w/exec';
+
+  // 100% Guaranteed Unmuted Mobile Audio Autoplay Handler
+  window.openMobileInvitation = function() {
+    var curtain = document.getElementById('mobileInvitationCurtain');
+    if (curtain) {
+      curtain.classList.add('opened');
+    }
+    tryPlayAudio();
+    if (romanticAudio && romanticAudio.paused) {
+      romanticAudio.play().then(function() {
+        audioUnlocked = true;
+        if (musicBtn) musicBtn.classList.add('playing');
+      }).catch(function() {});
+    }
+  };
 
   // 1. Ultra-Robust Mobile & Desktop Audio Autoplay Engine (Web Audio API + Universal Gesture Unlock)
   var musicBtn = document.getElementById('turntableAudioToggle');
