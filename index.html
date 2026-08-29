@@ -1155,24 +1155,6 @@
         transition-duration: 0.01ms !important;
       }
     }
-  
-    /* Luxury Mobile Invitation Opening Curtain Overlay */
-    .mobile-invitation-curtain {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      background: #3B0D13;
-      background: radial-gradient(circle at center, #5C1A23 0%, #29080C 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      color: var(--ivory);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
-      cursor: pointer;
-    }
     .mobile-invitation-curtain.opened {
       opacity: 0;
       visibility: hidden;
@@ -1233,17 +1215,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Luxury Mobile Invitation Envelope Curtain Overlay (Ensures 100% Autoplay Sound on Mobile) -->
-  <div class="mobile-invitation-curtain" id="mobileInvitationCurtain" onclick="openMobileInvitation()">
-    <div class="curtain-card-border">
-      <span class="curtain-eyebrow">WITH ALL OUR LOVE</span>
-      <h1 class="curtain-names">Rishen <span class="amp">&amp;</span> Lizaan</h1>
-      <button type="button" class="curtain-open-btn" id="curtainOpenBtn">
-        <span>✉️ OPEN INVITATION</span>
-      </button>
-    </div>
-  </div>
 
 
   <!-- Fine Paper Overlay -->
@@ -1755,22 +1726,6 @@
   'use strict';
 
   var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoqQWpnXmvYe6A41-grgSd8-iKYdRQY8GKAJiwfVmEy4dl67L0T3qWKml6yNuZwNzl9w/exec';
-
-  // 100% Guaranteed Unmuted Mobile Audio Autoplay Handler
-  window.openMobileInvitation = function() {
-    var curtain = document.getElementById('mobileInvitationCurtain');
-    if (curtain) {
-      curtain.classList.add('opened');
-    }
-    tryPlayAudio();
-    if (romanticAudio && romanticAudio.paused) {
-      romanticAudio.play().then(function() {
-        audioUnlocked = true;
-        if (musicBtn) musicBtn.classList.add('playing');
-      }).catch(function() {});
-    }
-  };
-
   // 1. Ultra-Robust Mobile & Desktop Audio Autoplay Engine (Web Audio API + Universal Gesture Unlock)
   var musicBtn = document.getElementById('turntableAudioToggle');
   var romanticAudio = document.getElementById('weddingRomanticSoundtrack');
