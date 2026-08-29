@@ -1669,43 +1669,85 @@
 
   var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoqQWpnXmvYe6A41-grgSd8-iKYdRQY8GKAJiwfVmEy4dl67L0T3qWKml6yNuZwNzl9w/exec';
 
-  // 1. Music Player & Multi-Platform Autoplay Engine (Mobile, Tablet, PC)
+  // 1. Ultra-Robust Mobile & Desktop Audio Autoplay Engine (Web Audio API + Universal Gesture Unlock)
   var musicBtn = document.getElementById('turntableAudioToggle');
   var romanticAudio = document.getElementById('weddingRomanticSoundtrack');
+  var audioUnlocked = false;
+  var audioCtx = null;
+
+  function getAudioContext() {
+    if (!audioCtx) {
+      var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) {
+        audioCtx = new AudioContextClass();
+      }
+    }
+    return audioCtx;
+  }
 
   function tryPlayAudio() {
     if (!romanticAudio) return;
+    
+    // Attempt Web Audio Context resume if suspended
+    var ctx = getAudioContext();
+    if (ctx && ctx.state === 'suspended') {
+      ctx.resume().catch(function() {});
+    }
+
     if (romanticAudio.paused) {
-      var playPromise = romanticAudio.play();
-      if (playPromise !== undefined) {
-        playPromise.then(function() {
+      var promise = romanticAudio.play();
+      if (promise !== undefined) {
+        promise.then(function() {
+          audioUnlocked = true;
           if (musicBtn) musicBtn.classList.add('playing');
-        }).catch(function() {
-          // Browser prevented initial unmuted autoplay
+        }).catch(function(err) {
+          // Autoplay blocked by mobile browser until first touch/scroll gesture
         });
       }
+    } else {
+      audioUnlocked = true;
+      if (musicBtn) musicBtn.classList.add('playing');
     }
   }
 
-  // Trigger autoplay immediately on document load
+  // Execute immediately on document load & readiness
   tryPlayAudio();
   window.addEventListener('DOMContentLoaded', tryPlayAudio);
   window.addEventListener('load', tryPlayAudio);
+  document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      tryPlayAudio();
+    }
+  });
 
-  // Trigger autoplay on ANY user gesture (touch, swipe, scroll, tap, pointer) across mobile & desktop
-  var gestureEvents = ['click', 'touchstart', 'touchend', 'scroll', 'pointerdown', 'keydown', 'mousemove'];
-  function unlockAudioOnGesture() {
+  // Universal Touch, Scroll, Swipe & Pointer Unlock for Mobile (iOS Safari & Android Chrome)
+  var mobileUnlockEvents = ['touchstart', 'touchend', 'pointerdown', 'pointerup', 'mousedown', 'mouseup', 'click', 'scroll', 'keydown'];
+  
+  function forceMobileAudioUnlock(e) {
     tryPlayAudio();
-    if (romanticAudio && !romanticAudio.paused) {
-      gestureEvents.forEach(function(evt) {
-        window.removeEventListener(evt, unlockAudioOnGesture);
+    if (audioUnlocked || (romanticAudio && !romanticAudio.paused)) {
+      mobileUnlockEvents.forEach(function(evt) {
+        window.removeEventListener(evt, forceMobileAudioUnlock, true);
+        document.removeEventListener(evt, forceMobileAudioUnlock, true);
+        if (document.body) document.body.removeEventListener(evt, forceMobileAudioUnlock, true);
       });
     }
   }
 
-  gestureEvents.forEach(function(evt) {
-    window.addEventListener(evt, unlockAudioOnGesture, { passive: true });
+  mobileUnlockEvents.forEach(function(evt) {
+    window.addEventListener(evt, forceMobileAudioUnlock, { capture: true, passive: true });
+    document.addEventListener(evt, forceMobileAudioUnlock, { capture: true, passive: true });
   });
+
+  // Continuously probe autoplay status during first 3 seconds on mobile
+  var probeInterval = setInterval(function() {
+    if (audioUnlocked || (romanticAudio && !romanticAudio.paused)) {
+      clearInterval(probeInterval);
+    } else {
+      tryPlayAudio();
+    }
+  }, 300);
+  setTimeout(function() { clearInterval(probeInterval); }, 5000);
 
   if (musicBtn && romanticAudio) {
     musicBtn.addEventListener('click', function(e) {
